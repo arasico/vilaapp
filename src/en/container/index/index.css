@@ -1,0 +1,30 @@
+
+
+
+
+.container-fluid{
+    display: flex;  
+
+}
+
+.container{
+    margin: auto;
+    width: 90%;  
+    
+}
+.main-bord{
+    width: 100%;
+    height: 800px;
+    background-image: url("../../../assets/img/cover-01.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+
+.search-box-container{
+    width: 60%;
+    margin: auto;
+    padding-top: 200px;
+    height: auto;
+}
