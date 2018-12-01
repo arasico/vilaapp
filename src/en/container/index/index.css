@@ -104,3 +104,13 @@ h2{
     background: rgb(197,1,67);
     background: linear-gradient(50deg, rgba(197,1,67,1) 0%, rgba(125,2,43,1) 100%);
 }
+
+
+
+.drop-down-list{
+    background-color: #fff;
+    width: 80px;
+    padding: 15px 30px;
+    cursor: pointer;
+
+}
