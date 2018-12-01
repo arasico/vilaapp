@@ -42,7 +42,7 @@ class SearchIndex extends Component {
                     </li>
                     
                     <li>
-                        <span style={{paddingLeft:'10px'}}>Check in</span>
+                        <span className="lbl-date" style={{paddingLeft:'10px'}}>Check in</span>
                         <DatePicker className="date-down"
                             selected={this.state.startDate}
                             onChange={this.handleChange} 
@@ -50,10 +50,11 @@ class SearchIndex extends Component {
                     </li>
 
                     <li>
-                        <span style={{paddingLeft:'10px'}}>Check Out</span>
+                        <span  className="lbl-date"  style={{paddingLeft:'10px'}}>Check Out</span>
                             <DatePicker className="date-down"
                                 selected={this.state.startDate}
                                 onChange={this.handleChange} 
+                                title="www"
                             />
                     </li>
                     

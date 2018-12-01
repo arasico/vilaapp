@@ -4,6 +4,8 @@ import React, {Component} from 'react';
 import './index.css'
 import Header from '../../components/header/header' 
 import SaerchBox from '../../components/search-index/searchIndex' 
+import EnjoyHousing from './enjoyHousing';
+import WelcomeHome from './welcomeHome';
 
 
 class Index extends Component {
@@ -23,6 +25,13 @@ class Index extends Component {
                         </div>
 
                 </div>
+
+                {/* Enjoy Housing as a Service */}
+                <EnjoyHousing />
+
+
+                {/* Welcome home — anywhere, anytime */}
+                <WelcomeHome />
             </div>
        
          );
