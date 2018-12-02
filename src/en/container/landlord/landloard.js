@@ -8,8 +8,9 @@ class LandLoard extends Component {
     }
     render() { 
         return ( 
-            <div>
-                <p>land loard here </p>
+            <div className="container-fluid">
+                <div className="container">
+                </div>
             </div>
          );
     }
