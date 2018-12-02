@@ -16,20 +16,28 @@ class RouterComponent extends Component {
 
     constructor(props) {
       super(props);
-      this.state = {   } 
+      this.state = { current:false   } 
   } 
   
-  
+  // shouldComponentUpdate(){
+  //   var xx =  window.location.pathname;
+  //   console.log(xx)
+  //   if(xx !== '/')
+  //   this.setState({current:true})
+  //   else
+  //   this.setState({current:false})
+  // }
  
   
     render() {
+
   
   
       return (
         <Router>
             <div  >
         
-              {/* <HeaderEnglish /> */}
+                <HeaderEnglish /> 
 
               <Switch>
                     <Route exact init path="/" component={Index} /> 

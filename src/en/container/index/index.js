@@ -19,7 +19,7 @@ class Index extends Component {
             <div className="container-fluid">
                  <div className="main-bord">
                     
-                    <Header />
+                    {/* <Header /> */}
 
                     <div className="search-box-container">
                         <SaerchBox />
