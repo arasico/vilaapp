@@ -2,6 +2,9 @@ import React,{Component} from 'react';
 import { NavLink  } from 'react-router-dom';
 
 import './style.css';
+import clock from '../../../assets/icons/clock.svg';
+import chart from '../../../assets/icons/chart.svg';
+import verify from '../../../assets/icons/verify.svg';
 
 
 class LandLoard extends Component {
@@ -33,8 +36,24 @@ class LandLoard extends Component {
                         </div>
                     </div>
 
-                    <div className="container-fluid vilaapp-way-continu" >
-                    
+                    <div className="container-fluid " >
+                        <div className="container vilaapp-way-continu pt100">
+                            <div className="vilaapp-way-continu-items">
+                                <img src={clock} alt="Quick and easy process" />
+                                <h1>Quick and easy process</h1>
+                                <h3>Our fast and transparent booking processes help you rent out your apartment with ease and in no time.</h3>
+                            </div>
+                            <div className="vilaapp-way-continu-items">
+                                <img src={verify} alt="Verified tenants" />
+                                <h1>Verified tenants</h1>
+                                <h3>We work with 2000+ corporate clients and verify every tenant’s employment relationship and income.</h3>
+                            </div>
+                            <div className="vilaapp-way-continu-items">
+                                <img src={chart} alt="High occupancy rate" />
+                                <h1>High occupancy rate</h1>
+                                <h3>We make sure that your apartment is never empty.</h3>
+                            </div>
+                        </div>
                     </div>
 
 
