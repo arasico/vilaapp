@@ -88,7 +88,7 @@
 
 .navbar-container ul li a {
     display: block;
-    color: #9A9A9A;
+    color: #333333;
     text-align: center;
     padding: 14px 20px;
     text-decoration: none;
@@ -102,6 +102,7 @@
 .navbar-container ul li a:hover:not(.active) {
     background-color: rgba(34,34,34,0.5);
     border-radius: 50px;
+    color: #fff;
 }
 
  

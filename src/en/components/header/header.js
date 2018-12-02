@@ -27,7 +27,7 @@ class HeaderComponent extends Component {
 
       
         return ( 
-            <div className="header-container">
+            <div className="header-container shadow-box">
                 <div className="logo-container">
                    {/* {this.state.currentPage ?  <img src={LogoColorly} className="logo" alt="VilaApp logo"/> :  <img src={LogoWhit} className="logo" alt="VilaApp logo"/>} */}
                    <img src={LogoColorly} className="logo" alt="VilaApp logo"/>
