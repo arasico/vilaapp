@@ -6,6 +6,7 @@ import 'rc-dropdown/assets/index.css';
 
 import './index.css'
 import arrow from '../../../assets/icons/arrow-down.svg'
+import imgKish from '../../../assets/img/kish.jpg'
 
 
 function onSelect({ key }) {
@@ -42,7 +43,11 @@ class WelcomeHome extends Component {
                     <h1 className="center pb50 pt50">Welcome home — anywhere, anytime</h1>
                  
                     <div className="images-container-index">
-                        <div className="index-box-image"></div>
+                        <div className="index-box-image">
+                        <p className="title-image">Kish,Iran</p>
+                          <img src={imgKish} style={{width:'100%', height:'100%'}}  />
+                         
+                        </div>
                         <div className="two-images-container">
                             <div className="index-box-image-50"></div>
                             <div className="index-box-image-50"></div>
