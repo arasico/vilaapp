@@ -1,0 +1,27 @@
+
+
+
+.container-fluid{  
+    width: 100%;
+}
+.container{
+    margin: auto;
+    width: 90%;  
+    
+}
+
+
+.footer-color-black{
+background-color: #282828;
+
+}
+
+
+.footer-color-black hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #2E2E2E;
+    margin: 1em 0;
+    padding: 0; 
+}
