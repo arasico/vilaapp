@@ -5,7 +5,7 @@ import './style.css';
 import clock from '../../../assets/icons/clock.svg';
 import chart from '../../../assets/icons/chart.svg';
 import verify from '../../../assets/icons/verify.svg';
-import tick from '../../../assets/icons/tick.svg';
+
 
 
 
@@ -39,7 +39,7 @@ class LandLoard extends Component {
                     </div>
 
                     <div className="container-fluid " >
-                        <div className="container vilaapp-way-continu pt100">
+                        <div className="container vilaapp-way-continu pt100 ">
                             <div className="vilaapp-way-continu-items">
                                 <img src={clock} alt="Quick and easy process" />
                                 <h1>Quick and easy process</h1>
@@ -57,15 +57,15 @@ class LandLoard extends Component {
                             </div>
                         </div>
 
-                         <div className="container good-hands">
+                         <div className="container good-hands pb100">
                             <h3>Your furnished apartment</h3>
-                            <h1>is in good hands</h1>
+                            <h1 cla>is in good hands</h1>
 
-                            <div className="good-hands-container">
+                            <div className="good-hands-container pt50 ">
                                 <div className="good-hands-items">
-                                    <h3>We know how difficult it can be to rent out an apartment to the right person. VilaApp makes sure that your furnished apartment gets tenants you are looking for.</h3>
+                                    <h3><span style={{fontSize:30, fontWeight:700}}>W</span>e know how difficult it can be to rent out an apartment to the right person. VilaApp makes sure that your furnished apartment gets tenants you are looking for.</h3>
                                     <h3>No matter if you want to rent out a furnished apartment, house, studio or a penthouse - once you list it on VilaApp, we take care of the rest.</h3>
-                                    <NavLink to="/#" className="btn  btn-green">Become a landlord</NavLink>
+                                    <NavLink to="/#" className="btn  btn-green pt100">Become a landlord</NavLink>
                                 </div>
                                 <div className="good-hands-items">
                                     <ul>

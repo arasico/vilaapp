@@ -88,7 +88,7 @@ class SearchIndex extends Component {
                             overlay={SelectCityMenu}
                             animation="slide-up" 
                         >
-                            <div className="drop-down-list">{this.state.selectCity}<img src={arrow} style={{paddingLeft:10, paddingTop:5, height:11, width:11, float:'right' }} /> </div>
+                            <div className="drop-down-list">{this.state.selectCity}<img src={arrow} style={{paddingLeft:10, paddingTop:5, height:11, width:11, float:'right' }}  alt="arrow"/> </div>
                         </Dropdown>
                     </li>
                     
@@ -115,7 +115,7 @@ class SearchIndex extends Component {
                             overlay={menu}
                             animation="slide-up" 
                         >
-                            <div className="drop-down-list">{this.state.person} Person <img src={arrow} style={{paddingLeft:10, paddingTop:5, height:11, width:11, float:'right' }} /> </div>
+                            <div className="drop-down-list">{this.state.person} Person <img src={arrow} style={{paddingLeft:10, paddingTop:5, height:11, width:11, float:'right' }} alt="arrow" /> </div>
                         </Dropdown>
                     </li> 
                 </ul>

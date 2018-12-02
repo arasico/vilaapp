@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import HeaderEnglish from './en/components/header/header'
 import Index from './en/container/index'
 import Landlord from './en/container/landlord/landloard'
-
+import FooterComponent from './en/components/footer/footer'
 
 
 
@@ -43,6 +43,7 @@ class RouterComponent extends Component {
                     <Route exact init path="/" component={Index} /> 
                     <Route exact init path="/landlord" component={Landlord} /> 
               </Switch>
+              <FooterComponent />
                   
             </div>
         </Router>

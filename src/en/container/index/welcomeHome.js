@@ -1,33 +1,20 @@
 import React, {Component} from 'react';
 
-import Dropdown from 'rc-dropdown';
-import Menu, { Item as MenuItem, Divider } from 'rc-menu';
-import 'rc-dropdown/assets/index.css';
+// import Dropdown from 'rc-dropdown';
+// import Menu, { Item as MenuItem, Divider } from 'rc-menu';
+// import 'rc-dropdown/assets/index.css';
 
 import './index.css'
-import arrow from '../../../assets/icons/arrow-down.svg'
 import imgKish from '../../../assets/img/kish.jpg'
 import imgTehran from '../../../assets/img/tehran.jpg'
 import imgShiraz from '../../../assets/img/shiraz.jpg'
 import imgEsfehan from '../../../assets/img/esfehan.jpg'
 
 
-function onSelect({ key }) {
-    console.log(`${key} selected`);
-  }
-  
+
  
   
-  const menu = (
-    <Menu onSelect={onSelect}>
-       
-      <MenuItem key="1" style={{fontSize: 16}}>1 person</MenuItem>
-      <Divider />
-      <MenuItem key="2">2 persons</MenuItem>
-      <Divider />
-      <MenuItem key="3">3 persons</MenuItem>
-    </Menu>
-  );
+
 
 
 
@@ -48,21 +35,21 @@ class WelcomeHome extends Component {
                     <div className="images-container-index">
                         <div className="index-box-image">
                             <p className="title-image">Kish,Iran</p>
-                            <img src={imgKish} style={{width:'100%', height:'100%'}}  />
+                            <img src={imgKish} style={{width:'100%', height:'100%'}} alt="Kish,Iran" />
                         </div>
                         <div className="two-images-container">
                             <div className="index-box-image-50">
                                 <p className="title-image">Shiraz,Ira n</p>
-                                <img src={imgShiraz} style={{width:'100%', height:'100%'}}  />    
+                                <img src={imgShiraz} style={{width:'100%', height:'100%'}} alt="Shiraz,Iran" />    
                             </div>
                             <div className="index-box-image-50">
                                 <p className="title-image">Tehran,Iran</p>
-                                <img src={imgTehran} style={{width:'100%', height:'100%'}}  />
+                                <img src={imgTehran} style={{width:'100%', height:'100%'}} alt="Tehran,Iran" />
                             </div>
                         </div>
                         <div className="index-box-image">
                             <p className="title-image">Esfehan,Iran</p>
-                            <img src={imgEsfehan} style={{width:'100%', height:'100%'}}  />
+                            <img src={imgEsfehan} style={{width:'100%', height:'100%'}}  alt="Esfehan,Iran" />
                         </div>
 
                     </div>

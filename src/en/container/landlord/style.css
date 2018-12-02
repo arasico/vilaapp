@@ -66,7 +66,7 @@ box-shadow: -1px -1px 9px 0px rgba(0,0,0,0.19);
     height: 200px;
     background-color: #fff; 
     position: absolute;
-    margin-top: 480px;
+    margin-top: 480px!important;
     text-align: center;
     left: 0; 
     right: 0; 
@@ -112,7 +112,7 @@ box-shadow: -1px -1px 9px 0px rgba(0,0,0,0.19);
 
 
 .vilaapp-way-continu-items h3{
-    line-height: 0.9em;
+    line-height: 1.3em;
     font-weight: 100;
     color: #333;
 }
@@ -123,8 +123,7 @@ box-shadow: -1px -1px 9px 0px rgba(0,0,0,0.19);
     text-align: center; 
 }
 
-.good-hands-container{
-    background-color: red;
+.good-hands-container{ 
     width: 100%; 
     display: flex;
     flex-direction: row;
@@ -132,8 +131,7 @@ box-shadow: -1px -1px 9px 0px rgba(0,0,0,0.19);
 }
 
 .good-hands-items{
-width: 50%; 
-background-color: #ddd;
+width: 50%;  
 padding: 25px 0;
 
 }

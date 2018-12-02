@@ -4,7 +4,7 @@ import { NavLink  } from 'react-router-dom';
  
 import './header.css'
 
-import LogoWhit from '../../../assets/img/logo-vilaap-fff.png'
+// import LogoWhit from '../../../assets/img/logo-vilaap-fff.png'
 import LogoColorly from '../../../assets/img/logo-colorly.svg'
 
 
