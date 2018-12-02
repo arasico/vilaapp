@@ -39,8 +39,8 @@ class FooterComponent extends Component {
                             <ul>
                                 <li>
                                     <a href="#" ><img src={fb} alt="vilaapp facebook"/> </a>
-                                    <a href="#" ><img src={insta} alt="vilaapp facebook"/> </a>
-                                    <a href="#" ><img src={tw} alt="vilaapp facebook"/> </a>
+                                    <a href="#" ><img src={insta} alt="vilaapp instagram"/> </a>
+                                    <a href="#" ><img src={tw} alt="vilaapp twitter"/> </a>
                                 </li>
                              
                             </ul>
