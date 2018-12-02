@@ -87,3 +87,10 @@ font-size: 18px;
     background-color: rgb(160, 4, 56);
  
  }
+
+ .drop-down-list{
+    background-color: #fff; 
+    padding: 18px 27px 24px 15px;
+    cursor: pointer;
+
+}
