@@ -5,6 +5,8 @@ import './style.css';
 import clock from '../../../assets/icons/clock.svg';
 import chart from '../../../assets/icons/chart.svg';
 import verify from '../../../assets/icons/verify.svg';
+import tick from '../../../assets/icons/tick.svg';
+
 
 
 class LandLoard extends Component {
@@ -54,6 +56,30 @@ class LandLoard extends Component {
                                 <h3>We make sure that your apartment is never empty.</h3>
                             </div>
                         </div>
+
+                         <div className="container good-hands">
+                            <h3>Your furnished apartment</h3>
+                            <h1>is in good hands</h1>
+
+                            <div className="good-hands-container">
+                                <div className="good-hands-items">
+                                    <h3>We know how difficult it can be to rent out an apartment to the right person. VilaApp makes sure that your furnished apartment gets tenants you are looking for.</h3>
+                                    <h3>No matter if you want to rent out a furnished apartment, house, studio or a penthouse - once you list it on VilaApp, we take care of the rest.</h3>
+                                    <NavLink to="/#" className="btn  btn-green">Become a landlord</NavLink>
+                                </div>
+                                <div className="good-hands-items">
+                                    <ul>
+                                        <li>Fast and secure contracting</li>
+                                        <li>No exclusivity nor binding contracts</li>
+                                        <li>You are in full control over any decision</li>
+                                        <li>Professional apartment photo shooting</li>
+                                        <li>Individual price and listing advice</li>
+                                        <li>Only pay in case of successful bookings</li>
+                                        <li>Professional support every working day</li>
+                                    </ul>
+                                </div>
+                            </div>
+                         </div>
                     </div>
 
 

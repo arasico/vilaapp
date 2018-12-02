@@ -79,7 +79,7 @@ box-shadow: -1px -1px 9px 0px rgba(0,0,0,0.19);
 }
 
 
-.wilaap-way-container h1{
+.good-hands h1,.wilaap-way-container  h1{
     font-size: 30px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: 700;
@@ -87,16 +87,17 @@ box-shadow: -1px -1px 9px 0px rgba(0,0,0,0.19);
 
 }
 
-.wilaap-way-container h3{
+.good-hands h3, .wilaap-way-container h3{
     font-size: 25px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: 100;
     line-height: 0.4em;
+    color: #333;
     
 }
 
 .vilaapp-way-continu{ 
-    height: 500px;
+    height: 400px;
     display: flex;
 
 }
@@ -114,4 +115,40 @@ box-shadow: -1px -1px 9px 0px rgba(0,0,0,0.19);
     line-height: 0.9em;
     font-weight: 100;
     color: #333;
+}
+
+
+.good-hands {
+    height: 400px;
+    text-align: center; 
+}
+
+.good-hands-container{
+    background-color: red;
+    width: 100%; 
+    display: flex;
+    flex-direction: row;
+
+}
+
+.good-hands-items{
+width: 50%; 
+background-color: #ddd;
+padding: 25px 0;
+
+}
+
+.good-hands-items h3, .good-hands-items  ul {
+    font-size: 18px;
+    line-height: 1.4em;
+    text-align: left;
+    padding: 10px 80px;
+}
+
+
+.good-hands-items  ul{
+    list-style-image: url('../../../assets/icons/tick.svg');
+    line-height: 2em;
+    color: #565656;
+    font-weight: 100;
 }
