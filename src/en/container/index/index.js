@@ -6,6 +6,7 @@ import Header from '../../components/header/header'
 import SaerchBox from '../../components/search-index/searchIndex' 
 import EnjoyHousing from './enjoyHousing';
 import WelcomeHome from './welcomeHome';
+import FooterComponent from '../../components/footer/footer';
 
 
 class Index extends Component {
@@ -20,9 +21,9 @@ class Index extends Component {
                     
                     <Header />
 
-                        <div className="search-box-container">
-                            <SaerchBox />
-                        </div>
+                    <div className="search-box-container">
+                        <SaerchBox />
+                    </div>
 
                 </div>
 
@@ -32,6 +33,9 @@ class Index extends Component {
 
                 {/* Welcome home — anywhere, anytime */}
                 <WelcomeHome />
+
+                {/* Footer compoennt  */}
+                <FooterComponent />
             </div>
        
          );
