@@ -1,4 +1,13 @@
-
+@media screen and (max-width: 920px) {
+   
+    .enjoy-container-item div {
+     width: 100%!important;   
+    }
+    .enjoy-container-item {
+        flex-direction: column!important;
+    }
+     
+}
 
 
 

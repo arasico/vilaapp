@@ -17,10 +17,13 @@ class HeaderComponent extends Component {
                 </div>
                 <div className="navbar-container">
                     <ul>
-                    <li><a href="#home">Log in/Sign up</a></li> 
-                    <li><a href="#home">Contact us</a></li> 
-                    <li><a href="#home">Become a landlord</a></li> 
+                        <li><a href="#home">Log in/Sign up</a></li> 
+                        <li><a href="#home">Contact us</a></li> 
+                        <li><a href="#home">Become a landlord</a></li> 
                     </ul>
+                    <div className="drawerMenu">
+
+                    </div>
                 </div>
             </div>
          );

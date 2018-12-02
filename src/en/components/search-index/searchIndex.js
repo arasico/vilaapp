@@ -82,7 +82,7 @@ class SearchIndex extends Component {
         return ( 
             <div className="search-bx-container">
                 <ul>
-                    <li>
+                    <li className="selectCity">
                         <Dropdown
                             trigger={['click']}
                             overlay={SelectCityMenu}
@@ -92,7 +92,7 @@ class SearchIndex extends Component {
                         </Dropdown>
                     </li>
                     
-                    <li>
+                    <li className="chechin">
                         <span className="lbl-date" style={{paddingLeft:'10px'}}>Check in</span>
                         <DatePicker className="date-down"
                             selected={this.state.startDate}
@@ -100,7 +100,7 @@ class SearchIndex extends Component {
                         />
                     </li>
 
-                    <li>
+                    <li className="chechout">
                         <span  className="lbl-date"  style={{paddingLeft:'10px'}}>Check Out</span>
                             <DatePicker className="date-down"
                                 selected={this.state.startDate}
@@ -109,7 +109,7 @@ class SearchIndex extends Component {
                             />
                     </li>
                     
-                    <li>
+                    <li className="peronSelection">
                         <Dropdown
                             trigger={['click']}
                             overlay={menu}

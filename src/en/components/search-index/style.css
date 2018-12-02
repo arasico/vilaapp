@@ -1,6 +1,43 @@
 
 
 
+@media screen and (max-width: 1300px) {
+   
+    .chechin , .chechout{ 
+        display: none!important;
+    }
+     
+}
+
+
+@media screen and (max-width: 860px) {
+   
+    .chechin , .chechout, .peronSelection{ 
+        display: none!important;
+    }
+    li.selectCity{
+        border: 0!important;
+    }
+     
+}
+
+@media screen and (max-width: 600px) {
+   
+     li.selectCity{
+         border: 0!important;
+     }
+     .search-box-container{
+         width: 90%;
+
+     }
+     
+}
+
+
+
+
+
+
 .search-bx-container{
     width: 100%;
     height: 60px;
@@ -17,8 +54,7 @@
     padding: 0 20px;
 }
 
-.search-bx-container ul  li {
-    display: block;
+.search-bx-container ul  li { 
     float: left;
     display: block; 
     text-align: center;
@@ -88,10 +124,17 @@ font-size: 18px;
  
  }
 
- .drop-down-list{
-    background-color: #fff;
+ .drop-down-list{ 
     padding: 18px 23px 24px 15px;
     cursor: pointer;
-    width: 100px;
+    width: 90%;
+    
 
 }
+
+
+li.peronSelection {
+    border: 0 !important;
+ }
+
+

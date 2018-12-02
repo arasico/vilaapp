@@ -1,5 +1,43 @@
  
 
+
+
+
+@media screen and (max-width: 750px) {
+   
+    .navbar-container ul{
+        display: none;
+    }
+    .drawerMenu{
+    
+        display: block!important;
+    }     
+     
+}
+
+
+@media screen and (max-width: 860px) {
+   
+  
+     
+}
+
+@media screen and (max-width: 600px) {
+   
+ 
+     
+}
+
+.drawerMenu{
+    display: none;
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    float: right;
+    padding: 0 15px;
+
+}
+
 .header-container {
     background-color: rgba(0, 0, 0, 0.1);
     display: flex;
