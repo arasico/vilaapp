@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { NavLink } from 'react-router-dom';
 import './header.css'
 
 import LogoWhit from '../../../assets/img/logo-vilaap-fff.png'
@@ -18,8 +19,8 @@ class HeaderComponent extends Component {
                 <div className="navbar-container">
                     <ul>
                         <li><a href="#home">Log in/Sign up</a></li> 
-                        <li><a href="#home">Contact us</a></li> 
-                        <li><a href="#home">Become a landlord</a></li> 
+                        <li><NavLink to="/home">Contact us</NavLink></li> 
+                        <li><NavLink to="/landlord" href="#home">Become a landlord</NavLink></li> 
                     </ul>
                     <div className="drawerMenu">
 

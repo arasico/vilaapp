@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 //
 import HeaderEnglish from './en/components/header/header'
 import Index from './en/container/index'
+import Landlord from './en/container/landlord/landloard'
 
 
 
@@ -32,6 +33,7 @@ class RouterComponent extends Component {
 
               <Switch>
                     <Route exact init path="/" component={Index} /> 
+                    <Route exact init path="/landlord" component={Landlord} /> 
               </Switch>
                   
             </div>
