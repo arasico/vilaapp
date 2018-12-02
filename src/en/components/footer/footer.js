@@ -11,9 +11,21 @@ class FooterComponent extends Component {
         return ( 
             <div className="container-fluid footer-color-black ">
                 <div className="container center pt50 pb50">
-                    <img src={LogoBlack} />
+                    <img src={LogoBlack} alt="VilaApp Logo" />
                     <hr />
-                    <h1>Footer is heere</h1>
+                     <div className="footer-menu-container">
+                        <div className="menu-item">
+                            <p>More</p>
+                            <ul>
+                                <li>For Landlords</li>
+                                <li>Expert search</li>
+                                <li>About Us</li>
+                                <li>Career</li>
+                            </ul>
+                        </div>
+                        <div className="menu-item"></div>
+                        <div className="menu-item"></div>
+                     </div>
                 </div>
             </div>
          );

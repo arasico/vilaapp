@@ -25,3 +25,51 @@ background-color: #282828;
     margin: 1em 0;
     padding: 0; 
 }
+
+.footer-menu-container{
+    display: flex;
+    flex-direction: row; 
+    width: 100%; 
+
+
+}
+
+
+
+
+ .menu-item{
+ 
+    width: 27%;
+    height: 400px;
+    margin: auto;
+    text-align: center;
+    background-color: red;
+
+
+}
+
+.footer-menu-container .menu-item p {
+    font-size: 66px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 700;
+    color: #fff;
+}
+
+.footer-menu-container .menu-item ul{
+
+    list-style-type: none;
+    margin: 0;
+    padding: 0 20px;
+}
+
+
+ 
+.footer-menu-container .menu-item ul  li { 
+    text-align: center;
+    padding: 0 10px;
+    text-decoration: none; 
+    color: #767676;
+    text-align: left;
+    line-height: 2rem;
+
+}
