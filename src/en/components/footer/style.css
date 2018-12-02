@@ -42,14 +42,13 @@ background-color: #282828;
     width: 27%;
     height: 400px;
     margin: auto;
-    text-align: center;
-    background-color: red;
+    text-align: center; 
 
 
 }
 
 .footer-menu-container .menu-item p {
-    font-size: 66px;
+    font-size: 50px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: 700;
     color: #fff;
@@ -69,7 +68,13 @@ background-color: #282828;
     padding: 0 10px;
     text-decoration: none; 
     color: #767676;
-    text-align: left;
+    text-align: center;
     line-height: 2rem;
+
+}
+
+
+.footer-menu-container .menu-item ul  li a {
+    padding: 0 10px;
 
 }

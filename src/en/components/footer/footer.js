@@ -2,6 +2,10 @@ import React, {Component} from 'react';
 import './style.css'
 import LogoBlack from '../../../assets/img/logo-vilaapp-000.svg'
 
+import fb from '../../../assets/icons/facebook.svg'
+import insta from '../../../assets/icons/instagram.svg'
+import tw from '../../../assets/icons/twitter.svg'
+
 class FooterComponent extends Component {
     constructor(props) {
         super(props);
@@ -23,8 +27,24 @@ class FooterComponent extends Component {
                                 <li>Career</li>
                             </ul>
                         </div>
-                        <div className="menu-item"></div>
-                        <div className="menu-item"></div>
+                        <div className="menu-item">
+                            <p>Contact</p>
+                            <ul>
+                                <li>+98 021 888 56 32</li>
+                                <li>info@vilaapp.ir</li> 
+                            </ul>
+                        </div>
+                        <div className="menu-item">
+                            <p>Social</p>
+                            <ul>
+                                <li>
+                                    <a href="#" ><img src={fb} alt="vilaapp facebook"/> </a>
+                                    <a href="#" ><img src={insta} alt="vilaapp facebook"/> </a>
+                                    <a href="#" ><img src={tw} alt="vilaapp facebook"/> </a>
+                                </li>
+                             
+                            </ul>
+                        </div>
                      </div>
                 </div>
             </div>
