@@ -15,6 +15,7 @@ box-shadow: -1px -1px 9px 0px rgba(0,0,0,0.19);
     font-size: 40px;
     line-height: 18px;
     text-align: center; 
+    line-height: 1em;
 
 }
 
@@ -83,7 +84,7 @@ box-shadow: -1px -1px 9px 0px rgba(0,0,0,0.19);
     font-size: 30px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: 700;
-    line-height: 0.2em;
+    line-height: 1em;
 
 }
 
@@ -97,8 +98,9 @@ box-shadow: -1px -1px 9px 0px rgba(0,0,0,0.19);
 }
 
 .vilaapp-way-continu{ 
-    height: 400px;
+    height: auto;
     display: flex;
+    padding-bottom: 100px;
 
 }
 
@@ -109,7 +111,10 @@ box-shadow: -1px -1px 9px 0px rgba(0,0,0,0.19);
     padding: 20px 25px;
 
 }
+.vilaapp-way-continu-items h1{
+    line-height: 1em;
 
+}
 
 .vilaapp-way-continu-items h3{
     line-height: 1.3em;
@@ -119,7 +124,7 @@ box-shadow: -1px -1px 9px 0px rgba(0,0,0,0.19);
 
 
 .good-hands {
-    height: 400px;
+     
     text-align: center; 
 }
 
@@ -149,4 +154,40 @@ padding: 25px 0;
     line-height: 2em;
     color: #565656;
     font-weight: 100;
+}
+
+
+
+
+
+@media screen and (max-width: 858px) {
+
+    .vilaapp-way-continu{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        width: 100%; 
+    }
+    .vilaapp-way-continu-items{
+        width: auto; 
+        text-align: center;
+        display: block;
+    }
+
+    .good-hands-container{
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .good-hands-items {
+        width: 100%;
+    }
+    .good-hands-items h3{
+        padding: 20px 20px;
+         margin: auto;
+    }
+    .good-hands-items ul{
+        display: none;
+    }
 }
