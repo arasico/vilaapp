@@ -8,6 +8,7 @@ import HeaderEnglish from './en/components/header/header'
 import Index from './en/container/index'
 import Landlord from './en/container/landlord/landloard'
 import FooterComponent from './en/components/footer/footer'
+import Create from './en/container/create/create'
 
 
 
@@ -42,6 +43,7 @@ class RouterComponent extends Component {
               <Switch>
                     <Route exact init path="/" component={Index} /> 
                     <Route exact init path="/landlord" component={Landlord} /> 
+                    <Route exact init path="/create" component={Create} /> 
               </Switch>
               <FooterComponent />
                   
