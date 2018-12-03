@@ -5,6 +5,7 @@
   "dependencies": {
     "rc-dropdown": "^2.2.1",
     "rc-menu": "^7.4.20",
+    "rc-tabs": "^9.5.6",
     "react": "^16.6.3",
     "react-bootstrap": "^0.32.4",
     "react-datepicker": "^2.0.0",
