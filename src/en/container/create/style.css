@@ -25,7 +25,6 @@
     background-color: yellow;
     width: 100%;
     height: 500px;
-    display: none;
 
 }
 
@@ -71,4 +70,26 @@
     height: 60px;
     border-radius: 50px;
     background-color: #fff;
+}
+
+.search-box-create-container ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0 20px;
+    
+}
+
+.search-box-create-container ul li{
+    display: block;
+    float: left;
+}
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 0;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
