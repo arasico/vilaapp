@@ -20,6 +20,7 @@ class CreateComponent extends Component {
             person:''
           };
         this.onSelectCity = this.onSelectCity.bind(this);
+        this.callSearch = this.callSearch.bind(this);
       }
     
    
@@ -38,6 +39,9 @@ class CreateComponent extends Component {
         this.setState({selectCity:key})
       }
       
+      callSearch(){
+          alert("serch!")
+      }
 
     render() { 
 
@@ -59,12 +63,26 @@ class CreateComponent extends Component {
                <div className="container pt100">
                    <div className="tabs-menu-container">
                         <div className="menu-item" id="address" onClick={() => this.openCity('aras')}>
-                        <div className="tabs-circle-container">
-                            <span>1</span>
+                            <div className="tabs-circle-container">
+                                1
+                            </div>
+                            <div className="tabs-circle-container-text">Address</div>
                         </div>
+
+                              <div className="menu-item" id="address" onClick={() => this.openCity('javid')}>
+                            <div className="tabs-circle-container">
+                                2
+                            </div>
+                            <div className="tabs-circle-container-text">Information</div>
                         </div>
-                        <div className="menu-item" id="info" onClick={() => this.openCity('javid')}>2</div>
-                        <div className="menu-item" id="image" onClick={() => this.openCity('yasi')}>3</div>
+
+                              <div className="menu-item" id="address" onClick={() => this.openCity('yasi')}>
+                            <div className="tabs-circle-container">
+                                3
+                            </div>
+                            <div className="tabs-circle-container-text">Images</div>
+                        </div>
+                   
                    </div>
                </div>
 
@@ -84,9 +102,9 @@ class CreateComponent extends Component {
                         <div className="map-search-container">
                             <div className="search-box-create-container">
                                 <ul>
-                                    <li> <img src={Pin} alt="pin" /></li>
-                                    <li><span> Where is your apartment? </span></li>
-                                    <li>
+                                    <li> <img src={Pin} style={{ paddingTop:15, height:25, width:25, paddingRight:10 }} alt="pin" /></li>
+                                    <li><h1> Where is your apartment? </h1></li>
+                                    <li style={{paddingRight: 15}}>
                                     <Dropdown
                                         trigger={['click']}
                                         overlay={SelectCityMenu}
@@ -95,8 +113,14 @@ class CreateComponent extends Component {
                                         <div className="drop-down-list">{this.state.selectCity}<img src={arrow} style={{paddingLeft:10, paddingTop:5, height:11, width:11, float:'right' }}  alt="arrow"/> </div>
                                     </Dropdown>
                                     </li>
-                                    <li> <input type="text" placeholder="Street No., zip code, City" /> </li>
-                                    <li>5</li>
+                                    <li className="input-create-search" > 
+                                        <input type="text" placeholder="Street No., zip code, City" /> 
+                                    </li>
+                                    <li style={{  float:"right", paddingTop: 5}}>
+                                       <div className="search-button" onClick={this.callSearch}>
+                                        <img src={Magnifier} style={{ paddingTop:15, height:20, width:20 }}  alt="arrow"/>
+                                       </div>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
