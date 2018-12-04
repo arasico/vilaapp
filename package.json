@@ -11,7 +11,8 @@
     "react-datepicker": "^2.0.0",
     "react-dom": "^16.6.3",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.1"
+    "react-scripts": "2.1.1",
+    "yandex-map-react": "^1.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
