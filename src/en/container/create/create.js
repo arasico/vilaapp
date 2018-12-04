@@ -53,7 +53,9 @@ class CreateComponent extends Component {
 
 
                         <div className="map-search-container">
+                            <div className="search-box-create-container">
 
+                            </div>
                         </div>
                     </div>
                     <div id="javid" className="basic-tab city"><p>info</p></div>

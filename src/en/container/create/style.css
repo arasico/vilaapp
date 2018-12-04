@@ -53,12 +53,22 @@
     position: absolute;
     top:300px;
     width: 900px;
-    height: 60px;
-    background-color: red;
+    height: 60px; 
     z-index: 999;
     left: 0; 
     right: 0; 
     margin-left: auto; 
     margin-right: auto; 
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
     border-radius: 50px;
+    border: 8px solid rgba(193, 193, 193, 0.500);
+    
+}
+
+.search-box-create-container{
+    width: 100%; 
+    height: 60px;
+    border-radius: 50px;
+    background-color: #fff;
 }
