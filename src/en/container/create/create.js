@@ -62,21 +62,21 @@ class CreateComponent extends Component {
             <div className="container-fluid">
                <div className="container pt100">
                    <div className="tabs-menu-container">
-                        <div className="menu-item" id="address" onClick={() => this.openCity('aras')}>
+                        <div className="menu-item" id="address" onClick={() => this.openCity('tabOne')}>
                             <div className="tabs-circle-container">
                                 1
                             </div>
                             <div className="tabs-circle-container-text">Address</div>
                         </div>
 
-                              <div className="menu-item" id="address" onClick={() => this.openCity('javid')}>
+                              <div className="menu-item" id="address" onClick={() => this.openCity('tabTwo')}>
                             <div className="tabs-circle-container">
                                 2
                             </div>
                             <div className="tabs-circle-container-text">Information</div>
                         </div>
 
-                              <div className="menu-item" id="address" onClick={() => this.openCity('yasi')}>
+                              <div className="menu-item" id="address" onClick={() => this.openCity('tabThree')}>
                             <div className="tabs-circle-container">
                                 3
                             </div>
@@ -87,7 +87,7 @@ class CreateComponent extends Component {
                </div>
 
                <div className="container-fluid">
-                    <div id="aras" className="basic-tab city">
+                    <div id="tabOne" className="basic-tab city">
                         <Map width="100%"  onAPIAvailable={function () { console.log('API loaded'); }} center={[40.754734, 40.583314]} zoom={10}>
                             <Marker lat={40.783379} lon={40.775575}  lang={'tr-TR'} >
                                 <MarkerLayout>
@@ -125,8 +125,8 @@ class CreateComponent extends Component {
                             </div>
                         </div>
                     </div>
-                    <div id="javid" className="basic-tab city"><p>info</p></div>
-                    <div id="yasi" className="basic-tab city"><p>images</p></div>
+                    <div id="tabTwo" className="basic-tab city"><p>info</p></div>
+                    <div id="tabThree" className="basic-tab city"><p>images</p></div>
 
                </div>
  
