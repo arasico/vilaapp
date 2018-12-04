@@ -8,7 +8,7 @@ import './style.css';
 import Pin from '../../../assets/icons/pin.svg';
 import arrow from '../../../assets/icons/arrow-down.svg'
 import Magnifier from '../../../assets/icons/magnifier.svg'
-
+import ArrowRight from '../../../assets/icons/arrow-right-light.svg'
  
 
 class CreateComponent extends Component {
@@ -123,7 +123,18 @@ class CreateComponent extends Component {
                                     </li>
                                 </ul>
                             </div>
+
+                      
+
                         </div>
+
+                            <div className="create-map-footer">
+                            <div className="btn  btn-yellow">
+                                <span>Next Step</span> <img src={ArrowRight} style={{   height:25, width:25, paddingTop:10 }} alt="pin" />
+                            </div>
+                          </div>
+
+                           
                     </div>
                     <div id="tabTwo" className="basic-tab city"><p>info</p></div>
                     <div id="tabThree" className="basic-tab city"><p>images</p></div>
