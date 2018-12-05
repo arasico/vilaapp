@@ -1,0 +1,46 @@
+.txt-input-container{
+    display: flex; 
+    border: 1px solid #E9E9E9;
+    border-radius: 4px;
+    flex-direction: row; 
+    padding: 12px;
+    margin: 10px;
+
+}
+
+
+.lbl-text-input{
+   color: #2D9CDB;
+   font-size: 16px;
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+   padding: 5px;
+   font-weight: 700;
+
+}
+
+.txt-input{
+    border: 0; 
+    background-color: transparent;
+    width: 100%; 
+    border: 0;
+    box-sizing: border-box; 
+    padding: 5px;
+
+} 
+
+.txt-input:focus {
+    outline: none;
+    border: none;
+}
+
+.error-txt-input{
+    background-color: #E74C3C; 
+    position: absolute;
+    float: right;
+    right: 0;
+    margin-right: 20px;
+    border-radius: 20px;
+    padding: 5px 15px;
+    font-size: 14px;
+    color: #333;
+}

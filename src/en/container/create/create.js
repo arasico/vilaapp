@@ -9,6 +9,9 @@ import Pin from '../../../assets/icons/pin.svg';
 import arrow from '../../../assets/icons/arrow-down.svg'
 import Magnifier from '../../../assets/icons/magnifier.svg'
 import ArrowRight from '../../../assets/icons/arrow-right-light.svg'
+
+import InputTextFild from '../../components/createLandLoard/inputGroup';
+
  
 
 class CreateComponent extends Component {
@@ -139,7 +142,15 @@ class CreateComponent extends Component {
 
                            
                     </div>
-                    <div id="tabTwo" className="basic-tab city"><p>info</p></div>
+
+
+
+                    <div id="tabTwo" className="basic-tab city">
+                    <InputTextFild
+                        label="sdsdsd"
+                        placeholder="ssdsdsd"
+                    />
+                    </div>
                     <div id="tabThree" className="basic-tab city"><p>images</p></div>
 
                </div>
