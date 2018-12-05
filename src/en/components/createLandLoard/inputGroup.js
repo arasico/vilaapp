@@ -12,6 +12,7 @@ const TextFieldGroup = (
     onChangeText,
     onChange,
     error,
+    labelSecend,
     secureTextEntry,
     multiline,
     maxLength,
@@ -40,7 +41,9 @@ const TextFieldGroup = (
       underlineColorAndroid="transparent"
       autoCapitalize="none"
     />
+    {labelSecend && <span className="labelSecend-styling" >{labelSecend}</span>}
     {error && <span className="error-txt-input" >{error}</span>}
+    
   </div>
 
 )

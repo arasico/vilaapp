@@ -21,7 +21,21 @@ class TestComponent extends Component {
                     <TextInput 
                         label="Name"
                         placeholder="Pleas insert"
-                        error="please inser crot text"
+                        error=""
+                        labelSecend="Toman/ Month"
+                    />
+                        <TextInput 
+                        label="Price"
+                        placeholder="Pleas insert"
+                        error="sdsdsd"
+                        labelSecend="Toman/ Month"
+                    />
+
+                        <TextInput 
+                        label="Last Name"
+                        placeholder="Pleas insert"
+                        error=""
+                        labelSecend="Toman/ Month"
                     />
 
             </div>

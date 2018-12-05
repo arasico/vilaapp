@@ -1,4 +1,5 @@
 .txt-input-container{
+    background-color: #fff;
     display: flex; 
     border: 1px solid #E9E9E9;
     border-radius: 4px;
@@ -18,10 +19,9 @@
 
 }
 
-.txt-input{
-    border: 0; 
+.txt-input{ 
     background-color: transparent;
-    width: 100%; 
+    width: 65%;
     border: 0;
     box-sizing: border-box; 
     padding: 5px;
@@ -43,4 +43,43 @@
     padding: 5px 15px;
     font-size: 14px;
     color: #333;
+}
+
+.labelSecend-styling{
+    position: absolute; 
+    float: right;
+    right: 0;
+    margin-right: 20px;
+    border-radius: 10px; 
+    font-size: 16px;
+    color: #1FC056;
+    background-color: #fff;
+    padding-top: 4px;
+}
+
+
+
+
+@media screen and (max-width: 400px) {
+   
+    .txt-input-container{ 
+        display: grid;
+
+    }
+    .labelSecend-styling{
+         font-size: 12px;
+        
+    }
+
+    .txt-input{  
+        width: 100%; 
+    
+    } 
+
+    .error-txt-input{
+        margin: 10px;
+        position: relative;
+         
+    }
+     
 }
