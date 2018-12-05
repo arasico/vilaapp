@@ -26,19 +26,14 @@ const TextFieldGroup = (
 
   <div {...props} className="txt-input-container">
     {label && <span className="lbl-text-input"  >{label}</span>}
-    <input
-       className="txt-input"
+    <input 
+      className="txt-input"
       value={value}
-      placeholder={placeholder}
-      keyboardType={keyboard}
-      placeholderTextColor="rgba(35, 36, 42, 0.3)"
-      onChangeText={onChangeText}
-      onChange={onChange}
-      secureTextEntry={secureTextEntry}
+      placeholder={placeholder}   
+      onChange={onChange} 
       multiline={multiline}
       maxLength={maxLength}
-      editable={editable}
-      underlineColorAndroid="transparent"
+      editable={editable} 
       autoCapitalize="none"
     />
     {labelSecend && <span className="labelSecend-styling" >{labelSecend}</span>}
