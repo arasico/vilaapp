@@ -9,11 +9,15 @@
 }
 
 .options-icon-container{
-    background-color: #333;
+    background-color: #F9F9F9;
     width: 60px;
     height: 60px;
     border-radius: 100px; 
     margin-top: -5px;
+    text-align: center;
+    -webkit-box-shadow: 1px 1px 5px 0px rgba(191, 191, 191, 0.75);
+    -moz-box-shadow: 1px 1px 5px 0px rgba(191, 191, 191, 0.75);
+    box-shadow: 1px 1px 5px 0px rgba(191, 191, 191, 0.75);
 
 }
 
@@ -87,4 +91,12 @@
 .button-circle-oprator:active{
     background-color: rgb(202, 202, 202);
 
+}
+
+.img-option-props{
+    text-align: center;
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+    
 }

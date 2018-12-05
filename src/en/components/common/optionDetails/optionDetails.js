@@ -8,6 +8,8 @@ import   './style.css';
 import minus from '../../../../assets/icons/minus.svg'
 import pluse from '../../../../assets/icons/pluse.svg'
 
+import Rooms from '../../../../assets/icons/rooms.svg'
+
 class OptionDetails extends Component {
     constructor(props) {
         super(props);
@@ -56,7 +58,9 @@ handleChange(event) {
             <div className="options-container">
                 <div className="options-rol-silver">
                     <div style={{position:"absolute"}}>
-                        <div className="options-icon-container"></div>
+                        <div className="options-icon-container">
+                            <img src={this.props.img}  className="img-option-props" alt="roome" />
+                        </div>
                     </div>
                     <div className="options-label-container" >
                         <span>Flooor</span>

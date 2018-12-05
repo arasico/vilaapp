@@ -7,6 +7,7 @@ import SubTitle from '../../components/common/subTitle/subTitle';
 import Droplist from '../../components/common/typeOfDropList/typeOfDropList';
 import OptionDetails from '../../components/common/optionDetails/optionDetails';
 
+import Rooms from '../../../assets/icons/rooms.svg'
 
 
 
@@ -20,7 +21,7 @@ class TestComponent extends Component {
         return (  
             <div className="test-container">
                  <div style={{width:500, margin:'auto'}}>
-                    <OptionDetails />
+                    <OptionDetails img={Rooms} />
                  </div>
 
                     <SubTitle label="information" />
