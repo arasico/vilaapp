@@ -20,9 +20,9 @@ class TestComponent extends Component {
     render() { 
         return (  
             <div className="test-container">
-                 <div style={{width:500, margin:'auto'}}>
+                 
                     <OptionDetails img={Rooms} />
-                 </div>
+                 
 
                     <SubTitle label="information" />
 
