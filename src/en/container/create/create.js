@@ -129,8 +129,11 @@ class CreateComponent extends Component {
                         </div>
 
                             <div className="create-map-footer">
-                            <div className="btn  btn-yellow">
-                                <span>Next Step</span> <img src={ArrowRight} style={{   height:25, width:25, paddingTop:10 }} alt="pin" />
+                            <div className="btn-create-continu  btn-yellow">
+                                <div className="create-btn-container">
+                                    <span>Next Step</span>
+                                    <img src={ArrowRight} alt="s" style={{float:"right", paddingLeft:20}} />
+                                </div>
                             </div>
                           </div>
 

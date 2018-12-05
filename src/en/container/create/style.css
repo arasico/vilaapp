@@ -99,7 +99,7 @@
     border: 0;
     box-sizing: border-box;
     padding-top: 13px;
-    
+
 }
 
 
@@ -141,6 +141,14 @@
 
 }
 
+.btn-create-continu {
+    font-size: 16px;
+    border-radius: 100px;
+    padding: 15px 20px;
+    margin-bottom: 0;
+    text-decoration: none;
+    font-weight: 700;
+}
 
 .btn-yellow {
     background-color: #F2C94C;
@@ -153,3 +161,12 @@
        background-color:  rgb(182, 143, 27);
    
    }
+
+   .create-btn-container{ 
+        width: 100%; 
+        display: flex;
+        justify-content: center;
+        padding: 10px 0;
+   }
+
+   
