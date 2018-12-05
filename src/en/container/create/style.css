@@ -178,16 +178,14 @@
 
    }
 
-   .create-basic-info-type-container {
-       background-color: red;
+   .create-basic-info-type-container { 
        width: 100%; 
        display: flex;
        flex-direction: row;
 
    }
 
-   .create-basic-info-type-item{
-       background-color: green;
+   .create-basic-info-type-item{ 
        width: 50%; 
 
    }

@@ -1,5 +1,5 @@
 .options-container{
-   
+   padding: 10px;
 
 
 }
@@ -43,15 +43,13 @@
 
 .option-button-oprator{ 
     width: 50px;
-    padding-top: 3px;
-    padding-left: 4px;
-    padding-right: 4px;
+    padding-top: 3px; 
     justify-content: center;
     display: flex;
 }
 
 .option-button-input{  
-    width: 50px;
+    width: 68px;
 }
 
 .input-option-type{

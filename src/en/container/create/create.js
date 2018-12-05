@@ -5,14 +5,23 @@ import Menu, { Item as MenuItem, Divider } from 'rc-menu';
 import 'rc-dropdown/assets/index.css';
  
 import './style.css';
+// import Icons -------------------------------------------------------->
 import Pin from '../../../assets/icons/pin.svg';
 import arrow from '../../../assets/icons/arrow-down.svg'
 import Magnifier from '../../../assets/icons/magnifier.svg'
 import ArrowRight from '../../../assets/icons/arrow-right-light.svg'
 
+import Rooms from '../../../assets/icons/rooms.svg'
+
+//
+//
+//
+
 import TextInput from '../../components/createLandLoard/inputGroup';
 import Subtitle from '../../components/common/subTitle/subTitle';
 import TypeOfList from '../../components/common/typeOfDropList/typeOfDropList';
+
+import OptionButton from '../../components/common/optionDetails/optionDetails';
  
 
 class CreateComponent extends Component {
@@ -168,7 +177,7 @@ class CreateComponent extends Component {
                                     <TypeOfList label="Type of Place" />
                                 </div>
                                 <div className="create-basic-info-type-item">
-                                    <TypeOfList label="Floors" />  
+                                    <OptionButton img={Rooms} label="Floors" />  
                                 </div>
 
                             </div>
@@ -177,18 +186,18 @@ class CreateComponent extends Component {
 
                             <div className="create-basic-info-type-container">
                                 <div className="create-basic-info-type-item">
-                                    <TypeOfList label="Type of Place" />
+                                    <OptionButton img={Rooms} label="Type of Place" />
                                 </div>
                                 <div className="create-basic-info-type-item">
-                                    <TypeOfList label="Floors" />  
+                                    <OptionButton img={Rooms} label="Floors" />  
                                 </div>
                             </div>
                             <div className="create-basic-info-type-container">
                                 <div className="create-basic-info-type-item">
-                                    <TypeOfList label="Type of Place" />
+                                    <OptionButton img={Rooms} label="Type of Place" />
                                 </div>
                                 <div className="create-basic-info-type-item">
-                                    <TypeOfList label="Floors" />  
+                                    <OptionButton img={Rooms} label="Floors" />  
                                 </div>
                             </div>
 
