@@ -5,6 +5,9 @@
 import React,{Component} from 'react';
 import   './style.css';
 
+import minus from '../../../../assets/icons/minus.svg'
+import pluse from '../../../../assets/icons/pluse.svg'
+
 class OptionDetails extends Component {
     constructor(props) {
         super(props);
@@ -31,13 +34,13 @@ onMinus(){
 }
 
 handleChange(event) {
-    this.setState({currentVal: event.target.value});
+    this.setState({currentVal:Number(event.target.value) });
   }
 
   handelFocus(event){
       console.log(event.target.value)
       if(event.target.value === '0')
-      this.setState({currentVal:''})
+      event.target.value=""
 
       event.target.select();
   }
@@ -61,7 +64,9 @@ handleChange(event) {
 
                     <div className="option-button-container">
                         <div className="option-button-oprator">
-                            <div className="button-circle-oprator" onClick={this.onMinus}></div>
+                            <div className="button-circle-oprator" onClick={this.onMinus}>
+                                <img src={minus} alt="pluse" style={{width:20, height: 20, textAlign:'center'}} />
+                            </div>
                         </div>
                         <div className="option-button-input">
                             <input type="text" className="input-option-type" 
@@ -71,7 +76,9 @@ handleChange(event) {
                             onBlur={this.handelBlur} />
                         </div>
                         <div className="option-button-oprator">
-                            <div className="button-circle-oprator" onClick={this.onPluse}></div>
+                            <div className="button-circle-oprator" onClick={this.onPluse}>
+                                <img src={pluse} alt="pluse" style={{width:20, height: 20, textAlign:'center'}} />
+                            </div>
                         </div>
                     </div>
                 </div>

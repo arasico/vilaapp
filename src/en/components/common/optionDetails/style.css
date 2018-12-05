@@ -41,13 +41,14 @@
     display: flex;  
 }
 
-.option-button-oprator{
-    background-color: red;
+.option-button-oprator{ 
     width: 20%;
+    padding-top: 3px;
+    padding-left: 4px;
+    padding-right: 4px;
 }
 
-.option-button-input{
-    background-color: green;
+.option-button-input{ 
     width: 60%;
 }
 
@@ -57,14 +58,33 @@
     border: 0;
     text-align: center;
     font-size: 18px;
-    
+
 
 }
 
+.input-option-type:focus{
+    border: none;
+    outline: none;
+}
+
 .button-circle-oprator{
-    width: 40px;
-    height: 40px;
+    width: 39px;
+    height: 39px;
     border-radius: 50px;
-    background-color: #333;
+    background-color: #F5F5F5;
+    text-align: center;
+    -webkit-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+
+    -webkit-transition: background-color 0.2s ease-out;
+    -moz-transition: background-color 0.2s ease-out;
+    -o-transition: background-color 0.2s ease-out;
+    transition: background-color 0.2s ease-out;
+
+}
+
+.button-circle-oprator:active{
+    background-color: rgb(202, 202, 202);
 
 }
