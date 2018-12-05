@@ -1,7 +1,7 @@
 
 
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1420px) {
    
     .chechin , .chechout{ 
         display: none!important;
@@ -126,8 +126,7 @@ font-size: 18px;
 
  .drop-down-list{ 
     padding: 18px 23px 24px 15px;
-    cursor: pointer;
-    width: 90%;
+    cursor: pointer; 
     
 
 }
