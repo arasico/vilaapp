@@ -24,7 +24,7 @@
 
 .basic-tab{
     width: 100%;
-    height: 500px;
+    display: flex;
 
 }
 
@@ -172,8 +172,22 @@
    
    .create-form-container{
        background-color: #ddd;
-       width: 70%;
-       height: 300px;
+       width: 70%; 
        margin: auto;
+       padding-bottom: 100px;
+
+   }
+
+   .create-basic-info-type-container {
+       background-color: red;
+       width: 100%; 
+       display: flex;
+       flex-direction: row;
+
+   }
+
+   .create-basic-info-type-item{
+       background-color: green;
+       width: 50%; 
 
    }

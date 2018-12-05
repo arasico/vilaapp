@@ -12,6 +12,7 @@ import ArrowRight from '../../../assets/icons/arrow-right-light.svg'
 
 import TextInput from '../../components/createLandLoard/inputGroup';
 import Subtitle from '../../components/common/subTitle/subTitle';
+import TypeOfList from '../../components/common/typeOfDropList/typeOfDropList';
  
 
 class CreateComponent extends Component {
@@ -153,7 +154,7 @@ class CreateComponent extends Component {
                             <TextInput 
                                 label="Ttile"
                                 placeholder="Please insert something like: Rent Great and lovely Flat in Kish"
-                                error="wewe"
+                                error="Please insert you title!"
                                 labelSecend=""
                             />
                             <TextInput 
@@ -162,6 +163,35 @@ class CreateComponent extends Component {
                                 error=""
                                 labelSecend="Toman / Per Day"
                             />
+                            <div className="create-basic-info-type-container">
+                                <div className="create-basic-info-type-item">
+                                    <TypeOfList label="Type of Place" />
+                                </div>
+                                <div className="create-basic-info-type-item">
+                                    <TypeOfList label="Floors" />  
+                                </div>
+
+                            </div>
+
+                            <Subtitle label="More details" />
+
+                            <div className="create-basic-info-type-container">
+                                <div className="create-basic-info-type-item">
+                                    <TypeOfList label="Type of Place" />
+                                </div>
+                                <div className="create-basic-info-type-item">
+                                    <TypeOfList label="Floors" />  
+                                </div>
+                            </div>
+                            <div className="create-basic-info-type-container">
+                                <div className="create-basic-info-type-item">
+                                    <TypeOfList label="Type of Place" />
+                                </div>
+                                <div className="create-basic-info-type-item">
+                                    <TypeOfList label="Floors" />  
+                                </div>
+                            </div>
+
 
                         </div>
                 

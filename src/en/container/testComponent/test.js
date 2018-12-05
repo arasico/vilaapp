@@ -5,6 +5,7 @@ import  './style.css';
 import TextInput from '../../components/createLandLoard/inputGroup';
 import SubTitle from '../../components/common/subTitle/subTitle';
 import Droplist from '../../components/common/typeOfDropList/typeOfDropList';
+import OptionDetails from '../../components/common/optionDetails/optionDetails';
 
 
 
@@ -18,7 +19,9 @@ class TestComponent extends Component {
     render() { 
         return (  
             <div className="test-container">
-                    <p>Test Component</p>
+                 <div style={{width:500, margin:'auto'}}>
+                    <OptionDetails />
+                 </div>
 
                     <SubTitle label="information" />
 
@@ -30,19 +33,7 @@ class TestComponent extends Component {
                         error=""
                         labelSecend="Toman/ Month"
                     />
-                        <TextInput 
-                        label="Price"
-                        placeholder="Pleas insert"
-                        error="sdsdsd"
-                        labelSecend="Toman/ Month"
-                    />
-
-                        <TextInput 
-                        label="Last Name"
-                        placeholder="Pleas insert"
-                        error=""
-                        labelSecend="Toman/ Month"
-                    />
+               
 
             </div>
         );
