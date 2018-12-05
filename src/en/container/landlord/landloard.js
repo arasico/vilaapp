@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import { NavLink  } from 'react-router-dom';
-
-import './style.css';
+ 
+import   './style.css';
 import clock from '../../../assets/icons/clock.svg';
 import chart from '../../../assets/icons/chart.svg';
 import verify from '../../../assets/icons/verify.svg';
@@ -15,8 +15,9 @@ class LandLoard extends Component {
         this.state = {  }
     }
     render() { 
+        
         return ( 
-            <div>
+            <div >
 
                 <div className="container-fluid pb100 pt50" >
                     <div  className="container pt100 pb100 furnished ">
@@ -83,6 +84,8 @@ class LandLoard extends Component {
                     </div>
 
 
+
+ 
 
 
         </div>
