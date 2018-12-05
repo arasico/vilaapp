@@ -11,10 +11,14 @@ import arrow from '../../../assets/icons/arrow-down.svg'
 import Magnifier from '../../../assets/icons/magnifier.svg'
 import ArrowRight from '../../../assets/icons/arrow-right-light.svg'
 
-import Rooms from '../../../assets/icons/rooms.svg'
+ import Floors from '../../../assets/icons/floors.svg'
+import Beds from '../../../assets/icons/beds.svg'
+import Persons from '../../../assets/icons/persons.svg'
+import Area from '../../../assets/icons/area.svg'
+ import Rooms from '../../../assets/icons/rooms.svg'
 
 //
-//
+//  ---- End of Icons -------------------------------------------------->
 //
 
 import TextInput from '../../components/createLandLoard/inputGroup';
@@ -177,7 +181,7 @@ class CreateComponent extends Component {
                                     <TypeOfList label="Type of Place" />
                                 </div>
                                 <div className="create-basic-info-type-item">
-                                    <OptionButton img={Rooms} label="Floors" />  
+                                    <OptionButton img={Floors} maxLength={2}  maxValue={20} label="Floors" />  
                                 </div>
 
                             </div>
@@ -186,18 +190,18 @@ class CreateComponent extends Component {
 
                             <div className="create-basic-info-type-container">
                                 <div className="create-basic-info-type-item">
-                                    <OptionButton img={Rooms} label="Type of Place" />
+                                    <OptionButton img={Rooms} maxLength={2} maxValue={20}  label="Total Rooms" />
                                 </div>
                                 <div className="create-basic-info-type-item">
-                                    <OptionButton img={Rooms} label="Floors" />  
+                                    <OptionButton img={Beds} maxLength={2} maxValue={20}  label="Total Beds" />  
                                 </div>
                             </div>
                             <div className="create-basic-info-type-container">
                                 <div className="create-basic-info-type-item">
-                                    <OptionButton img={Rooms} label="Type of Place" />
+                                    <OptionButton img={Persons} maxLength={2} maxValue={20}  label="Max Persons" />
                                 </div>
                                 <div className="create-basic-info-type-item">
-                                    <OptionButton img={Rooms} label="Floors" />  
+                                    <OptionButton img={Area} maxLength={4} maxValue={9999}  label="Total Area M²" />  
                                 </div>
                             </div>
 

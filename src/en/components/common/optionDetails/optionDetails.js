@@ -26,7 +26,9 @@ class OptionDetails extends Component {
 
 
 onPluse(){
-    if(this.state.currentVal <= 9999)
+    var x = this.state.currentVal;
+    console.log(x.Length)
+    if(this.state.currentVal <= this.props.maxValue)
     this.setState({currentVal: this.state.currentVal +1 })
 }
 
@@ -36,6 +38,8 @@ onMinus(){
 }
 
 handleChange(event) {
+     
+    if(event.target.value <= this.props.maxValue)
     this.setState({currentVal:Number(event.target.value) });
   }
 
@@ -63,7 +67,7 @@ handleChange(event) {
                         </div>
                     </div>
                     <div className="options-label-container" >
-                        <span>Flooor</span>
+                        <span>{this.props.label}</span>
                     </div>
 
                     <div className="option-button-container">
@@ -77,7 +81,8 @@ handleChange(event) {
                             value={this.state.currentVal} 
                             onChange={this.handleChange} 
                             onFocus={this.handelFocus} 
-                            onBlur={this.handelBlur} />
+                            onBlur={this.handelBlur}
+                            maxLength={this.props.maxLength} />
                         </div>
                         <div className="option-button-oprator">
                             <div className="button-circle-oprator" onClick={this.onPluse}>
