@@ -6,11 +6,11 @@ import './style.css';
 
  
 
-const TextFieldGroup = (
+const Subtitle = (
   {
     label,
     ...props
-  } = { labelStyle: null, fontSize: 20},
+  }  
 ) => (
 
   <div {...props} className="subtitle-container">
@@ -21,4 +21,4 @@ const TextFieldGroup = (
 
 )
 
-export default TextFieldGroup
+export default Subtitle

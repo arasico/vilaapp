@@ -4,6 +4,7 @@ import  './style.css';
 
 import TextInput from '../../components/createLandLoard/inputGroup';
 import SubTitle from '../../components/common/subTitle/subTitle';
+import Droplist from '../../components/common/typeOfDropList/typeOfDropList';
 
 
 
@@ -20,6 +21,8 @@ class TestComponent extends Component {
                     <p>Test Component</p>
 
                     <SubTitle label="information" />
+
+                    <Droplist  label="Select type"/> 
 
                     <TextInput 
                         label="Name"
