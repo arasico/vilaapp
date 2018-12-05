@@ -1,6 +1,7 @@
 .txt-input-container{
     background-color: #fff;
-    display: flex; 
+    display: flex;
+    justify-content: space-between;
     border: 1px solid #E9E9E9;
     border-radius: 4px;
     flex-direction: row; 
@@ -21,7 +22,7 @@
 
 .txt-input{ 
     background-color: transparent;
-    width: 65%;
+    width: 75%;
     border: 0;
     box-sizing: border-box; 
     padding: 5px;
@@ -36,8 +37,7 @@
  
 
 .error-txt-input{
-    background-color: #E74C3C; 
-    position: absolute;
+    background-color: #E74C3C;  
     float: right;
     right: 0;
     margin-right: 20px;
@@ -45,10 +45,10 @@
     padding: 5px 15px;
     font-size: 14px;
     color: #333;
+    text-align: right;
 }
 
-.labelSecend-styling{
-    position: absolute; 
+.labelSecend-styling{ 
     float: right;
     right: 0;
     margin-right: 20px;

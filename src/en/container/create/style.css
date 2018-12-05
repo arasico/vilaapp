@@ -170,3 +170,10 @@
    }
 
    
+   .create-form-container{
+       background-color: #ddd;
+       width: 70%;
+       height: 300px;
+       margin: auto;
+
+   }

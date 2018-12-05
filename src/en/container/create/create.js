@@ -10,8 +10,8 @@ import arrow from '../../../assets/icons/arrow-down.svg'
 import Magnifier from '../../../assets/icons/magnifier.svg'
 import ArrowRight from '../../../assets/icons/arrow-right-light.svg'
 
-import InputTextFild from '../../components/createLandLoard/inputGroup';
-
+import TextInput from '../../components/createLandLoard/inputGroup';
+import Subtitle from '../../components/common/subTitle/subTitle';
  
 
 class CreateComponent extends Component {
@@ -146,12 +146,32 @@ class CreateComponent extends Component {
 
 
                     <div id="tabTwo" className="basic-tab city">
-                    <InputTextFild
-                        label="sdsdsd"
-                        placeholder="ssdsdsd"
-                    />
+
+                        <div className="create-form-container">
+                            <Subtitle label="Basic Infromation" />
+
+                            <TextInput 
+                                label="Ttile"
+                                placeholder="Please insert something like: Rent Great and lovely Flat in Kish"
+                                error="wewe"
+                                labelSecend=""
+                            />
+                            <TextInput 
+                                label="Daily Price"
+                                placeholder="please write correct and net price per a day"
+                                error=""
+                                labelSecend="Toman / Per Day"
+                            />
+
+                        </div>
+                
                     </div>
-                    <div id="tabThree" className="basic-tab city"><p>images</p></div>
+                    <div id="tabThree" className="basic-tab city">
+                    
+                    
+                   
+                    
+                    </div>
 
                </div>
  

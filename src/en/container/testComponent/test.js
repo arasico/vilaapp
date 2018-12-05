@@ -3,6 +3,7 @@ import React,{Component} from 'react';
 import  './style.css';
 
 import TextInput from '../../components/createLandLoard/inputGroup';
+import SubTitle from '../../components/common/subTitle/subTitle';
 
 
 
@@ -17,6 +18,8 @@ class TestComponent extends Component {
         return (  
             <div className="test-container">
                     <p>Test Component</p>
+
+                    <SubTitle label="information" />
 
                     <TextInput 
                         label="Name"
