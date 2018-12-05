@@ -92,9 +92,8 @@
     float: left;
 }
 
-input[type=text] {
-    width: 100%;
-    padding: 12px 20px;
+/* input[type=text] {
+    width: 100%; 
     margin: 8px 0;
     display: inline-block;
     border: 0;
@@ -105,7 +104,7 @@ input[type=text] {
 input[type=text]:focus {
     outline: none;
     border: none;
-}
+} */
 
 .search-box-create-container ul li h1 {
     color: #C50143;
