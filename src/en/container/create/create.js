@@ -114,7 +114,7 @@ class CreateComponent extends Component {
                                     </Dropdown>
                                     </li>
                                     <li className="input-create-search" > 
-                                        <input type="text" placeholder="Street No., zip code, City" /> 
+                                        <input type="text" className="create-input-location" placeholder="Street No., zip code, City" /> 
                                     </li>
                                     <li style={{  float:"right", paddingTop: 5}}>
                                        <div className="search-button" onClick={this.callSearch}>

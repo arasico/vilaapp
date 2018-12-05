@@ -92,19 +92,21 @@
     float: left;
 }
 
-/* input[type=text] {
+.create-input-location {
     width: 100%; 
     margin: 8px 0;
     display: inline-block;
     border: 0;
     box-sizing: border-box;
+    padding-top: 13px;
+    
 }
 
 
-input[type=text]:focus {
+.create-input-location:focus {
     outline: none;
     border: none;
-} */
+}
 
 .search-box-create-container ul li h1 {
     color: #C50143;
