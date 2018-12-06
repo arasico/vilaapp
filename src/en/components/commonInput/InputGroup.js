@@ -15,6 +15,7 @@ const input = (props) => {
                           onClick={props.clicked} 
                           placeholder=" "
                           onChange={props.changed}
+                          name={props.name}
                           required
                           />
                 <span className="span-label">{props.placeHolder }</span>

@@ -83,6 +83,8 @@
 }
 
 
+
+/* ////////////////////////////////////Modal  */
 .modalBoxUp{
     position: fixed;
     top: -1000px;
@@ -152,10 +154,11 @@ transition: all .2s linear;
 .login-box{
     width: 300px;
     margin: auto;
+    
 }
 .login-modal{
     width: 400px;
-    height: auto;
+    height: 400px;
     background-color: #fff;
     z-index: 2;
     border-radius: 5px;
@@ -205,10 +208,26 @@ cursor: pointer;
 .right-tab {
     border-radius: 0px 30px 30px 0px;
 }
+
 .forget-pw-box{
     width: 300px;
-    margin: auto;
+    margin: 50px auto 90px;
 }
+.my-tab{
+    transform: scale(1);
+    transition: all  .3s cubic-bezier(0.010, 0.985, 0.020, 0.995);
+}
+
+.elevatorDown{
+    transform: translateY(0px);
+    transition: all  .3s cubic-bezier(0.010, 0.985, 0.020, 0.995); 
+}
+.elevatorUp{
+    transform: translateY(-400px);
+    transition: all  .3s cubic-bezier(0.010, 0.985, 0.020, 0.995); 
+}
+
+
 .forget-pw-text{
     width: 300px;
     text-align: center;
@@ -369,5 +388,30 @@ color: #999;
 @media screen and (max-width: 600px) {
    
  
+     
+}
+
+
+@media screen and (max-width: 400px) {
+    .login-modal{
+        width: 95%;
+    }
+    .login-box{
+        width: 100%;
+    }
+    .right-tab, .left-tab{
+        width: 48%;
+    }
+    .forget-pw-box{
+        width: 95%;
+    }
+    .my-tab{
+        width: 95%;
+        margin: auto;
+    }
+    .close-login-modal {
+        top: 10px;
+        right: calc(50% - 35px);
+    }
      
 }
