@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "radium": "^0.25.0",
     "rc-dropdown": "^2.2.1",
     "rc-menu": "^7.4.20",
     "rc-tabs": "^9.5.6",
@@ -12,6 +13,7 @@
     "react-dom": "^16.6.3",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1",
+    "react-tabs": "^2.3.0",
     "yandex-map-react": "^1.1.1"
   },
   "scripts": {

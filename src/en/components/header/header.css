@@ -3,30 +3,7 @@
 
 
 
-@media screen and (max-width: 750px) {
-   
-    .navbar-container ul{
-        display: none;
-    }
-    .drawerMenu{
-    
-        display: block!important;
-    }     
-     
-}
 
-
-@media screen and (max-width: 860px) {
-   
-  
-     
-}
-
-@media screen and (max-width: 600px) {
-   
- 
-     
-}
 
 .drawerMenu{
     display: none;
@@ -105,4 +82,292 @@
     color: #fff;
 }
 
+
+.modalBoxUp{
+    position: fixed;
+    top: -1000px;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0);
+    transition: top .3s cubic-bezier(0.630, 0.040, 0.900, 0.210);
+    /* transition: background-color  .1s cubic-bezier(0.010, 0.985, 0.020, 0.995); */
+
+}
+.modalBoxDown{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.7);
+    transition: top  .3s cubic-bezier(0.010, 0.985, 0.020, 0.995);
+}
+
+.close-login-modal{
+position: absolute;
+top: 30px;
+right: 50px;
+cursor: pointer;
+width: 70px;
+height: 70px;
+transition: all .2s linear;
+
+}
+.close-login-modal:hover{
+    background-color: #ffffff1a;
+    transition: all .2s linear;
+
+}
+
+.close-login-modal:after , .close-login-modal:before{
+    content: '';
+    display:block;
+    width: 50px;
+    height: 1px;
+    background-color: #fff;
+    transition: all .2s linear;
+    position: absolute;
+    top: 35px;
+    left: 10px;
+}
+.close-login-modal:after{
+    transform: rotate(45deg);
+}
+.close-login-modal:before{
+    transform: rotate(-45deg);
+}
+.login-box{
+    width: 300px;
+    margin: auto;
+}
+.login-modal{
+    width: 400px;
+    height: auto;
+    background-color: #fff;
+    z-index: 2;
+    border-radius: 5px;
+    padding: 30px 0px;
+    overflow: hidden;
+    transition: all 2s linear;
+}
+.my-react-tab {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.react-tabs__tab-list {
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 0px 0px 20px;
+    border: none;
+}
+
+.right-tab , .left-tab{
+border: 2px solid #0090CF;
+padding: 20px;
+width: 40%;
+text-align: center;
+color: #0090CF;
+cursor: pointer;
+}
+.button-box{
+    width: 100%;
+}
+.react-tabs__tab--selected{
+    background-color: #0090CF;
+    color: #fff;
+}
+.right-tab i{
+    padding-left: 10px
+}
+.left-tab i{
+    padding-right: 10px
+}
+.left-tab {
+    border-radius: 30px 0px 0px 30px;
+}
+.right-tab {
+    border-radius: 0px 30px 30px 0px;
+}
+.forget-pw-box{
+    width: 300px;
+    margin: auto;
+}
+.forget-pw-text{
+    width: 300px;
+    text-align: center;
+    margin: auto;
+    color: #999;
+    margin-top: 40px;
+    font-size: 12px;
+}
+.forget-pw-text:hover{
+    color: #0090CF;
+    cursor: pointer;
+}
+.forget-pw-title{
+    text-align: center;
+    border-radius: 30px;
+    border: 2px solid #0090CF;
+    color: #0090CF;
+    height: 40px;
+    line-height: 37px;
+}
+.forget-pw-desc{
+font-size: 11px;
+padding: 30px 0px;
+}
+.back-reset{
+display: flex;
+flex-direction: row-reverse;
+}
+.forget-pw-back{
+text-align: center;
+padding: 20px 0px 0px;
+color: #999;
+cursor: pointer;
+width: 100px;
+margin: auto;
+font-size: 13px;
+transition: all .2s linear;
+}
+.forget-pw-back:hover{
+    color: #777;
+    transition: all .2s linear;
+
+}
+.forget-pw-back i{
+margin-right: 5px;
+}
+
+/* =========================<CHECKBOX>======================== */
+
+.cbx {
+    position: relative;
+    top: 1px;
+    /* width: 17px; */
+    /* height: 17px; */
+    border: 1px solid #0090cf;
+    border-radius: 3px;
+    vertical-align: middle;
+    transition: background 0.1s ease;
+    cursor: pointer;
+    background-color: white;
+    padding: 2px 8px;
+
+  }
+  .cbx:after {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 5px;
+    width: 5px;
+    height: 11px;
+    opacity: 0;
+    -webkit-transform: rotate(45deg) scale(0);
+    transform: rotate(45deg) scale(0);
+    border-right: 2px solid #0090cf;
+    border-bottom: 2px solid #0090cf;
+    transition: all 0.3s ease;
+    transition-delay: 0.15s;
+  }
+  .hidden-xs-up{
+      display: none;
+  }
+  .checkbox-label {
+    margin-left: 5px;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+color: #999;
+  }
+  #cbx:checked ~ .cbx {
+    border-color: #0090cf;
+    background: #ffffff;
+    -webkit-animation: jelly 0.6s ease;
+    animation: jelly 0.6s ease;
+    padding: 2px 8px;
+  }
+  #cbx:checked ~ .cbx:after {
+    opacity: 1;
+    transform: rotate(45deg) scale(1);
+  }
+  .cntr {
+    position: relative;
+    top: 50%;
+    left: 0;
+    width: 300px;
+    text-align: left;
+    height: 30px;
+    margin: 10px 0px;
+    font-size: 12px;
+  }
+
+  @keyframes jelly {
+    from {
+      transform: scale(1, 1);
+    }
+    30% {
+      transform: scale(1.25, 0.75);
+    }
+    40% {
+      transform: scale(0.75, 1.25);
+    }
+    50% {
+      transform: scale(1.15, 0.85);
+    }
+    65% {
+      transform: scale(0.95, 1.05);
+    }
+    75% {
+      transform: scale(1.05, 0.95);
+    }
+    to {
+      transform: scale(1, 1);
+    }
+  }
+  
+
+@media screen and (max-width: 860px) {
+   
+  
+     
+}
+
+
+@media screen and (max-width: 750px) {
+   
+    .navbar-container ul{
+        display: none;
+    }
+    .drawerMenu{
+    
+        display: block!important;
+    }     
+     
+}
+
+
+
+
+@media screen and (max-width: 600px) {
+   
  
+     
+}
