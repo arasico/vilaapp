@@ -67,7 +67,6 @@ class SearchIndex extends Component {
         
           const menu = (
             <Menu onSelect={this.onSelect}>
-               
               <MenuItem key="1" style={{fontSize: 16}}>1 person</MenuItem>
               <Divider />
               <MenuItem key="2" style={{fontSize: 16}}>2 person</MenuItem>

@@ -1,0 +1,43 @@
+.search-result-box{
+    margin-top: 100px;
+}
+.filter-list-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #EEEEEE;
+
+}
+.select-filter{
+    display: flex;
+    flex-direction: row;
+    width: 600px;
+}
+.select-filter-child{
+    width: 25%;
+    padding: 10px 20px;
+    border-right: 1px solid #DBDBDB;
+    font-size: 17px;
+    cursor: pointer;
+    color: #6D6D6D;
+}
+.filter-date-drop{
+padding: 20px 0px 
+}
+.filter-date-desc{
+    color: #B6B6B6;
+padding: 20px 0px 
+
+}
+.filter-date-action{
+
+}
+.select-list{
+
+}
+.serach-map-box{
+
+}
+.search-show-box{
+
+}
