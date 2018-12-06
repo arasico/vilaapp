@@ -8,6 +8,8 @@ import Droplist from '../../components/common/typeOfDropList/typeOfDropList';
 import OptionDetails from '../../components/common/optionDetails/optionDetails';
 
 import Rooms from '../../../assets/icons/rooms.svg'
+import Checkbox from '../../components/common/checkbox/checkbox';
+
 
 
 
@@ -23,6 +25,12 @@ class TestComponent extends Component {
                  
                     <OptionDetails img={Rooms} />
                  
+                      <div style={{width:500, height:50, margin:"auto"}}>
+                        <Checkbox label="Pool" />
+                      </div>
+
+
+
 
                     <SubTitle label="information" />
 

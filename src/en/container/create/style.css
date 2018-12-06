@@ -189,3 +189,25 @@
        width: 50%; 
 
    }
+
+
+
+
+
+
+   @media screen and (max-width: 1150px) {
+   
+   
+    .create-basic-info-type-container{
+        flex-direction: column;
+
+    }
+
+    .create-basic-info-type-item{
+        width: 100%;
+    }
+
+    .create-form-container{
+        width: 100%;
+    }
+}
