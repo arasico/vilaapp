@@ -170,8 +170,7 @@
    }
 
    
-   .create-form-container{
-       background-color: #ddd;
+   .create-form-container{ 
        width: 70%; 
        margin: auto;
        padding-bottom: 100px;
@@ -211,6 +210,32 @@
 
 }
 
+
+.create-btn-information-container{
+    display: flex;
+    width: 100%; 
+    justify-content: space-between;
+
+}
+.create-btn-information-container-item {
+    width: 250px;  
+    padding-top: 20px;
+
+}
+
+ 
+
+.btn-silver {
+    background-color: #ccc;
+    color: #333333;
+    transition: background-color 0.5s ease;
+   
+   }
+   
+   .btn-silver:hover {
+       background-color:  #EEEEEE;
+   
+   }
 
 
 

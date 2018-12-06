@@ -10,12 +10,13 @@ import Pin from '../../../assets/icons/pin.svg';
 import arrow from '../../../assets/icons/arrow-down.svg'
 import Magnifier from '../../../assets/icons/magnifier.svg'
 import ArrowRight from '../../../assets/icons/arrow-right-light.svg'
+import ArrowLeft from '../../../assets/icons/arrow-left.svg'
 
- import Floors from '../../../assets/icons/floors.svg'
+import Floors from '../../../assets/icons/floors.svg'
 import Beds from '../../../assets/icons/beds.svg'
 import Persons from '../../../assets/icons/persons.svg'
 import Area from '../../../assets/icons/area.svg'
- import Rooms from '../../../assets/icons/rooms.svg'
+import Rooms from '../../../assets/icons/rooms.svg'
 
 //
 //  ---- End of Icons -------------------------------------------------->
@@ -236,9 +237,28 @@ class CreateComponent extends Component {
 
                                <Subtitle label="Description" />
 
-                                <TextArea label="About this listing" />
+                                <TextArea label="About this listing" placeholder="please write something about your Home and condition of it . . ." />
 
 
+                                <div className="create-btn-information-container">
+                                <div className="create-btn-information-container-item">
+                                    <div className="btn-create-continu  btn-silver">
+                                            <div className="create-btn-container">
+                                                <img src={ArrowLeft} alt="s" style={{float:"left", paddingRight:20}} />    
+                                                <span style={{color:'#8C8C8C'}}>Back</span>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div className="create-btn-information-container-item">
+                                    <div className="btn-create-continu  btn-yellow">
+                                        <div className="create-btn-container">
+                                            <span>Next Step</span>
+                                            <img src={ArrowRight} alt="s" style={{float:"right", paddingLeft:20}} />
+                                        </div>
+                                    </div>
+                                </div>
+                           
+                                </div>
                         </div>
                 
                     </div>
