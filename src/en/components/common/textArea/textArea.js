@@ -11,9 +11,9 @@ class TextArea extends Component {
     render() { 
         return ( 
             <div className="text-area-container">
-                <span className="label-text-area">Pleas inser some ting</span>
+                <span className="label-text-area">{this.props.label}</span>
                 <textarea 
-                    placeholder="This is an awesome comment box" 
+                    placeholder={this.props.placeholder} 
                     rows="20" name="comment[text]" 
                     id="comment_text" 
                     cols="40" 

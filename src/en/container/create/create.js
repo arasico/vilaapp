@@ -26,6 +26,8 @@ import Subtitle from '../../components/common/subTitle/subTitle';
 import TypeOfList from '../../components/common/typeOfDropList/typeOfDropList';
 import Chechbox from '../../components/common/checkbox/checkbox';
 import OptionButton from '../../components/common/optionDetails/optionDetails';
+import TextArea from '../../components/common/textArea/textArea';
+
  
 
 class CreateComponent extends Component {
@@ -233,6 +235,8 @@ class CreateComponent extends Component {
                             </div>
 
                                <Subtitle label="Description" />
+
+                                <TextArea label="About this listing" />
 
 
                         </div>
