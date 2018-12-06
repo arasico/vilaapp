@@ -8,7 +8,7 @@ import Droplist from '../../components/common/typeOfDropList/typeOfDropList';
 import OptionDetails from '../../components/common/optionDetails/optionDetails';
 
 import Rooms from '../../../assets/icons/rooms.svg'
-import Checkbox from '../../components/common/checkbox/checkbox';
+import Checkbox from '../../components/common/textArea/textArea';
 
 
 
@@ -25,8 +25,8 @@ class TestComponent extends Component {
                  
                     <OptionDetails img={Rooms} />
                  
-                      <div style={{width:500, height:50, margin:"auto"}}>
-                        <Checkbox label="Pool" />
+                      <div style={{width:"100%", height:700, margin:"auto"}}>
+                        <Checkbox   />
                       </div>
 
 
