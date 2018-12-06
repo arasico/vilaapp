@@ -232,6 +232,8 @@ class CreateComponent extends Component {
                                 </ul>
                             </div>
 
+                               <Subtitle label="Description" />
+
 
                         </div>
                 

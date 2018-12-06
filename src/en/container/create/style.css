@@ -189,10 +189,9 @@
        width: 50%; 
 
    }
-   .create-checkbox-container{
-       background-color: red;
-       width: 100%;
-       height: 50px;
+   .create-checkbox-container{ 
+       width: 100%; 
+       padding-bottom: 20px;
 
    }
 
