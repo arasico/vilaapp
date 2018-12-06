@@ -24,7 +24,7 @@ import Area from '../../../assets/icons/area.svg'
 import TextInput from '../../components/createLandLoard/inputGroup';
 import Subtitle from '../../components/common/subTitle/subTitle';
 import TypeOfList from '../../components/common/typeOfDropList/typeOfDropList';
-
+import Chechbox from '../../components/common/checkbox/checkbox';
 import OptionButton from '../../components/common/optionDetails/optionDetails';
  
 
@@ -206,6 +206,31 @@ class CreateComponent extends Component {
                             </div>
 
                               <Subtitle label="All Service" />
+
+                            <div className="create-checkbox-container">
+                                <ul>
+                                    <li>
+                                        <Chechbox label="Parking" Id="pool" />
+                                    </li>
+                                    <li>
+                                        <Chechbox label="internet WIFI" Id="dool" />
+                                    </li>
+                                    <li>
+                                        <Chechbox label="have a Lundray" Id="rool" />
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <Chechbox label="Heating system" Id="zool" />
+                                    </li>
+                                    <li>
+                                        <Chechbox label="Electrick" Id="kool" />
+                                    </li>
+                                    <li>
+                                        <Chechbox label="have a Pool" Id="boon" />
+                                    </li>
+                                </ul>
+                            </div>
 
 
                         </div>

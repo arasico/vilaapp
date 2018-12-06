@@ -189,6 +189,38 @@
        width: 50%; 
 
    }
+   .create-checkbox-container{
+       background-color: red;
+       width: 100%;
+       height: 50px;
+
+   }
+
+   .create-checkbox-container ul{
+        list-style-type: none;
+        margin: 0;
+        padding: 0 20px; 
+        display: flex;
+
+   }
+
+   .create-checkbox-container ul  li {
+    display: block; 
+    background-color: #fff;
+    width: 33%;
+    padding: 10px;
+
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -210,4 +242,18 @@
     .create-form-container{
         width: 100%;
     }
+
+ 
+}
+
+
+@media screen and (max-width: 700px) {
+   
+    .create-checkbox-container ul {
+        flex-direction: column;
+    }
+    .create-checkbox-container ul  li{
+        width: 100%;
+    }
+
 }
