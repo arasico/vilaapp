@@ -264,7 +264,7 @@ class CreateComponent extends Component {
                     </div>
                     <div id="tabThree" className="basic-tab city">
                     
-                    
+                    <p>Tabs 3</p>
                    
                     
                     </div>
