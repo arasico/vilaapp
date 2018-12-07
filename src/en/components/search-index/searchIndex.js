@@ -89,12 +89,12 @@ class SearchIndex extends Component {
                             overlay={SelectCityMenu}
                             animation="slide-up" 
                         >
-                            <div className="drop-down-list">{this.state.selectCity}<img src={arrow} style={{paddingLeft:10, paddingTop:5, height:11, width:11, float:'right' }}  alt="arrow"/> </div>
+                            <div className="drop-down-list">{this.state.selectCity}<img src={arrow} style={{marginLeft:10, marginTop:5, height:11, width:11, float:'right' }}  alt="arrow"/> </div>
                         </Dropdown>
                     </li>
                     
                     <li className="chechin">
-                        <span className="lbl-date" style={{paddingLeft:'10px'}}>Check in</span>
+                        <span className="lbl-date" style={{marginLeft:'10px'}}>Check in</span>
                         <DatePicker className="date-down"
                             selected={this.state.startDate}
                             onChange={this.handleChange} 
@@ -102,7 +102,7 @@ class SearchIndex extends Component {
                     </li>
 
                     <li className="chechout">
-                        <span  className="lbl-date"  style={{paddingLeft:'10px'}}>Check Out</span>
+                        <span  className="lbl-date"  style={{marginLeft:'10px'}}>Check Out</span>
                             <DatePicker className="date-down"
                                 selected={this.state.startDate}
                                 onChange={this.handleChange} 
@@ -116,7 +116,7 @@ class SearchIndex extends Component {
                             overlay={menu}
                             animation="slide-up" 
                         >
-                            <div className="drop-down-list">{this.state.person} Person <img src={arrow} style={{paddingLeft:10, paddingTop:5, height:11, width:11, float:'right' }} alt="arrow" /> </div>
+                            <div className="drop-down-list">{this.state.person} Person <img src={arrow} style={{marginLeft:10, marginTop:5, height:11, width:11, float:'right' }} alt="arrow" /> </div>
                         </Dropdown>
                     </li> 
                 </ul>
