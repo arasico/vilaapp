@@ -15,17 +15,17 @@ class SerachResult extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectFromTo : false
-          };
+            selectFromTo: false
+        };
 
-          this.selectFromToHandler = this.selectFromToHandler.bind(this);
+        this.selectFromToHandler = this.selectFromToHandler.bind(this);
     }
 
 
     selectFromToHandler = () => {
-        this.setState((prev) =>{
+        this.setState((prev) => {
             return {
-                selectFromTo : !prev.selectFromTo
+                selectFromTo: !prev.selectFromTo
             }
         })
     }
@@ -40,15 +40,15 @@ class SerachResult extends Component {
                 <div className="search-result-box" >
                     <div className="filter-list-box" >
                         <div className="select-filter">
-                            <div className="select-filter-child"  onClick={this.selectFromToHandler}>
+                            <div className="select-filter-child" onClick={this.selectFromToHandler}>
                                 <p className="filter-date-drop">Dates</p>
-                                    <img src={arrow} style={{ marginLeft: 10, marginTop: 5, height: 11, width: 11, float: 'right' }} alt="arrow" />
+                                <img src={arrow} style={{ marginLeft: 10, marginTop: 5, height: 11, width: 11, float: 'right' }} alt="arrow" />
                                 <div className="select-date" >
-                                    
-                                    { this.state.selectFromTo ?  <div className="select-from-to" >
+
+                                    {this.state.selectFromTo ? <div className="select-from-to" >
                                         <div className="select-from" >From</div>
                                         <div className="select-to" >To</div>
-                                    </div>: '' }
+                                    </div> : ''}
                                 </div>
                                 <p className="filter-date-desc" >From To</p>
                             </div>
