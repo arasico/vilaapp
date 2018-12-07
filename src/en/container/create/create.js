@@ -112,7 +112,7 @@ class CreateComponent extends Component {
                             <Marker lat={40.783379} lon={40.775575}  lang={'tr-TR'} >
                                 <MarkerLayout>
                                     <div style={{borderRadius: '50%', overflow: 'hidden'}}>
-                                        <img src="http://loremflickr.com/80/80"/>
+                                        <img src="http://loremflickr.com/80/80" alt="Example" />
                                     </div>
                                 </MarkerLayout>
                             </Marker>

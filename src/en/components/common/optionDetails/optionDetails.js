@@ -4,11 +4,13 @@
 
 import React,{Component} from 'react';
 import   './style.css';
-
+//
+// import Icons --------------------------------------->
+//
 import minus from '../../../../assets/icons/minus.svg'
 import pluse from '../../../../assets/icons/pluse.svg'
 
-import Rooms from '../../../../assets/icons/rooms.svg'
+
 
 class OptionDetails extends Component {
     constructor(props) {
