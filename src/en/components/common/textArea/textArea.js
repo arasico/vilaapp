@@ -14,16 +14,16 @@ class TextArea extends Component {
                 <span className="label-text-area">{this.props.label}</span>
                 <textarea 
                     placeholder={this.props.placeholder} 
-                    rows="20" name="comment[text]" 
+                    rows="20" 
+                    name="comment[text]" 
                     id="comment_text" 
                     cols="40" 
                     className="ui-autocomplete-input" 
-                    autocomplete="off" 
-                    role="textbox" 
+                    autocomplete="off"  
                     aria-autocomplete="list" 
-                    aria-haspopup="true">
+                    aria-haspopup="true" />
 
-                </textarea>
+                
                 
             </div>
          );
