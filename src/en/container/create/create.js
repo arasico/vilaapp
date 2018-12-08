@@ -3,6 +3,7 @@ import { Map, Marker, MarkerLayout } from 'yandex-map-react';
 import Dropdown from 'rc-dropdown';
 import Menu, { Item as MenuItem, Divider } from 'rc-menu';
 import 'rc-dropdown/assets/index.css';
+import ReactDropzone from "react-dropzone"; 
  
 import './style.css';
 // import Icons -------------------------------------------------------->
@@ -31,18 +32,65 @@ import TextArea from '../../components/common/textArea/textArea';
 
  
 
+const thumb = {
+    display: 'inline-flex',
+    borderRadius: 2,
+    border: '1px solid #eaeaea',
+    marginBottom: 8,
+    marginRight: 8,
+    width: '100%',
+    height: '100%',
+    padding: 4,
+    boxSizing: 'border-box'
+  };
+  
+  const thumbInner = {
+    display: 'flex',
+    minWidth: 0,
+    width: '100%',
+    height: '100%',
+    overflow: 'hidden',
+    backgroundColor: '#FFFFFF'
+  }
+  
+  const img = {
+    display: 'block', 
+    height: '100%',
+    textAlign: 'center',
+    margin: 'auto',
+  };
+
+
+
+
 class CreateComponent extends Component {
     constructor(props) {
         super(props); 
         this.state = {
             startDate: '',
             selectCity:'Select City',
-            person:''
+            person:'',
+            files: []
           };
         this.onSelectCity = this.onSelectCity.bind(this);
         this.callSearch = this.callSearch.bind(this);
       }
     
+      onDrop(files) {
+        this.setState({
+          files: files.map(file => ({
+            ...file,
+            preview: URL.createObjectURL(file)
+          }))
+        });
+      }
+    
+      componentWillUnmount() {
+        // Make sure to revoke the data uris to avoid memory leaks
+        this.state.files.forEach(f => URL.revokeObjectURL(f.preview))
+      }
+
+
    
       openCity(cityName) {
         var i;
@@ -65,6 +113,20 @@ class CreateComponent extends Component {
 
     render() { 
 
+        const {files} = this.state;
+
+        const thumbs = files.map((file, index) => (
+          <div key={index} style={thumb}>
+            <div style={thumbInner}>
+              <img
+                src={file.preview}
+                style={img}
+                alt={"Privew"}
+              />
+            </div>
+          </div>
+        ));
+
         const SelectCityMenu = (
             <Menu onSelect={this.onSelectCity}>
                
@@ -75,6 +137,8 @@ class CreateComponent extends Component {
               <MenuItem key="Babolsar" style={{fontSize: 16}}>Babolsar</MenuItem>
             </Menu>
           );
+
+        
         
 
 
@@ -264,8 +328,35 @@ class CreateComponent extends Component {
                     </div>
                     <div id="tabThree" className="basic-tab city">
                     
-                        <p>Tabs 3</p>
-                   
+                        <div className="box-form">
+                        <div className="box-image">
+
+                         
+                            <ReactDropzone
+                            accept="image/*"
+                            // onDrop={this.onDrop}
+                            onDrop={this.onDrop.bind(this)}
+                            className="app" 
+                            >
+                            {thumbs}
+                            {this.state.files.length > 0 ||
+                                
+                                <div>
+                                    {/* <img src={Attach} className="attach-img"  alt="logo" /> */}
+                                    <p>Drag and Drop or click here for upload photo</p>
+                                </div>
+                            }  
+
+
+
+
+                            </ReactDropzone>
+
+
+
+
+                            </div>
+                        </div>
                     
                     </div>
 
