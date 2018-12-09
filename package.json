@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "radium": "^0.25.0",
     "rc-dropdown": "^2.2.1",
     "rc-menu": "^7.4.20",
     "rc-tabs": "^9.5.6",

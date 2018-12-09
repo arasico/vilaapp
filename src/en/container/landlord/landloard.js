@@ -66,7 +66,8 @@ class LandLoard extends Component {
                                 <div className="good-hands-items">
                                     <h3><span style={{fontSize:30, fontWeight:700}}>W</span>e know how difficult it can be to rent out an apartment to the right person. VilaApp makes sure that your furnished apartment gets tenants you are looking for.</h3>
                                     <h3>No matter if you want to rent out a furnished apartment, house, studio or a penthouse - once you list it on VilaApp, we take care of the rest.</h3>
-                                    <NavLink to="/create" className="btn  btn-green pt100">Start renting out</NavLink>
+                                    
+                                    <div className="start-renting-box" ><NavLink to="/create" className="btn  btn-green pt100">Start renting out</NavLink></div>
                                 </div>
                                 <div className="good-hands-items">
                                     <ul>

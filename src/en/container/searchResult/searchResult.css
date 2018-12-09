@@ -14,15 +14,21 @@
     justify-content: space-between;
     background-color: #EEEEEE;
     align-items: center;
+    position: relative;
+    z-index: 2;
+    width: 100%;
 
 }
 .select-filter{
     display: flex;
     flex-direction: row;
     width: 600px;
-    position: relative;
+    /* position: relative; */
+    background-color: #eee;
+    z-index: 2;
 }
 .select-filter-child{
+    position: relative;
     width: 25%;
     padding: 10px 20px;
     border-right: 1px solid #DBDBDB;
@@ -40,8 +46,8 @@
 }
 .select-from-to{
     position: absolute;
-    top: 100px;
     background-color: #fff;
+    top: 98px;
     width: 400px;
     height: 250px;
     border-radius: 0px 0px 30px 30px;
@@ -53,7 +59,7 @@
 }
 .select-min-max{
     position: absolute;
-    top: 100px;
+    top: 98px;
     background-color: #fff;
     width: 250px;
     border-radius: 0px 0px 30px 30px;
@@ -62,7 +68,18 @@
     overflow: hidden;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-
+.filter1{
+    left: 0;
+}
+.filter2{
+left: 150px
+}
+.filter3{
+left: 300px
+}
+.filter4{
+left: 450px
+}
 .from-to-box{
     height: calc(100% - 50px );
     display: flex;
@@ -103,7 +120,15 @@ cursor: pointer;
 .filter-date-desc{
     color: #B6B6B6;
 padding: 10px 0px 
-
+}
+.my-filter-action{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    cursor: pointer;
 }
 .filter-date-action{
 
@@ -132,7 +157,7 @@ padding: 10px 0px
 
 }
 .select-listing-map:hover{
-    opacity: .8;
+    opacity: .9;
     transition: all .2s ;
 
 }
@@ -217,6 +242,7 @@ padding: 10px 0px
 
 .searchMap{
 width: 0%;
+height: 0;
 opacity: 0;
 transform: translateX(2000px);
 transition: all .5s cubic-bezier(0.000, 0.000, 0.580, 1.000);    
@@ -224,6 +250,7 @@ transition: all .5s cubic-bezier(0.000, 0.000, 0.580, 1.000);
 .serachMapActive{
     opacity: 1;
     width: 50%;
+    height: 100vh;
 transform: translateX(0px);
 transition: all .5s cubic-bezier(0.000, 0.000, 0.580, 1.000);    
 }
@@ -242,4 +269,104 @@ transition: all .5s cubic-bezier(0.000, 0.000, 0.580, 1.000);
     justify-content: space-around;
     padding: 20px;
     transition: all .5s cubic-bezier(0.000, 0.000, 0.580, 1.000);
+}
+
+
+@media screen and (max-width: 640px) {
+
+.map-list-box{
+    flex-direction: column-reverse;
+}
+.searchMap{
+    width: 100%;
+    height: 0;
+    z-index: 1;
+    transform: translateY(-2000px);
+    transition: all .5s cubic-bezier(0.000, 0.000, 0.580, 1.000);    
+    }
+.serachMapActive{
+    width: 100%;
+    z-index: 1;
+    height: 500px;
+    transform: translateY(0px);
+    transition: transform .5s cubic-bezier(0.000, 0.000, 0.580, 1.000);    
+}
+.searchList100{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    justify-content: center;
+    transition: all .5s cubic-bezier(0.420, 0.000, 1.000, 1.000);
+    }
+.searchList{
+    width: 100%;
+    height: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+    transition: all .5s cubic-bezier(0.000, 0.000, 0.580, 1.000);
+}
+.select-filter{
+    width: 100%;
+}
+.select-griding {
+    display: flex;
+    flex-direction: row;
+    padding: 10px 25px;
+    align-items: flex-end;
+    border-radius: 30px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    margin-bottom: 20px;
+    z-index: 2;
+}
+.select-listing-map{
+    width: 50%;
+    height: 60px;
+    font-size: 14px;
+}
+.filter1{
+    left: 0;
+}
+.filter2{
+left: 25%;
+}
+.filter3{
+left: 50%;
+}
+.filter4{
+left: 28%;
+}
+
+}
+
+@media screen and (max-width: 490px) {
+    .select-from-to {
+        width: 250px;
+        height: 400px;
+    }
+    .from-to-box {
+        flex-direction: column;
+    }
+    .select-from-to,.select-min-max{
+top: 115px;
+    }
+    
+    .filter1{
+        left: 0;
+    }
+    .filter2{
+    left: 25%;
+    }
+    .filter3{
+    left: 30%;
+    }
+    .filter4{
+    left: 28%;
+    }
 }

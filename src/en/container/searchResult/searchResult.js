@@ -9,7 +9,15 @@ import './searchResult.css';
 
 
 
+const styles = {
+    map: {
+        backgroundImage: 'url(' + map + ')',
+        backgroundSize: 'cover',
+    }
+}
 
+
+let ticking = false;
 
 class SerachResult extends Component {
 
@@ -25,8 +33,39 @@ class SerachResult extends Component {
             mapShow: true
         };
         this.mapShowHandler = this.mapShowHandler.bind(this)
+
     }
 
+    componentDidMount() {
+        window.addEventListener('scroll', this.handleScroll);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.handleScroll);
+    }
+    filter = React.createRef();
+    listMap = React.createRef();
+
+    handleScroll = () => {
+
+
+        if (!ticking && window.scrollY >= 100) {
+            window.requestAnimationFrame(() => {
+                this.filter.current.style.top = `0px`;
+                this.filter.current.style.position = `fixed`;
+                ticking = false;
+            });
+            ticking = true;
+        } else {
+            window.requestAnimationFrame(() => {
+                this.filter.current.style.top = `${0}px`;
+                this.filter.current.style.position = `unset`;
+
+                ticking = false;
+            });
+            ticking = true;
+        }
+    };
 
     selectFromToHandler = (event) => {
         event.preventDefault();
@@ -103,6 +142,7 @@ class SerachResult extends Component {
     }
 
 
+
     render() {
 
         let btnList = ['listBtn select-listing-map']
@@ -126,82 +166,93 @@ class SerachResult extends Component {
         return (
             <div >
                 <div className="search-result-box"  >
-                    <div className="filter-list-box" >
+                    <div className="filter-list-box" ref={this.filter} >
 
                         {/* date date date date  */}
                         <div className="select-filter notCloseMenuLand" >
                             <div className="select-filter-child notCloseMenuLand" >
-                                <p className="filter-date-drop notCloseMenuLand" onClick={this.selectFromToHandler} >Dates</p>
+                                <p className="filter-date-drop notCloseMenuLand"  >Dates</p>
                                 <img src={arrow} style={{ marginLeft: 10, marginTop: -5, height: 11, width: 11, float: 'right' }} alt="arrow" className="notCloseMenuLand" />
-                                <div className="select-date notCloseMenuLand" >
-                                    {this.state.selectFromTo ? <div className="select-from-to notCloseMenuLand" >
-                                        <div className="from-to-box notCloseMenuLand"  >
-                                            <div className="select-from notCloseMenuLand" >From</div>
-                                            <div className="select-to notCloseMenuLand" >To</div>
-                                        </div>
-                                        <div className="select-date-btn notCloseMenuLand"  >
-                                            <button className="apply-btn notCloseMenuLand" >Apply</button>
-                                        </div>
-                                    </div> : ''}
-                                </div>
+
                                 <p className="filter-date-desc notCloseMenuLand" >From To</p>
+                                <p className="my-filter-action notCloseMenuLand" onClick={this.selectFromToHandler}></p>
                             </div>
 
                             {/* person person person person  */}
                             <div className="select-filter-child notCloseMenuLand">
-                                <p className="filter-date-drop notCloseMenuLand" onClick={this.selectPersonHandler}>Person</p>
+                                <p className="filter-date-drop notCloseMenuLand" >Person</p>
                                 <img src={arrow} style={{ marginLeft: 10, marginTop: -5, height: 11, width: 11, float: 'right' }} alt="arrow" />
-                                <div className="select-date" >
-                                    {this.state.selectPerson ? <div className="select-from-to notCloseMenuLand" >
-                                        <div className="from-to-box notCloseMenuLand" >
-                                            <div className="select-from notCloseMenuLand" >From</div>
-                                            <div className="select-to notCloseMenuLand" >To</div>
-                                        </div>
-                                        <div className="select-date-btn notCloseMenuLand" >
-                                            <button className="apply-btn notCloseMenuLand">Apply</button>
-                                        </div>
-                                    </div> : ''}
-                                </div>
+
                                 <p className="filter-date-desc notCloseMenuLand" >1 </p>
+                                <p className="my-filter-action notCloseMenuLand" onClick={this.selectPersonHandler}></p>
                             </div>
 
                             {/* price  price price price */}
                             <div className="select-filter-child notCloseMenuLand">
-                                <p className="filter-date-drop notCloseMenuLand" onClick={this.selectPriceHandler}>Price</p>
+                                <p className="filter-date-drop notCloseMenuLand" >Price</p>
                                 <img src={arrow} style={{ marginLeft: 10, marginTop: -5, height: 11, width: 11, float: 'right' }} alt="arrow" />
-                                <div className="select-date" >
-                                    {this.state.selectPrice ? <div className="select-min-max notCloseMenuLand" >
-                                        <div className="min-to-max-box notCloseMenuLand" >
-                                            <PriceMinMax />
-                                        </div>
-                                        <div className="select-date-btn notCloseMenuLand" >
-                                            <button className="apply-btn notCloseMenuLand">Apply</button>
-                                        </div>
 
-                                    </div> : ''}
-                                </div>
                                 <p className="filter-date-desc notCloseMenuLand" >Min Max </p>
+                                <p className="my-filter-action notCloseMenuLand" onClick={this.selectPriceHandler}></p>
                             </div>
 
                             {/* room room room room  */}
                             <div className="select-filter-child notCloseMenuLand">
-                                <p className="filter-date-drop notCloseMenuLand" onClick={this.selectRoomHandler}>Rooms</p>
+                                <p className="filter-date-drop notCloseMenuLand" >Rooms</p>
                                 <img src={arrow} style={{ marginLeft: 10, marginTop: -5, height: 11, width: 11, float: 'right' }} alt="arrow" />
-                                <div className="select-date notCloseMenuLand" >
-                                    {this.state.selectRoom ? <div className="select-from-to notCloseMenuLand" >
-                                        <div className="from-to-box notCloseMenuLand" >
-                                            <div className="select-from notCloseMenuLand" >From</div>
-                                            <div className="select-to notCloseMenuLand" >To</div>
-                                        </div>
-                                        <div className="select-date-btn notCloseMenuLand" >
-                                            <button className="apply-btn notCloseMenuLand">Apply</button>
-                                        </div>
-                                    </div> : ''}
-                                </div>
+
                                 <p className="filter-date-desc notCloseMenuLand" >+1 </p>
+                                <p className="my-filter-action notCloseMenuLand" onClick={this.selectRoomHandler}></p>
                             </div>
+
+                             {/* filter selet box ====================== */}
+
+                        <div className="select-date notCloseMenuLand" >
+                            {this.state.selectFromTo ? <div className="select-from-to filter1 notCloseMenuLand" >
+                                <div className="from-to-box notCloseMenuLand"  >
+                                    <div className="select-from notCloseMenuLand" >From</div>
+                                    <div className="select-to notCloseMenuLand" >To</div>
+                                </div>
+                                <div className="select-date-btn notCloseMenuLand"  >
+                                    <button className="apply-btn notCloseMenuLand" >Apply</button>
+                                </div>
+                            </div> : ''}
                         </div>
-                        <div className="select-griding ">
+                        <div className="select-date" >
+                            {this.state.selectPerson ? <div className="select-from-to filter2 notCloseMenuLand" >
+                                <div className="from-to-box notCloseMenuLand" >
+                                    <div className="select-from notCloseMenuLand" >From</div>
+                                    <div className="select-to notCloseMenuLand" >To</div>
+                                </div>
+                                <div className="select-date-btn notCloseMenuLand" >
+                                    <button className="apply-btn notCloseMenuLand">Apply</button>
+                                </div>
+                            </div> : ''}
+                        </div>
+                        <div className="select-date" >
+                            {this.state.selectPrice ? <div className="select-min-max filter3 notCloseMenuLand" >
+                                <div className="min-to-max-box notCloseMenuLand" >
+                                    <PriceMinMax />
+                                </div>
+                                <div className="select-date-btn notCloseMenuLand" >
+                                    <button className="apply-btn notCloseMenuLand">Apply</button>
+                                </div>
+
+                            </div> : ''}
+                        </div>
+                        <div className="select-date notCloseMenuLand" >
+                            {this.state.selectRoom ? <div className="select-from-to filter4 notCloseMenuLand" >
+                                <div className="from-to-box notCloseMenuLand" >
+                                    <div className="select-from notCloseMenuLand" >From</div>
+                                    <div className="select-to notCloseMenuLand" >To</div>
+                                </div>
+                                <div className="select-date-btn notCloseMenuLand" >
+                                    <button className="apply-btn notCloseMenuLand">Apply</button>
+                                </div>
+                            </div> : ''}
+                        </div>
+                        </div>
+                        <div className="select-griding " ref={this.listMap}>
                             <div className={btnList.join(' ')}  >
                                 <i className="fas fa-list-ul"></i>
                                 <span className="select-list-btn"  >List</span>
@@ -213,6 +264,9 @@ class SerachResult extends Component {
                                 <p className="full-btn" id="map" onClick={this.mapShowHandler}></p>
                             </div>
                         </div>
+
+
+                       
                     </div>
                     <div className="map-list-box" >
                         <div className={searchList.join(' ')} >
@@ -226,7 +280,7 @@ class SerachResult extends Component {
                             <SearchResultData />
                             <SearchResultData />
                         </div>
-                        <div className={searchMap.join(' ')} style={{ backgroundImage: 'url(' + map + ')', backgroundSize: 'cover' }} >
+                        <div className={searchMap.join(' ')} style={styles.map} >
 
                         </div>
                     </div>
