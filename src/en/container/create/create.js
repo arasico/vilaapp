@@ -38,8 +38,8 @@ const thumb = {
     border: '1px solid #eaeaea',
     marginBottom: 8,
     marginRight: 8,
-    width: '100%',
-    height: '100%',
+    width: '200px',
+    height: '200px',
     padding: 4,
     boxSizing: 'border-box'
   };
@@ -74,6 +74,7 @@ class CreateComponent extends Component {
           };
         this.onSelectCity = this.onSelectCity.bind(this);
         this.callSearch = this.callSearch.bind(this);
+        this.HandelDeleteImg = this.HandelDeleteImg.bind(this);
       }
     
       onDrop(files) {
@@ -85,6 +86,9 @@ class CreateComponent extends Component {
         });
       }
     
+      HandelDeleteImg(){
+          alert("delete")
+      }
       componentWillUnmount() {
         // Make sure to revoke the data uris to avoid memory leaks
         this.state.files.forEach(f => URL.revokeObjectURL(f.preview))
@@ -123,6 +127,9 @@ class CreateComponent extends Component {
                 style={img}
                 alt={"Privew"}
               />
+              <div className="imge-uploader-delete-container" onClick={this.HandelDeleteImg}>
+
+              </div>
             </div>
           </div>
         ));
@@ -338,7 +345,7 @@ class CreateComponent extends Component {
                             onDrop={this.onDrop.bind(this)}
                             className="app" 
                             >
-                            {thumbs}
+                           
                             {this.state.files.length > 0 ||
                                 
                                 <div>
@@ -351,7 +358,7 @@ class CreateComponent extends Component {
 
 
                             </ReactDropzone>
-
+                            {thumbs}
 
 
 
