@@ -75,9 +75,11 @@ class CreateComponent extends Component {
         this.onSelectCity = this.onSelectCity.bind(this);
         this.callSearch = this.callSearch.bind(this);
         this.HandelDeleteImg = this.HandelDeleteImg.bind(this);
+        
       }
     
       onDrop(files) {
+
         this.setState({
           files: files.map(file => ({
             ...file,
