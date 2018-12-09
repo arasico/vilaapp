@@ -87,16 +87,14 @@ class CreateComponent extends Component {
       }
     
       HandelDeleteImg(file,index){
-        //   console.log(index)
-        //   console.log(file)
           const rs = this.state.files;
           delete rs[index];
 
          this.setState({files: rs})
            
-        //   console.log(this.state.files)
           console.log(rs)
       }
+
       componentWillUnmount() {
         // Make sure to revoke the data uris to avoid memory leaks
         this.state.files.forEach(f => URL.revokeObjectURL(f.preview))

@@ -19,7 +19,7 @@ class TextArea extends Component {
                     id="comment_text" 
                     cols="40" 
                     className="ui-autocomplete-input" 
-                    autocomplete="off"  
+                    autoComplete="off"  
                     aria-autocomplete="list" 
                     aria-haspopup="true" />
 
