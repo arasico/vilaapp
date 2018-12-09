@@ -86,8 +86,16 @@ class CreateComponent extends Component {
         });
       }
     
-      HandelDeleteImg(){
-          alert("delete")
+      HandelDeleteImg(file,index){
+        //   console.log(index)
+        //   console.log(file)
+          const rs = this.state.files;
+          delete rs[index];
+
+         this.setState({files: rs})
+           
+        //   console.log(this.state.files)
+          console.log(rs)
       }
       componentWillUnmount() {
         // Make sure to revoke the data uris to avoid memory leaks
@@ -127,7 +135,7 @@ class CreateComponent extends Component {
                 style={img}
                 alt={"Privew"}
               />
-              <div className="imge-uploader-delete-container" onClick={this.HandelDeleteImg}>
+              <div className="imge-uploader-delete-container" onClick={() => this.HandelDeleteImg(files,index)}>
 
               </div>
             </div>
