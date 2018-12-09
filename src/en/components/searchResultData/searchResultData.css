@@ -5,17 +5,16 @@ padding: 10px
 
 .data-child{
     margin: 10px;
-    width: 180px;
     background-color: #fff;
 }
 
 .data-description{
-font-size: 8px;
+font-size: 12px;
 padding: 10px;
 }
 
 .data-price-box{
-font-size: 8px;
+font-size: 12px;
 padding: 10px;
 }
 .data-price{
@@ -26,11 +25,12 @@ color: grey;
 }
 .data-details{
     color: #ADADAD;
-    font-size: 9px;
+    font-size: 12px;
     display: flex;
     padding: 10px;
     justify-content: space-between;
 }
 .data-room span , .data-bed span , .data-mm span{
     color: #515151;   
+    margin: 0px 5px;
 }

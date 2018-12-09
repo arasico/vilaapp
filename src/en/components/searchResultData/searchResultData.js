@@ -6,14 +6,14 @@ const searchResultData = (props) => {
     return (
         <div className="data-parent" >
             <div className="data-child" >
-            <div style={{backgroundImage:'url(' + pic + ')' ,width: '180px' , height : '200px' , backgroundSize: 'cover'   }} >
+            <div style={{backgroundImage:'url(' + pic + ')' ,width: '300px' , height : '300px' , backgroundSize: 'cover'   }} >
 
             </div>
                 {/* <img src={pic} alt={props.alt} /> */}
                 <div className="data-description" >{props.description}Great and lovely loft in Sternschanze</div>
                 <div className="data-price-box" >
-                    <span className="data-price">Price</span>
-                    <span className="data-price-number" >{props.price}150,000 Toamn / Month</span>
+                    <span className="data-price">Price </span>
+                    <span className="data-price-number" >{props.price}  150,000 Toman / Month</span>
                 </div>
                 <div className="data-details">
                     <div className="data-room">

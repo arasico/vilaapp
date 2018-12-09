@@ -1,3 +1,7 @@
+.search-result-container{
+    width: 1200px;
+    margin: auto;
+}
 .search-result-box{
     margin-top: 90px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
@@ -44,6 +48,7 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    z-index: 1;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .select-min-max{
@@ -212,25 +217,29 @@ padding: 10px 0px
 
 .searchMap{
 width: 0%;
-display: none;
+opacity: 0;
+transform: translateX(2000px);
 transition: all .5s cubic-bezier(0.000, 0.000, 0.580, 1.000);    
 }
 .serachMapActive{
     opacity: 1;
-    width: calc( 100% - 440px);
-    transition: all .5s cubic-bezier(0.420, 0.000, 1.000, 1.000);
+    width: 50%;
+transform: translateX(0px);
+transition: all .5s cubic-bezier(0.000, 0.000, 0.580, 1.000);    
 }
 .searchList100{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    padding: 20px;
+    justify-content: center;
     transition: all .5s cubic-bezier(0.420, 0.000, 1.000, 1.000);
     }
 .searchList{
-
-    width: 440px;
+    width: 50%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    padding: 20px;
     transition: all .5s cubic-bezier(0.000, 0.000, 0.580, 1.000);
 }

@@ -94,11 +94,11 @@ class SerachResult extends Component {
 
     }
 
-    mapShowHandler (e) {
-        if(e.target.id === 'list'){
-            this.setState({mapShow : false})
-        }else{
-            this.setState({mapShow : true})
+    mapShowHandler(e) {
+        if (e.target.id === 'list') {
+            this.setState({ mapShow: false })
+        } else {
+            this.setState({ mapShow: true })
         }
     }
 
@@ -209,7 +209,7 @@ class SerachResult extends Component {
                             </div>
                             <div className={btnMap.join(' ')}  >
                                 <i className="fas fa-map-marker-alt"></i>
-                                <span className="select-map-btn"  onClick={this.mapShowHandler} >Map</span>
+                                <span className="select-map-btn" onClick={this.mapShowHandler} >Map</span>
                                 <p className="full-btn" id="map" onClick={this.mapShowHandler}></p>
                             </div>
                         </div>
@@ -224,17 +224,13 @@ class SerachResult extends Component {
                             <SearchResultData />
                             <SearchResultData />
                             <SearchResultData />
+                            <SearchResultData />
                         </div>
-                        <div className={searchMap.join(' ')} style={{backgroundImage:'url(' + map + ')' , backgroundSize: 'cover'   }} >
+                        <div className={searchMap.join(' ')} style={{ backgroundImage: 'url(' + map + ')', backgroundSize: 'cover' }} >
 
                         </div>
                     </div>
                 </div>
-
-
-
-
-
             </div >
         );
     }
