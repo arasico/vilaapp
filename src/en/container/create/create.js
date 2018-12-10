@@ -91,9 +91,7 @@ class CreateComponent extends Component {
       HandelDeleteImg(file,index){
           const rs = this.state.files;
           delete rs[index];
-
-         this.setState({files: rs})
-           
+          this.setState({files: rs})
           console.log(rs)
       }
 
