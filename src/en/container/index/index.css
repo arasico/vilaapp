@@ -1,6 +1,5 @@
 
 
-
 .container-fluid{  
     width: 100%;
 }
@@ -181,4 +180,28 @@ h2{
         flex-direction: column;
     }
      
+}
+
+
+
+
+@media screen and (max-width: 580px){
+    .search-bx-container ul li.peronSelection{
+        display: none;
+    }
+    .btn-search {
+        background-color: #C50143;
+        border: 5px solid #333;
+        border-radius: 40px;
+        padding: 23px 10px;
+        font-size: 15px;
+        color: #fff;
+        float: right;
+        top: -69px;
+        right: -6px;
+        position: relative;
+        transition: background-color 0.5s ease-out;
+        cursor: pointer;
+        font-weight: bold;
+    }
 }
