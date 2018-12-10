@@ -125,7 +125,7 @@ class SearchIndex extends Component {
                         </Dropdown>
                     </li> 
                 </ul>
-                <button type="button" className="btn-search">Search</button>
+                <button type="button" className="btn-search"><span className="search-text-show" >Search</span><i className="fas fa-search search-icon-show"></i></button>
             </div>
          );
     }
