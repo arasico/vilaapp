@@ -1,0 +1,372 @@
+.search-result-container{
+    width: 1200px;
+    margin: auto;
+}
+.search-result-box{
+    margin-top: 90px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
+    background: linear-gradient(0deg, #EAEAEA, #EAEAEA);
+    overflow: hidden;
+}
+.filter-list-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #EEEEEE;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+
+}
+.select-filter{
+    display: flex;
+    flex-direction: row;
+    width: 600px;
+    /* position: relative; */
+    background-color: #eee;
+    z-index: 2;
+}
+.select-filter-child{
+    position: relative;
+    width: 25%;
+    padding: 10px 20px;
+    border-right: 1px solid #DBDBDB;
+    font-size: 17px;
+    color: #6D6D6D;
+    transition: all .2s;
+}
+.select-filter-child:hover{
+    background-color: #dededef2;
+    transition: all .2s;
+
+}
+.select-date{
+
+}
+.select-from-to{
+    position: absolute;
+    background-color: #fff;
+    top: 98px;
+    width: 400px;
+    height: 250px;
+    border-radius: 0px 0px 30px 30px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.select-min-max{
+    position: absolute;
+    top: 98px;
+    background-color: #fff;
+    width: 250px;
+    border-radius: 0px 0px 30px 30px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.filter1{
+    left: 0;
+}
+.filter2{
+left: 150px
+}
+.filter3{
+left: 300px
+}
+.filter4{
+left: 450px
+}
+.from-to-box{
+    height: calc(100% - 50px );
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px;
+}
+.min-to-max-box{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px;
+}
+.select-date-btn{
+width: 100%;
+height: 50px;
+}
+.apply-btn{
+    width: inherit;
+    height: inherit;
+    background-color: #1FC056;
+    cursor: pointer;
+    transition: all .2s;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+}
+.apply-btn:hover{
+    background-color: rgba(31, 192, 85, 0.8);
+    transition: all .2s ;
+}
+
+.filter-date-drop{
+padding: 10px 0px ;
+cursor: pointer;
+}
+.filter-date-desc{
+    color: #B6B6B6;
+padding: 10px 0px 
+}
+.my-filter-action{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    cursor: pointer;
+}
+.filter-date-action{
+
+}
+.select-list{
+
+}
+.serach-map-box{
+
+}
+.search-show-box{
+
+}
+.select-griding {
+    display: flex;
+    flex-direction: row;
+    padding: 10px 25px;
+    align-items: center;
+    border-radius: 30px;
+}
+.select-listing-map{
+    display: flex;
+    padding: 0px 10px;
+    cursor: pointer;
+    transition: all .2s ;
+
+}
+.select-listing-map:hover{
+    opacity: .9;
+    transition: all .2s ;
+
+}
+.select-list-btn , .select-map-btn{
+    padding: 10px;
+    cursor: pointer;
+
+}
+.mapBtn{
+    background-color: #fff;
+    position: relative;
+    color: #0090CF;
+    font-size: 13px;
+    width: 100px;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0px 30px 30px 0px;
+}
+.mapBtnActive{
+    position: relative;
+    background-color: #0090CF;
+    font-size: 13px;
+    color: #fff;
+    width: 100px;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0px 30px 30px 0px;
+}
+.listBtn{
+    background-color: #fff;
+    position: relative;
+    color: #0090CF;
+    font-size: 13px;
+    width: 100px;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px 0px 0px 30px;
+}
+.listBtnActive{
+    position: relative;
+    background-color: #0090CF;
+    font-size: 13px;
+    color: #fff;
+    width: 100px;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px 0px 0px 30px;
+}
+.full-btn{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+}
+
+.map-listing-box{
+
+}
+
+
+.map-list-box{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-height: 400px;
+}
+
+.searchMap{
+width: 0%;
+height: 0;
+opacity: 0;
+transform: translateX(2000px);
+transition: all .5s cubic-bezier(0.000, 0.000, 0.580, 1.000);    
+}
+.serachMapActive{
+    opacity: 1;
+    width: 50%;
+    height: 100vh;
+transform: translateX(0px);
+transition: all .5s cubic-bezier(0.000, 0.000, 0.580, 1.000);    
+}
+.searchList100{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    justify-content: center;
+    transition: all .5s cubic-bezier(0.420, 0.000, 1.000, 1.000);
+    }
+.searchList{
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+    transition: all .5s cubic-bezier(0.000, 0.000, 0.580, 1.000);
+}
+
+
+@media screen and (max-width: 640px) {
+
+.map-list-box{
+    flex-direction: column-reverse;
+}
+.searchMap{
+    width: 100%;
+    height: 0;
+    z-index: 1;
+    transform: translateY(-2000px);
+    transition: all .5s cubic-bezier(0.000, 0.000, 0.580, 1.000);    
+    }
+.serachMapActive{
+    width: 100%;
+    z-index: 1;
+    height: 500px;
+    transform: translateY(0px);
+    transition: transform .5s cubic-bezier(0.000, 0.000, 0.580, 1.000);    
+}
+.searchList100{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    justify-content: center;
+    transition: all .5s cubic-bezier(0.420, 0.000, 1.000, 1.000);
+    }
+.searchList{
+    width: 100%;
+    height: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+    transition: all .5s cubic-bezier(0.000, 0.000, 0.580, 1.000);
+}
+.select-filter{
+    width: 100%;
+}
+.select-griding {
+    display: flex;
+    flex-direction: row;
+    padding: 10px 25px;
+    align-items: flex-end;
+    border-radius: 30px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    margin-bottom: 20px;
+    z-index: 2;
+}
+.select-listing-map{
+    width: 50%;
+    height: 60px;
+    font-size: 14px;
+}
+.filter1{
+    left: 0;
+}
+.filter2{
+left: 25%;
+}
+.filter3{
+left: 50%;
+}
+.filter4{
+left: 28%;
+}
+
+}
+
+@media screen and (max-width: 490px) {
+    .select-from-to {
+        width: 250px;
+        height: 400px;
+    }
+    .from-to-box {
+        flex-direction: column;
+    }
+    .select-from-to,.select-min-max{
+top: 115px;
+    }
+    
+    .filter1{
+        left: 0;
+    }
+    .filter2{
+    left: 25%;
+    }
+    .filter3{
+    left: 30%;
+    }
+    .filter4{
+    left: 28%;
+    }
+}

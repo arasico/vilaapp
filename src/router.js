@@ -10,9 +10,10 @@ import Landlord from './en/container/landlord/landloard'
 import FooterComponent from './en/components/footer/footer'
 import Create from './en/container/create/create'
 
+import SerachResult from './en/container/searchResult/searchResult'
 
 import TestComponent from './en/container/testComponent/test'
-
+ 
  
 
 
@@ -51,6 +52,7 @@ class RouterComponent extends Component {
                     <Route exact init path="/" component={Index} /> 
                     <Route exact init path="/landlord" component={Landlord} /> 
                     <Route exact init path="/create" component={Create} /> 
+                    <Route exact init path="/search-result" component={SerachResult} /> 
 
 
                     <Route exact init path="/test" component={TestComponent} /> 

@@ -1,0 +1,39 @@
+.price-min-max{
+    width: 100%;
+}
+.price-min-max-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin: 10px 0px;
+    position: relative;
+}
+.min-price-input{
+    width: 100%;
+    height: 40px;
+    border: 1px solid #eaeaea;
+    border-radius: 3px;
+    padding-left: 33px;
+}
+.max-price-input{
+    width: 100%;
+    height: 40px;
+    border: 1px solid #eaeaea;
+    border-radius: 3px;
+    padding-left: 33px;
+}
+.min-label , .max-label {
+    color: #0090CF;
+    position: absolute;
+    top: 12px;
+    left: 4px;
+    font-size: 14px;
+}
+.min-max-toman{
+    position: absolute;
+    top: 14px;
+    right: 7px;
+    color: #0090CF;
+    font-size: 10px;
+}

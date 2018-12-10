@@ -1,0 +1,45 @@
+
+.data-parent{
+padding: 10px
+}
+
+.data-child{
+    margin: 10px;
+    background-color: #fff;
+    transition: ease .3s box-shadow,ease .3s transform;
+    cursor: pointer;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.data-child:hover{
+    box-shadow: 18px 14px 27px 0 rgba(0,0,0,.1);
+    transform: translateY(-3px);
+    transition: ease .3s box-shadow,ease .3s transform;
+}
+
+.data-description{
+font-size: 12px;
+padding: 10px;
+}
+
+.data-price-box{
+font-size: 12px;
+padding: 10px;
+}
+.data-price{
+color: #4D4D4D;
+}
+.data-price-number{
+color: grey;
+}
+.data-details{
+    color: #ADADAD;
+    font-size: 12px;
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+}
+.data-room span , .data-bed span , .data-mm span{
+    color: #515151;   
+    margin: 0px 5px;
+}

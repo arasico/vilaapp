@@ -1,39 +1,6 @@
 
 
 
-@media screen and (max-width: 1420px) {
-   
-    .chechin , .chechout{ 
-        display: none!important;
-    }
-     
-}
-
-
-@media screen and (max-width: 860px) {
-   
-    .chechin , .chechout, .peronSelection{ 
-        display: none!important;
-    }
-    li.selectCity{
-        border: 0!important;
-    }
-     
-}
-
-@media screen and (max-width: 600px) {
-   
-     li.selectCity{
-         border: 0!important;
-     }
-     .search-box-container{
-         width: 90%;
-
-     }
-     
-}
-
-
 
 
 
@@ -43,7 +10,9 @@
     height: 72px;
     background-color: #FFFFFF;
     border: 5px solid rgba(193,193,193,0.8);
-    border-radius: 50px;
+
+    border-radius: 50px; 
+
     
 }
 
@@ -52,18 +21,22 @@
     list-style-type: none;
     margin: 0;
     padding: 0 20px;
+    display: flex;
+    flex-direction: row;
 }
 
 .search-bx-container ul  li { 
-    float: left;
-    display: block; 
-    text-align: center;
+    display: block;
     padding: 0 8px;
     text-decoration: none;
-    border-right: 1px solid #E5E5E5; 
-
+    border-right: 1px solid #E5E5E5;
+    text-align: left;
+    
 }
-
+.checkin , .checkout{
+    
+    width: 220px;
+}
  
 
 .search-bx-container  .drop-down{
@@ -86,17 +59,16 @@ font-size: 18px;
 }
 .lbl-date{
     position: absolute; 
-    padding-top: 19px;
+    padding-top: 22px;
 }
 
  .date-down{
     border: 0;
     background-color: transparent;
-    padding: 20px 0 20px 86px;
+    padding: 20px 0 20px 110px;
     font-size: 18px;
-    width: 100px;
     color: #555; 
-
+    width: 215px;
  }
 
 
@@ -108,7 +80,7 @@ font-size: 18px;
     font-size: 18px;
     color: #fff;
     float: right;
-    top: -6px;
+    top: -70px;
     right: -6px;
     position: relative;
     -webkit-transition: background-color 0.5s ease-out;
@@ -125,8 +97,10 @@ font-size: 18px;
  }
 
  .drop-down-list{ 
-    padding: 23px 23px 24px 15px;
-    cursor: pointer;
+
+    padding: 23px 23px 23px 15px;
+    cursor: pointer; 
+
     
 
 }
@@ -137,3 +111,57 @@ li.peronSelection {
  }
 
 
+
+ @media screen and (max-width: 1420px) {
+   
+    .chechin , .chechout{ 
+        display: none!important;
+    }
+     
+}
+
+
+@media screen and (max-width: 860px) {
+   
+    .checkin , .checkout { 
+        display: none!important;
+    }
+    li.selectCity{
+        border: 0!important;
+    }
+    .search-box-container{
+        width: 600px;
+    }
+     
+}
+
+@media screen and (max-width: 600px) {
+   
+     li.selectCity{
+         border: 0!important;
+     }
+     .search-box-container{
+         width: 90%;
+
+     }
+     
+}
+
+@media screen and (max-width: 580px){
+
+    .btn-search {
+        background-color: #C50143;
+        border: 5px solid #333;
+        border-radius: 40px;
+        padding: 23px 10px;
+        font-size: 15px;
+        color: #fff;
+        float: right;
+        top: -69px;
+        right: -6px;
+        position: relative;
+        transition: background-color 0.5s ease-out;
+        cursor: pointer;
+        font-weight: bold;
+    }
+}

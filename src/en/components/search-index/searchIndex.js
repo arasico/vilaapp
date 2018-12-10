@@ -67,7 +67,6 @@ class SearchIndex extends Component {
         
           const menu = (
             <Menu onSelect={this.onSelect}>
-               
               <MenuItem key="1" style={{fontSize: 16}}>1 person</MenuItem>
               <Divider />
               <MenuItem key="2" style={{fontSize: 16}}>2 person</MenuItem>
@@ -89,20 +88,24 @@ class SearchIndex extends Component {
                             overlay={SelectCityMenu}
                             animation="slide-up" 
                         >
-                            <div className="drop-down-list">{this.state.selectCity}<img src={arrow} style={{marginLeft:10, marginTop:5, height:11, width:11, float:'right' }}  alt="arrow"/> </div>
+
+                            <div className="drop-down-list">{this.state.selectCity}<img src={arrow} style={{marginRight:5,marginLeft:10, height:11, width:11 }}  alt="arrow"/> </div>
                         </Dropdown>
                     </li>
                     
-                    <li className="chechin">
-                        <span className="lbl-date" style={{marginLeft:'10px'}}>Check in</span>
+                    <li className="checkin">
+                        <span className="lbl-date" style={{paddingLeft:'10px'}}>Check in</span>
+
                         <DatePicker className="date-down"
                             selected={this.state.startDate}
                             onChange={this.handleChange} 
                         />
                     </li>
 
-                    <li className="chechout">
-                        <span  className="lbl-date"  style={{marginLeft:'10px'}}>Check Out</span>
+
+                    <li className="checkout">
+                        <span  className="lbl-date"  style={{paddingLeft:'10px'}}>Check Out</span>
+
                             <DatePicker className="date-down"
                                 selected={this.state.startDate}
                                 onChange={this.handleChange} 
@@ -116,7 +119,9 @@ class SearchIndex extends Component {
                             overlay={menu}
                             animation="slide-up" 
                         >
-                            <div className="drop-down-list">{this.state.person} Person <img src={arrow} style={{marginLeft:10, marginTop:5, height:11, width:11, float:'right' }} alt="arrow" /> </div>
+
+                            <div className="drop-down-list">{this.state.person} Person <img src={arrow} style={{marginRight:5,marginLeft:10, height:11, width:11 }} alt="arrow" /> </div>
+
                         </Dropdown>
                     </li> 
                 </ul>
