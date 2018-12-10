@@ -67,7 +67,7 @@ h2{
 }
 
 .enjoy-container-item div{  
-    height: 250px;
+    /* height: 250px; */
     width: 34%;
     text-align: center;
     padding: 10px;
@@ -150,11 +150,13 @@ h2{
 
 .title-image{
     position: absolute;
-    font-size: 20px;
     color: #fff;
-    padding-top: 185px;
-    padding-left: 10px;
-
+    bottom: 20px;
+    left: 20px;
+    background-color: #000000b5;
+    padding: 4px;
+    border-radius: 4px;
+    font-size: 14px;
 
 }
 
@@ -167,7 +169,6 @@ h2{
     -ms-transform: translateY(-3px);
     transform: translateY(-3px);
 }
-
 
 
 
@@ -189,19 +190,13 @@ h2{
     .search-bx-container ul li.peronSelection{
         display: none;
     }
-    .btn-search {
-        background-color: #C50143;
-        border: 5px solid #333;
-        border-radius: 40px;
-        padding: 23px 10px;
-        font-size: 15px;
-        color: #fff;
-        float: right;
-        top: -69px;
-        right: -6px;
-        position: relative;
-        transition: background-color 0.5s ease-out;
-        cursor: pointer;
-        font-weight: bold;
-    }
+.two-images-container{
+    flex-direction: column;
+}
+.index-box-image-50{
+    width: 100%;
+}
+.images-container-index{
+    width: 100%;
+}
 }

@@ -41,6 +41,7 @@ class FooterComponent extends Component {
                                     <a href="http://www.faceboo.com/#" ><img src={fb} alt="vilaapp facebook"/> </a>
                                     <a href="http://www.instagram.com/#" ><img src={insta} alt="vilaapp instagram"/> </a>
                                     <a href="http://www.twitter.com/#" ><img src={tw} alt="vilaapp twitter"/> </a>
+                                    <a href="http://www.twitter.com/#" ><img src={tw} alt="vilaapp twitter"/> </a>
                                 </li>
                              
                             </ul>
