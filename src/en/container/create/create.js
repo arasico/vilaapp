@@ -3,13 +3,65 @@ import { Map, Marker, MarkerLayout } from 'yandex-map-react';
 import Dropdown from 'rc-dropdown';
 import Menu, { Item as MenuItem, Divider } from 'rc-menu';
 import 'rc-dropdown/assets/index.css';
+import ReactDropzone from "react-dropzone"; 
  
 import './style.css';
+// import Icons -------------------------------------------------------->
 import Pin from '../../../assets/icons/pin.svg';
 import arrow from '../../../assets/icons/arrow-down.svg'
 import Magnifier from '../../../assets/icons/magnifier.svg'
 import ArrowRight from '../../../assets/icons/arrow-right-light.svg'
+import ArrowLeft from '../../../assets/icons/arrow-left.svg'
+
+import Floors from '../../../assets/icons/floors.svg'
+import Beds from '../../../assets/icons/beds.svg'
+import Persons from '../../../assets/icons/persons.svg'
+import Area from '../../../assets/icons/area.svg'
+import Rooms from '../../../assets/icons/rooms.svg'
+
+//
+//  ---- End of Icons -------------------------------------------------->
+//
+
+import TextInput from '../../components/createLandLoard/inputGroup';
+import Subtitle from '../../components/common/subTitle/subTitle';
+import TypeOfList from '../../components/common/typeOfDropList/typeOfDropList';
+import Chechbox from '../../components/common/checkbox/checkbox';
+import OptionButton from '../../components/common/optionDetails/optionDetails';
+import TextArea from '../../components/common/textArea/textArea';
+
  
+
+const thumb = {
+    display: 'inline-flex',
+    borderRadius: 2,
+    border: '1px solid #eaeaea',
+    marginBottom: 8,
+    marginRight: 8,
+    width: '200px',
+    height: '200px',
+    padding: 4,
+    boxSizing: 'border-box'
+  };
+  
+  const thumbInner = {
+    display: 'flex',
+    minWidth: 0,
+    width: '100%',
+    height: '100%',
+    overflow: 'hidden',
+    backgroundColor: '#FFFFFF'
+  }
+  
+  const img = {
+    display: 'block', 
+    height: '100%',
+    textAlign: 'center',
+    margin: 'auto',
+  };
+
+
+
 
 class CreateComponent extends Component {
     constructor(props) {
@@ -17,12 +69,38 @@ class CreateComponent extends Component {
         this.state = {
             startDate: '',
             selectCity:'Select City',
-            person:''
+            person:'',
+            files: []
           };
         this.onSelectCity = this.onSelectCity.bind(this);
         this.callSearch = this.callSearch.bind(this);
+        this.HandelDeleteImg = this.HandelDeleteImg.bind(this);
+        
       }
     
+      onDrop(files) {
+
+        this.setState({
+          files: files.map(file => ({
+            ...file,
+            preview: URL.createObjectURL(file)
+          }))
+        });
+      }
+    
+      HandelDeleteImg(file,index){
+          const rs = this.state.files;
+          delete rs[index];
+          this.setState({files: rs})
+          console.log(rs)
+      }
+
+      componentWillUnmount() {
+        // Make sure to revoke the data uris to avoid memory leaks
+        this.state.files.forEach(f => URL.revokeObjectURL(f.preview))
+      }
+
+
    
       openCity(cityName) {
         var i;
@@ -45,6 +123,23 @@ class CreateComponent extends Component {
 
     render() { 
 
+        const {files} = this.state;
+
+        const thumbs = files.map((file, index) => (
+          <div key={index} style={thumb}>
+            <div style={thumbInner}>
+              <img
+                src={file.preview}
+                style={img}
+                alt={"Privew"}
+              />
+              <div className="imge-uploader-delete-container" onClick={() => this.HandelDeleteImg(files,index)}>
+
+              </div>
+            </div>
+          </div>
+        ));
+
         const SelectCityMenu = (
             <Menu onSelect={this.onSelectCity}>
                
@@ -55,6 +150,8 @@ class CreateComponent extends Component {
               <MenuItem key="Babolsar" style={{fontSize: 16}}>Babolsar</MenuItem>
             </Menu>
           );
+
+        
         
 
 
@@ -92,7 +189,7 @@ class CreateComponent extends Component {
                             <Marker lat={40.783379} lon={40.775575}  lang={'tr-TR'} >
                                 <MarkerLayout>
                                     <div style={{borderRadius: '50%', overflow: 'hidden'}}>
-                                        <img src="http://loremflickr.com/80/80"/>
+                                        <img src="http://loremflickr.com/80/80" alt="Example" />
                                     </div>
                                 </MarkerLayout>
                             </Marker>
@@ -114,7 +211,7 @@ class CreateComponent extends Component {
                                     </Dropdown>
                                     </li>
                                     <li className="input-create-search" > 
-                                        <input type="text" placeholder="Street No., zip code, City" /> 
+                                        <input type="text" className="create-input-location" placeholder="Street No., zip code, City" /> 
                                     </li>
                                     <li style={{  float:"right", paddingTop: 5}}>
                                        <div className="search-button" onClick={this.callSearch}>
@@ -129,15 +226,152 @@ class CreateComponent extends Component {
                         </div>
 
                             <div className="create-map-footer">
-                            <div className="btn  btn-yellow">
-                                <span>Next Step</span> <img src={ArrowRight} style={{   height:25, width:25, paddingTop:10 }} alt="pin" />
+                            <div className="btn-create-continu  btn-yellow">
+                                <div className="create-btn-container">
+                                    <span>Next Step</span>
+                                    <img src={ArrowRight} alt="s" style={{float:"right", paddingLeft:20}} />
+                                </div>
                             </div>
                           </div>
 
                            
                     </div>
-                    <div id="tabTwo" className="basic-tab city"><p>info</p></div>
-                    <div id="tabThree" className="basic-tab city"><p>images</p></div>
+
+
+
+                    <div id="tabTwo" className="basic-tab city">
+
+                        <div className="create-form-container">
+                            <Subtitle label="Basic Infromation" />
+
+                            <TextInput 
+                                label="Ttile"
+                                placeholder="Please insert something like: Rent Great and lovely Flat in Kish"
+                                error="Please insert you title!"
+                                labelSecend=""
+                            />
+                            <TextInput 
+                                label="Daily Price"
+                                placeholder="please write correct and net price per a day"
+                                error=""
+                                labelSecend="Toman / Per Day"
+                            />
+                            <div className="create-basic-info-type-container">
+                                <div className="create-basic-info-type-item">
+                                    <TypeOfList label="Type of Place" />
+                                </div>
+                                <div className="create-basic-info-type-item">
+                                    <OptionButton img={Floors} maxLength={2}  maxValue={20} label="Floors" />  
+                                </div>
+
+                            </div>
+
+                            <Subtitle label="More details" />
+
+                            <div className="create-basic-info-type-container">
+                                <div className="create-basic-info-type-item">
+                                    <OptionButton img={Rooms} maxLength={2} maxValue={20}  label="Total Rooms" />
+                                </div>
+                                <div className="create-basic-info-type-item">
+                                    <OptionButton img={Beds} maxLength={2} maxValue={20}  label="Total Beds" />  
+                                </div>
+                            </div>
+                            <div className="create-basic-info-type-container">
+                                <div className="create-basic-info-type-item">
+                                    <OptionButton img={Persons} maxLength={2} maxValue={20}  label="Max Persons" />
+                                </div>
+                                <div className="create-basic-info-type-item">
+                                    <OptionButton img={Area} maxLength={4} maxValue={9999}  label="Total Area M²" />  
+                                </div>
+                            </div>
+
+                              <Subtitle label="All Service" />
+
+                            <div className="create-checkbox-container">
+                                <ul>
+                                    <li>
+                                        <Chechbox label="Parking" Id="pool" />
+                                    </li>
+                                    <li>
+                                        <Chechbox label="internet WIFI" Id="dool" />
+                                    </li>
+                                    <li>
+                                        <Chechbox label="have a Lundray" Id="rool" />
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <Chechbox label="Heating system" Id="zool" />
+                                    </li>
+                                    <li>
+                                        <Chechbox label="Electrick" Id="kool" />
+                                    </li>
+                                    <li>
+                                        <Chechbox label="have a Pool" Id="boon" />
+                                    </li>
+                                </ul>
+                            </div>
+
+                               <Subtitle label="Description" />
+
+                                <TextArea label="About this listing" placeholder="please write something about your Home and condition of it . . ." />
+
+
+                                <div className="create-btn-information-container">
+                                <div className="create-btn-information-container-item">
+                                    <div className="btn-create-continu  btn-silver">
+                                            <div className="create-btn-container">
+                                                <img src={ArrowLeft} alt="s" style={{float:"left", paddingRight:20}} />    
+                                                <span style={{color:'#8C8C8C'}}>Back</span>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div className="create-btn-information-container-item">
+                                    <div className="btn-create-continu  btn-yellow">
+                                        <div className="create-btn-container">
+                                            <span>Next Step</span>
+                                            <img src={ArrowRight} alt="s" style={{float:"right", paddingLeft:20}} />
+                                        </div>
+                                    </div>
+                                </div>
+                           
+                                </div>
+                        </div>
+                
+                    </div>
+                    <div id="tabThree" className="basic-tab city">
+                    
+                        <div className="box-form">
+                        <div className="box-image">
+
+                         
+                            <ReactDropzone
+                            accept="image/*"
+                            // onDrop={this.onDrop}
+                            onDrop={this.onDrop.bind(this)}
+                            className="app" 
+                            >
+                           
+                            {this.state.files.length > 0 ||
+                                
+                                <div>
+                                    {/* <img src={Attach} className="attach-img"  alt="logo" /> */}
+                                    <p>Drag and Drop or click here for upload photo</p>
+                                </div>
+                            }  
+
+
+
+
+                            </ReactDropzone>
+                            {thumbs}
+
+
+
+                            </div>
+                        </div>
+                    
+                    </div>
 
                </div>
  

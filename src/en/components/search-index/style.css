@@ -10,7 +10,9 @@
     height: 72px;
     background-color: #FFFFFF;
     border: 5px solid rgba(193,193,193,0.8);
+
     border-radius: 50px; 
+
     
 }
 
@@ -95,8 +97,10 @@ font-size: 18px;
  }
 
  .drop-down-list{ 
+
     padding: 23px 23px 23px 15px;
     cursor: pointer; 
+
     
 
 }

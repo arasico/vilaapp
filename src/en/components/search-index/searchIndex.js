@@ -88,20 +88,24 @@ class SearchIndex extends Component {
                             overlay={SelectCityMenu}
                             animation="slide-up" 
                         >
+
                             <div className="drop-down-list">{this.state.selectCity}<img src={arrow} style={{marginRight:5,marginLeft:10, height:11, width:11 }}  alt="arrow"/> </div>
                         </Dropdown>
                     </li>
                     
                     <li className="checkin">
                         <span className="lbl-date" style={{paddingLeft:'10px'}}>Check in</span>
+
                         <DatePicker className="date-down"
                             selected={this.state.startDate}
                             onChange={this.handleChange} 
                         />
                     </li>
 
+
                     <li className="checkout">
                         <span  className="lbl-date"  style={{paddingLeft:'10px'}}>Check Out</span>
+
                             <DatePicker className="date-down"
                                 selected={this.state.startDate}
                                 onChange={this.handleChange} 
@@ -115,7 +119,9 @@ class SearchIndex extends Component {
                             overlay={menu}
                             animation="slide-up" 
                         >
+
                             <div className="drop-down-list">{this.state.person} Person <img src={arrow} style={{marginRight:5,marginLeft:10, height:11, width:11 }} alt="arrow" /> </div>
+
                         </Dropdown>
                     </li> 
                 </ul>

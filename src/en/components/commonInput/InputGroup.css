@@ -1,0 +1,59 @@
+
+.input-label {
+    position: relative;
+    margin:10px auto;
+    width: 100%;
+    /* max-width: 280px; */
+    height: 40px;
+
+  }
+  .input-label .span-label {
+    position: absolute;
+    top: 12px;
+    left: 7px;
+    font-size: 12px;
+    color: #9098a9;
+    z-index: -1;
+    transition: all .3s cubic-bezier(0.000, 0.555, 0.025, 0.985);
+    background-color: #fff;
+    padding: 0px 3px;
+    user-select: none;
+  }
+
+  .input-label input {
+    -webkit-appearance: none;
+    width: 100%;
+    font-family: inherit;
+    padding: 12px 0px 12px 5px;
+    height: 40px;
+    font-size: 14px;
+    border: 1px solid #c8ccd4;
+    background: none;
+    border-radius: 2px;
+    color: #223254;
+    background-color: transparent;
+    transition: all .3s cubic-bezier(0.000, 0.555, 0.025, 0.985);
+
+  }
+
+  .input-label input:not(:placeholder-shown) + .span-label ,   .input-label input:focus + .span-label {
+    color: rgb(0, 144, 207);
+    top: -8px;
+    font-size: 10px;
+    z-index: 4;
+    transition: all .3s cubic-bezier(0.000, 0.555, 0.025, 0.985);
+    user-select: none;
+
+  }
+
+.input-error-text{
+    position: absolute;
+    font-size: 10px;
+    right: 6px;
+    color: #d72727;
+    top: 11px;
+    user-select: none;
+    z-index: 10;
+    background-color: #fff;
+}
+  
