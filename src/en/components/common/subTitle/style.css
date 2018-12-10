@@ -1,0 +1,23 @@
+
+.subtitle-container {
+    background-color: transparent;
+    width: 100%;
+    padding: 10px 0;
+
+}
+
+.lbl-subtitle{
+    font-size: 22px;
+    color: #333;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+
+.subtitle-container hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #EBEBEB;
+    margin: 1em 0;
+    padding: 0; 
+}

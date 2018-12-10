@@ -1,0 +1,38 @@
+
+.select-type-container{
+    background-color: #fff;
+    display: flex; 
+    border: 1px solid #E9E9E9;
+    border-radius: 4px;
+    flex-direction: row; 
+    padding: 12px;
+    margin: 10px;
+
+}
+
+.lbl-select-type{ 
+    color: #2D9CDB;
+    font-size: 16px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 5px;
+    font-weight: 700;
+    width: 140px;
+}
+
+.select-type-drop-list{
+    background-color: transparent;
+    width: 100%;
+    border: 0;
+    box-sizing: border-box; 
+    padding: 5px; 
+}
+
+
+
+@media screen and (max-width: 400px) {
+   
+    .lbl-select-type{ 
+        width: 130px; 
+    }
+     
+}
