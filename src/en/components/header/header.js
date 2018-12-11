@@ -175,9 +175,9 @@ class HeaderComponent extends Component {
                         <span className={line3.join(' ')} ></span>
                     </div>
                     <ul className={tabletNav.join(' ')} >
-                        <li className="tabletNavLi" onClick={this.modalHandler} ><a href="#home">Log in/Sign up</a></li>
-                        <li className="tabletNavLi" onClick={this.openTabletMenuHandler} ><NavLink to="/home">Contact us</NavLink></li>
                         <li className="tabletNavLi" onClick={this.openTabletMenuHandler} ><NavLink to="/landlord">Become a landlord</NavLink></li>
+                        <li className="tabletNavLi" onClick={this.openTabletMenuHandler} ><NavLink to="/home">Contact us</NavLink></li>
+                        <li className="tabletNavLi" onClick={this.modalHandler} ><a href="#home">Log in/Sign up</a></li>
                     </ul>
                 </div>
             </div>
