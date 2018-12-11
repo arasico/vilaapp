@@ -55,101 +55,7 @@ a:visited{
     padding: 0 20px;
 
 }
-.drawerMenu{
-    display: none;
-    width: 60px;
-    height: 50px;
-    float: right;
-    position: relative;
-    z-index: 3;
-    border-radius: 4px;
-    right: 20px;
-    cursor: pointer;
-}
-.tabletNavLi{
-    padding: 20px;
-    margin: 3px 0px;
-    color: #fff;
-    width: 98%;
-    text-align: center;
-    transition: all .1s linear;
 
-}
-.tabletNavLi:hover{
-    background-color: #f0f0f0;
-    color: #000;
-    transition: all .1s linear;
-}
-.tabletNavDown{
-    position: fixed;
-    background-color: #c50143;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transform: translateY(0px);
-    transition: transform .4s cubic-bezier(0.000, 0.880, 0.190, 1.095);
-}
-.tabletNavUp{
-    position: fixed;
-    background-color: #c50143;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transform: translateY(-1000px);
-    transition: transform .4s cubic-bezier(0.770, -0.085, 1.000, 0.130);
-}
-.line {
-    width: 70%;
-    height: 3px;
-    background-color: #b52038;
-    position: absolute;
-    left: 9px;
-    border-radius: 5px;
-    box-shadow: 1px 1px 1px 1px rgba(51, 51, 51, 0.13);
-}
-.line1{
-    top: 11px;
-    transform: rotate(0deg);
-    transition: transform  .2s linear ,top .2s .2s linear;
-}
-.line2{
-    top: 26px;
-    opacity: 1;
-    transition: opacity .2s .2s linear;
-
-}
-.line3{
-    top: 39px;
-    transform: rotate(0deg);
-    transition: transform  .2s linear ,top .2s .2s linear;
-}
-.line1move{
-    top: 26px;
-    transform: rotate(45deg);
-    transition: transform  .2s  .2s linear ,top  .2s linear;
-}
-.line2move{
-    top: 26px;
-    opacity: 0;
-    transition: opacity  .2s linear;
-}
-.line3move{
-    top: 26px;
-    transform: rotate(-45deg);
-    transition: transform  .2s  .2s linear , top .2s linear;
-}
 
 .desktop-nav  li {
     display: block;
@@ -215,7 +121,7 @@ a:visited{
 .close-login-modal{
 position: absolute;
 top: 20px;
-right: 20px;
+right: 40px;
 cursor: pointer;
 width: 60px;
 height: 60px;
@@ -455,7 +361,9 @@ color: #999;
       transform: scale(1, 1);
     }
   }
-  
+  .tabletNavUp , .tabletNavDown{
+      display: none;
+  }
 
 @media screen and (max-width: 860px) {
    
@@ -473,7 +381,105 @@ color: #999;
     
         display: block!important;
     }     
+    .close-login-modal {
+        right: 20px;
+    }
      
+    .drawerMenu{
+        display: none;
+        width: 60px;
+        height: 50px;
+        float: right;
+        position: relative;
+        z-index: 3;
+        border-radius: 4px;
+        right: 20px;
+        cursor: pointer;
+    }
+    .tabletNavLi{
+        padding: 20px;
+        margin: 3px 0px;
+        color: #fff;
+        width: 98%;
+        text-align: center;
+        transition: all .1s linear;
+    
+    }
+    .tabletNavLi:hover{
+        background-color: #f0f0f0;
+        color: #000;
+        transition: all .1s linear;
+    }
+    .tabletNavDown{
+        position: fixed;
+        background-color: #c50143;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transform: translateY(0px);
+        transition: transform .4s cubic-bezier(0.000, 0.880, 0.190, 1.095);
+    }
+    .tabletNavUp{
+        position: fixed;
+        background-color: #c50143;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transform: translateY(-1000px);
+        transition: transform .4s cubic-bezier(0.770, -0.085, 1.000, 0.130);
+    }
+    .line {
+        width: 70%;
+        height: 3px;
+        background-color: #b52038;
+        position: absolute;
+        left: 9px;
+        border-radius: 5px;
+        box-shadow: 1px 1px 1px 1px rgba(51, 51, 51, 0.13);
+    }
+    .line1{
+        top: 11px;
+        transform: rotate(0deg);
+        transition: transform  .2s linear ,top .2s .2s linear;
+    }
+    .line2{
+        top: 26px;
+        opacity: 1;
+        transition: opacity .2s .2s linear;
+    
+    }
+    .line3{
+        top: 39px;
+        transform: rotate(0deg);
+        transition: transform  .2s linear ,top .2s .2s linear;
+    }
+    .line1move{
+        top: 26px;
+        transform: rotate(45deg);
+        transition: transform  .2s  .2s linear ,top  .2s linear;
+    }
+    .line2move{
+        top: 26px;
+        opacity: 0;
+        transition: opacity  .2s linear;
+    }
+    .line3move{
+        top: 26px;
+        transform: rotate(-45deg);
+        transition: transform  .2s  .2s linear , top .2s linear;
+    }
 }
 
 
