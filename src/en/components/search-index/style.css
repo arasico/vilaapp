@@ -23,6 +23,7 @@ position: relative;
     padding: 0 20px;
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 
 .search-bx-container ul  li { 
@@ -93,12 +94,7 @@ font-size: 18px;
  }
 
  .drop-down-list{ 
-
-    padding: 23px 23px 23px 15px;
     cursor: pointer; 
-
-    
-
 }
 
 
