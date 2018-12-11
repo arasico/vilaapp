@@ -18,7 +18,8 @@ class HeaderComponent extends Component {
     state = {
         forgetPassword: false,
         openLoginModal: false,
-        currentPage: false
+        currentPage: false,
+        openTabletMenu: false
     }
 
 
@@ -38,7 +39,7 @@ class HeaderComponent extends Component {
         this.setState((prevState) => {
             return { openLoginModal: !prevState.openLoginModal };
         });
-        this.setState({forgetPassword : false})
+        this.setState({ forgetPassword: false , openTabletMenu : false})
     }
 
     // show hide Login/ForgetPassword section 
@@ -48,12 +49,15 @@ class HeaderComponent extends Component {
         });
     }
 
-    changedHandler = (e) =>{
- 
-            console.log(e.target)
-        
+    changedHandler = (e) => {
+        console.log(e.target)
     }
 
+    openTabletMenuHandler = () => {
+        this.setState((prevState) => {
+            return { openTabletMenu: !prevState.openTabletMenu };
+        });
+    }
 
 
 
@@ -61,17 +65,33 @@ class HeaderComponent extends Component {
     render() {
         let modalBox = ['modalBoxUp']
         let elevator = ['elevatorUp']
+        let tabletNav = ['tabletNavUp']
+        let line1 = ['line line1']
+        let line2 = ['line line2']
+        let line3 = ['line line3']
 
         if (this.state.openLoginModal) {
             modalBox = ['modalBoxDown']
         } else {
             modalBox = ['modalBoxUp']
         }
-                
+
         if (this.state.forgetPassword) {
             elevator = ['elevatorDown']
         } else {
             elevator = ['elevatorUp']
+        }
+
+        if (this.state.openTabletMenu) {
+            tabletNav = ['tabletNavDown']
+            line1 = ['line line1move']
+            line2 = ['line line2move']
+            line3 = ['line line3move']
+        } else {
+            tabletNav = ['tabletNavUp']
+            line1 = ['line line1']
+            line2 = ['line line2']
+            line3 = ['line line3']
         }
 
 
@@ -143,15 +163,22 @@ class HeaderComponent extends Component {
 
                 </div>
                 <div className="navbar-container">
-                    <ul>
+                    <ul className="desktop-nav" >
                         <li onClick={this.modalHandler} ><a href="#home">Log in/Sign up</a></li>
                         <li><NavLink to="/home">Contact us</NavLink></li>
                         <li><NavLink to="/landlord">Become a landlord</NavLink></li>
                     </ul>
 
-                    <div className="drawerMenu">
-
+                    <div className="drawerMenu" onClick={this.openTabletMenuHandler}>
+                        <span className={line1.join(' ')}></span>
+                        <span className={line2.join(' ')} ></span>
+                        <span className={line3.join(' ')} ></span>
                     </div>
+                    <ul className={tabletNav.join(' ')} >
+                        <li className="tabletNavLi" onClick={this.openTabletMenuHandler} ><NavLink to="/landlord">Become a landlord</NavLink></li>
+                        <li className="tabletNavLi" onClick={this.openTabletMenuHandler} ><NavLink to="/home">Contact us</NavLink></li>
+                        <li className="tabletNavLi" onClick={this.modalHandler} ><a href="#home">Log in/Sign up</a></li>
+                    </ul>
                 </div>
             </div>
         );
@@ -160,4 +187,3 @@ class HeaderComponent extends Component {
 
 export default HeaderComponent;
 
-                   
