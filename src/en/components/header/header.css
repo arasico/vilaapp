@@ -112,7 +112,7 @@ a:visited{
 }
 .line {
     width: 70%;
-    height: 2px;
+    height: 3px;
     background-color: #b52038;
     position: absolute;
     left: 9px;
