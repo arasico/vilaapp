@@ -5,15 +5,7 @@
 
 
 
-.drawerMenu{
-    display: none;
-    width: 40px;
-    height: 40px;
-    background-color: #fff;
-    float: right;
-    padding: 0 15px;
 
-}
 
 .header-container { 
     background-color: rgba(255,255,255,0.18);
@@ -27,7 +19,15 @@
     top:0;
 }
 
-
+a{
+   text-decoration: none;
+}
+a:active{
+    color: inherit;
+}
+a:visited{
+    color: inherit;
+}
 .logo-container{
     width: 300px;
     height: 50px; 
@@ -49,21 +49,115 @@
     height: 50px;
 }
 
-.navbar-container ul {
+.desktop-nav {
     list-style-type: none;
     margin: 0;
     padding: 0 20px;
 
 }
+.drawerMenu{
+    display: none;
+    width: 60px;
+    height: 50px;
+    float: right;
+    position: relative;
+    z-index: 3;
+    border-radius: 4px;
+    right: 20px;
+    cursor: pointer;
+}
+.tabletNavLi{
+    padding: 20px;
+    margin: 3px 0px;
+    color: #fff;
+    width: 98%;
+    text-align: center;
+    transition: all .1s linear;
 
+}
+.tabletNavLi:hover{
+    background-color: #f0f0f0;
+    color: #000;
+    transition: all .1s linear;
+}
+.tabletNavDown{
+    position: fixed;
+    background-color: #c50143;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(0px);
+    transition: transform .4s cubic-bezier(0.000, 0.880, 0.190, 1.095);
+}
+.tabletNavUp{
+    position: fixed;
+    background-color: #c50143;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-1000px);
+    transition: transform .4s cubic-bezier(0.770, -0.085, 1.000, 0.130);
+}
+.line {
+    width: 70%;
+    height: 2px;
+    background-color: #fff;
+    position: absolute;
+    left: 9px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 1px rgba(51, 51, 51, 0.13);
+}
+.line1{
+    top: 11px;
+    transform: rotate(0deg);
+    transition: transform  .2s linear ,top .2s .2s linear;
+}
+.line2{
+    top: 26px;
+    opacity: 1;
+    transition: opacity .2s .2s linear;
 
-.navbar-container ul  li {
+}
+.line3{
+    top: 39px;
+    transform: rotate(0deg);
+    transition: transform  .2s linear ,top .2s .2s linear;
+}
+.line1move{
+    top: 26px;
+    transform: rotate(45deg);
+    transition: transform  .2s  .2s linear ,top  .2s linear;
+}
+.line2move{
+    top: 26px;
+    opacity: 0;
+    transition: opacity  .2s linear;
+}
+.line3move{
+    top: 26px;
+    transform: rotate(-45deg);
+    transition: transform  .2s  .2s linear , top .2s linear;
+}
+
+.desktop-nav  li {
     display: block;
     float: right;
 }
 
 
-.navbar-container ul li a {
+.desktop-nav li a {
     display: block;
     color: #333333;
     text-align: center;
@@ -76,7 +170,7 @@
     transition: background-color 0.5s ease-out;
 }
 
-.navbar-container ul li a:hover:not(.active) {
+.desktop-nav li a:hover:not(.active) {
     background-color: rgba(34,34,34,0.5);
     border-radius: 50px;
     color: #fff;
@@ -120,11 +214,11 @@
 
 .close-login-modal{
 position: absolute;
-top: 30px;
-right: 50px;
+top: 20px;
+right: 20px;
 cursor: pointer;
-width: 70px;
-height: 70px;
+width: 60px;
+height: 60px;
 transition: all .2s linear;
 
 }
@@ -137,7 +231,7 @@ transition: all .2s linear;
 .close-login-modal:after , .close-login-modal:before{
     content: '';
     display:block;
-    width: 50px;
+    width: 40px;
     height: 1px;
     background-color: #fff;
     transition: all .2s linear;
@@ -372,7 +466,7 @@ color: #999;
 
 @media screen and (max-width: 750px) {
    
-    .navbar-container ul{
+    .desktop-nav{
         display: none;
     }
     .drawerMenu{
