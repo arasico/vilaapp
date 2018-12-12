@@ -89,7 +89,6 @@ class CreateComponent extends Component {
         this.onSelectCity = this.onSelectCity.bind(this);
         this.callSearch = this.callSearch.bind(this);
         this.HandelDeleteImg = this.HandelDeleteImg.bind(this);
-
     }
 
     tabOne = React.createRef();
@@ -200,6 +199,11 @@ class CreateComponent extends Component {
             this.tabThreeNumber.current.style.backgroundColor = '#C50143'
             this.tabThreeNumber.current.style.color = '#fff'
             this.tabThreeText.current.style.color = '#C50143'
+
+            window.scrollTo({
+                top: '0px',
+                behavior: "smooth"  // Optional, adds animation
+            })
         }
     }
 
@@ -218,17 +222,23 @@ class CreateComponent extends Component {
 
     finishStep = () => {
         if (this.state.imageValid) {
+            this.tabThreeNumber.current.style.backgroundColor = '#6FCF97'
+            this.tabThreeNumber.current.style.color = '#fff'
+            this.tabThreeText.current.style.color = '#6FCF97'
+            
             this.successPart.current.style.transform = 'translateX(0px)'
             this.addImagePart.current.style.transform = 'translateX(2000px)'
             this.tabThree.current.style.height = '500px'
             window.scrollTo({
-                top:this.successPart.current.offsetTop, 
+                top: this.successPart.current.offsetTop,
                 behavior: "smooth"  // Optional, adds animation
             })
 
         }
     }
-
+    goToHome = () => {
+        this.props.history.push("/");
+    }
 
 
 
@@ -512,7 +522,7 @@ class CreateComponent extends Component {
                                     </div>
 
 
-                                    <div className="create-btn-information-container-item" onClick={this.backToSecondStep}>
+                                    <div className="create-btn-information-container-item" onClick={this.goToHome}>
                                         <div className="btn-create-continu btn-go-to-home">
                                             <div className="create-btn-container">
                                                 <span style={{ color: '#8C8C8C' }}>Go to Main Home</span>
