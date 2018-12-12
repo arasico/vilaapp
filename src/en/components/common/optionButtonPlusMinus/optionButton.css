@@ -1,8 +1,7 @@
 
 
 
-.container-option-button{
-    background-color: red;
+.container-option-button{ 
     padding: 10px 5px;
 
 }
@@ -69,7 +68,7 @@
     border: 0;
     height: 50px;
     text-align: center;
-    font-size: 18px;
+    font-size: 20px;
     vertical-align: middle;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
