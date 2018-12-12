@@ -1,48 +1,135 @@
+// import React,{Component} from 'react';
+
+// import  './style.css';
+
+// import OptionButton from '../../components/common/optionButtonPlusMinus/optionButton';
+
+
+ 
+
+
+// class TestComponent extends Component {
+//     constructor(props) {
+//         super(props);
+//         this.state = { 
+//             inputValue:'now is null'
+//          } 
+        
+ 
+//     }
+
+
+
+
+     
+// onclcikbutton = (event) => {
+//     event.preventDefault();
+   
+//     console.log(this.state.inputValue)
+   
+//   };
+  
+
+// handleChange = event => {
+//     console.log(event.target)
+//     this.setState({
+//       inputValue: event.target.value
+//     });
+//   };
+
+
+//     render() { 
+
+  
+          
+
+//         return (  
+//             <div className="test-container" onChange={this.handleChange} >
+                 
+//                 <OptionButton   />
+
+//                     <p>Text is :   {this.state.inputValue}</p>
+//                 <button type="button" onClick={this.onclcikbutton} >Send</button>
+
+//             </div>
+//         );
+//     }
+// }
+ 
+// export default TestComponent;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import React,{Component} from 'react';
 
 import  './style.css';
 
-import TextInput from '../../components/createLandLoard/inputGroup';
-import SubTitle from '../../components/common/subTitle/subTitle';
-import Droplist from '../../components/common/typeOfDropList/typeOfDropList';
-import OptionDetails from '../../components/common/optionDetails/optionDetails';
-
-import Rooms from '../../../assets/icons/rooms.svg'
-import Checkbox from '../../components/common/textArea/textArea';
+import InputComponent from '../../components/common/optionButtonPlusMinus/optionButton';
 
 
-
+ 
 
 
 class TestComponent extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+       
+         this.handleFilterUpdate = this.handleFilterUpdate.bind(this);
+         this.shoMessage = this.shoMessage.bind(this);
+         this.usernameCall = this.usernameCall.bind(this);
+            this.state={person:0,username:1}
     }
+
+     
+    handleFilterUpdate(newVal) {
+        this.setState({
+            person: newVal
+        });
+  }
+
+  usernameCall(newVal) {
+    this.setState({
+          username: newVal
+    });
+}
+
+
+  shoMessage(){
+    alert(this.state.person)
+  }
+
     render() { 
+
         return (  
             <div className="test-container">
                  
-                    <OptionDetails img={Rooms} />
+                
+
+                    
+                    <InputComponent change={this.handleFilterUpdate} name={this.state.person}  />
+                    <p>{this.state.person}</p>
+                    <button onClick={this.shoMessage}>seeee</button>
+                    <hr />
+
                  
-                      <div style={{width:"100%", height:700, margin:"auto"}}>
-                        <Checkbox   />
-                      </div>
+                    <InputComponent change={this.handleFilterUpdate} name={this.state.username}  />
+                    <p>{this.state.username}</p>
+                    <button onClick={this.shoMessage}>seeee</button>
+                    <hr />
 
-
-
-
-                    <SubTitle label="information" />
-
-                    <Droplist  label="Select type"/> 
-
-                    <TextInput 
-                        label="Name"
-                        placeholder="Pleas insert"
-                        error=""
-                        labelSecend="Toman/ Month"
-                    />
-               
+                
 
             </div>
         );
@@ -50,3 +137,6 @@ class TestComponent extends Component {
 }
  
 export default TestComponent;
+
+ 
+ 
