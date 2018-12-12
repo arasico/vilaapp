@@ -10,34 +10,34 @@ export default class InputComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state={
-            conter: 0
+            counter: 0
       }  
     }
 
     Change = async(event) => {
 
       
-    //    console.log(this.state.conter)
+    //    console.log(this.state.counter)
     //    console.log(event.target.name)
 
         if(event.target.name === 'max')
-                await this.setState({conter: this.state.conter + 1}) 
+                await this.setState({counter: this.state.counter + 1}) 
                  
         else
-            if(this.state.conter > 0)
-                await this.setState({conter: this.state.conter - 1}) 
+            if(this.state.counter > 0)
+                await this.setState({counter: this.state.counter - 1}) 
                     else
-                        this.setState({conter: 0})
+                        this.setState({counter: 0})
              
-        this.props.change(this.state.conter);
+        this.props.change(this.state.counter);
 
 
         // Functional Program ------------------------------------->
 
         // if(event.target.name === 'min')
-        // return this.setState({conter: min(this.state.conter)})
+        // return this.setState({counter: min(this.state.counter)})
         // else if(event.target.name === 'plus')
-        //     return this.setState({conter: plus(this.state.conter)})
+        //     return this.setState({counter: plus(this.state.counter)})
 
         // function min(val){
         // if (val > 0)
@@ -48,7 +48,7 @@ export default class InputComponent extends React.Component {
         // function plus(val){
         //     return val + 1
         // } 
-        // this.props.change(this.state.conter); 
+        // this.props.change(this.state.counter); 
 
         // ---------------------------------------------------------->
 
@@ -62,9 +62,9 @@ export default class InputComponent extends React.Component {
     handleChange = async(event) => {
         console.log("handel change")
         if(Number(event.target.value))
-               await this.setState({conter:Number(event.target.value) });
+               await this.setState({counter:Number(event.target.value) });
                 else return 0
-                this.props.change(this.state.conter);
+                this.props.change(this.state.counter);
     }
 
 
@@ -99,7 +99,7 @@ export default class InputComponent extends React.Component {
                         </div>
                         <div className="option-flex-item">
                             <input className="option-input-component" 
-                            value={this.state.conter}
+                            value={this.state.counter}
                             onChange={this.handleChange.bind(this)}
                             onFocus={this.handelFocus.bind(this)} 
                             onBlur={this.handelBlur.bind(this)} 
