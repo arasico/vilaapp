@@ -19,6 +19,8 @@ class OptionButtonComponent extends Component {
 
          this.pluseButton = this.pluseButton.bind(this);
          this.handleChange = this.handleChange.bind(this);
+         this.handelFocus = this.handelFocus.bind(this);
+         this.handelBlur = this.handelBlur.bind(this);
     }
 
     pluseButton(val,oprator){ 
@@ -39,6 +41,19 @@ class OptionButtonComponent extends Component {
                 return val + 1
             }      
         
+    }
+
+    handelFocus(event){
+        if(event.target.value === '0')
+        event.target.value=""
+  
+        event.target.select();
+    }
+
+    handelBlur(event){
+        console.log(event.target.value)
+      if(event.target.value === '')
+      this.setState({currentVal:0})
     }
 
     handleChange(event) {
@@ -78,7 +93,9 @@ class OptionButtonComponent extends Component {
                     <div className="option-flex-item">
                         <input className="option-input-component" 
                            value={this.state.currentVal}
-                           onChange={this.handleChange}   />
+                           onChange={this.handleChange}
+                           onFocus={this.handelFocus} 
+                           onBlur={this.handelBlur}  />
                     </div>
                     <div className="option-flex-item">
                         <div className="btn-circle-option btn-plus-icon" onClick={() => this.pluseButton(this.state.currentVal,'plus') }  ></div>
