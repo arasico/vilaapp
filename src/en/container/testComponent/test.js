@@ -76,7 +76,7 @@ import React,{Component} from 'react';
 
 import  './style.css';
 
-import {InputComponent} from '../../components/common/optionButtonPlusMinus/optionButton';
+import InputComponent from '../../components/common/optionButtonPlusMinus/optionButton';
 
 
  
@@ -91,9 +91,6 @@ class TestComponent extends Component {
          this.usernameCall = this.usernameCall.bind(this);
             this.state={person:0,username:1}
     }
-
-
-
 
      
     handleFilterUpdate(newVal) {
@@ -114,8 +111,6 @@ class TestComponent extends Component {
   }
 
     render() { 
-
-
 
         return (  
             <div className="test-container">
