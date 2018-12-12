@@ -18,6 +18,7 @@ class OptionButtonComponent extends Component {
          }
 
          this.pluseButton = this.pluseButton.bind(this);
+         this.handleChange = this.handleChange.bind(this);
     }
 
     pluseButton(val,oprator){ 
@@ -40,7 +41,12 @@ class OptionButtonComponent extends Component {
         
     }
 
-
+    handleChange(event) {
+     
+        if(Number(event.target.value))
+        this.setState({currentVal:Number(event.target.value) });
+        else return 0
+      }
 
     oprationButton(val , oprator){ 
 
@@ -50,9 +56,8 @@ class OptionButtonComponent extends Component {
             return this.setState({currentVal: plus(val)})
 
         function min(val){
-           let sum = val - 1;
-           if (sum > 0)
-            return sum
+           if (val > 0)
+            return val
             else return 0
         }
 
@@ -72,7 +77,8 @@ class OptionButtonComponent extends Component {
                     </div>
                     <div className="option-flex-item">
                         <input className="option-input-component" 
-                           value={this.state.currentVal}   />
+                           value={this.state.currentVal}
+                           onChange={this.handleChange}   />
                     </div>
                     <div className="option-flex-item">
                         <div className="btn-circle-option btn-plus-icon" onClick={() => this.pluseButton(this.state.currentVal,'plus') }  ></div>
