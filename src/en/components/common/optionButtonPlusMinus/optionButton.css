@@ -1,0 +1,25 @@
+
+
+
+.container-option-button{
+    background-color: red;
+    padding: 10px 5px;
+
+}
+.option-flex-line{
+   background-color: #fff;
+   margin: 10px;
+   border-radius: 100px;
+   padding: 10px;
+   display: flex;
+   justify-content: space-between
+
+
+}
+
+.option-flex-item{ 
+    height: 50px;
+    background-color: silver;
+
+
+}
