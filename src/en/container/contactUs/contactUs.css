@@ -1,6 +1,8 @@
 .contact-us-form-container{
     width: 80%;
     margin: auto; 
+    display: flex;
+    flex-direction: column;
 }
 
 .btn-container-form { 
@@ -35,6 +37,58 @@
     font-size: 18px;
 }
 
+
+
+.success-message-contact-us{
+    width: 70%;
+    margin: auto;
+    border-radius: 10px;
+    position: relative;
+    background-color: #6FCF97;
+    padding: 100px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;  
+    margin-bottom: 100px;
+        
+}
+
+
+.fadeInUp {
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    }
+    @-webkit-keyframes fadeInUp {
+    0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+    }
+    100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+    }
+    }
+    @keyframes fadeInUp {
+    0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+    }
+    100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+    }
+    } 
+  ×
 
 
 
