@@ -1,4 +1,6 @@
 import React , { Component }  from 'react';
+import { NavLink } from 'react-router-dom';
+
 import './contactUs.css'
 
 import SubTitle from '../../components/common/subTitle/subTitle'
@@ -7,23 +9,10 @@ import InputTextArea from '../../components/commonInput/InputTextArea'
 import Button from '../../components/Button/Button'
 
 // import Icons -------------------------------------------------------->
-import Pin from '../../../assets/icons/pin.svg';
-import arrow from '../../../assets/icons/arrow-down.svg'
-import Magnifier from '../../../assets/icons/magnifier.svg'
-import ArrowRight from '../../../assets/icons/arrow-right-light.svg'
-import ArrowLeft from '../../../assets/icons/arrow-left.svg'
-import Close from '../../../assets/icons/close.svg'
-import Medaphone from '../../../assets/icons/megaphone.svg'
 import Success from '../../../assets/icons/success.svg'
 import ArrowRight2 from '../../../assets/icons/arrowright.svg'
 import OurLogo from '../../../assets/icons/ourlogo.svg'
-
-import Floors from '../../../assets/icons/floors.svg'
-import Beds from '../../../assets/icons/beds.svg'
-import Persons from '../../../assets/icons/persons.svg'
-import Area from '../../../assets/icons/area.svg'
-import Rooms from '../../../assets/icons/rooms.svg'
-
+ 
 
 
 class ContactUsComponent extends Component {
@@ -98,10 +87,12 @@ class ContactUsComponent extends Component {
 
                                     <div className="create-btn-information-container-item" onClick={this.goToHome}>
                                         <div className="btn-create-continu btn-go-to-home">
-                                            <div className="create-btn-container" >
-                                                <span style={{ color: '#8C8C8C' }}>Go to Main Home</span>
-                                                <img src={ArrowRight2} alt="s" style={{ float: "left", paddingLeft: 20 }} />
-                                            </div>
+                                            <NavLink to="/home">
+                                                <div className="create-btn-container" >
+                                                    <span style={{ color: '#8C8C8C' }}>Go to Main Home</span>
+                                                    <img src={ArrowRight2} alt="s" style={{ float: "left", paddingLeft: 20 }} />
+                                                </div>
+                                            </NavLink>
                                         </div>
                                     </div>
                                     <img className="our-logo" src={OurLogo} alt="vilaapp" />

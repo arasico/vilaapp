@@ -52,6 +52,7 @@ class RouterComponent extends Component {
 
               <Switch>
                     <Route exact init path="/" component={Index} /> 
+                    <Route exact init path="/home" component={Index} /> 
                     <Route exact init path="/landlord" component={Landlord} /> 
                     <Route exact init path="/contact-us" component={ContactUs} /> 
 
