@@ -165,7 +165,7 @@ class HeaderComponent extends Component {
                 <div className="navbar-container">
                     <ul className="desktop-nav" >
                         <li onClick={this.modalHandler} ><a href="#home">Log in/Sign up</a></li>
-                        <li><NavLink to="/home">Contact us</NavLink></li>
+                        <li><NavLink to="/contact-us">Contact us</NavLink></li>
                         <li><NavLink to="/landlord">Become a landlord</NavLink></li>
                     </ul>
 

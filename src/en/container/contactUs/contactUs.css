@@ -1,0 +1,101 @@
+.contact-us-form-container{
+    width: 80%;
+    margin: auto; 
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-container-form { 
+    width: 300px;
+    margin: auto;
+    padding-bottom: 100px;
+
+}
+
+.contact-us-note {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 16px;
+    color: #444;
+    width: 80%;
+    margin: auto;
+    padding: 10px 5px; 
+
+
+}
+.contact-us-note h3 {
+    color: #333;
+    font-weight: 700;
+}
+
+.contact-us-note p {
+    padding: 10px;
+    line-height: 1.3em;
+}
+
+.contact-us-note p b{
+    color: #c52942;
+    font-size: 18px;
+}
+
+
+
+.success-message-contact-us{
+    width: 70%;
+    margin: auto;
+    border-radius: 10px;
+    position: relative;
+    background-color: #6FCF97;
+    padding: 100px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;  
+    margin-bottom: 100px;
+        
+}
+
+
+.fadeInUp {
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    }
+    @-webkit-keyframes fadeInUp {
+    0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+    }
+    100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+    }
+    }
+    @keyframes fadeInUp {
+    0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+    }
+    100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+    }
+    } 
+  
+
+
+
+@media screen and (max-width: 450px) {
+    .btn-container-form{
+        width: 100%;
+    }
+   
+     
+}
