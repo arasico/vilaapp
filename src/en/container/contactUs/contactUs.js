@@ -1,6 +1,8 @@
 import React , { Component }  from 'react';
 import './contactUs.css'
 
+import SubTitle from '../../components/common/subTitle/subTitle'
+
 
 class ContactUsComponent extends Component {
     constructor(props) {
@@ -9,8 +11,11 @@ class ContactUsComponent extends Component {
     }
     render() { 
         return ( 
-            <div>
-                <p>Contact us</p>
+            <div className="container-fluid">
+                <div className="container">
+                    <SubTitle label="Contact us" />
+                    
+                </div>
             </div>
          );
     }
