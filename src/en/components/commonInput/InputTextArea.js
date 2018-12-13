@@ -1,16 +1,16 @@
 import React from 'react';
 
-import './InputGroup.css';
+import './InputTextArea.css';
 
 
 
-const input = (props) => {
+const textarea = (props) => {
 
 
     return (
-        <div className="Inputbox">
+        <div className="Textarea">
 
-            <div  className="input-label">
+            <div  className="textarea-label">
                 <textarea    type={props.type}
                           onClick={props.clicked} 
                           placeholder=" "
@@ -19,7 +19,7 @@ const input = (props) => {
                           required
                           />
                 <span className="span-label">{props.placeHolder }</span>
-                <span className="input-error-text" >{props.error}</span>
+                <span className="textarea-error-text" >{props.error}</span>
             </div>
 
 
@@ -27,4 +27,4 @@ const input = (props) => {
     )
 }
 
-export default input;
+export default textarea;
