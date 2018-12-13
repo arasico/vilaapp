@@ -4,6 +4,11 @@ import './view.css';
 import one from '../../../assets/img/1.jpg'
 import two from '../../../assets/img/2.jpg'
 import three from '../../../assets/img/3.jpg'
+import four from '../../../assets/img/4.jpg'
+import five from '../../../assets/img/5.jpg'
+import six from '../../../assets/img/6.jpg'
+import seven from '../../../assets/img/7.jpg'
+import pro from '../../../assets/img/pro.jpg'
 import rooms from '../../../assets/icons/rooms.svg'
 import area from '../../../assets/icons/area.svg'
 import beds from '../../../assets/icons/beds.svg'
@@ -17,24 +22,70 @@ import { Carousel } from 'react-responsive-carousel';
 class View extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            cModal:false
+        }
+    }
+
+    showModal = () =>{
+        this.setState((prevState) => {
+            return { cModal: !prevState.cModal };
+        });
     }
     render() {
+
+        let secondCarousel = ['secondCarousel']
+        if(this.state.cModal){
+            secondCarousel =['secondCarouselShow']
+        }else{
+            secondCarousel = ['secondCarousel']
+        }
+
+
         return (
             <div className="view">
-                <Carousel showThumbs={false} showStatus={false} showIndicators={false} emulateTouch>
-                    <div>
-                        <div style={{ backgroundImage: 'url(' + one + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh' }} ></div>
-                    </div>
-                    <div>
-                        <div style={{ backgroundImage: 'url(' + two + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh' }} ></div>
-
-                    </div>
-                    <div>
-                        <div style={{ backgroundImage: 'url(' + three + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh' }} ></div>
-
-                    </div>
+                <Carousel showThumbs={false} showStatus={false} showIndicators={false} >
+                    <div onClick={this.showModal} style={{ backgroundImage: 'url(' + seven + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh' , cursor : 'pointer' }} ></div>
+                    <div onClick={this.showModal} style={{ backgroundImage: 'url(' + two + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh' , cursor : 'pointer' }} ></div>
+                    <div onClick={this.showModal} style={{ backgroundImage: 'url(' + three + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh' , cursor : 'pointer' }} ></div>
+                    <div onClick={this.showModal} style={{ backgroundImage: 'url(' + four + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh' , cursor : 'pointer' }} ></div>
+                    <div onClick={this.showModal} style={{ backgroundImage: 'url(' + five + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh' , cursor : 'pointer' }} ></div>
+                    <div onClick={this.showModal} style={{ backgroundImage: 'url(' + six + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh' , cursor : 'pointer' }} ></div>
+                    <div onClick={this.showModal} style={{ backgroundImage: 'url(' + one + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh' , cursor : 'pointer' }} ></div>
                 </Carousel>
+                <div className={secondCarousel.join(' ')}  >
+                 <span className="close-login-modal" onClick={this.showModal} ></span>
+
+                    <div className="modal-carousel">
+                        <Carousel showStatus={false} showIndicators={false} 
+                            style={{
+                                height: '500px'
+                            }}
+                        >
+                            <div>
+                                <img src={seven} alt="modal" />
+                            </div>
+                            <div>
+                                <img src={two} alt="modal" />
+                            </div>
+                            <div>
+                                <img src={three} alt="modal" />
+                            </div>
+                            <div>
+                                <img src={four} alt="modal" />
+                            </div>
+                            <div>
+                                <img src={five} alt="modal" />
+                            </div>
+                            <div>
+                                <img src={six} alt="modal" />
+                            </div>
+                            <div>
+                                <img src={one} alt="modal" />
+                            </div>
+                        </Carousel>
+                    </div>
+                </div>
 
                 <div className="two-part" >
 
@@ -56,7 +107,7 @@ class View extends Component {
                             <div className="contact-person" >
                                 <h1  >Your contact person</h1>
                                 <div className="contact-person-box">
-                                    <img className="contact-person-img" src={one} alt="img" />
+                                    <img className="contact-person-img" src={pro} alt="img" />
                                     <span>Sara Judish</span>
                                 </div>
                                 <div className="contact-number" >Contact Number</div>
@@ -103,7 +154,7 @@ class View extends Component {
                                 </div>
                             </div>
 
-                        <div className="my-line" ></div>
+                            <div className="my-line" ></div>
                         </div>
 
 
@@ -113,9 +164,9 @@ class View extends Component {
                             <h1>About this listing</h1>
                             <p>I rent a spacious, bright 1.5-room apartment with anteroom and private bath on the 1st floor of a very quiet and conveniently located family home. The house entrance is in common, except for the apartment to be rented are still my study and another room, which is hardly used, on the floor. I myself mostly stay on the ground floor.
             I rent a spacious, bright 1.5-room apartment with anteroom and private bath on the 1st floor of a very quiet and conveniently located family home. The house entrance is in common, except for the apartment to be rented are still my study and another room, which is hardly used, on the floor. I myself mostly stay on the ground floor.I rent a spacious, bright 1.5-room apartment with anteroom and private bath on the 1st floor of a very quiet and conveniently located family home. The house entrance is in common, except for the apartment to be rented are still my study and another room, which is hardly used, on the floor. I myself mostly stay on the ground floor.
-    
+
     I rent a spacious, bright 1.5-room apartment with anteroom and private bath on the 1st floor of a very quiet and conveniently located family home. The house entrance is in common, except for the apartment to be rented are still my study and another room, which is hardly used, on the floor. I myself mostly stay on the ground floor.</p>
-                        <div className="my-line" ></div>
+                            <div className="my-line" ></div>
                         </div>
 
 
@@ -147,7 +198,7 @@ class View extends Component {
                                 </div>
                             </div>
 
-                        <div className="my-line" ></div>
+                            <div className="my-line" ></div>
                         </div>
 
 

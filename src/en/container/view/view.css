@@ -243,6 +243,8 @@ flex-wrap: wrap;
 /********************************************
 carousel carousel carousel carousel carousel
 ********************************************/
+
+
 .carousel .control-arrow, .carousel.carousel-slider .control-arrow {
     -webkit-transition: all 0.25s ease-in;
     -moz-transition: all 0.25s ease-in;
@@ -338,8 +340,9 @@ carousel carousel carousel carousel carousel
     width: 100%;
     display: inline-block;
     pointer-events: none;
+    height: 100%;
   }
-  
+
   .carousel .carousel {
     position: relative;
   }
@@ -382,16 +385,18 @@ carousel carousel carousel carousel carousel
     transition: border 0.15s ease-in;
     display: inline-block;
     width: 80px;
+    height: 80px;
     margin-right: 6px;
     white-space: nowrap;
     overflow: hidden;
-    border: 3px solid #fff;
-    padding: 2px;
+    border: 2px solid #333;
+    /* padding: 2px; */
   }
   
   .carousel .thumb.selected, .carousel .thumb:hover {
-    border: 3px solid #333;
-    padding: 2px;
+    border: 2px solid rgb(255, 255, 255);
+    /* padding: 2px; */
+    cursor: pointer;
   }
   
   .carousel .thumb img {
@@ -401,7 +406,7 @@ carousel carousel carousel carousel carousel
   .carousel.carousel-slider {
     position: relative;
     margin: 0;
-    overflow: hidden;
+    /* overflow: hidden; */
   }
   
   .carousel.carousel-slider .control-arrow {
@@ -477,7 +482,7 @@ carousel carousel carousel carousel carousel
     margin: 0;
     position: relative;
     text-align: center;
-    background: #000;
+    /* background: #000; */
   }
   
   .carousel .slide img {
@@ -568,4 +573,79 @@ carousel carousel carousel carousel carousel
   .carousel:hover .slide .legend {
     opacity: 1;
   }
+
+.secondCarousel{
+  position: fixed;
+  top: -2000px;
+  z-index: 2;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000e8;
+  transition: all .3s cubic-bezier(0.960, -0.195, 1.000, 0.275);
+}
+.secondCarouselShow{
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  left: 0px;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000e8;
+  transition: all .5s cubic-bezier(0.000, 0.735, 0.025, 1.100);
+
+}
+.modal-carousel{
+width: 70%;
+margin: auto;
+}
+.modal-carousel>div>.carousel.carousel-slider {
+  height: 480px;
+}
+
+.modal-carousel>div>.carousel .control-prev.control-arrow {
+  position: absolute;
+  left: -90px;
+}
+.modal-carousel>div>.carousel .control-next.control-arrow{
+  position: absolute;
+  right: -90px;
+}
+.modal-carousel>div>.carousel .slider-wrapper{
+  height: 480px;
+}
+
+
+
+@media screen and (max-width: 1000px) {
+
+
+}
   
+
+@media screen and (max-width: 1000px) {
+  
+
+}
+  
+
+@media screen and (max-width: 1000px) {
+  
+
+}
+  
+
+
+
+
+
