@@ -87,7 +87,7 @@ class View extends Component {
                     <div onClick={this.showModal} style={{ backgroundImage: 'url(' + eight + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh', cursor: 'zoom-in' }} ></div>
                 </Carousel>
                 <div className={secondCarousel.join(' ')}  >
-                    <span className="close-login-modal" onClick={this.showModal} ></span>
+                    <span className="close-carousel-modal" onClick={this.showModal} ></span>
 
                     <div className="modal-carousel">
                         <Carousel showStatus={false} showIndicators={false}>

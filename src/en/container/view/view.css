@@ -630,6 +630,40 @@ transition: all .2s linear;
 .secondCarouselShow .modal-carousel .carousel .slide img{
   height: 100vh;
 }
+
+.close-carousel-modal{
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  z-index: 5;
+  transition: all .2s linear;
+  }
+  .close-carousel-modal:hover{
+    background-color: #ffffff1a;
+    transition: all .2s linear;
+
+}
+
+.close-carousel-modal:after , .close-carousel-modal:before{
+    content: '';
+    display:block;
+    width: 40px;
+    height: 1px;
+    background-color: #fff;
+    transition: all .2s linear;
+    position: absolute;
+    top: 30px;
+    left: 10px;
+}
+.close-carousel-modal:after{
+    transform: rotate(45deg);
+}
+.close-carousel-modal:before{
+    transform: rotate(-45deg);
+}
 /* .secondCarouselShow .modal-carousel .carousel:nth-child(2):hover{
   opacity: 1;
 } */
