@@ -36,7 +36,35 @@
 
   }
 
-  .input-label input:not(:placeholder-shown) + .span-label ,   .input-label input:focus + .span-label {
+
+  .input-label  textarea {
+    -webkit-appearance: none;
+    width: 100%;
+    font-family: inherit;
+    padding: 12px 0px 12px 5px; 
+    font-size: 14px;
+    border: 1px solid #c8ccd4;
+    background: none;
+    border-radius: 2px;
+    min-height: 200px;
+    min-width: 100%;
+    color: #223254;
+    background-color: transparent;
+    transition: all .3s cubic-bezier(0.000, 0.555, 0.025, 0.985);
+
+  }
+
+  .input-label input:not(:placeholder-shown) + .span-label ,   .input-label input:focus + .span-label  {
+    color: rgb(0, 144, 207);
+    top: -8px;
+    font-size: 10px;
+    z-index: 4;
+    transition: all .3s cubic-bezier(0.000, 0.555, 0.025, 0.985);
+    user-select: none;
+
+  }
+
+  .input-label textarea:not(:placeholder-shown) + .span-label ,   .input-label textarea:focus + .span-label {
     color: rgb(0, 144, 207);
     top: -8px;
     font-size: 10px;
