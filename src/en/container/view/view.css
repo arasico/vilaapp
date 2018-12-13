@@ -46,6 +46,7 @@ flex-direction: row-reverse;
     justify-content: center;
     border-radius: 10px;
     overflow: hidden;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
     transition: all  .4s cubic-bezier(0.865, 0.220, 0.875, 0.255);
 }
 
@@ -376,8 +377,12 @@ carousel carousel carousel carousel carousel
     position: relative;
     list-style: none;
     white-space: nowrap;
+    /* opacity: .1; */
+
   }
-  
+  .carousel .thumbs:hover{
+    /* opacity: 1; */
+  }
   .carousel .thumb {
     -webkit-transition: border 0.15s ease-in;
     -moz-transition: border 0.15s ease-in;
@@ -602,29 +607,52 @@ carousel carousel carousel carousel carousel
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background-color: #000000e8;
+  background-color: #000000f6;
   transition: all .5s cubic-bezier(0.000, 0.735, 0.025, 1.100);
 
 }
-.modal-carousel{
+.secondCarouselShow .modal-carousel .carousel.carousel-slider{
+height: 100vh;
+}
+
+.secondCarouselShow .modal-carousel .carousel:nth-child(2){
+  position: fixed;
+  bottom: 5vh;
+  background-color: #0000008a;
+  opacity: .1;
+  transition: all .2s linear;
+}
+.secondCarouselShow .modal-carousel .carousel:nth-child(2):hover{
+opacity: 1;
+transition: all .2s linear;
+}
+.secondCarouselShow .modal-carousel .carousel .slide img{
+  height: 100vh;
+}
+/* .secondCarouselShow .modal-carousel .carousel:nth-child(2):hover{
+  opacity: 1;
+} */
+
+
+/* .modal-carousel{
 width: 70%;
 margin: auto;
-}
-.modal-carousel>div>.carousel.carousel-slider {
+} */
+/* .modal-carousel>div>.carousel.carousel-slider {
   height: 480px;
-}
+} */
 
 .modal-carousel>div>.carousel .control-prev.control-arrow {
   position: absolute;
-  left: -90px;
+  left: 10px;
 }
 .modal-carousel>div>.carousel .control-next.control-arrow{
   position: absolute;
-  right: -90px;
+  right: 10px;
 }
-.modal-carousel>div>.carousel .slider-wrapper{
+/* .modal-carousel>div>.carousel .slider-wrapper{
   height: 480px;
-}
+} */
 
 
 

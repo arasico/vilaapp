@@ -8,6 +8,7 @@ import four from '../../../assets/img/4.jpg'
 import five from '../../../assets/img/5.jpg'
 import six from '../../../assets/img/6.jpg'
 import seven from '../../../assets/img/7.jpg'
+import eight from '../../../assets/img/8.jpg'
 import pro from '../../../assets/img/pro.jpg'
 import rooms from '../../../assets/icons/rooms.svg'
 import area from '../../../assets/icons/area.svg'
@@ -83,6 +84,7 @@ class View extends Component {
                     <div onClick={this.showModal} style={{ backgroundImage: 'url(' + five + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh', cursor: 'zoom-in' }} ></div>
                     <div onClick={this.showModal} style={{ backgroundImage: 'url(' + six + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh', cursor: 'zoom-in' }} ></div>
                     <div onClick={this.showModal} style={{ backgroundImage: 'url(' + one + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh', cursor: 'zoom-in' }} ></div>
+                    <div onClick={this.showModal} style={{ backgroundImage: 'url(' + eight + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh', cursor: 'zoom-in' }} ></div>
                 </Carousel>
                 <div className={secondCarousel.join(' ')}  >
                     <span className="close-login-modal" onClick={this.showModal} ></span>
