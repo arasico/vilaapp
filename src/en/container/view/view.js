@@ -19,25 +19,56 @@ import location from '../../../assets/img/location.png'
 // import "react-responsive-carousel/lib/styles/carousel.css";
 import { Carousel } from 'react-responsive-carousel';
 
+
+
 class View extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            cModal:false
+            cModal: false
         }
     }
 
-    showModal = () =>{
+    showModal = () => {
         this.setState((prevState) => {
             return { cModal: !prevState.cModal };
         });
     }
+
+
+    componentDidMount() {
+        window.addEventListener('scroll', this.handleScroll);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.handleScroll);
+    }
+
+    bookRequestBox = React.createRef()
+
+
+    handleScroll = () => {
+
+        if (window.scrollY >= 700 ) {
+            window.requestAnimationFrame(() => {
+                this.bookRequestBox.current.style.top = `50px`;
+                this.bookRequestBox.current.style.position = `fixed`;
+            });
+        } else {
+            window.requestAnimationFrame(() => {
+                this.bookRequestBox.current.style.top = `-275px`;
+                this.bookRequestBox.current.style.position = `absolute`;
+            });
+        }
+    };
+
+
     render() {
 
         let secondCarousel = ['secondCarousel']
-        if(this.state.cModal){
-            secondCarousel =['secondCarouselShow']
-        }else{
+        if (this.state.cModal) {
+            secondCarousel = ['secondCarouselShow']
+        } else {
             secondCarousel = ['secondCarousel']
         }
 
@@ -45,23 +76,19 @@ class View extends Component {
         return (
             <div className="view">
                 <Carousel showThumbs={false} showStatus={false} showIndicators={false} >
-                    <div onClick={this.showModal} style={{ backgroundImage: 'url(' + seven + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh' , cursor : 'pointer' }} ></div>
-                    <div onClick={this.showModal} style={{ backgroundImage: 'url(' + two + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh' , cursor : 'pointer' }} ></div>
-                    <div onClick={this.showModal} style={{ backgroundImage: 'url(' + three + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh' , cursor : 'pointer' }} ></div>
-                    <div onClick={this.showModal} style={{ backgroundImage: 'url(' + four + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh' , cursor : 'pointer' }} ></div>
-                    <div onClick={this.showModal} style={{ backgroundImage: 'url(' + five + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh' , cursor : 'pointer' }} ></div>
-                    <div onClick={this.showModal} style={{ backgroundImage: 'url(' + six + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh' , cursor : 'pointer' }} ></div>
-                    <div onClick={this.showModal} style={{ backgroundImage: 'url(' + one + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh' , cursor : 'pointer' }} ></div>
+                    <div onClick={this.showModal} style={{ backgroundImage: 'url(' + seven + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh', cursor: 'zoom-in' }} ></div>
+                    <div onClick={this.showModal} style={{ backgroundImage: 'url(' + two + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh', cursor: 'zoom-in' }} ></div>
+                    <div onClick={this.showModal} style={{ backgroundImage: 'url(' + three + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh', cursor: 'zoom-in' }} ></div>
+                    <div onClick={this.showModal} style={{ backgroundImage: 'url(' + four + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh', cursor: 'zoom-in' }} ></div>
+                    <div onClick={this.showModal} style={{ backgroundImage: 'url(' + five + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh', cursor: 'zoom-in' }} ></div>
+                    <div onClick={this.showModal} style={{ backgroundImage: 'url(' + six + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh', cursor: 'zoom-in' }} ></div>
+                    <div onClick={this.showModal} style={{ backgroundImage: 'url(' + one + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh', cursor: 'zoom-in' }} ></div>
                 </Carousel>
                 <div className={secondCarousel.join(' ')}  >
-                 <span className="close-login-modal" onClick={this.showModal} ></span>
+                    <span className="close-login-modal" onClick={this.showModal} ></span>
 
                     <div className="modal-carousel">
-                        <Carousel showStatus={false} showIndicators={false} 
-                            style={{
-                                height: '500px'
-                            }}
-                        >
+                        <Carousel showStatus={false} showIndicators={false}>
                             <div>
                                 <img src={seven} alt="modal" />
                             </div>
@@ -91,7 +118,7 @@ class View extends Component {
 
                     <div className="book-request-parent view-container-part1" >
 
-                        <div className="book-request-box" >
+                        <div className="book-request-box" ref={this.bookRequestBox} >
                             <div className="book-request-form" >
                                 <h1>New booking request</h1>
                                 <div className="book-request-form-box" >

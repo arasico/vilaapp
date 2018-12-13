@@ -37,7 +37,7 @@ flex-direction: row-reverse;
 .book-request-box{
     position: absolute;
     top: -275px;
-    right: 100px;
+    right: 50px;
     height: 550px;
     width: 300px;
     display: flex;
@@ -46,6 +46,7 @@ flex-direction: row-reverse;
     justify-content: center;
     border-radius: 10px;
     overflow: hidden;
+    transition: all  .4s cubic-bezier(0.865, 0.220, 0.875, 0.255);
 }
 
 .book-request-form{
