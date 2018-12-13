@@ -1,4 +1,5 @@
 import React , { COmponent }  from 'react';
+import './contactUs.css'
 
 
 class ContactUsComponent extends Component {
