@@ -64,7 +64,7 @@ export default class InputComponent extends React.Component {
         if(Number(event.target.value))
                await this.setState({counter:Number(event.target.value) });
                 else return 0
-                this.props.change(this.state.counter);
+                //this.props.change(this.state.counter);
     }
 
 
