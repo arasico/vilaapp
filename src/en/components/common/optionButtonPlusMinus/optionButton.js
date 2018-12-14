@@ -62,9 +62,9 @@ export default class InputComponent extends React.Component {
     handleChange = async(event) => {
         console.log("handel change")
         if(Number(event.target.value))
-               await this.setState({counter:Number(event.target.value) });
-                else return 0
-                //this.props.change(this.state.counter);
+            await this.setState({counter:Number(event.target.value) });
+        else return 0
+        this.props.change(this.state.counter);
     }
 
 
