@@ -7,8 +7,7 @@ import   './style.css';
 //
 // import Icons --------------------------------------->
 //
-import minus from '../../../../assets/icons/minus.svg'
-import pluse from '../../../../assets/icons/pluse.svg'
+
  
 
 export default class OptionDetails extends React.Component {
@@ -142,37 +141,13 @@ Change = async(event) => {
 
 
 
-
-
-// <div className="butons-option-component-container">
-// <div className="option-flex-line">
-//     <div className="option-flex-item">
-//         <button name="min" className="btn-circle-option btn-minus-icon" onClick={this.Change} />
-//     </div>
-//     <div className="option-flex-item">
-//         <input className="option-input-component" 
-//         value={this.state.currentVal}
-//         onChange={this.handleChange.bind(this)}
-//         onFocus={this.handelFocus.bind(this)} 
-//         onBlur={this.handelBlur.bind(this)} 
-//         maxLength={3} />
-//     </div>
-//     <div className="option-flex-item">
-//         <button name="max" className="btn-circle-option btn-plus-icon" onClick={this.Change} />
-//     </div>
-// </div>
-// </div>
-
-
-
-
-
+ 
 
 
 
 /* Example use tis component ----------------------------------------->
 
-
+in create compoentn the change gandler mujst be added....
 
 <OptionButton img={Floors} maxLength={2} maxValue={20} label="Floors" />
 
