@@ -111,25 +111,26 @@ Change = async(event) => {
                     <div className="options-label-container" >
                         <span>{this.props.label}</span>
                     </div>
-
-                    <div className="butons-option-component-container">
-                        <div className="option-flex-line">
-                            <div className="option-flex-item">
+                    <div  className="option-details-container"> 
+                        <div className="option-details-flex-line ">
+                            <div className="option-details-flex-item">
                                 <button name="min" className="btn-circle-option btn-minus-icon" onClick={this.Change} />
                             </div>
-                            <div className="option-flex-item">
-                                <input className="option-input-component" 
-                                value={this.state.currentVal}
-                                onChange={this.handleChange.bind(this)}
-                                onFocus={this.handelFocus.bind(this)} 
-                                onBlur={this.handelBlur.bind(this)} 
-                                maxLength={3} />
+                            <div className="option-details-flex-item">
+                                <input className="option-input-component-details" 
+                                 value={this.state.currentVal}
+                                         onChange={this.handleChange.bind(this)}
+                                         onFocus={this.handelFocus.bind(this)} 
+                                         onBlur={this.handelBlur.bind(this)} 
+                                         maxLength={3}/>
                             </div>
-                            <div className="option-flex-item">
+                            <div className="option-details-flex-item">
                                 <button name="max" className="btn-circle-option btn-plus-icon" onClick={this.Change} />
                             </div>
                         </div>
                     </div>
+
+           
                 </div>
             </div>
          );
@@ -137,6 +138,34 @@ Change = async(event) => {
 }
  
  
+
+
+
+
+
+// <div className="butons-option-component-container">
+// <div className="option-flex-line">
+//     <div className="option-flex-item">
+//         <button name="min" className="btn-circle-option btn-minus-icon" onClick={this.Change} />
+//     </div>
+//     <div className="option-flex-item">
+//         <input className="option-input-component" 
+//         value={this.state.currentVal}
+//         onChange={this.handleChange.bind(this)}
+//         onFocus={this.handelFocus.bind(this)} 
+//         onBlur={this.handelBlur.bind(this)} 
+//         maxLength={3} />
+//     </div>
+//     <div className="option-flex-item">
+//         <button name="max" className="btn-circle-option btn-plus-icon" onClick={this.Change} />
+//     </div>
+// </div>
+// </div>
+
+
+
+
+
 
 
 
