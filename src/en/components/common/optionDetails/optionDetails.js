@@ -58,8 +58,9 @@ Change = async(event) => {
                 await this.setState({currentVal: this.state.currentVal - 1}) 
                     else
                         this.setState({currentVal: 0})
-             
-        this.props.change(this.state.currentVal);
+
+// TODO later after change componetn must be uncoment   ---->                      
+//        this.props.change(this.state.currentVal);
         console.log(this.state.currentVal)
 
 

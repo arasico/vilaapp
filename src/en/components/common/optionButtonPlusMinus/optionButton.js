@@ -1,9 +1,5 @@
 
-
- 
-
 import React  from 'react';
-
 import './optionButton.css';
 
 export default class InputComponent extends React.Component {
@@ -26,8 +22,8 @@ export default class InputComponent extends React.Component {
         else
             if(this.state.counter > 0)
                 await this.setState({counter: this.state.counter - 1}) 
-                    else
-                        this.setState({counter: 0})
+            else
+                this.setState({counter: 0})
              
         this.props.change(this.state.counter);
 
