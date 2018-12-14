@@ -1,9 +1,5 @@
 
-
- 
-
 import React  from 'react';
-
 import './optionButton.css';
 
 export default class InputComponent extends React.Component {
@@ -26,8 +22,8 @@ export default class InputComponent extends React.Component {
         else
             if(this.state.counter > 0)
                 await this.setState({counter: this.state.counter - 1}) 
-                    else
-                        this.setState({counter: 0})
+            else
+                this.setState({counter: 0})
              
         this.props.change(this.state.counter);
 
@@ -62,9 +58,9 @@ export default class InputComponent extends React.Component {
     handleChange = async(event) => {
         console.log("handel change")
         if(Number(event.target.value))
-               await this.setState({counter:Number(event.target.value) });
-                else return 0
-                this.props.change(this.state.counter);
+            await this.setState({counter:Number(event.target.value) });
+        else return 0
+        this.props.change(this.state.counter);
     }
 
 
