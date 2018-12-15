@@ -7,16 +7,12 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import HeaderEnglish from './en/components/header/header'
 import Index from './en/container/index'
 import Landlord from './en/container/landlord/landloard'
- 
-import FooterComponent from './en/components/footer/footer'
+  
 import Create from './en/container/create/create'
 import View from './en/container/view/view'
  
 import ContactUs from './en/container/contactUs/contactUs'
  
-
-
-import Create from './en/container/create/create'
 import SerachResult from './en/container/searchResult/searchResult'
 import TestComponent from './en/container/testComponent/test'
  
