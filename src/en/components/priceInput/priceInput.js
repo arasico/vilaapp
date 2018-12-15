@@ -24,7 +24,7 @@ class PriceInput extends Component {
                 }
                 return str;
             }
-            
+
         if(event.target.value !== '0')
             this.setState({
                 value: Totoman(event.target.value)
@@ -48,16 +48,20 @@ class PriceInput extends Component {
 
     }
 
-
+    // Get Props name and make upper case like name => NAME
+    renderUperCase(value){
+        return value.toUpperCase()
+    }
 
     render() { 
+
 
 
         return ( 
             <div className="container-price-input">
                <div className="container-price-input-child">
                    <div className="price-input-items">
-                        <span className="title-price-input">Max</span>
+                        <span className="title-price-input">{this.renderUperCase(this.props.name)}</span>
                    </div>
                    <div className="price-input-items flex-item">
                         <div className="price-input-items-child left">

@@ -65,7 +65,7 @@ class TestComponent extends Component {
             <div className="test-container">
 
 
-            <PriceInput />
+            <PriceInput name="min" />
 
             {/* <DatePicker /> */}
 
