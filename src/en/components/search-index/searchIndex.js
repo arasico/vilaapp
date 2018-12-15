@@ -25,13 +25,14 @@ class SearchIndex extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            startDate: '',
+            startDate: null,
             selectCity:'Select City',
             person:''
           };
           this.handleChange = this.handleChange.bind(this);
           this.onSelect = this.onSelect.bind(this);
           this.onSelectCity = this.onSelectCity.bind(this);
+          this.change = this.change.bind(this);
     }
 
 
@@ -49,6 +50,25 @@ class SearchIndex extends Component {
 
       onSelectCity({ key }) {  
         this.setState({selectCity:key})
+      }
+
+      // Get props from children Date picker component
+      change(startDate,endDate){
+          // when the props change it will be called . . .
+        this.setState({
+            startDate: startDate,
+            endDate:endDate
+        });
+        // consol log after chagne state  . . .
+        console.log(this.state.startDate)
+        console.log(this.state.endDate)
+ 
+      }
+
+
+      onClickSearch(){
+          if(this.state.startDate && this.state.endDate)
+          alert(this.state.startDate)
       }
       
 
@@ -96,7 +116,7 @@ class SearchIndex extends Component {
                     
                     <div className="checkin">
                         {/* <span className="lbl-date" style={{paddingLeft:'10px'}}>Check in</span> */}
-                            <DatePickerRC />
+                            <DatePickerRC change={this.change} />
                         {/* <DatePicker className="date-down"
                             selected={this.state.startDate}
                             onChange={this.handleChange} 
@@ -126,7 +146,7 @@ class SearchIndex extends Component {
                         </Dropdown>
                     </div> 
                  
-                <button type="button" className="btn-search"><span className="search-text-show" >Search</span><i className="fas fa-search search-icon-show"></i></button>
+                <button type="button" onClick={this.onClickSearch.bind(this)} className="btn-search"><span className="search-text-show" >Search</span><i className="fas fa-search search-icon-show"></i></button>
             </div>
          );
     }
