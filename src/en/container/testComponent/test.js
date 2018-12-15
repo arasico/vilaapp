@@ -65,7 +65,10 @@ class TestComponent extends Component {
             <div className="test-container">
 
 
+         <div style={{display:'flex'}}>
             <PriceInput name="min" />
+            <PriceInput name="max" />
+         </div>
 
             {/* <DatePicker /> */}
 

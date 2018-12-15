@@ -70,6 +70,7 @@ class PriceInput extends Component {
                                     onChange={this.onChange.bind(this)}
                                     onFocus={this.onFocus.bind(this)}
                                     onBlur={this.onBlur.bind(this)}
+                                    maxLength="9"
                                     />
                         </div>
                         <div className="price-input-items-child right">
