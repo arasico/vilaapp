@@ -10,12 +10,6 @@ import arrow from '../../../assets/icons/arrow-down.svg'
 import './style.css'
 
  
- 
-
-
-// function 
-  
-
 
 
 
