@@ -5,6 +5,8 @@ import PriceMinMax from '../../components/common/priceMinMax.js/priceMinMax'
 import SearchResultData from '../../components/searchResultData/searchResultData'
 import map from './../../../assets/img/map.png'
 
+import OptionButtonPlus from '../../components/common/optionButtonPlusMinus/optionButton'
+
 import './searchResult.css';
 
 
@@ -17,11 +19,7 @@ const styles = {
 }
 
 
-let ticking = false;
-
 class SerachResult extends Component {
-
-
 
     constructor(props) {
         super(props);
@@ -30,7 +28,8 @@ class SerachResult extends Component {
             selectPerson: false,
             selectPrice: false,
             selectRoom: false,
-            mapShow: true
+            mapShow: true,
+            showFilterMenu: false
         };
         this.mapShowHandler = this.mapShowHandler.bind(this)
 
@@ -43,27 +42,36 @@ class SerachResult extends Component {
     componentWillUnmount() {
         window.removeEventListener('scroll', this.handleScroll);
     }
+
     filter = React.createRef();
     listMap = React.createRef();
+    mapListHome = React.createRef();
 
     handleScroll = () => {
 
 
-        if (!ticking && window.scrollY >= 100) {
+        if (window.scrollY >= 100) {
             window.requestAnimationFrame(() => {
                 this.filter.current.style.top = `0px`;
                 this.filter.current.style.position = `fixed`;
-                ticking = false;
             });
-            ticking = true;
         } else {
             window.requestAnimationFrame(() => {
                 this.filter.current.style.top = `${0}px`;
                 this.filter.current.style.position = `unset`;
-
-                ticking = false;
             });
-            ticking = true;
+        }
+
+        if (window.scrollY >= 100 && this.state.mapShow) {
+            window.requestAnimationFrame(() => {
+                this.mapListHome.current.className = ['mapFix serachMapActive']
+            });
+        } else if (window.scrollY >= 100 && this.state.mapShow) {
+            this.mapListHome.current.className = ['mapFix searchMap']
+        } else if (window.scrollY < 100 && this.state.mapShow) {
+            this.mapListHome.current.className = ['serachMapActive']
+        } else {
+            this.mapListHome.current.className = ['searchMap']
         }
     };
 
@@ -117,7 +125,6 @@ class SerachResult extends Component {
     }
 
     closeMenu = (e) => {
-
         if (e.target.matches('.notCloseMenuLand')) {
             this.setState(() => {
                 document.addEventListener('click', this.closeMenu);
@@ -142,24 +149,51 @@ class SerachResult extends Component {
     }
 
 
+    //show hide filter menu tablet size
+    showFilterMenu = () => {
+        this.setState((prev) => {
+            return {
+                showFilterMenu: !prev.showFilterMenu
+            }
+        })
+    }
 
     render() {
 
         let btnList = ['listBtn select-listing-map']
         let btnMap = ['mapBtnActive select-listing-map']
+
         let searchList = ['searchList']
         let searchMap = ['searchMap']
 
+        let selectFilter = ['selectFilter']
+
         if (this.state.mapShow) {
             btnMap = ['mapBtnActive select-listing-map']
-            searchMap = ['serachMapActive']
+            // searchMap = ['serachMapActive']
             searchList = ['searchList']
             btnList = ['listBtn select-listing-map']
         } else {
             btnMap = ['mapBtn select-listing-map']
-            searchMap = ['searchMap']
+            // searchMap = ['searchMap']
             searchList = ['searchList100']
             btnList = ['listBtnActive select-listing-map']
+        }
+
+        if (window.scrollY >= 100 && this.state.mapShow) {
+            searchMap = ['serachMapActive mapFix ']
+        } else if (window.scrollY >= 100 && !this.state.mapShow) {
+            searchMap = ['searchMap mapFix ']
+        } else if (window.scrollY < 100 && this.state.mapShow) {
+            searchMap = ['serachMapActive']
+        } else {
+            searchMap = ['searchMap']
+        }
+
+        if(this.state.showFilterMenu){
+            selectFilter = ['selectFilter']
+        }else{
+            selectFilter = ['selectFilterDown']
         }
 
 
@@ -168,8 +202,12 @@ class SerachResult extends Component {
                 <div className="search-result-box"  >
                     <div className="filter-list-box" ref={this.filter} >
 
-                        {/* date date date date  */}
-                        <div className="select-filter notCloseMenuLand" >
+                        <div className="show-filter-menu" onClick={this.showFilterMenu} >
+                            <p>Filter</p>
+                        </div>
+
+                        <div className="select-filter notCloseMenuLand tabletHidden " >
+                            {/* date date date date  */}
                             <div className="select-filter-child notCloseMenuLand" >
                                 <p className="filter-date-drop notCloseMenuLand"  >Dates</p>
                                 <img src={arrow} style={{ marginLeft: 10, marginTop: -5, height: 11, width: 11, float: 'right' }} alt="arrow" className="notCloseMenuLand" />
@@ -205,52 +243,101 @@ class SerachResult extends Component {
                                 <p className="my-filter-action notCloseMenuLand" onClick={this.selectRoomHandler}></p>
                             </div>
 
-                             {/* filter selet box ====================== */}
 
-                        <div className="select-date notCloseMenuLand" >
-                            {this.state.selectFromTo ? <div className="select-from-to filter1 notCloseMenuLand" >
-                                <div className="from-to-box notCloseMenuLand"  >
-                                    <div className="select-from notCloseMenuLand" >From</div>
-                                    <div className="select-to notCloseMenuLand" >To</div>
-                                </div>
-                                <div className="select-date-btn notCloseMenuLand"  >
-                                    <button className="apply-btn notCloseMenuLand" >Apply</button>
-                                </div>
-                            </div> : ''}
-                        </div>
-                        <div className="select-date" >
-                            {this.state.selectPerson ? <div className="select-from-to filter2 notCloseMenuLand" >
-                                <div className="from-to-box notCloseMenuLand" >
-                                    <div className="select-from notCloseMenuLand" >From</div>
-                                    <div className="select-to notCloseMenuLand" >To</div>
-                                </div>
-                                <div className="select-date-btn notCloseMenuLand" >
-                                    <button className="apply-btn notCloseMenuLand">Apply</button>
-                                </div>
-                            </div> : ''}
-                        </div>
-                        <div className="select-date" >
-                            {this.state.selectPrice ? <div className="select-min-max filter3 notCloseMenuLand" >
-                                <div className="min-to-max-box notCloseMenuLand" >
-                                    <PriceMinMax />
-                                </div>
-                                <div className="select-date-btn notCloseMenuLand" >
-                                    <button className="apply-btn notCloseMenuLand">Apply</button>
-                                </div>
 
-                            </div> : ''}
+                            {/* filter select box ====================== */}
+
+                            <div className="select-date notCloseMenuLand" >
+                                {this.state.selectFromTo ? <div className="select-from-to filter1 notCloseMenuLand" >
+                                    <div className="from-to-box notCloseMenuLand"  >
+                                        <div className="select-from notCloseMenuLand" >From</div>
+                                        <div className="select-to notCloseMenuLand" >To</div>
+                                    </div>
+                                    <div className="select-date-btn notCloseMenuLand"  >
+                                        <button className="apply-btn notCloseMenuLand" >Apply</button>
+                                    </div>
+                                </div> : ''}
+                            </div>
+                            <div className="select-date" >
+                                {this.state.selectPerson ? <div className="select-from-to filter2 notCloseMenuLand" >
+                                    <div className="from-to-box notCloseMenuLand" >
+                                        <div className="select-from notCloseMenuLand" >From</div>
+                                        <div className="select-to notCloseMenuLand" >To</div>
+                                    </div>
+                                    <div className="select-date-btn notCloseMenuLand" >
+                                        <button className="apply-btn notCloseMenuLand">Apply</button>
+                                    </div>
+                                </div> : ''}
+                            </div>
+                            <div className="select-date" >
+                                {this.state.selectPrice ? <div className="select-min-max filter3 notCloseMenuLand" >
+                                    <div className="min-to-max-box notCloseMenuLand" >
+                                        <PriceMinMax />
+                                    </div>
+                                    <div className="select-date-btn notCloseMenuLand" >
+                                        <button className="apply-btn notCloseMenuLand">Apply</button>
+                                    </div>
+
+                                </div> : ''}
+                            </div>
+                            <div className="select-date notCloseMenuLand" >
+                                {this.state.selectRoom ? <div className="select-from-to filter4 notCloseMenuLand" >
+                                    <div className="from-to-box notCloseMenuLand" >
+                                        <div className="select-from notCloseMenuLand" >From</div>
+                                        <div className="select-to notCloseMenuLand" >To</div>
+                                    </div>
+                                    <div className="select-date-btn notCloseMenuLand" >
+                                        <button className="apply-btn notCloseMenuLand">Apply</button>
+                                    </div>
+                                </div> : ''}
+                            </div>
                         </div>
-                        <div className="select-date notCloseMenuLand" >
-                            {this.state.selectRoom ? <div className="select-from-to filter4 notCloseMenuLand" >
-                                <div className="from-to-box notCloseMenuLand" >
-                                    <div className="select-from notCloseMenuLand" >From</div>
-                                    <div className="select-to notCloseMenuLand" >To</div>
+
+                        {/* filter box tablet size  */}
+                        <div className={selectFilter.join(' ')} >
+                            <div className="filter-close" >
+                                <h1>Filter</h1>
+                                <div className="close-filter-box" onClick={this.showFilterMenu} ></div>
+                            </div>
+                            <div className="filter-and-apply" >
+                                <div className="filter-boxs">
+                                    <div className="filter-box">
+                                        <h1 className="filter-title" >Date</h1>
+                                        <div>
+                                            <div>
+                                                <h2>From</h2>
+                                            </div>
+                                            <div>
+                                                <h2>To</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="filter-box">
+                                        <h1 className="filter-title" >Persons</h1>
+                                        <div className="com-increase">
+                                            <OptionButtonPlus />
+                                        </div>
+                                    </div>
+                                    <div className="filter-box">
+                                        <h1 className="filter-title" >Price</h1>
+                                        <div>
+                                            <div>
+                                                <h2>Min</h2>
+                                            </div>
+                                            <div>
+                                                <h2>Max</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="filter-box">
+                                        <h1 className="filter-title" >Rooms</h1>
+                                        <div className="com-increase" >
+                                            <OptionButtonPlus />
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="select-date-btn notCloseMenuLand" >
-                                    <button className="apply-btn notCloseMenuLand">Apply</button>
-                                </div>
-                            </div> : ''}
-                        </div>
+                                <div className="apply-box" ><p>Apply</p></div>
+                            </div>
                         </div>
                         <div className="select-griding " ref={this.listMap}>
                             <div className={btnList.join(' ')}  >
@@ -266,7 +353,7 @@ class SerachResult extends Component {
                         </div>
 
 
-                       
+
                     </div>
                     <div className="map-list-box" >
                         <div className={searchList.join(' ')} >
@@ -280,7 +367,7 @@ class SerachResult extends Component {
                             <SearchResultData />
                             <SearchResultData />
                         </div>
-                        <div className={searchMap.join(' ')} style={styles.map} >
+                        <div className={searchMap.join(' ')} style={styles.map} ref={this.mapListHome} >
 
                         </div>
                     </div>
