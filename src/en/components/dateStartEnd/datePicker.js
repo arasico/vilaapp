@@ -31,7 +31,7 @@ class DatePicker extends Component {
 
      
         return ( 
-            <div className="container">
+            <div className="container-date-picker">
             
                <DateRangePicker
                     startDate={this.state.startDate} // momentPropTypes.momentObj or null,
@@ -43,7 +43,7 @@ class DatePicker extends Component {
                     onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
                     />
 
-                    <button onClick={this.callData.bind(this)}>Click</button>
+                    {/* <button onClick={this.callData.bind(this)}>Click</button> */}
         
  
 

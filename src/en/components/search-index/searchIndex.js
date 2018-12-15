@@ -8,6 +8,7 @@ import 'rc-dropdown/assets/index.css';
 import arrow from '../../../assets/icons/arrow-down.svg'
 
 import './style.css'
+import DatePickerRC from '../../components/dateStartEnd/datePicker';
 
  
  
@@ -81,8 +82,8 @@ class SearchIndex extends Component {
 
         return ( 
             <div className="search-bx-container">
-                <ul>
-                    <li className="selectCity">
+                 
+                    <div className="checkin">
                         <Dropdown
                             trigger={['click']}
                             overlay={SelectCityMenu}
@@ -91,19 +92,19 @@ class SearchIndex extends Component {
 
                             <div className="drop-down-list">{this.state.selectCity}<img src={arrow} style={{marginRight:5,marginLeft:10, height:11, width:11 }}  alt="arrow"/> </div>
                         </Dropdown>
-                    </li>
+                    </div>
                     
-                    <li className="checkin">
-                        <span className="lbl-date" style={{paddingLeft:'10px'}}>Check in</span>
-
-                        <DatePicker className="date-down"
+                    <div className="checkin">
+                        {/* <span className="lbl-date" style={{paddingLeft:'10px'}}>Check in</span> */}
+                            <DatePickerRC />
+                        {/* <DatePicker className="date-down"
                             selected={this.state.startDate}
                             onChange={this.handleChange} 
-                        />
-                    </li>
+                        /> */}
+                    </div>
 
 
-                    <li className="checkout">
+                    {/* <li className="checkout">
                         <span  className="lbl-date"  style={{paddingLeft:'10px'}}>Check Out</span>
 
                             <DatePicker className="date-down"
@@ -111,9 +112,9 @@ class SearchIndex extends Component {
                                 onChange={this.handleChange} 
                                  
                             />
-                    </li>
+                    </li> */}
                     
-                    <li className="peronSelection">
+                    <div className="checkin">
                         <Dropdown
                             trigger={['click']}
                             overlay={menu}
@@ -123,8 +124,8 @@ class SearchIndex extends Component {
                             <div className="drop-down-list">{this.state.person} Person <img src={arrow} style={{marginRight:5,marginLeft:10, height:11, width:11 }} alt="arrow" /> </div>
 
                         </Dropdown>
-                    </li> 
-                </ul>
+                    </div> 
+                 
                 <button type="button" className="btn-search"><span className="search-text-show" >Search</span><i className="fas fa-search search-icon-show"></i></button>
             </div>
          );

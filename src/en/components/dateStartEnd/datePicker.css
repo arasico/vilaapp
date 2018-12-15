@@ -1,0 +1,9 @@
+.container-date-picker{
+    width: 300px;
+}
+
+.DateRangePickerInput__withBorder {
+
+border: 0!important;
+
+}
