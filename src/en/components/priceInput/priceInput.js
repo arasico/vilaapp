@@ -24,19 +24,33 @@ class PriceInput extends Component {
                 }
                 return str;
             }
-
-        this.setState({
-            value: Totoman(event.target.value)
-        })
+            
+        if(event.target.value !== '0')
+            this.setState({
+                value: Totoman(event.target.value)
+            })
         // console.log(event.target.value)
+    }
+
+    // when focus in input dete text box
+    onFocus(event){
+        if(event.target.value === '0')
+           this.setState({
+               value:''
+           })
+    }
+    // when left the textbox insert 0
+    onBlur(event){
+        if(event.target.value === '')
+           this.setState({
+               value:'0'
+           })
+
     }
 
 
 
-
     render() { 
-
-
 
 
         return ( 
@@ -47,10 +61,12 @@ class PriceInput extends Component {
                    </div>
                    <div className="price-input-items flex-item">
                         <div className="price-input-items-child left">
-                            <input className="input-price"
-                            value={this.state.value}
-                            onChange={this.onChange.bind(this)}
-                            />
+                                <input className="input-price"
+                                    value={this.state.value}
+                                    onChange={this.onChange.bind(this)}
+                                    onFocus={this.onFocus.bind(this)}
+                                    onBlur={this.onBlur.bind(this)}
+                                    />
                         </div>
                         <div className="price-input-items-child right">
                             <span className="toman-span">Toman</span>
