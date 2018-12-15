@@ -1,24 +1,14 @@
 import React,{Component} from 'react';
-import DatePicker from "react-datepicker";
+// import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Dropdown from 'rc-dropdown';
 import Menu, { Item as MenuItem, Divider } from 'rc-menu';
 import 'rc-dropdown/assets/index.css';
-
-import {NavLink, Redirect} from 'react-router-dom'
+ 
 import arrow from '../../../assets/icons/arrow-down.svg'
 
 import './style.css'
 import DatePickerRC from '../../components/dateStartEnd/datePicker';
-
- 
- 
-
-
-// function 
-  
-
-
 
 
 

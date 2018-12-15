@@ -10,7 +10,10 @@ import './datePicker.css';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 
-import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
+import { DateRangePicker,
+    //  SingleDatePicker, 
+    //  DayPickerRangeController 
+    } from 'react-dates';
 
  
 
