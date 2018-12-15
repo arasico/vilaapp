@@ -10,8 +10,12 @@
     height: 72px;
     background-color: #FFFFFF;
     border: 5px solid rgba(193,193,193,0.8);
-position: relative;
+    position: relative;
     border-radius: 50px; 
+    display: flex;
+    vertical-align: middle;
+    text-align: center;
+
 
     
 }
@@ -35,8 +39,7 @@ position: relative;
     
 }
 .checkin , .checkout{
-    
-    width: 220px;
+     padding: 10px;
 }
  
 
@@ -95,6 +98,8 @@ font-size: 18px;
 
  .drop-down-list{ 
     cursor: pointer; 
+    color: #757575;
+    
 }
 
 
