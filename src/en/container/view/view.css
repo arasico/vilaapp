@@ -178,13 +178,14 @@ flex-direction: row-reverse;
   margin: auto;
   height: 100px;
   padding: 30px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .owner-number img {
   margin-right: 10px;
   width: 16px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
 }
 
 .book-apartmant-detail{
