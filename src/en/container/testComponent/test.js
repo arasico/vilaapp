@@ -1,5 +1,11 @@
 
 
+import TextInput from '../../components/createLandLoard/inputGroup';
+import SubTitle from '../../components/common/subTitle/subTitle';
+import Droplist from '../../components/common/typeOfDropList/typeOfDropList';
+import OptionDetails from '../../components/common/optionDetails/optionDetails';
+import DatePicker from '../../components/dateStartEnd/datePicker';
+
 
 
 
@@ -55,6 +61,14 @@ class TestComponent extends Component {
 
         return (  
             <div className="test-container">
+
+
+
+
+            <DatePicker />
+
+
+            <hr />
                  
                 
 
