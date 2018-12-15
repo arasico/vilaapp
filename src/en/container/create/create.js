@@ -149,7 +149,7 @@ class CreateComponent extends Component {
         for (i = 0; i < x.length; i++) {
             x[i].style.display = "none";
         }
-        console.log(cityName)
+        // console.log(cityName)
         document.getElementById(cityName).style.display = "block";
 
     }

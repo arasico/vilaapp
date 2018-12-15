@@ -1,13 +1,17 @@
-
-.input-label {
+.Textarea{
+    width: 100%;
+    height: 100px; 
+    
+}
+.textarea-label {
     position: relative;
     margin:10px auto;
     width: 100%;
-    /* max-width: 280px; */
+    /* max-height: 280px; */
     height: 40px;
 
   }
-  .input-label .span-label {
+  .textarea-label .span-label {
     position: absolute;
     top: 12px;
     left: 7px;
@@ -20,41 +24,26 @@
     user-select: none;
   }
 
-  .input-label input {
-    -webkit-appearance: none;
-    width: 100%;
-    font-family: inherit;
-    padding: 12px 0px 12px 5px;
-    height: 40px;
-    font-size: 14px;
-    border: 1px solid #c8ccd4;
-    background: none;
-    border-radius: 2px;
-    color: #223254;
-    background-color: transparent;
-    transition: all .3s cubic-bezier(0.000, 0.555, 0.025, 0.985);
-
-  }
-
-
-  .input-label  textarea {
+  .textarea-label textarea {
     -webkit-appearance: none;
     width: 100%;
     font-family: inherit;
     padding: 12px 0px 12px 5px; 
+    max-height: 100px;
+    min-width: 100%;
     font-size: 14px;
     border: 1px solid #c8ccd4;
     background: none;
     border-radius: 2px;
-    min-height: 200px;
-    min-width: 100%;
     color: #223254;
     background-color: transparent;
     transition: all .3s cubic-bezier(0.000, 0.555, 0.025, 0.985);
 
   }
 
-  .input-label input:not(:placeholder-shown) + .span-label ,   .input-label input:focus + .span-label  {
+ 
+
+  .textarea-label textarea:not(:placeholder-shown) + .span-label ,   .textarea-label textarea:focus + .span-label  {
     color: rgb(0, 144, 207);
     top: -8px;
     font-size: 10px;
@@ -64,7 +53,7 @@
 
   }
 
-  .input-label textarea:not(:placeholder-shown) + .span-label ,   .input-label textarea:focus + .span-label {
+  .textarea-label textarea:not(:placeholder-shown) + .span-label ,   .textarea-label textarea:focus + .span-label {
     color: rgb(0, 144, 207);
     top: -8px;
     font-size: 10px;
@@ -74,7 +63,7 @@
 
   }
 
-.input-error-text{
+.textarea-error-text{
     position: absolute;
     font-size: 10px;
     right: 6px;

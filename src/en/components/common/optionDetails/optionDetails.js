@@ -2,17 +2,15 @@
 // option Deatil is for crreate landloard ---->
 //
 
-import React,{Component} from 'react';
+import React  from 'react';
 import   './style.css';
 //
 // import Icons --------------------------------------->
 //
-import minus from '../../../../assets/icons/minus.svg'
-import pluse from '../../../../assets/icons/pluse.svg'
 
+ 
 
-
-class OptionDetails extends Component {
+export default class OptionDetails extends React.Component {
     constructor(props) {
         super(props);
         this.state = { 
@@ -20,9 +18,9 @@ class OptionDetails extends Component {
          }
          this.onPluse = this.onPluse.bind(this);
          this.onMinus = this.onMinus.bind(this);
-         this.handleChange = this.handleChange.bind(this);
+        //  this.handleChange = this.handleChange.bind(this);
          this.handelFocus = this.handelFocus.bind(this);
-         this.handelBlur = this.handelBlur.bind(this);
+         this.handelBlur = this.handelBlur.bind(this); 
 
     }
 
@@ -39,11 +37,51 @@ onMinus(){
     this.setState({currentVal: this.state.currentVal -1 })
 }
 
-handleChange(event) {
+// handleChange(event) {
      
-    if(event.target.value <= this.props.maxValue)
-    this.setState({currentVal:Number(event.target.value) });
-  }
+//     if(event.target.value <= this.props.maxValue)
+//     this.setState({currentVal:Number(event.target.value) });
+//   }
+
+Change = async(event) => {
+
+      
+       console.log(this.state.counter)
+       console.log(event.target.name)
+
+        if(event.target.name === 'max')
+                await this.setState({currentVal: this.state.currentVal + 1}) 
+                 
+        else
+            if(this.state.currentVal > 0)
+                await this.setState({currentVal: this.state.currentVal - 1}) 
+                    else
+                        this.setState({currentVal: 0})
+
+// TODO later after change componetn must be uncoment   ---->                      
+//        this.props.change(this.state.currentVal);
+        console.log(this.state.currentVal)
+
+
+        
+
+
+    }
+
+
+
+    //
+    // when try to type in input will be set state our curent number
+    //
+    handleChange = async(event) => {
+        console.log("handel change")
+        if(Number(event.target.value))
+               await this.setState({currentVal:Number(event.target.value) });
+                else return 0
+                this.props.change(this.state.currentVal);
+    }
+
+
 
   handelFocus(event){
       console.log(event.target.value)
@@ -59,6 +97,8 @@ handleChange(event) {
     this.setState({currentVal:0})
   }
 
+ 
+
     render() { 
         return ( 
             <div className="options-container">
@@ -71,31 +111,111 @@ handleChange(event) {
                     <div className="options-label-container" >
                         <span>{this.props.label}</span>
                     </div>
-
-                    <div className="option-button-container">
-                        <div className="option-button-oprator">
-                            <div className="button-circle-oprator" onClick={this.onMinus}>
-                                <img src={minus} alt="pluse" style={{width:20, height: 20, textAlign:'center'}} />
+                    <div  className="option-details-container"> 
+                        <div className="option-details-flex-line ">
+                            <div className="option-details-flex-item">
+                                <button name="min" className="btn-circle-option btn-minus-icon" onClick={this.Change} />
                             </div>
-                        </div>
-                        <div className="option-button-input">
-                            <input type="text" className="input-option-type" 
-                            value={this.state.currentVal} 
-                            onChange={this.handleChange} 
-                            onFocus={this.handelFocus} 
-                            onBlur={this.handelBlur}
-                            maxLength={this.props.maxLength} />
-                        </div>
-                        <div className="option-button-oprator">
-                            <div className="button-circle-oprator" onClick={this.onPluse}>
-                                <img src={pluse} alt="pluse" style={{width:20, height: 20, textAlign:'center'}} />
+                            <div className="option-details-flex-item">
+                                <input className="option-input-component-details" 
+                                 value={this.state.currentVal}
+                                         onChange={this.handleChange.bind(this)}
+                                         onFocus={this.handelFocus.bind(this)} 
+                                         onBlur={this.handelBlur.bind(this)} 
+                                         maxLength={3}/>
+                            </div>
+                            <div className="option-details-flex-item">
+                                <button name="max" className="btn-circle-option btn-plus-icon" onClick={this.Change} />
                             </div>
                         </div>
                     </div>
+
+           
                 </div>
             </div>
          );
     }
 }
  
-export default OptionDetails;
+ 
+
+
+
+ 
+
+
+
+/* Example use tis component ----------------------------------------->
+
+in create compoentn the change gandler mujst be added....
+
+<OptionButton img={Floors} maxLength={2} maxValue={20} label="Floors" />
+
+
+
+
+
+
+
+-----------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// { 
+//     return ( 
+//         <div className="options-container">
+//             <div className="options-rol-silver">
+//                 <div style={{position:"absolute"}}>
+//                     <div className="options-icon-container">
+//                         <img src={this.props.img}  className="img-option-props" alt="roome" />
+//                     </div>
+//                 </div>
+//                 <div className="options-label-container" >
+//                     <span>{this.props.label}</span>
+//                 </div>
+
+//                 <div className="option-button-container">
+//                     <div className="option-button-oprator">
+//                         <div className="button-circle-oprator" onClick={this.onMinus}>
+//                             <img src={minus} alt="pluse" style={{width:20, height: 20, textAlign:'center'}} />
+//                         </div>
+//                     </div>
+//                     <div className="option-button-input">
+//                         <input type="text" className="input-option-type" 
+//                         value={this.state.currentVal} 
+//                         onChange={this.handleChange.bind(this)} 
+//                         onFocus={this.handelFocus} 
+//                         onBlur={this.handelBlur}
+//                         maxLength={this.props.maxLength} />
+//                     </div>
+//                     <div className="option-button-oprator">
+//                         <div className="button-circle-oprator" onClick={this.onPluse}>
+//                             <img src={pluse} alt="pluse" style={{width:20, height: 20, textAlign:'center'}} />
+//                         </div>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//      );
+// }
