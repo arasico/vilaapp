@@ -5,6 +5,7 @@ import Dropdown from 'rc-dropdown';
 import Menu, { Item as MenuItem, Divider } from 'rc-menu';
 import 'rc-dropdown/assets/index.css';
 
+import {NavLink, Redirect} from 'react-router-dom'
 import arrow from '../../../assets/icons/arrow-down.svg'
 
 import './style.css'
@@ -33,6 +34,7 @@ class SearchIndex extends Component {
           this.onSelect = this.onSelect.bind(this);
           this.onSelectCity = this.onSelectCity.bind(this);
           this.change = this.change.bind(this);
+          this.onClickSearch = this.onClickSearch.bind(this);
     }
 
 
@@ -44,16 +46,16 @@ class SearchIndex extends Component {
       }
 
 
-      onSelect({ key }) {  
+    onSelect({ key }) {  
         this.setState({person:key})
-      }
+    }
 
-      onSelectCity({ key }) {  
+    onSelectCity({ key }) {  
         this.setState({selectCity:key})
-      }
+    }
 
       // Get props from children Date picker component
-      change(startDate,endDate){
+    change(startDate,endDate){
           // when the props change it will be called . . .
         this.setState({
             startDate: startDate,
@@ -63,14 +65,14 @@ class SearchIndex extends Component {
         console.log(this.state.startDate)
         console.log(this.state.endDate)
  
-      }
+    }
 
 
-      onClickSearch(){
-          if(this.state.startDate && this.state.endDate)
-          alert(this.state.startDate)
-      }
-      
+    onClickSearch() {
+       alert("search its called!")
+
+    }
+     
 
     render() { 
 
@@ -99,9 +101,12 @@ class SearchIndex extends Component {
             </Menu>
           );
 
+      
+
 
         return ( 
             <div className="search-bx-container">
+                
                  
                     <div className="checkin">
                         <Dropdown
@@ -146,7 +151,7 @@ class SearchIndex extends Component {
                         </Dropdown>
                     </div> 
                  
-                <button type="button" onClick={this.onClickSearch.bind(this)} className="btn-search"><span className="search-text-show" >Search</span><i className="fas fa-search search-icon-show"></i></button>
+                <button type="button" onClick={() => this.onClickSearch('/view')} className="btn-search"><span className="search-text-show" >Search</span><i className="fas fa-search search-icon-show"></i></button>
             </div>
          );
     }
