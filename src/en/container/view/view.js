@@ -26,7 +26,8 @@ class View extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            cModal: false
+            cModal: false,
+            showContact:false
         }
     }
 
@@ -46,8 +47,6 @@ class View extends Component {
     }
 
     bookRequestBox = React.createRef()
-    goToRequest = React.createRef()
-    requestBook = React.createRef()
 
     handleScroll = () => {
 
@@ -60,13 +59,41 @@ class View extends Component {
                 this.bookRequestBox.current.className = ['book-request-box']
             });
         }
+        // console.log(this.requestBook.current.offsetTop)
+        if (window.scrollY > (this.requestBook.current.offsetTop - 700)) {
+            this.goToRequest.current.className = ['request-button-box-none']
+        } else {
+            this.goToRequest.current.className = ['request-button-box']
+        }
+
     };
 
-    goToRequestBook = () =>{
+
+    goToRequest = React.createRef()
+    requestBook = React.createRef()
+    
+    goToRequestBook = () => {
         window.scrollTo({
             top: this.requestBook.current.offsetTop,
             behavior: "smooth"  // Optional, adds animation
         })
+
+    }
+
+
+    contactNumberBox = React.createRef()
+
+    contactNumber = () =>{
+
+        this.setState((prevState) => {
+            return { showContact: !prevState.showContact };
+        });
+        
+        if(this.state.showContact){
+            this.contactNumberBox.current.style.transform = 'translateY(38px)'
+        }else{
+            this.contactNumberBox.current.style.transform = 'translateY(-40px)'
+        }
     }
 
 
@@ -82,9 +109,9 @@ class View extends Component {
 
         return (
             <div className="view">
-                    <div className="request-button-box"  >
-                        <p ref={this.goToRequest} onClick={this.goToRequestBook} className="request-button-tablet" >Request to book</p>
-                    </div>
+                <div className="request-button-box" ref={this.goToRequest}  >
+                    <p onClick={this.goToRequestBook} className="request-button-tablet" >Request to book</p>
+                </div>
 
                 <div className="slider-box">
 
@@ -145,6 +172,7 @@ class View extends Component {
                                         <span>To</span>
                                     </div>
                                 </div>
+                                <span className="few-day" >2 days with 2 persons</span>
                                 <div className="request-to-book" >Request to book</div>
                             </div>
                             <div className="contact-person" >
@@ -153,7 +181,12 @@ class View extends Component {
                                     <img className="contact-person-img" src={pro} alt="img" />
                                     <span>Sara Judish</span>
                                 </div>
-                                <div className="contact-number" >Contact Number</div>
+                                <div className="contact-number" onClick={this.contactNumber} >
+                                    <div className="contact-number-box" ref={this.contactNumberBox} >
+                                        <p className="owner-press" >Contact Number</p>
+                                        <p className="owner-number" >0936 491 86 06</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -239,7 +272,7 @@ class View extends Component {
                                 </div>
                             </div>
 
-                            <div className="my-line" ></div>
+                            <div className="my-line tablet" ></div>
                         </div>
 
 
@@ -247,6 +280,8 @@ class View extends Component {
                         <div className="book-location" >
                             <h1>Location</h1>
                             <img src={location} alt="map" />
+                            <div className="my-line" ></div>
+
                         </div>
                     </div>
                 </div>
