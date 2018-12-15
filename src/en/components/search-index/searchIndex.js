@@ -8,7 +8,9 @@ import 'rc-dropdown/assets/index.css';
 import arrow from '../../../assets/icons/arrow-down.svg'
 
 import './style.css'
+ 
 import DatePickerRC from '../../components/dateStartEnd/datePicker';
+ 
 
 
 
@@ -60,13 +62,11 @@ class SearchIndex extends Component {
 
     onClickSearch() {
        alert("search its called!")
-
     }
      
 
     render() { 
-
-
+      
         const SelectCityMenu = (
             <Menu onSelect={this.onSelectCity}>
                 <MenuItem key="Kish" style={{fontSize: 16}}>Kish</MenuItem>
