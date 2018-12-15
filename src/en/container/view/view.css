@@ -182,7 +182,11 @@ flex-direction: row-reverse;
 .owner-number img {
   margin-right: 10px;
   width: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 .book-apartmant-detail{
     flex-direction: column;
 }
@@ -357,7 +361,7 @@ carousel carousel carousel carousel carousel
   .carousel .control-prev.control-arrow:after {
     transform: rotate(45deg);
     position: relative;
-    top: 29px;
+    top: 28px;
     left: 5px;
   }
   
