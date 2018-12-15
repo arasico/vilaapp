@@ -6,6 +6,7 @@ import TextInput from '../../components/createLandLoard/inputGroup';
 import SubTitle from '../../components/common/subTitle/subTitle';
 import Droplist from '../../components/common/typeOfDropList/typeOfDropList';
 import OptionDetails from '../../components/common/optionDetails/optionDetails';
+import DatePicker from '../../components/dateStartEnd/datePicker';
 
 import Rooms from '../../../assets/icons/rooms.svg'
 import Checkbox from '../../components/common/textArea/textArea';
@@ -22,6 +23,14 @@ class TestComponent extends Component {
     render() { 
         return (  
             <div className="test-container">
+
+
+
+
+            <DatePicker />
+
+
+            <hr />
                  
                     <OptionDetails img={Rooms} />
                  
