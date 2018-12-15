@@ -10,12 +10,14 @@ import six from '../../../assets/img/6.jpg'
 import seven from '../../../assets/img/7.jpg'
 import eight from '../../../assets/img/8.jpg'
 import pro from '../../../assets/img/pro.jpg'
+import location from '../../../assets/img/location.png'
+
 import rooms from '../../../assets/icons/rooms.svg'
 import area from '../../../assets/icons/area.svg'
 import beds from '../../../assets/icons/beds.svg'
 import persons from '../../../assets/icons/persons.svg'
 import check from '../../../assets/icons/check.svg'
-import location from '../../../assets/img/location.png'
+import callVolum from '../../../assets/icons/callvolume.svg'
 
 // import "react-responsive-carousel/lib/styles/carousel.css";
 import { Carousel } from 'react-responsive-carousel';
@@ -27,7 +29,11 @@ class View extends Component {
         super(props);
         this.state = {
             cModal: false,
-            showContact:false
+            showContact:false,
+            rooms:2,
+            beds:1,
+            persons:10,
+            area:5000
         }
     }
 
@@ -184,7 +190,7 @@ class View extends Component {
                                 <div className="contact-number" onClick={this.contactNumber} >
                                     <div className="contact-number-box" ref={this.contactNumberBox} >
                                         <p className="owner-press" >Contact Number</p>
-                                        <p className="owner-number" >0936 491 86 06</p>
+                                        <p className="owner-number" > <img src={callVolum} alt="callVolum" />0936 491 86 06</p>
                                     </div>
                                 </div>
                             </div>
@@ -206,25 +212,25 @@ class View extends Component {
                                     <div className="apartmant-detail-box-img" >
                                         <img src={rooms} alt="img" />
                                     </div>
-                                    <span>2 Rooms </span>
+                                    <span>{this.state.rooms} Rooms </span>
                                 </div>
                                 <div className="apartmant-detail-box" >
                                     <div className="apartmant-detail-box-img" >
                                         <img src={beds} alt="img" />
                                     </div>
-                                    <span>2 Bed </span>
+                                    <span>{this.state.beds} Bed </span>
                                 </div>
                                 <div className="apartmant-detail-box" >
                                     <div className="apartmant-detail-box-img" >
                                         <img src={persons} alt="img" />
                                     </div>
-                                    <span>2 Person </span>
+                                    <span>{this.state.persons} Person </span>
                                 </div>
                                 <div className="apartmant-detail-box" >
                                     <div className="apartmant-detail-box-img" >
                                         <img src={area} alt="img" />
                                     </div>
-                                    <span>45 M </span>
+                                    <span>{this.state.area}  M² </span>
                                 </div>
                             </div>
 
