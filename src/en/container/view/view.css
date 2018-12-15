@@ -49,8 +49,14 @@ flex-direction: row-reverse;
     overflow: hidden;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
     transition: all  .4s cubic-bezier(0.865, 0.220, 0.875, 0.255);
-}
+  }
+  .go-to-fixed{
+    position: fixed;
+    top: 50px;
+  }
+.back-to-normal{
 
+}
 .book-request-form{
     height: 50%;
     width: 100%;
@@ -416,6 +422,7 @@ carousel carousel carousel carousel carousel
     /* overflow: hidden; */
   }
   
+
   .carousel.carousel-slider .control-arrow {
     top: 0;
     color: #fff;
@@ -599,7 +606,7 @@ carousel carousel carousel carousel carousel
 .secondCarouselShow{
   position: fixed;
   top: 0;
-  z-index: 2;
+  z-index: 3;
   left: 0px;
   right: 0;
   bottom: 0;
@@ -689,16 +696,97 @@ margin: auto;
   height: 480px;
 } */
 
-
+.request-button-tablet{
+  display: none;
+}
+.tablet{
+  display: none;
+}
+.desktop{
+  display: block;
+}
 
 @media screen and (max-width: 1000px) {
+  .slider-box>div>.carousel.carousel-slider{
+    z-index: 1;
+  }
+  .request-button-box{
+    display: block;
+    z-index: 2;
+    position: fixed;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+  }
+  .request-button-tablet{
+    background-color: #1FC056;
+    color: #fff;
+    margin: auto;
+    padding: 20px;
+    width: 500px;
+    text-align: center;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all .2s linear;
 
+  }
+  .request-button-tablet:hover{
+    background-color: rgb(9, 138, 52);
+    transition: all .2s linear;
+  }
+  .two-part{
+    flex-direction: column-reverse;
+  }
+  .book-request-box{
+    position: unset;
+  }
+  .view-container-part2{
+    margin-top: -60px;
+    z-index: 2;
+    width: 100%;
+  }
+  .view-container-part1{
+    width: 100%;
+    padding: 50px;
+  }
+  .book-request-box{
+    width: 100%;
+  }
+  .book-request-form , .contact-person{
+    width: 100%;
+  }
+  .book-select-time , .request-to-book , .contact-number{
+    width: 450px;
+  }
 
 }
   
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 600px) {
   
+  .request-button-tablet{
+    width: 90%;
+  }
+  .apartmant-detail{
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .apartmant-detail-box {
+    width: 40%;
+    margin: 10px;
+}
+.book-select-time, .request-to-book, .contact-number{
+  width: 90%;
+}
+.book-about, .book-services, .book-location, .book-apartmant-detail{
+  padding: 50px 20px 0px;
+}
+.view-container-part1 {
+  padding: 50px 20px 50px;
+}
+.book-apartmant-detail h1{
+  font-size: 28px;
+}
 
 }
   

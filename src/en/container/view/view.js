@@ -46,22 +46,28 @@ class View extends Component {
     }
 
     bookRequestBox = React.createRef()
-
+    goToRequest = React.createRef()
+    requestBook = React.createRef()
 
     handleScroll = () => {
 
-        if (window.scrollY >= 700 ) {
+        if (window.scrollY >= 700) {
             window.requestAnimationFrame(() => {
-                this.bookRequestBox.current.style.top = `50px`;
-                this.bookRequestBox.current.style.position = `fixed`;
+                this.bookRequestBox.current.className = ['go-to-fixed book-request-box']
             });
         } else {
             window.requestAnimationFrame(() => {
-                this.bookRequestBox.current.style.top = `-275px`;
-                this.bookRequestBox.current.style.position = `absolute`;
+                this.bookRequestBox.current.className = ['book-request-box']
             });
         }
     };
+
+    goToRequestBook = () =>{
+        window.scrollTo({
+            top: this.requestBook.current.offsetTop,
+            behavior: "smooth"  // Optional, adds animation
+        })
+    }
 
 
     render() {
@@ -76,50 +82,58 @@ class View extends Component {
 
         return (
             <div className="view">
-                <Carousel showThumbs={false} showStatus={false} showIndicators={false} >
-                    <div onClick={this.showModal} style={{ backgroundImage: 'url(' + seven + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh', cursor: 'zoom-in' }} ></div>
-                    <div onClick={this.showModal} style={{ backgroundImage: 'url(' + two + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh', cursor: 'zoom-in' }} ></div>
-                    <div onClick={this.showModal} style={{ backgroundImage: 'url(' + three + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh', cursor: 'zoom-in' }} ></div>
-                    <div onClick={this.showModal} style={{ backgroundImage: 'url(' + four + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh', cursor: 'zoom-in' }} ></div>
-                    <div onClick={this.showModal} style={{ backgroundImage: 'url(' + five + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh', cursor: 'zoom-in' }} ></div>
-                    <div onClick={this.showModal} style={{ backgroundImage: 'url(' + six + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh', cursor: 'zoom-in' }} ></div>
-                    <div onClick={this.showModal} style={{ backgroundImage: 'url(' + one + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh', cursor: 'zoom-in' }} ></div>
-                    <div onClick={this.showModal} style={{ backgroundImage: 'url(' + eight + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh', cursor: 'zoom-in' }} ></div>
-                </Carousel>
-                <div className={secondCarousel.join(' ')}  >
-                    <span className="close-carousel-modal" onClick={this.showModal} ></span>
+                    <div className="request-button-box"  >
+                        <p ref={this.goToRequest} onClick={this.goToRequestBook} className="request-button-tablet" >Request to book</p>
+                    </div>
 
-                    <div className="modal-carousel">
-                        <Carousel showStatus={false} showIndicators={false}>
-                            <div>
-                                <img src={seven} alt="modal" />
-                            </div>
-                            <div>
-                                <img src={two} alt="modal" />
-                            </div>
-                            <div>
-                                <img src={three} alt="modal" />
-                            </div>
-                            <div>
-                                <img src={four} alt="modal" />
-                            </div>
-                            <div>
-                                <img src={five} alt="modal" />
-                            </div>
-                            <div>
-                                <img src={six} alt="modal" />
-                            </div>
-                            <div>
-                                <img src={one} alt="modal" />
-                            </div>
-                        </Carousel>
+                <div className="slider-box">
+
+                    <Carousel showThumbs={false} showStatus={false} showIndicators={false} >
+                        <div onClick={this.showModal} style={{ backgroundImage: 'url(' + seven + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh', cursor: 'zoom-in' }} ></div>
+                        <div onClick={this.showModal} style={{ backgroundImage: 'url(' + two + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh', cursor: 'zoom-in' }} ></div>
+                        <div onClick={this.showModal} style={{ backgroundImage: 'url(' + three + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh', cursor: 'zoom-in' }} ></div>
+                        <div onClick={this.showModal} style={{ backgroundImage: 'url(' + four + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh', cursor: 'zoom-in' }} ></div>
+                        <div onClick={this.showModal} style={{ backgroundImage: 'url(' + five + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh', cursor: 'zoom-in' }} ></div>
+                        <div onClick={this.showModal} style={{ backgroundImage: 'url(' + six + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh', cursor: 'zoom-in' }} ></div>
+                        <div onClick={this.showModal} style={{ backgroundImage: 'url(' + one + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh', cursor: 'zoom-in' }} ></div>
+                        <div onClick={this.showModal} style={{ backgroundImage: 'url(' + eight + ')', backgroundPosition: 'center', backgroundSize: 'cover', width: '100%', height: '100vh', cursor: 'zoom-in' }} ></div>
+                    </Carousel>
+                    <div className={secondCarousel.join(' ')}  >
+                        <span className="close-carousel-modal" onClick={this.showModal} ></span>
+
+                        <div className="modal-carousel">
+                            <Carousel showStatus={false} showIndicators={false}>
+                                <div>
+                                    <img src={seven} alt="modal" />
+                                </div>
+                                <div>
+                                    <img src={two} alt="modal" />
+                                </div>
+                                <div>
+                                    <img src={three} alt="modal" />
+                                </div>
+                                <div>
+                                    <img src={four} alt="modal" />
+                                </div>
+                                <div>
+                                    <img src={five} alt="modal" />
+                                </div>
+                                <div>
+                                    <img src={six} alt="modal" />
+                                </div>
+                                <div>
+                                    <img src={one} alt="modal" />
+                                </div>
+                            </Carousel>
+                        </div>
+
                     </div>
                 </div>
 
+
                 <div className="two-part" >
 
-                    <div className="book-request-parent view-container-part1" >
-
+                    <div className="book-request-parent view-container-part1" ref={this.requestBook}>
                         <div className="book-request-box" ref={this.bookRequestBox} >
                             <div className="book-request-form" >
                                 <h1>New booking request</h1>
@@ -140,8 +154,6 @@ class View extends Component {
                                     <span>Sara Judish</span>
                                 </div>
                                 <div className="contact-number" >Contact Number</div>
-
-
                             </div>
                         </div>
 
