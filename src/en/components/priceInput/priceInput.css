@@ -45,7 +45,7 @@
     color: #333;
     padding: 3px 0;
     width: 100%;
-    
+
 }
 
 .toman-span{
@@ -59,4 +59,15 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 1.2em;
     color: #ADADAD;
+}
+
+
+
+
+@media screen and (max-width: 400px) {
+    .flex-item{
+        flex-direction: column;
+    }
+   
+     
 }
