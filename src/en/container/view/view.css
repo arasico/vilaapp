@@ -209,7 +209,7 @@ font-size: 42px;
 
 .apartmant-detail-box{
     display: flex;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
     margin-right: 15px;
 }
