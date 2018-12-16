@@ -14,8 +14,6 @@ import GoogleMapReact from 'google-map-react';
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
-
-
 class GoogleMap extends Component {
     constructor(props) {
         super(props);
