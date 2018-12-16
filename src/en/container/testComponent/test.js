@@ -17,7 +17,7 @@ import  './style.css';
 
 import InputComponent from '../../components/common/optionButtonPlusMinus/optionButton';
 import OptionComponent from '../../components/common/optionDetails/optionDetails';
-import GoogleMap from '../../components/googleMap/googleMap';
+import SingleDate from '../../components/singleDate/singleDate';
 
 
  
@@ -65,8 +65,8 @@ class TestComponent extends Component {
         return (  
             <div className="test-container">
 
-
-            <GoogleMap /> 
+                <SingleDate name="from" />
+          
                 
                 
                 <hr />
