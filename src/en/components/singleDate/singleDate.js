@@ -43,6 +43,7 @@ import { DayPickerSingleDateController } from 'react-dates';
                         date={this.state.date}
                         hideKeyboardShortcutsPanel={true} 
                         noBorder={true} 
+                        isOutsideRange={() => false} 
                         />
                 </div>
               </div>
