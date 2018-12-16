@@ -66,6 +66,7 @@ class TestComponent extends Component {
             <div className="test-container">
 
                 <SingleDate name="from" />
+                <SingleDate name="to" />
           
                 
                 
