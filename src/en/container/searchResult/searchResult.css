@@ -3,10 +3,11 @@
     margin: auto;
 }
 .search-result-box{
-    margin-top: 90px;
+    margin-top: 100px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
     background: linear-gradient(0deg, #EAEAEA, #EAEAEA);
     overflow: hidden;
+    min-height: 900px;
 }
 .filter-list-box{
     display: flex;
@@ -251,6 +252,9 @@ transition: all .5s cubic-bezier(0.000, 0.000, 0.580, 1.000);
     opacity: 1;
     width: 50%;
     height: 100vh;
+    position: absolute;
+    right: 0;
+
 transform: translateX(0px);
 transition: all .5s cubic-bezier(0.000, 0.000, 0.580, 1.000);    
 }
@@ -274,8 +278,32 @@ transition: all .5s cubic-bezier(0.000, 0.000, 0.580, 1.000);
     position: fixed;
     right: 0;
 }
+.mapAbs{
+    position: absolute;
+    right: 0;
+}
+.selectFilter , .selectFilterDown , .show-filter-menu{
+    display:none;
+}
+
+.searchResultBox {
+display: none;
+}
+.searchResultBoxHidden{
+    display: none;
+}
 
 @media screen and (max-width: 850px) {
+    .searchResultBox {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        left: 0;
+    }
+    .searchResultBoxHidden{
+        display: none;
+    }
     .tabletHidden{
         display: none;
     }
@@ -284,7 +312,7 @@ transition: all .5s cubic-bezier(0.000, 0.000, 0.580, 1.000);
     justify-content: center;
     align-items: center;
     width: 200px;
-    margin: 10px 25px;
+    /* margin: 10px 25px; */
     cursor: pointer;
 }
 .show-filter-menu p{ 
@@ -305,9 +333,11 @@ transition: all .5s cubic-bezier(0.000, 0.000, 0.580, 1.000);
 }
 .filter-list-box{
     padding: 20px;
+    height: 70px;
 }
 .selectFilter{
     position: fixed;
+    display: block;
     top: 0;
     bottom: 0;
     left: 0;
@@ -323,6 +353,7 @@ transition: all .5s cubic-bezier(0.000, 0.000, 0.580, 1.000);
 }
 .selectFilterDown{
     position: fixed;
+    display: block;
     top: 1000px;
     bottom: 0;
     left: 0;
@@ -392,7 +423,12 @@ transition: all .5s cubic-bezier(0.000, 0.000, 0.580, 1.000);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid #c8c8c8;
+}
+.filter-close h1 {
+    color: #aaa;
+    font-weight: 100;
+    font-size: 28px;
 }
 .close-filter-box{
     position: absolute;
@@ -404,7 +440,7 @@ transition: all .5s cubic-bezier(0.000, 0.000, 0.580, 1.000);
     transition: all .2s linear;
 }
 .close-filter-box:hover:after , .close-filter-box:hover:before {
-    background-color: #aaa;
+    background-color: #ccc;
     transition: all .2s linear;
 
 }  
@@ -413,7 +449,7 @@ transition: all .5s cubic-bezier(0.000, 0.000, 0.580, 1.000);
     display:block;
     width: 40px;
     height: 2px;
-    background-color: #333333;
+    background-color: #aaa;
     transition: all .2s linear;
     position: absolute;
     top: 29px;
@@ -425,12 +461,20 @@ transition: all .5s cubic-bezier(0.000, 0.000, 0.580, 1.000);
 .close-filter-box:before{
     transform: rotate(-45deg);
 }
-
+.filter-children{
+    display: flex;
+    justify-content: space-around;
+}
+.filter-child{
 
 }
 
 
-@media screen and (max-width: 640px) {
+
+
+
+
+/* @media screen and (max-width: 640px) { */
 
 .map-list-box{
     flex-direction: column-reverse;
@@ -439,15 +483,18 @@ transition: all .5s cubic-bezier(0.000, 0.000, 0.580, 1.000);
     width: 100%;
     height: 0;
     z-index: 1;
-    transform: translateY(-2000px);
-    transition: all .5s cubic-bezier(0.000, 0.000, 0.580, 1.000);    
+    transform: translateX(-2000px);
+    transition: height .5s cubic-bezier(0.000, 0.000, 0.580, 1.000) ;
     }
 .serachMapActive{
     width: 100%;
-    z-index: 1;
+    z-index: 0;
     height: 500px;
-    transform: translateY(0px);
-    transition: transform .5s cubic-bezier(0.000, 0.000, 0.580, 1.000);    
+    position: absolute;
+    right: 0;
+    transform: translateX(0px);
+    transition: transform .5s cubic-bezier(0.000, 0.000, 0.580, 1.000) ;    
+
 }
 .searchList100{
     width: 100%;
@@ -464,29 +511,20 @@ transition: all .5s cubic-bezier(0.000, 0.000, 0.580, 1.000);
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 20px;
+    overflow: hidden;
     transition: all .5s cubic-bezier(0.000, 0.000, 0.580, 1.000);
 }
 
 .select-filter{
     width: 100%;
 }
+
 .select-griding {
-    display: flex;
-    flex-direction: row;
-    padding: 10px 25px;
-    align-items: flex-end;
-    border-radius: 30px;
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    justify-content: center;
-    margin-bottom: 20px;
-    z-index: 2;
+    padding: unset;
 }
 .select-listing-map{
     width: 50%;
-    height: 60px;
+    height: 40px;
     font-size: 14px;
 }
 .filter1{
@@ -501,10 +539,17 @@ left: 50%;
 .filter4{
 left: 28%;
 }
-.show-filter-menu{
+
+.com-increase{
     width: 100%;
 }
+.mapFix{
+    position: fixed;
+    top: 70px;
+    height: 70vh;
 }
+}
+
 
 @media screen and (max-width: 490px) {
     .select-from-to {
@@ -517,7 +562,9 @@ left: 28%;
     .select-from-to,.select-min-max{
 top: 115px;
     }
-    
+    .show-filter-menu{
+        width: 100px;
+    }
     .filter1{
         left: 0;
     }

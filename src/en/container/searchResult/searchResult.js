@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 
-import arrow from '../../../assets/icons/arrow-down.svg'
-import PriceMinMax from '../../components/common/priceMinMax.js/priceMinMax'
 import SearchResultData from '../../components/searchResultData/searchResultData'
-import map from './../../../assets/img/map.png'
-
+import SearchResultBox from '../../components/searchResultBox/searchResultBox'
 import OptionButtonPlus from '../../components/common/optionButtonPlusMinus/optionButton'
+import PriceMinMax from '../../components/common/priceMinMax.js/priceMinMax'
+
+import arrow from '../../../assets/icons/arrow-down.svg'
+import map from './../../../assets/img/map.png'
 
 import './searchResult.css';
 
@@ -29,7 +30,8 @@ class SerachResult extends Component {
             selectPrice: false,
             selectRoom: false,
             mapShow: true,
-            showFilterMenu: false
+            showFilterMenu: false,
+            searchResultBox:true
         };
         this.mapShowHandler = this.mapShowHandler.bind(this)
 
@@ -49,30 +51,32 @@ class SerachResult extends Component {
 
     handleScroll = () => {
 
-
+        //for FILTER
         if (window.scrollY >= 100) {
-            window.requestAnimationFrame(() => {
-                this.filter.current.style.top = `0px`;
-                this.filter.current.style.position = `fixed`;
-            });
+            this.filter.current.style.top = `0px`;
+            this.filter.current.style.position = `fixed`;
         } else {
-            window.requestAnimationFrame(() => {
-                this.filter.current.style.top = `${0}px`;
-                this.filter.current.style.position = `unset`;
-            });
+            this.filter.current.style.top = `${0}px`;
+            this.filter.current.style.position = `relative`;
         }
 
+        // for MAP
         if (window.scrollY >= 100 && this.state.mapShow) {
-            window.requestAnimationFrame(() => {
                 this.mapListHome.current.className = ['mapFix serachMapActive']
-            });
-        } else if (window.scrollY >= 100 && this.state.mapShow) {
-            this.mapListHome.current.className = ['mapFix searchMap']
-        } else if (window.scrollY < 100 && this.state.mapShow) {
+        }
+        else if (window.scrollY < 100 && this.state.mapShow) {
             this.mapListHome.current.className = ['serachMapActive']
-        } else {
+        }
+        else{
             this.mapListHome.current.className = ['searchMap']
         }
+
+        if(window.scrollY >= 100 && this.state.mapShow && ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 450)){
+            this.mapListHome.current.className = ['mapAbs serachMapActive']
+            this.setState({searchResultBox : false})
+        }
+
+
     };
 
     selectFromToHandler = (event) => {
@@ -158,6 +162,14 @@ class SerachResult extends Component {
         })
     }
 
+    closeResultBox = () =>{
+        this.setState((prev) => {
+            return {
+                searchResultBox: !prev.searchResultBox
+            }
+        })
+    }
+
     render() {
 
         let btnList = ['listBtn select-listing-map']
@@ -165,19 +177,21 @@ class SerachResult extends Component {
 
         let searchList = ['searchList']
         let searchMap = ['searchMap']
+        let searchResultBox = ['searchResultBox']
 
         let selectFilter = ['selectFilter']
 
         if (this.state.mapShow) {
             btnMap = ['mapBtnActive select-listing-map']
-            // searchMap = ['serachMapActive']
             searchList = ['searchList']
             btnList = ['listBtn select-listing-map']
+            searchResultBox = ['searchResultBox']
+
         } else {
             btnMap = ['mapBtn select-listing-map']
-            // searchMap = ['searchMap']
             searchList = ['searchList100']
             btnList = ['listBtnActive select-listing-map']
+            searchResultBox = ['searchResultBoxHidden']
         }
 
         if (window.scrollY >= 100 && this.state.mapShow) {
@@ -303,11 +317,11 @@ class SerachResult extends Component {
                                 <div className="filter-boxs">
                                     <div className="filter-box">
                                         <h1 className="filter-title" >Date</h1>
-                                        <div>
-                                            <div>
+                                        <div className="filter-children">
+                                            <div className="filter-child">
                                                 <h2>From</h2>
                                             </div>
-                                            <div>
+                                            <div className="filter-child">
                                                 <h2>To</h2>
                                             </div>
                                         </div>
@@ -321,12 +335,7 @@ class SerachResult extends Component {
                                     <div className="filter-box">
                                         <h1 className="filter-title" >Price</h1>
                                         <div>
-                                            <div>
-                                                <h2>Min</h2>
-                                            </div>
-                                            <div>
-                                                <h2>Max</h2>
-                                            </div>
+                                            <PriceMinMax/>
                                         </div>
                                     </div>
                                     <div className="filter-box">
@@ -367,8 +376,12 @@ class SerachResult extends Component {
                             <SearchResultData />
                             <SearchResultData />
                         </div>
-                        <div className={searchMap.join(' ')} style={styles.map} ref={this.mapListHome} >
-
+                        <div>
+                            <div className={searchMap.join(' ')} style={styles.map} ref={this.mapListHome} >
+                            </div>
+                            {this.state.searchResultBox ?  <div className={searchResultBox.join(' ')}>
+                                <SearchResultBox closeResultBox={this.closeResultBox} />
+                            </div> : ' '}
                         </div>
                     </div>
                 </div>
