@@ -38,9 +38,9 @@ const searchResultBox = (props) => {
                             <img src={beds} alt="beds"/>
                             <span>{props.bed}1 Bed</span>
                         </div>
-                        <div className="data-mm-box">
-                            <img src={persons} alt="area"/>
-                            <span>{props.mm}3 Person</span>
+                        <div className="data-person-box">
+                            <img src={persons} alt="person"/>
+                            <span>{props.person}3 Person</span>
                         </div>
                     </div>
                     <div className="show-more-btn">

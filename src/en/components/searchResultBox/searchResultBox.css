@@ -48,13 +48,13 @@ color: grey;
     padding: 10px;
     justify-content: space-between;
 }
-.data-mm-box ,  .data-bed-box , .data-room-box{
+.data-person-box ,  .data-bed-box , .data-room-box{
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.data-room-box span , .data-bed-box span , .data-mm-box span{
+.data-room-box span , .data-bed-box span , .data-person-box span{
     color: #515151;   
     margin: 0px 5px;
 }
