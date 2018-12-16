@@ -122,3 +122,12 @@ export default SingleDate;
 
 
 
+/*
+import the component and pas the props
+
+<SingleDate name="from" />
+
+*/
+
+
+
