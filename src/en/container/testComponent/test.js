@@ -17,6 +17,7 @@ import  './style.css';
 
 import InputComponent from '../../components/common/optionButtonPlusMinus/optionButton';
 import OptionComponent from '../../components/common/optionDetails/optionDetails';
+import SingleDate from '../../components/singleDate/singleDate';
 
 
  
@@ -64,11 +65,18 @@ class TestComponent extends Component {
         return (  
             <div className="test-container">
 
+                <SingleDate name="from" />
+                <SingleDate name="to" />
+          
+                
+                
+                <hr />
 
-         <div style={{display:'flex'}}>
-            <PriceInput name="min" />
-            <PriceInput name="max" />
-         </div>
+
+                <div style={{display:'flex'}}>
+                    <PriceInput name="min" />
+                    <PriceInput name="max" />
+                </div>
 
             {/* <DatePicker /> */}
 
