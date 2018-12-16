@@ -17,6 +17,7 @@ import  './style.css';
 
 import InputComponent from '../../components/common/optionButtonPlusMinus/optionButton';
 import OptionComponent from '../../components/common/optionDetails/optionDetails';
+import GoogleMap from '../../components/googleMap/googleMap';
 
 
  
@@ -65,10 +66,16 @@ class TestComponent extends Component {
             <div className="test-container">
 
 
-         <div style={{display:'flex'}}>
-            <PriceInput name="min" />
-            <PriceInput name="max" />
-         </div>
+            <GoogleMap /> 
+                
+                
+                <hr />
+
+
+                <div style={{display:'flex'}}>
+                    <PriceInput name="min" />
+                    <PriceInput name="max" />
+                </div>
 
             {/* <DatePicker /> */}
 
