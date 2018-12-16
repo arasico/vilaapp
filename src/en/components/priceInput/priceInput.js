@@ -1,6 +1,6 @@
 
 /*
-Price input 3.000.000 Toman example
+    Price input 3.000.000 Toman example
 */
 
 import React,{Component} from 'react';
