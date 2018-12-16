@@ -62,7 +62,7 @@
     position: absolute;
     top: 98px;
     background-color: #fff;
-    width: 250px;
+    width: 300px;
     border-radius: 0px 0px 30px 30px;
     display: flex;
     flex-direction: column;
@@ -73,13 +73,15 @@
     left: 0;
 }
 .filter2{
-left: 150px
+left: 150px;
+height: 150px;
 }
 .filter3{
 left: 300px
 }
 .filter4{
-left: 450px
+left: 450px;
+height: 150px;
 }
 .from-to-box{
     height: calc(100% - 50px );
@@ -89,10 +91,6 @@ left: 450px
     padding: 10px;
 }
 .min-to-max-box{
-
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
     padding: 10px;
 }
 .select-date-btn{

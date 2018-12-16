@@ -70,6 +70,12 @@ class HeaderComponent extends Component {
         }
     }
 
+    goToHome = () => {
+        // this.props.history.push("/");
+        console.log(window.location.pathname)
+        window.location.pathname = '/'
+    }
+
 
 
 
@@ -170,7 +176,7 @@ class HeaderComponent extends Component {
                 </div>
                 <div className="logo-container">
                     {/* {this.state.currentPage ?  <img src={LogoColorly} className="logo" alt="VilaApp logo"/> :  <img src={LogoWhit} className="logo" alt="VilaApp logo"/>} */}
-                    <img src={LogoColorly} className="logo" alt="VilaApp logo" />
+                    <img src={LogoColorly} className="logo" alt="VilaApp logo" onClick={this.goToHome} />
 
                 </div>
                 <div className="navbar-container">

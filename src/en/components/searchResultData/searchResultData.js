@@ -16,7 +16,7 @@ const styles = {
 
 const searchResultData = (props) => {
     return (
-        <div className="data-parent" >
+        <div className="data-parent" onClick={props.click} >
             <div className="data-child" >
                 <div style={styles.image} className="result-image-data" >
 

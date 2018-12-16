@@ -61,9 +61,10 @@ class SearchIndex extends Component {
 
 
     onClickSearch() {
-       alert("search its called!")
+        window.location.pathname = '/search-result'
     }
-     
+
+
 
     render() { 
       
@@ -118,7 +119,7 @@ class SearchIndex extends Component {
                             <div className="drop-down-list">{this.state.person} Person <img src={arrow} style={{marginRight:5,marginLeft:10, height:11, width:11 }} alt="arrow" /> </div>
                         </Dropdown>
                     </div> 
-                <button type="button" onClick={() => this.onClickSearch('/view')} className="btn-search"><span className="search-text-show" >Search</span><i className="fas fa-search search-icon-show"></i></button>
+                <button type="button" onClick={this.onClickSearch} className="btn-search"><span className="search-text-show" >Search</span><i className="fas fa-search search-icon-show"></i></button>
             </div>
          );
     }

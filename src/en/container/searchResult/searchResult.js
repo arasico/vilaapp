@@ -4,6 +4,8 @@ import SearchResultData from '../../components/searchResultData/searchResultData
 import SearchResultBox from '../../components/searchResultBox/searchResultBox'
 import OptionButtonPlus from '../../components/common/optionButtonPlusMinus/optionButton'
 import PriceMinMax from '../../components/common/priceMinMax.js/priceMinMax'
+import SingleDate from '../../components/singleDate/singleDate'
+import PriceInput from '../../components/priceInput/priceInput';
 
 import arrow from '../../../assets/icons/arrow-down.svg'
 import map from './../../../assets/img/map.png'
@@ -31,7 +33,7 @@ class SerachResult extends Component {
             selectRoom: false,
             mapShow: true,
             showFilterMenu: false,
-            searchResultBox:true
+            searchResultBox: true
         };
         this.mapShowHandler = this.mapShowHandler.bind(this)
 
@@ -62,18 +64,18 @@ class SerachResult extends Component {
 
         // for MAP
         if (window.scrollY >= 100 && this.state.mapShow) {
-                this.mapListHome.current.className = ['mapFix serachMapActive']
+            this.mapListHome.current.className = ['mapFix serachMapActive']
         }
         else if (window.scrollY < 100 && this.state.mapShow) {
             this.mapListHome.current.className = ['serachMapActive']
         }
-        else{
+        else {
             this.mapListHome.current.className = ['searchMap']
         }
 
-        if(window.scrollY >= 100 && this.state.mapShow && ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 450)){
+        if (window.scrollY >= 100 && this.state.mapShow && ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 450)) {
             this.mapListHome.current.className = ['mapAbs serachMapActive']
-            this.setState({searchResultBox : false})
+            this.setState({ searchResultBox: false })
         }
 
 
@@ -167,7 +169,7 @@ class SerachResult extends Component {
         })
     }
 
-    closeResultBox = () =>{
+    closeResultBox = () => {
         this.setState((prev) => {
             return {
                 searchResultBox: !prev.searchResultBox
@@ -175,6 +177,9 @@ class SerachResult extends Component {
         })
     }
 
+    goToView = () => {
+        window.location.pathname = '/view'
+    }
     render() {
 
         let btnList = ['listBtn select-listing-map']
@@ -209,9 +214,9 @@ class SerachResult extends Component {
             searchMap = ['searchMap']
         }
 
-        if(this.state.showFilterMenu){
+        if (this.state.showFilterMenu) {
             selectFilter = ['selectFilter']
-        }else{
+        } else {
             selectFilter = ['selectFilterDown']
         }
 
@@ -269,8 +274,14 @@ class SerachResult extends Component {
                             <div className="select-date notCloseMenuLand" >
                                 {this.state.selectFromTo ? <div className="select-from-to filter1 notCloseMenuLand" >
                                     <div className="from-to-box notCloseMenuLand"  >
-                                        <div className="select-from notCloseMenuLand" >From</div>
-                                        <div className="select-to notCloseMenuLand" >To</div>
+                                    <div className="filter-children">
+                                            <div className="filter-child">
+                                                <SingleDate name="from" />
+                                            </div>
+                                            <div className="filter-child">
+                                                <SingleDate name="to" />
+                                            </div>
+                                        </div>
                                     </div>
                                     <div className="select-date-btn notCloseMenuLand"  >
                                         <button className="apply-btn notCloseMenuLand" >Apply</button>
@@ -280,8 +291,8 @@ class SerachResult extends Component {
                             <div className="select-date" >
                                 {this.state.selectPerson ? <div className="select-from-to filter2 notCloseMenuLand" >
                                     <div className="from-to-box notCloseMenuLand" >
-                                        <div className="select-from notCloseMenuLand" >From</div>
-                                        <div className="select-to notCloseMenuLand" >To</div>
+                                    <OptionButtonPlus />
+                                        
                                     </div>
                                     <div className="select-date-btn notCloseMenuLand" >
                                         <button className="apply-btn notCloseMenuLand">Apply</button>
@@ -291,7 +302,9 @@ class SerachResult extends Component {
                             <div className="select-date" >
                                 {this.state.selectPrice ? <div className="select-min-max filter3 notCloseMenuLand" >
                                     <div className="min-to-max-box notCloseMenuLand" >
-                                        <PriceMinMax />
+                                       
+                    <PriceInput name="min" />
+                    <PriceInput name="max" />
                                     </div>
                                     <div className="select-date-btn notCloseMenuLand" >
                                         <button className="apply-btn notCloseMenuLand">Apply</button>
@@ -302,8 +315,8 @@ class SerachResult extends Component {
                             <div className="select-date notCloseMenuLand" >
                                 {this.state.selectRoom ? <div className="select-from-to filter4 notCloseMenuLand" >
                                     <div className="from-to-box notCloseMenuLand" >
-                                        <div className="select-from notCloseMenuLand" >From</div>
-                                        <div className="select-to notCloseMenuLand" >To</div>
+                                        <OptionButtonPlus />
+
                                     </div>
                                     <div className="select-date-btn notCloseMenuLand" >
                                         <button className="apply-btn notCloseMenuLand">Apply</button>
@@ -324,10 +337,10 @@ class SerachResult extends Component {
                                         <h1 className="filter-title" >Date</h1>
                                         <div className="filter-children">
                                             <div className="filter-child">
-                                                <h2>From</h2>
+                                                <SingleDate name="from" />
                                             </div>
                                             <div className="filter-child">
-                                                <h2>To</h2>
+                                                <SingleDate name="to" />
                                             </div>
                                         </div>
                                     </div>
@@ -340,7 +353,7 @@ class SerachResult extends Component {
                                     <div className="filter-box">
                                         <h1 className="filter-title" >Price</h1>
                                         <div>
-                                            <PriceMinMax/>
+                                            <PriceMinMax />
                                         </div>
                                     </div>
                                     <div className="filter-box">
@@ -371,20 +384,20 @@ class SerachResult extends Component {
                     </div>
                     <div className="map-list-box" >
                         <div className={searchList.join(' ')} >
-                            <SearchResultData />
-                            <SearchResultData />
-                            <SearchResultData />
-                            <SearchResultData />
-                            <SearchResultData />
-                            <SearchResultData />
-                            <SearchResultData />
-                            <SearchResultData />
-                            <SearchResultData />
+                            <SearchResultData click={this.goToView} />
+                            <SearchResultData click={this.goToView} />
+                            <SearchResultData click={this.goToView} />
+                            <SearchResultData click={this.goToView} />
+                            <SearchResultData click={this.goToView} />
+                            <SearchResultData click={this.goToView} />
+                            <SearchResultData click={this.goToView} />
+                            <SearchResultData click={this.goToView} />
+                            <SearchResultData click={this.goToView} />
                         </div>
                         <div>
                             <div className={searchMap.join(' ')} style={styles.map} ref={this.mapListHome} >
                             </div>
-                            {this.state.searchResultBox ?  <div className={searchResultBox.join(' ')}>
+                            {this.state.searchResultBox ? <div className={searchResultBox.join(' ')}>
                                 <SearchResultBox closeResultBox={this.closeResultBox} />
                             </div> : ' '}
                         </div>
