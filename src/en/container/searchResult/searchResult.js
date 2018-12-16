@@ -150,6 +150,11 @@ class SerachResult extends Component {
         } else {
             this.setState({ mapShow: true })
         }
+
+        window.scrollTo({
+            top: '0px',
+            behavior: "smooth"  // Optional, adds animation
+        })
     }
 
 
@@ -356,7 +361,7 @@ class SerachResult extends Component {
                             </div>
                             <div className={btnMap.join(' ')}  >
                                 <i className="fas fa-map-marker-alt"></i>
-                                <span className="select-map-btn" onClick={this.mapShowHandler} >Map</span>
+                                <span className="select-map-btn"  >Map</span>
                                 <p className="full-btn" id="map" onClick={this.mapShowHandler}></p>
                             </div>
                         </div>

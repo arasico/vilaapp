@@ -6,12 +6,7 @@ import './searchResultData.css'
 const styles = {
     image: {
         backgroundImage: 'url(' + pic + ')',
-        width: '300px',
-        height: '300px',
         backgroundSize: 'cover',
-        '@media screen and (minWidth: 600px)': {
-          }
-
     }
 }
 
@@ -19,7 +14,7 @@ const searchResultData = (props) => {
     return (
         <div className="data-parent" >
             <div className="data-child" >
-                <div style={styles.image} >
+                <div style={styles.image} className="result-image-data" >
 
                 </div>
                 {/* <img src={pic} alt={props.alt} /> */}

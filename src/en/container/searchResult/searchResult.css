@@ -263,9 +263,10 @@ transition: all .5s cubic-bezier(0.000, 0.000, 0.580, 1.000);
     display: flex;
     flex-wrap: wrap;
     padding: 20px;
-    justify-content: center;
+    justify-content: flex-start;
     transition: all .5s cubic-bezier(0.420, 0.000, 1.000, 1.000);
     }
+    
 .searchList{
     width: 50%;
     display: flex;

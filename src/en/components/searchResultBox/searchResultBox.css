@@ -113,6 +113,7 @@ color: grey;
     transform: rotate(-45deg);
 }
 
+
 @media screen and (max-width: 490px) {
     .data-child-box{
         padding: 15px;
