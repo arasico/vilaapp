@@ -53,10 +53,21 @@ class HeaderComponent extends Component {
         console.log(e.target)
     }
 
+    
+    humberger = React.createRef()
+
     openTabletMenuHandler = () => {
         this.setState((prevState) => {
             return { openTabletMenu: !prevState.openTabletMenu };
         });
+        if(this.state.openTabletMenu){
+            this.humberger.current.style.zIndex = '1'
+            console.log('1')
+        }else{
+            this.humberger.current.style.zIndex = '3'
+            console.log('0')
+
+        }
     }
 
 
@@ -84,9 +95,9 @@ class HeaderComponent extends Component {
 
         if (this.state.openTabletMenu) {
             tabletNav = ['tabletNavDown']
-            line1 = ['line line1move']
-            line2 = ['line line2move']
-            line3 = ['line line3move']
+            line1 = ['lineX line1move']
+            line2 = ['lineX line2move']
+            line3 = ['lineX line3move']
         } else {
             tabletNav = ['tabletNavUp']
             line1 = ['line line1']
@@ -169,12 +180,12 @@ class HeaderComponent extends Component {
                         <li><NavLink to="/landlord">Become a landlord</NavLink></li>
                     </ul>
 
-                    <div className="drawerMenu" onClick={this.openTabletMenuHandler}>
+                    <div className="drawerMenu" onClick={this.openTabletMenuHandler} ref={this.humberger}>
                         <span className={line1.join(' ')}></span>
                         <span className={line2.join(' ')} ></span>
                         <span className={line3.join(' ')} ></span>
                     </div>
-                    <ul className={tabletNav.join(' ')} >
+                    <ul className={tabletNav.join(' ')}  >
                         <li className="tabletNavLi" onClick={this.openTabletMenuHandler} ><NavLink to="/landlord">Become a landlord</NavLink></li>
                         <li className="tabletNavLi" onClick={this.openTabletMenuHandler} ><NavLink to="/home">Contact us</NavLink></li>
                         <li className="tabletNavLi" onClick={this.modalHandler} ><a href="#home">Log in/Sign up</a></li>

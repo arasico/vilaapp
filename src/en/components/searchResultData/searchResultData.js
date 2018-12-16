@@ -1,17 +1,16 @@
 import React from 'react';
 import pic from './../../../assets/img/pic.svg'
+import rooms from '../../../assets/icons/rooms.svg'
+import persons from '../../../assets/icons/persons.svg'
+import beds from '../../../assets/icons/beds.svg'
+
 import './searchResultData.css'
 
 
 const styles = {
     image: {
         backgroundImage: 'url(' + pic + ')',
-        width: '300px',
-        height: '300px',
         backgroundSize: 'cover',
-        '@media screen and (minWidth: 600px)': {
-          }
-
     }
 }
 
@@ -19,7 +18,7 @@ const searchResultData = (props) => {
     return (
         <div className="data-parent" >
             <div className="data-child" >
-                <div style={styles.image} >
+                <div style={styles.image} className="result-image-data" >
 
                 </div>
                 {/* <img src={pic} alt={props.alt} /> */}
@@ -30,16 +29,16 @@ const searchResultData = (props) => {
                 </div>
                 <div className="data-details">
                     <div className="data-room">
-                        <i className="fas fa-door-closed"></i>
+                        <img src={rooms} alt="rooms"/>
                         <span>{props.room}1 Room</span>
                     </div>
                     <div className="data-bed" >
-                        <i className="fas fa-bed"></i>
+                        <img src={beds} alt="beds"/>
                         <span>{props.bed}1 Bed</span>
                     </div>
-                    <div className="data-mm">
-                        <i className="far fa-building"></i>
-                        <span>{props.mm}45 M</span>
+                    <div className="data-person">
+                        <img src={persons} alt="person"/>
+                        <span>{props.person}3 person</span>
                     </div>
                 </div>
             </div>

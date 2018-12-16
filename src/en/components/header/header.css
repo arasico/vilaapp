@@ -17,6 +17,7 @@
     justify-content: center;
     width: 100%;
     top:0;
+    height: 100px;
 }
 
 a{
@@ -391,18 +392,19 @@ color: #999;
         height: 50px;
         float: right;
         position: relative;
-        z-index: 3;
+        z-index: 1;
         border-radius: 4px;
         right: 20px;
         cursor: pointer;
     }
     .tabletNavLi{
-        padding: 20px;
-        margin: 3px 0px;
+        padding: 30px 20px;
+        margin: 0px;
         color: #fff;
-        width: 98%;
+        width: 101%;
         text-align: center;
         transition: all .1s linear;
+        border-bottom: 1px solid #ffffff5c;
     
     }
     .tabletNavLi:hover{
@@ -441,27 +443,36 @@ color: #999;
         transition: transform .4s cubic-bezier(0.770, -0.085, 1.000, 0.130);
     }
     .line {
-        width: 70%;
-        height: 3px;
+        width: 60%;
+        height: 2px;
         background-color: #b52038;
+        position: absolute;
+        left: 12px;
+        border-radius: 5px;
+        box-shadow: 1px 1px 1px 1px rgba(51, 51, 51, 0.13);
+    }
+    .lineX {
+        width: 60%;
+        height: 2px;
+        background-color: #fff;
         position: absolute;
         left: 9px;
         border-radius: 5px;
         box-shadow: 1px 1px 1px 1px rgba(51, 51, 51, 0.13);
     }
     .line1{
-        top: 11px;
+        top: 14px;
         transform: rotate(0deg);
         transition: transform  .2s linear ,top .2s .2s linear;
     }
     .line2{
-        top: 26px;
+        top: 25px;
         opacity: 1;
         transition: opacity .2s .2s linear;
     
     }
     .line3{
-        top: 39px;
+        top: 36px;
         transform: rotate(0deg);
         transition: transform  .2s linear ,top .2s .2s linear;
     }
