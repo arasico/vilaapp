@@ -5,6 +5,8 @@ import SubTitle from '../../components/common/subTitle/subTitle';
 import Droplist from '../../components/common/typeOfDropList/typeOfDropList';
 import OptionDetails from '../../components/common/optionDetails/optionDetails';
 import DatePicker from '../../components/dateStartEnd/datePicker';
+import PriceInput from '../../components/priceInput/priceInput';
+
 
 
 
@@ -63,27 +65,30 @@ class TestComponent extends Component {
             <div className="test-container">
 
 
+         <div style={{display:'flex'}}>
+            <PriceInput name="min" />
+            <PriceInput name="max" />
+         </div>
 
-
-            <DatePicker />
+            {/* <DatePicker /> */}
 
 
             <hr />
                  
                 
 
-                    
+{/*                     
                     <InputComponent change={this.handleFilterUpdate} name={this.state.person}  />
                     <p>{this.state.person}</p>
                     <button onClick={this.shoMessage}>seeee</button>
-                    <hr />
+                    <hr /> */}
 
                  
-                    <OptionComponent change={this.handelGetValue} name={this.state.floor} maxLength={2} maxValue={20} label="Floors" />
+                    {/* <OptionComponent change={this.handelGetValue} name={this.state.floor} maxLength={2} maxValue={20} label="Floors" />
                     <p>Fllors: {this.state.floor}</p>
                     <button onClick={this.shoMessage}>Get Valu</button>
 
-                
+                 */}
 
             </div>
         );

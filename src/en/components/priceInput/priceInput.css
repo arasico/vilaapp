@@ -1,0 +1,74 @@
+
+.container-price-input{
+    width: 100%; 
+    padding: 5px;
+    
+}
+
+.container-price-input-child{
+    width: 100%;
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 3px  rgba(0, 0, 0, 0.137);
+
+}
+
+.price-input-items{
+    width: 100%; 
+    padding: 3px;
+
+}
+.flex-item{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+.price-input-items-child{  
+    width: 100%;
+ 
+}
+.left {
+    float: left;
+    text-align: left;
+}
+
+.right {
+    float: right;
+    text-align: right;
+}
+
+.input-price{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.2em;
+    color: #333;
+    padding: 3px 0;
+    width: 100%;
+
+}
+
+.toman-span{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 0.8em;
+    color: #ADADAD;
+
+}
+
+.title-price-input{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.2em;
+    color: #ADADAD;
+}
+
+
+
+
+@media screen and (max-width: 400px) {
+    .flex-item{
+        flex-direction: column;
+    }
+   
+     
+}
