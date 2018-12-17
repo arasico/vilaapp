@@ -44,7 +44,9 @@
     justify-content: center;
     align-items: center;
 }
- 
+.checkin-similar{
+    min-width: 140px;
+}
 
 .search-bx-container  .drop-down{
      border:0;
