@@ -33,9 +33,9 @@ import { DayPickerSingleDateController } from 'react-dates';
 
         render() {
           return (
-            <div   className="popup " onClick={this.props.closePopup}>
-              <div className='popup_inner slideInUp'>
-                <div className="single-date-container ">
+            <div   className="popup notCloseMenuLand" onClick={this.props.closePopup}>
+              <div className='popup_inner slideInUp notCloseMenuLand'>
+                <div className="single-date-container notCloseMenuLand">
                     <DayPickerSingleDateController 
                         onDateChange={this.onDateChange}
                         onFocusChange={this.onFocusChange}
@@ -94,7 +94,7 @@ class SingleDate extends Component {
 
     render() { 
         return ( 
-            <div className="container-single-date">
+            <div className="container-single-date notCloseMenuLand">
                    {this.state.showPopup ? 
                         <Popup 
                             closePopup={this.togglePopup.bind(this)} 
@@ -103,13 +103,13 @@ class SingleDate extends Component {
                         : null
                         }
 
-            <div className="container-single-date-child ">
-                <div className="single-date-items">
-                     <span className="title-single-date">{this.renderUperCase(this.props.name)}</span>
+            <div className="container-single-date-child notCloseMenuLand">
+                <div className="single-date-items notCloseMenuLand">
+                     <span className="title-single-date notCloseMenuLand">{this.renderUperCase(this.props.name)}</span>
                 </div>
-                <div className="price-single-date flex-item" >
-                     <div className="single-date-items-child left">
-                        <input placeholder="DD.MM.YYYY" name={this.props.name} value={this.state.date} onChange={this.Change.bind(this)} className="single-date" onClick={this.togglePopup.bind(this)} />
+                <div className="price-single-date flex-item notCloseMenuLand" >
+                     <div className="single-date-items-child left notCloseMenuLand">
+                        <input placeholder="DD.MM.YYYY" name={this.props.name} value={this.state.date} onChange={this.Change.bind(this)} className="single-date notCloseMenuLand" onClick={this.togglePopup.bind(this)} />
                      </div>
                 </div>
             </div>

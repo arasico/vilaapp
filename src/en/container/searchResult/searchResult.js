@@ -274,7 +274,7 @@ class SerachResult extends Component {
                             <div className="select-date notCloseMenuLand" >
                                 {this.state.selectFromTo ? <div className="select-from-to filter1 notCloseMenuLand" >
                                     <div className="from-to-box notCloseMenuLand"  >
-                                    <div className="filter-children">
+                                        <div className="filter-children">
                                             <div className="filter-child">
                                                 <SingleDate name="from" />
                                             </div>
@@ -291,8 +291,8 @@ class SerachResult extends Component {
                             <div className="select-date" >
                                 {this.state.selectPerson ? <div className="select-from-to filter2 notCloseMenuLand" >
                                     <div className="from-to-box notCloseMenuLand" >
-                                    <OptionButtonPlus />
-                                        
+                                        <OptionButtonPlus />
+
                                     </div>
                                     <div className="select-date-btn notCloseMenuLand" >
                                         <button className="apply-btn notCloseMenuLand">Apply</button>
@@ -302,9 +302,9 @@ class SerachResult extends Component {
                             <div className="select-date" >
                                 {this.state.selectPrice ? <div className="select-min-max filter3 notCloseMenuLand" >
                                     <div className="min-to-max-box notCloseMenuLand" >
-                                       
-                    <PriceInput name="min" />
-                    <PriceInput name="max" />
+
+                                        <PriceInput name="min" />
+                                        <PriceInput name="max" />
                                     </div>
                                     <div className="select-date-btn notCloseMenuLand" >
                                         <button className="apply-btn notCloseMenuLand">Apply</button>
