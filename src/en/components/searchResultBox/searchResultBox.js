@@ -17,7 +17,7 @@ const styles = {
 
 const searchResultBox = (props) => {
     return (
-        <div className="data-parent-box" >
+        <div className="data-parent-box"    >
             <div className="data-child-box" >
                 <div className="close-result-box" onClick={props.closeResultBox} ></div>
                 <div style={styles.image} className="result-image" >
@@ -43,7 +43,7 @@ const searchResultBox = (props) => {
                             <span>{props.person}3 Person</span>
                         </div>
                     </div>
-                    <div className="show-more-btn">
+                    <div className="show-more-btn" onClick={props.click}>
                         <p>Show More</p>
                     </div>
                 </div>

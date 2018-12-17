@@ -398,7 +398,7 @@ class SerachResult extends Component {
                             <div className={searchMap.join(' ')} style={styles.map} ref={this.mapListHome} >
                             </div>
                             {this.state.searchResultBox ? <div className={searchResultBox.join(' ')}>
-                                <SearchResultBox closeResultBox={this.closeResultBox} />
+                                <SearchResultBox closeResultBox={this.closeResultBox} click={this.goToView} />
                             </div> : ' '}
                         </div>
                     </div>
