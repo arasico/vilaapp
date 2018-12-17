@@ -88,21 +88,21 @@ export default class InputComponent extends React.Component {
 
     render() { 
         return (
-                <div className="container-option-button">
-                    <div className="option-flex-line">
-                        <div className="option-flex-item">
-                            <button name="min" className="btn-circle-option btn-minus-icon" onClick={this.Change} />
+                <div className="container-option-button notCloseMenuLand">
+                    <div className="option-flex-line notCloseMenuLand">
+                        <div className="option-flex-item notCloseMenuLand">
+                            <button name="min" className="btn-circle-option btn-minus-icon notCloseMenuLand" onClick={this.Change} />
                         </div>
-                        <div className="option-flex-item">
-                            <input className="option-input-component" 
+                        <div className="option-flex-item notCloseMenuLand">
+                            <input className="option-input-component notCloseMenuLand" 
                             value={this.state.counter}
                             onChange={this.handleChange.bind(this)}
                             onFocus={this.handelFocus.bind(this)} 
                             onBlur={this.handelBlur.bind(this)} 
                             maxLength={3} />
                         </div>
-                        <div className="option-flex-item">
-                            <button name="max" className="btn-circle-option btn-plus-icon" onClick={this.Change} />
+                        <div className="option-flex-item notCloseMenuLand">
+                            <button name="max" className="btn-circle-option btn-plus-icon notCloseMenuLand" onClick={this.Change} />
                         </div>
                     </div>
                 </div>

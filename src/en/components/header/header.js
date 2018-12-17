@@ -64,10 +64,17 @@ class HeaderComponent extends Component {
             this.humberger.current.style.zIndex = '1'
             console.log('1')
         }else{
-            this.humberger.current.style.zIndex = '3'
+            this.humberger.current.style.zIndex = '6'
             console.log('0')
 
         }
+
+    }
+
+    goToHome = () => {
+        // this.props.history.push("/");
+        console.log(window.location.pathname)
+        window.location.pathname = '/'
     }
 
 
@@ -170,7 +177,7 @@ class HeaderComponent extends Component {
                 </div>
                 <div className="logo-container">
                     {/* {this.state.currentPage ?  <img src={LogoColorly} className="logo" alt="VilaApp logo"/> :  <img src={LogoWhit} className="logo" alt="VilaApp logo"/>} */}
-                    <img src={LogoColorly} className="logo" alt="VilaApp logo" />
+                    <img src={LogoColorly} className="logo" alt="VilaApp logo" onClick={this.goToHome} />
 
                 </div>
                 <div className="navbar-container">
@@ -185,7 +192,7 @@ class HeaderComponent extends Component {
                         <span className={line2.join(' ')} ></span>
                         <span className={line3.join(' ')} ></span>
                     </div>
-                    <ul className={tabletNav.join(' ')}  >
+                    <ul className={tabletNav.join(' ')} >
                         <li className="tabletNavLi" onClick={this.openTabletMenuHandler} ><NavLink to="/landlord">Become a landlord</NavLink></li>
                         <li className="tabletNavLi" onClick={this.openTabletMenuHandler} ><NavLink to="/home">Contact us</NavLink></li>
                         <li className="tabletNavLi" onClick={this.modalHandler} ><a href="#home">Log in/Sign up</a></li>

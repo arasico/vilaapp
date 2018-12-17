@@ -58,14 +58,14 @@ class PriceInput extends Component {
 
 
         return ( 
-            <div className="container-price-input">
-               <div className="container-price-input-child">
-                   <div className="price-input-items">
-                        <span className="title-price-input">{this.renderUperCase(this.props.name)}</span>
+            <div className="container-price-input notCloseMenuLand">
+               <div className="container-price-input-child notCloseMenuLand">
+                   <div className="price-input-items notCloseMenuLand">
+                        <span className="title-price-input notCloseMenuLand">{this.renderUperCase(this.props.name)}</span>
                    </div>
-                   <div className="price-input-items flex-item">
-                        <div className="price-input-items-child left">
-                                <input className="input-price"
+                   <div className="price-input-items flex-item notCloseMenuLand">
+                        <div className="price-input-items-child left notCloseMenuLand">
+                                <input className="input-price notCloseMenuLand"
                                     value={this.state.value}
                                     onChange={this.onChange.bind(this)}
                                     onFocus={this.onFocus.bind(this)}
@@ -73,8 +73,8 @@ class PriceInput extends Component {
                                     maxLength="9"
                                     />
                         </div>
-                        <div className="price-input-items-child right">
-                            <span className="toman-span">Toman</span>
+                        <div className="price-input-items-child right notCloseMenuLand">
+                            <span className="toman-span notCloseMenuLand">Toman</span>
                         </div>
                    </div>
                </div>
