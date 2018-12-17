@@ -40,7 +40,10 @@ color: grey;
     justify-content: space-between;
 }
 
-
+.data-room  , .data-bed  , .data-person {
+    display: flex;
+    align-items: center;
+}
 .data-room span , .data-bed span , .data-person span{
     color: #515151;   
     margin: 0px 5px;
