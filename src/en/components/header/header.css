@@ -440,7 +440,7 @@ color: #999;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        transform: translateY(-1000px);
+        transform: translateY(-1500px);
         transition: transform .4s cubic-bezier(0.770, -0.085, 1.000, 0.130);
     }
     .line {

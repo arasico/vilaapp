@@ -284,6 +284,16 @@ transition: all .5s cubic-bezier(0.000, 0.000, 0.580, 1.000);
 .selectFilter , .selectFilterDown , .show-filter-menu{
     display:none;
 }
+.dataShowBox50{
+    width: 50%;
+    transition: all .5s cubic-bezier(0.000, 0.295, 0.335, 1.115);
+
+}
+.dataShowBox33{
+    width: 33.33%;
+    transition: all .5s cubic-bezier(0.000, 0.295, 0.335, 1.115);
+
+}
 
 .searchResultBox {
 display: none;
@@ -469,8 +479,13 @@ display: none;
 }
 
 
-
-
+.dataShowBox33{
+    width: 100%;
+    transition: all .5s cubic-bezier(0.000, 0.295, 0.335, 1.115);
+}
+.dataShowBox50{
+    display: none;
+}
 
 
 /* @media screen and (max-width: 640px) { */

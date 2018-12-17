@@ -191,17 +191,20 @@ class SerachResult extends Component {
 
         let selectFilter = ['selectFilter']
 
+        let dataShowBox = ['dataShowBox50']
+
         if (this.state.mapShow) {
             btnMap = ['mapBtnActive select-listing-map']
             searchList = ['searchList']
             btnList = ['listBtn select-listing-map']
             searchResultBox = ['searchResultBox']
-
+            dataShowBox = ['dataShowBox50']
         } else {
             btnMap = ['mapBtn select-listing-map']
             searchList = ['searchList100']
             btnList = ['listBtnActive select-listing-map']
             searchResultBox = ['searchResultBoxHidden']
+            dataShowBox = ['dataShowBox33']
         }
 
         if (window.scrollY >= 100 && this.state.mapShow) {
@@ -384,15 +387,40 @@ class SerachResult extends Component {
                     </div>
                     <div className="map-list-box" >
                         <div className={searchList.join(' ')} >
-                            <SearchResultData click={this.goToView} />
-                            <SearchResultData click={this.goToView} />
-                            <SearchResultData click={this.goToView} />
-                            <SearchResultData click={this.goToView} />
-                            <SearchResultData click={this.goToView} />
-                            <SearchResultData click={this.goToView} />
-                            <SearchResultData click={this.goToView} />
-                            <SearchResultData click={this.goToView} />
-                            <SearchResultData click={this.goToView} />
+                            <div className={dataShowBox.join(' ')} >
+                                <SearchResultData click={this.goToView} />
+                            </div>
+                            <div className={dataShowBox.join(' ')} >
+                                <SearchResultData click={this.goToView} />
+                            </div>
+                            <div className={dataShowBox.join(' ')} >
+                                <SearchResultData click={this.goToView} />
+                            </div>
+                            <div className={dataShowBox.join(' ')} >
+                                <SearchResultData click={this.goToView} />
+                            </div>
+                            <div className={dataShowBox.join(' ')} >
+                                <SearchResultData click={this.goToView} />
+                            </div>
+                            <div className={dataShowBox.join(' ')} >
+                                <SearchResultData click={this.goToView} />
+                            </div>
+                            <div className={dataShowBox.join(' ')} >
+                                <SearchResultData click={this.goToView} />
+                            </div>
+                            <div className={dataShowBox.join(' ')} >
+                                <SearchResultData click={this.goToView} />
+                            </div>
+                            <div className={dataShowBox.join(' ')} >
+                                <SearchResultData click={this.goToView} />
+                            </div>
+                            <div className={dataShowBox.join(' ')} >
+                                <SearchResultData click={this.goToView} />
+                            </div>
+                            <div className={dataShowBox.join(' ')} >
+                                <SearchResultData click={this.goToView} />
+                            </div>
+
                         </div>
                         <div>
                             <div className={searchMap.join(' ')} style={styles.map} ref={this.mapListHome} >

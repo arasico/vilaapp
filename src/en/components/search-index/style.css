@@ -38,7 +38,7 @@
     text-align: left;
     
 }
-.checkin , .checkout{
+.checkin , .checkout , .checkin-similar{
     padding: 10px;
     display: flex;
     justify-content: center;
@@ -128,9 +128,9 @@ li.peronSelection {
 }
 
 
-@media screen and (max-width: 860px) {
+@media screen and (max-width: 900px) {
    
-    .checkin , .checkout { 
+    .checkin , .checkout  { 
         display: none!important;
     }
     li.selectCity{
@@ -174,5 +174,11 @@ li.peronSelection {
     }
     .search-icon-show{
         display: inline;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .checkin3{
+        display: none !important;
     }
 }

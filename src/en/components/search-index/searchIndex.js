@@ -96,7 +96,7 @@ class SearchIndex extends Component {
 
         return ( 
             <div className="search-bx-container">
-                    <div className="checkin checkin-similar">
+                    <div className=" checkin-similar checkin1">
                         <Dropdown
                             trigger={['click']}
                             overlay={SelectCityMenu}
@@ -110,7 +110,7 @@ class SearchIndex extends Component {
                             <DatePickerRC change={this.change} />
                     </div>
  
-                    <div className="checkin checkin-similar">
+                    <div className="checkin-similar checkin3">
                         <Dropdown
                             trigger={['click']}
                             overlay={menu}

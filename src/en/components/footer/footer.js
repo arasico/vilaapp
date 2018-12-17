@@ -5,6 +5,7 @@ import LogoBlack from '../../../assets/img/logo-vilaapp-000.svg'
 import fb from '../../../assets/icons/facebook.svg'
 import insta from '../../../assets/icons/instagram.svg'
 import tw from '../../../assets/icons/twitter.svg'
+import linkedin from '../../../assets/icons/linkedin.svg'
 
 class FooterComponent extends Component {
     constructor(props) {
@@ -38,10 +39,10 @@ class FooterComponent extends Component {
                             <p>Social</p>
                             <ul>
                                 <li>
-                                    <a href="http://www.faceboo.com/#" ><img src={fb} alt="vilaapp facebook"/> </a>
-                                    <a href="http://www.instagram.com/#" ><img src={insta} alt="vilaapp instagram"/> </a>
-                                    <a href="http://www.twitter.com/#" ><img src={tw} alt="vilaapp twitter"/> </a>
-                                    <a href="http://www.twitter.com/#" ><img src={tw} alt="vilaapp twitter"/> </a>
+                                    <a href="http://www.faceboo.com/" ><img src={fb} alt="vilaapp facebook"/> </a>
+                                    <a href="http://www.instagram.com/" ><img src={insta} alt="vilaapp instagram"/> </a>
+                                    <a href="http://www.twitter.com/" ><img src={tw} alt="vilaapp twitter"/> </a>
+                                    <a href="http://www.linkedin.com/" ><img src={linkedin} alt="vilaapp linkedin"/> </a>
                                 </li>
                              
                             </ul>
