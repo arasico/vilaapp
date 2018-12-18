@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom'
 import { Map, Marker, MarkerLayout } from 'yandex-map-react';
 import Dropdown from 'rc-dropdown';
 import Menu, { Item as MenuItem, Divider } from 'rc-menu';
@@ -14,7 +15,7 @@ import Magnifier from '../../../assets/icons/magnifier.svg'
 import ArrowRight from '../../../assets/icons/arrow-right-light.svg'
 import ArrowLeft from '../../../assets/icons/arrow-left.svg'
 import Close from '../../../assets/icons/close.svg'
-import Medaphone from '../../../assets/icons/megaphone.svg'
+import Megaphone from '../../../assets/icons/megaphone.svg'
 import Success from '../../../assets/icons/success.svg'
 import ArrowRight2 from '../../../assets/icons/arrowright.svg'
 import OurLogo from '../../../assets/icons/ourlogo.svg'
@@ -29,7 +30,7 @@ import Rooms from '../../../assets/icons/rooms.svg'
 //  ---- End of Icons -------------------------------------------------->
 //
 
-import TextInput from '../../components/createLandLoard/inputGroup';
+import Input from '../../components/commonInput/InputGroup';
 import Subtitle from '../../components/common/subTitle/subTitle';
 import TypeOfList from '../../components/common/typeOfDropList/typeOfDropList';
 import Chechbox from '../../components/common/checkbox/checkbox';
@@ -113,6 +114,9 @@ class CreateComponent extends Component {
         this.tabOneNumber.current.style.backgroundColor = '#C50143'
         this.tabOneNumber.current.style.color = '#fff'
         this.tabOneText.current.style.color = '#C50143'
+
+        window.addEventListener('scroll', this.handleScroll);
+
     }
 
     onDrop = async (files) => {
@@ -128,19 +132,43 @@ class CreateComponent extends Component {
         })
     }
 
+
+
+    componentWillUnmount() {
+        // Make sure to revoke the data uris to avoid memory leaks
+        this.state.files.forEach(f => URL.revokeObjectURL(f.preview))
+        window.removeEventListener('scroll', this.handleScroll);
+
+
+    }
+
+    informationBtns = React.createRef()
+    imageBtns = React.createRef()
+    myspan1 = React.createRef()
+    myspan2 = React.createRef()
+
+    handleScroll = () => {
+        if ((window.innerHeight + window.scrollY) >= this.myspan1.current.offsetTop + 200) {
+            this.informationBtns.current.className = ['notFixCreateBtn']
+        } else if ((window.innerHeight + window.scrollY) < this.myspan1.current.offsetTop + 200) {
+            this.informationBtns.current.className = ['fixCreateBtn']
+        }
+
+        if ((window.innerHeight + window.scrollY) >= this.myspan2.current.offsetTop + 200) {
+            this.imageBtns.current.className = ['notFixCreateBtn']
+        } else if ((window.innerHeight + window.scrollY) < this.myspan2.current.offsetTop + 200) {
+            this.imageBtns.current.className = ['fixCreateBtn']
+        }
+
+    };
+
+
     HandelDeleteImg(file, index) {
         const rs = this.state.files;
         delete rs[index];
         this.setState({ files: rs })
         console.log(rs)
     }
-
-    componentWillUnmount() {
-        // Make sure to revoke the data uris to avoid memory leaks
-        this.state.files.forEach(f => URL.revokeObjectURL(f.preview))
-
-    }
-
 
 
     openCity(cityName) {
@@ -200,11 +228,20 @@ class CreateComponent extends Component {
             this.tabThreeNumber.current.style.color = '#fff'
             this.tabThreeText.current.style.color = '#C50143'
 
-            window.scrollTo({
-                top: '0px',
-                behavior: "smooth"  // Optional, adds animation
-            })
+            // window.scrollTo({
+            //     top: '0px',
+            //     behavior: "smooth"  // Optional, adds animation
+            // })
+            // ReactDOM.findDOMNode(this.successPart).focus();
+            // ReactDOM.findDOMNode(this.refs.dropdown).focus();
+
+            // ReactDOM.findDOMNode(this.successPart).scrollTo({
+            //     top: '0px',
+            //     behavior: "smooth"  // Optional, adds animation
+            // })
         }
+        this._input.focus();
+
     }
 
     backToSecondStep = () => {
@@ -225,7 +262,7 @@ class CreateComponent extends Component {
             this.tabThreeNumber.current.style.backgroundColor = '#6FCF97'
             this.tabThreeNumber.current.style.color = '#fff'
             this.tabThreeText.current.style.color = '#6FCF97'
-            
+
             this.successPart.current.style.transform = 'translateX(0px)'
             this.addImagePart.current.style.transform = 'translateX(2000px)'
             this.tabThree.current.style.height = '500px'
@@ -250,6 +287,8 @@ class CreateComponent extends Component {
     callSearch() {
         alert("serch!")
     }
+
+
 
     render() {
 
@@ -287,9 +326,11 @@ class CreateComponent extends Component {
         return (
             <div className="container-fluid">
                 <div className="three-part">
+                <input ref={c => (this._input = c)} className="xxxx" />
 
 
-                    <div className="container pt100">
+                    <div className="container pt120">
+
                         <div className="tabs-menu-container">
                             <div className="menu-item" id="address" onClick={() => this.openCity('tabOne')}>
                                 <div className="tabs-circle-container" ref={this.tabOneNumber}>
@@ -331,7 +372,7 @@ class CreateComponent extends Component {
                                 <div className="search-box-create-container">
                                     <ul>
                                         <li> <img src={Pin} style={{ height: 25, width: 25 }} alt="pin" /></li>
-                                        <li><h1> Where is your apartment? </h1></li>
+                                        <li className="where-is" ><h1> Where is your apartment? </h1></li>
                                         <li style={{ paddingRight: 15 }}>
                                             <Dropdown
                                                 trigger={['click']}
@@ -359,7 +400,7 @@ class CreateComponent extends Component {
                                 <div className="btn-create-continu  btn-yellow">
                                     <div className="create-btn-container">
                                         <span>Next Step</span>
-                                        <img src={ArrowRight} alt="s" style={{ float: "right", paddingLeft: 20 }} />
+                                        <img src={ArrowRight} alt="s" className="btn-arrow-right" />
                                     </div>
                                 </div>
                             </div>
@@ -371,19 +412,14 @@ class CreateComponent extends Component {
 
                             <div className="create-form-container">
                                 <Subtitle label="Basic Infromation" />
+                                <div style={{ margin: 10 }}>
+                                    <Input type={'text'} placeHolder={'Title'} changed={this.changedHandler} error={'title error'} />
+                                </div>
+                                <div style={{ margin: 10 }}>
+                                    <Input type={'text'} placeHolder={'Daily price'} changed={this.changedHandler} error={'Daily error'} />
+                                </div>
 
-                                <TextInput
-                                    label="Ttile"
-                                    placeholder="Please insert something like: Rent Great and lovely Flat in Kish"
-                                    error="Please insert you title!"
-                                    labelSecend=""
-                                />
-                                <TextInput
-                                    label="Daily Price"
-                                    placeholder="please write correct and net price per a day"
-                                    error=""
-                                    labelSecend="Toman / Per Day"
-                                />
+
                                 <div className="create-basic-info-type-container">
                                     <div className="create-basic-info-type-item">
                                         <TypeOfList label="Type of Place" />
@@ -444,12 +480,13 @@ class CreateComponent extends Component {
 
                                 <TextArea label="About this listing" placeholder="please write something about your Home and condition of it . . ." />
 
+                                <span ref={this.myspan1} ></span>
 
-                                <div className="create-btn-information-container">
+                                <div className="fixCreateBtn" ref={this.informationBtns}>
                                     <div className="create-btn-information-container-item" onClick={this.backToFirstStep}>
                                         <div className="btn-create-continu  btn-silver">
                                             <div className="create-btn-container">
-                                                <img src={ArrowLeft} alt="s" style={{ float: "left", paddingRight: 20 }} />
+                                                <img src={ArrowLeft} alt="s" className="btn-arrow-left" />
                                                 <span style={{ color: '#8C8C8C' }}>Back</span>
                                             </div>
                                         </div>
@@ -458,14 +495,13 @@ class CreateComponent extends Component {
                                         <div className="btn-create-continu  btn-yellow">
                                             <div className="create-btn-container">
                                                 <span>Next Step</span>
-                                                <img src={ArrowRight} alt="s" style={{ float: "right", paddingLeft: 20 }} />
+                                                <img src={ArrowRight} alt="s" className="btn-arrow-right" />
                                             </div>
                                         </div>
                                     </div>
 
                                 </div>
                             </div>
-
                         </div>
 
                         <div id="tabThree" ref={this.tabThree} className="basic-tab city ">
@@ -482,7 +518,7 @@ class CreateComponent extends Component {
                                                 <div className="darg-image-box" >
                                                     {/* <img src={Attach} className="attach-img"  alt="logo" /> */}
                                                     <button className="select-image-btn" >Select your images</button>
-                                                    <p>Drag and Drop or click here for upload photo</p>
+                                                    <p className="drag-drop-text" >Drag and Drop or click here for upload photo</p>
                                                 </div>
                                             }
                                         </ReactDropzone>
@@ -492,11 +528,14 @@ class CreateComponent extends Component {
 
                                     </div>
                                     <div className="line-seprator"></div>
-                                    <div className="create-btn-information-container">
+
+                                    <span ref={this.myspan2} ></span>
+
+                                    <div className="create-btn-information-container" ref={this.imageBtns}>
                                         <div className="create-btn-information-container-item" onClick={this.backToSecondStep}>
                                             <div className="btn-create-continu  btn-silver">
                                                 <div className="create-btn-container">
-                                                    <img src={ArrowLeft} alt="s" style={{ float: "left", paddingRight: 20 }} />
+                                                    <img src={ArrowLeft} alt="s" className="btn-arrow-left" />
                                                     <span style={{ color: '#8C8C8C' }}>Back</span>
                                                 </div>
                                             </div>
@@ -505,15 +544,16 @@ class CreateComponent extends Component {
                                             <div className="btn-create-continu  btn-save-list">
                                                 <div className="create-btn-container">
                                                     <span style={{ color: '#fff' }} >Save your list</span>
-                                                    <img src={Medaphone} alt="s" style={{ float: "right", paddingLeft: 20 }} />
+                                                    <img src={Megaphone} className="megaphone" alt="s" />
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
 
                                 <div className="success-part" ref={this.successPart}  >
-                                    <div className="success-text">
+                                    <div className="success-text" ref="dropdown">
                                         <img src={Success} alt="success" />
                                         <div>
                                             <h2>Your property has been successfully Added.</h2>

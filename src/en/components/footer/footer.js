@@ -14,7 +14,7 @@ class FooterComponent extends Component {
     }
     render() { 
         return ( 
-            <div className="container-fluid footer-color-black ">
+            <div className="container-fluid footer-color-black myfooter ">
                 <div className="container center pt50 pb50">
                     <img src={LogoBlack} alt="VilaApp Logo" />
                     <hr />
