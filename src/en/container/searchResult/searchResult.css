@@ -75,6 +75,7 @@
 .filter2{
 left: 150px;
 height: 150px;
+width: 300px;
 }
 .filter3{
 left: 300px
@@ -82,6 +83,7 @@ left: 300px
 .filter4{
 left: 450px;
 height: 150px;
+width: 300px;
 }
 .from-to-box{
     height: calc(100% - 50px );
@@ -92,6 +94,11 @@ height: 150px;
 }
 .min-to-max-box{
     padding: 10px;
+    display: flex;
+}
+.price-min-max-filter{
+    width: 90%;
+    margin: auto;
 }
 .select-date-btn{
 width: 100%;
@@ -302,6 +309,12 @@ display: none;
     display: none;
 }
 
+@media screen and (max-width: 1100px) {
+.dataShowBox50{
+    width: 100%;
+}
+
+}
 @media screen and (max-width: 850px) {
     .searchResultBox {
         display: block;
@@ -596,5 +609,19 @@ top: 115px;
     }
     .searchList100{
         padding: 5px;
+    }
+}
+
+
+@media screen and (max-width: 400px) {
+
+    .filter-box-thin{
+        height: 21%;
+    }
+    .filter-box-fat{
+        height: 32%;
+    }
+    .filter-and-apply{
+        padding-top: 10px;
     }
 }

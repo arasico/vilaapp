@@ -93,7 +93,7 @@ export default class InputComponent extends React.Component {
                         <div className="option-flex-item notCloseMenuLand">
                             <button name="min" className="btn-circle-option btn-minus-icon notCloseMenuLand" onClick={this.Change} />
                         </div>
-                        <div className="option-flex-item notCloseMenuLand">
+                        <div className="option-flex-item-input notCloseMenuLand">
                             <input className="option-input-component notCloseMenuLand" 
                             value={this.state.counter}
                             onChange={this.handleChange.bind(this)}

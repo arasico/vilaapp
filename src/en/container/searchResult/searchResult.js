@@ -304,11 +304,12 @@ class SerachResult extends Component {
                             </div>
                             <div className="select-date" >
                                 {this.state.selectPrice ? <div className="select-min-max filter3 notCloseMenuLand" >
-                                    <div className="min-to-max-box notCloseMenuLand" >
 
-                                        <PriceInput name="min" />
-                                        <PriceInput name="max" />
+                                    <div className="price-min-max-filter" >
+                                        <PriceMinMax />
                                     </div>
+
+
                                     <div className="select-date-btn notCloseMenuLand" >
                                         <button className="apply-btn notCloseMenuLand">Apply</button>
                                     </div>
@@ -336,7 +337,7 @@ class SerachResult extends Component {
                             </div>
                             <div className="filter-and-apply" >
                                 <div className="filter-boxs">
-                                    <div className="filter-box">
+                                    <div className="filter-box  ">
                                         <h1 className="filter-title" >Date</h1>
                                         <div className="filter-children">
                                             <div className="filter-child">
@@ -347,19 +348,22 @@ class SerachResult extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="filter-box">
+                                    <div className="filter-box filter-box-thin">
                                         <h1 className="filter-title" >Persons</h1>
                                         <div className="com-increase">
                                             <OptionButtonPlus />
                                         </div>
                                     </div>
-                                    <div className="filter-box">
+                                    <div className="filter-box filter-box-fat">
                                         <h1 className="filter-title" >Price</h1>
-                                        <div>
-                                            <PriceMinMax />
+
+                                        <div className="min-to-max-box notCloseMenuLand" >
+
+                                            <PriceInput name="min" />
+                                            <PriceInput name="max" />
                                         </div>
                                     </div>
-                                    <div className="filter-box">
+                                    <div className="filter-box filter-box-thin">
                                         <h1 className="filter-title" >Rooms</h1>
                                         <div className="com-increase" >
                                             <OptionButtonPlus />
