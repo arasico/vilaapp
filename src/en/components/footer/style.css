@@ -68,6 +68,13 @@ background-color: #282828;
 .myfooter{
     height: 650px;
 }
+.social li a img{
+    transition: all .2s linear;
+}
+.social li a:hover img{
+    transition: all .2s linear;
+    opacity: .7;
+}
 @media screen and (max-width: 920px) {
     .myfooter{
         height: 800px;
