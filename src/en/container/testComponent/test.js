@@ -6,14 +6,11 @@ import Droplist from '../../components/common/typeOfDropList/typeOfDropList';
 import OptionDetails from '../../components/common/optionDetails/optionDetails';
 import DatePicker from '../../components/dateStartEnd/datePicker';
 import PriceInput from '../../components/priceInput/priceInput';
-
-
-
+ 
 
 
 import React,{Component} from 'react';
 
-import  './style.css';
 
 import InputComponent from '../../components/common/optionButtonPlusMinus/optionButton';
 import OptionComponent from '../../components/common/optionDetails/optionDetails';
@@ -26,6 +23,7 @@ import SingleDate from '../../components/singleDate/singleDate';
 class TestComponent extends Component {
     constructor(props) {
         super(props);
+        this.state = {stylePath: 'style.css'};
        
          this.handleFilterUpdate = this.handleFilterUpdate.bind(this);
          this.handelGetValue = this.handelGetValue.bind(this);
@@ -60,10 +58,18 @@ class TestComponent extends Component {
     alert(this.state.floor)
   }
 
+  componentWillMount(){
+      console.log("!!")
+    if(navigator.userAgent.includes("Chro"))
+      console.log("is Google")
+    else if( navigator.userAgent.includes("Fir"))
+        console.log("is Firfox")
+  }
     render() { 
 
         return (  
             <div className="test-container">
+            <link rel="stylesheet" type="text/css" href={this.state.stylePath} />
 
                 <SingleDate name="from" />
                 <SingleDate name="to" />
