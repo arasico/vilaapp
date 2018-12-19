@@ -58,3 +58,21 @@ class DoubleDate extends Component {
 }
  
 export default DoubleDate;
+
+
+
+/*
+ example to use this component ------------------>
+
+Change = async(value) => {
+        this.setState({date : value})
+ }
+
+<DoubleDate  change={this.Change}    />
+
+
+ or in arrow funcation ----------------------------->
+
+  <DoubleDate  change={(value) => console.log(value)}    />
+
+*/

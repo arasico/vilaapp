@@ -58,13 +58,8 @@ class TestComponent extends Component {
 
 Change = async(value) => {
 
-    if(this.state.date !== null){
-        this.setState({date : value})
         console.log(value)
-    }
-    else{
-        console.log("somthing is worng!")
-    }
+   
  }
 
 
@@ -82,7 +77,8 @@ Change = async(value) => {
                 <SingleDate name="to" />
            */}
                 
-                <DoubleDate  change={this.Change} name="to"  />
+                <DoubleDate  change={(value) => console.log(value)}    />
+                <DoubleDate  change={this.Change}    />
                 
                 <hr />
 
