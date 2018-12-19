@@ -18,6 +18,7 @@ import  './style.css';
 import InputComponent from '../../components/common/optionButtonPlusMinus/optionButton';
 import OptionComponent from '../../components/common/optionDetails/optionDetails';
 import SingleDate from '../../components/singleDate/singleDate';
+import DoubleDate from '../../components/doubleDateSelector/doubleDateSelector';
 
 
  
@@ -55,6 +56,13 @@ class TestComponent extends Component {
     });
 }
 
+Change = async(value) => {
+
+        console.log(value)
+   
+ }
+
+
 
   shoMessage(){
     alert(this.state.floor)
@@ -65,10 +73,12 @@ class TestComponent extends Component {
         return (  
             <div className="test-container">
 
-                <SingleDate name="from" />
+                {/* <SingleDate name="from" />
                 <SingleDate name="to" />
-          
+           */}
                 
+                <DoubleDate  change={(value) => console.log(value)}    />
+                <DoubleDate  change={this.Change}    />
                 
                 <hr />
 
