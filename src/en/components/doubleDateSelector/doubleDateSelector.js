@@ -1,7 +1,9 @@
 import React,{Component} from 'react';
-import {  SingleDatePicker, 
-    DayPickerRangeController , DateRangePicker, } from 'react-dates';
-import moment from "moment";
+import {  
+    // SingleDatePicker, 
+    // DayPickerRangeController , 
+    // DateRangePicker,
+    DayPickerSingleDateController } from 'react-dates'; 
 
  
  
@@ -11,38 +13,45 @@ class DoubleDate extends Component {
     constructor(props) {
         super(props);
         this.state = {  
-            startDate: moment(),
-            endDate: moment(),
-            focusedInput: null
+            focused: true, 
          }
- 
+
+        this.onDateChange = this.onDateChange.bind(this);
+        this.onFocusChange = this.onFocusChange.bind(this);
                 
     } 
 
 
-    handleDateChange = ({ startDate, endDate }) =>
-    this.setState({ startDate, endDate });
+    onDateChange(date) {
+        this.setState({ date }); // focuse in select date of day
 
-  handleFocusChange = focusedInput => this.setState({ focusedInput });
+        // convert timestamp to date format : dd/mm/yyyy ------>
+        function timeConverter(value){
+            var a = new Date(value);
+            return a.getDate() + '/' + a.getMonth() +'/' + a.getFullYear();
+        } 
 
-  isOutsideRange = () => false;
+        this.props.change(timeConverter(date)); // call back date to parent component
+      }
+
+      onFocusChange() {
+        // Force the focused states to always be truthy so that date is always selectable
+        this.setState({ focused: true });
+       
+      } 
 
     render() { 
         return ( 
-            <div>
-                <p>doubleDateSelector</p>
-             
-
-<DayPickerRangeController 
-          onDatesChange={this.handleDateChange}
-          onFocusChange={this.handleFocusChange}
-          focusedInput={this.state.focusedInput}
-          startDate={this.state.startDate}
-          endDate={this.state.endDate}
-        />
-
-        
-
+            <div> 
+                <DayPickerSingleDateController 
+                            onDateChange={this.onDateChange}
+                            onFocusChange={this.onFocusChange}
+                            focused={this.state.focused}
+                            date={this.state.date}
+                            hideKeyboardShortcutsPanel={true} 
+                            noBorder={true} 
+                            isOutsideRange={() => false} 
+                        /> 
             </div>
          );
     }

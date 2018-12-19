@@ -82,6 +82,7 @@ class SingleDate extends Component {
 
         if(this.state.date !== null)
             this.setState({date : timeConverter(value)})
+            
         this.togglePopup(); // close popup after select time
         console.log("Date picker called!")
  

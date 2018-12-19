@@ -56,6 +56,18 @@ class TestComponent extends Component {
     });
 }
 
+Change = async(value) => {
+
+    if(this.state.date !== null){
+        this.setState({date : value})
+        console.log(value)
+    }
+    else{
+        console.log("somthing is worng!")
+    }
+ }
+
+
 
   shoMessage(){
     alert(this.state.floor)
@@ -70,7 +82,7 @@ class TestComponent extends Component {
                 <SingleDate name="to" />
            */}
                 
-                <DoubleDate />
+                <DoubleDate  change={this.Change} name="to"  />
                 
                 <hr />
 
