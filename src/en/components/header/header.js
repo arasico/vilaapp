@@ -39,7 +39,7 @@ class HeaderComponent extends Component {
         this.setState((prevState) => {
             return { openLoginModal: !prevState.openLoginModal };
         });
-        this.setState({ forgetPassword: false , openTabletMenu : false})
+        this.setState({ forgetPassword: false, openTabletMenu: false })
     }
 
     // show hide Login/ForgetPassword section 
@@ -53,26 +53,33 @@ class HeaderComponent extends Component {
         console.log(e.target)
     }
 
-    
+
     humberger = React.createRef()
 
-    openTabletMenuHandler = () => {
+    openTabletMenuHandler = (e) => {
         this.setState((prevState) => {
             return { openTabletMenu: !prevState.openTabletMenu };
         });
-        if(this.state.openTabletMenu){
+        if (this.state.openTabletMenu) {
             this.humberger.current.style.zIndex = '1'
-            console.log('1')
-        }else{
+        } else {
             this.humberger.current.style.zIndex = '6'
-            console.log('0')
+        }
 
+        if(e.target.id === 'landlord'){
+            window.location.pathname = 'landlord'
+        }else if(e.target.id === 'contact'){
+            window.location.pathname = 'contact-us'
+        }else if(e.target.id === 'home'){
+            window.location.pathname = '/'
+        }
+        else{
+            return false
         }
 
     }
 
     goToHome = () => {
-        // this.props.history.push("/");
         console.log(window.location.pathname)
         window.location.pathname = '/'
     }
@@ -114,91 +121,93 @@ class HeaderComponent extends Component {
 
 
         return (
-            <div className="header-container shadow-box">
-                <div className={modalBox.join(' ')} >
 
-                    <span className="close-login-modal" onClick={this.modalHandler} ></span>
-                    <div className="login-modal" >
-                        <div className={elevator.join(' ')} >
-                            {/* forget password */}
-                            <div className="forget-pw-box" >
-                                <p className="forget-pw-title" > <i className="far fa-envelope"></i> Forget Password!</p>
-                                <p className="forget-pw-desc" >If you forgot your password for reset your password please enter your email or phone number.</p>
-                                <Input type={'password'} name="forgetpassword"
-                                    placeHolder={'Password'}
-                                    changed={this.changedHandler}
-                                    error={'password error'}
-                                />
-                                <div className="back-reset" >
-                                    <Button title={'Reset Password'} bgcolor={'#1FC056'} hoverbgcolor={'#1fc056cc'} />
-                                    <p className="forget-pw-back" onClick={this.forgetPasswordHandler} > <i className="fas fa-arrow-left" ></i> Back</p>
+                <div className="header-container">
+                    <div className={modalBox.join(' ')} >
+
+                        <span className="close-login-modal" onClick={this.modalHandler} ></span>
+                        <div className="login-modal" >
+                            <div className={elevator.join(' ')} >
+                                {/* forget password */}
+                                <div className="forget-pw-box" >
+                                    <p className="forget-pw-title" > <i className="far fa-envelope"></i> Forget Password!</p>
+                                    <p className="forget-pw-desc" >If you forgot your password for reset your password please enter your email or phone number.</p>
+                                    <Input type={'password'} name="forgetpassword"
+                                        placeHolder={'Password'}
+                                        changed={this.changedHandler}
+                                        error={'password error'}
+                                    />
+                                    <div className="back-reset" >
+                                        <Button title={'Reset Password'} bgcolor={'#1FC056'} hoverbgcolor={'#1fc056cc'} />
+                                        <p className="forget-pw-back" onClick={this.forgetPasswordHandler} > <i className="fas fa-arrow-left" ></i> Back</p>
+                                    </div>
                                 </div>
-                            </div>
-                            {/* login and register */}
-                            <div className="my-tab">
-                                <Tabs >
-                                    <TabList >
-                                        <Tab className="left-tab" > <i className="fas fa-lock"></i>Sign In</Tab>
-                                        <Tab className="right-tab" >Sign Up <i className="fas fa-user-lock"></i></Tab>
-                                    </TabList>
+                                {/* login and register */}
+                                <div className="my-tab">
+                                    <Tabs >
+                                        <TabList >
+                                            <Tab className="left-tab" > <i className="fas fa-lock"></i>Sign In</Tab>
+                                            <Tab className="right-tab" >Sign Up <i className="fas fa-user-lock"></i></Tab>
+                                        </TabList>
 
-                                    <TabPanel className="my-react-tab">
-                                        <div className="login-box" >
-                                            <Input type={'email'} name={'email/mobile'} placeHolder={'Email/Mobile'} changed={this.changedHandler} error={'email or number error'} />
-                                            <Input type={'password'} name={'loginpassword'} placeHolder={'Password'} changed={this.changedHandler} error={'password error'} />
-                                            <div className="cntr">
-                                                <input className="hidden-xs-up" id="cbx" type="checkbox" />
-                                                <label className="cbx" htmlFor="cbx"></label>
-                                                <label className="checkbox-label" htmlFor="cbx">Keep my password </label>
+                                        <TabPanel className="my-react-tab">
+                                            <div className="login-box" >
+                                                <Input type={'email'} name={'email/mobile'} placeHolder={'Email/Mobile'} changed={this.changedHandler} error={'email or number error'} />
+                                                <Input type={'password'} name={'loginpassword'} placeHolder={'Password'} changed={this.changedHandler} error={'password error'} />
+                                                <div className="cntr">
+                                                    <input className="hidden-xs-up" id="cbx" type="checkbox" />
+                                                    <label className="cbx" htmlFor="cbx"></label>
+                                                    <label className="checkbox-label" htmlFor="cbx">Keep my password </label>
+                                                </div>
+                                                <Button title={'Login'} bgcolor={'#0090CF'} hoverbgcolor={'#0090cfcc'} />
+                                                <p className="forget-pw-text" onClick={this.forgetPasswordHandler} >Do you forget your password ?</p>
                                             </div>
-                                            <Button title={'Login'} bgcolor={'#0090CF'} hoverbgcolor={'#0090cfcc'} />
-                                            <p className="forget-pw-text" onClick={this.forgetPasswordHandler} >Do you forget your password ?</p>
-                                        </div>
-                                    </TabPanel>
-                                    <TabPanel className="my-react-tab">
-                                        <div className="login-box" >
-                                            <Input type={'text'} placeHolder={'Name and Family'} changed={this.changedHandler} error={'name error'} />
-                                            <Input type={'email'} placeHolder={'Email'} changed={this.changedHandler} error={'email error'} />
-                                            <Input type={'text'} placeHolder={'Mobile'} changed={this.changedHandler} error={'number error'} />
-                                            <Input type={'password'} placeHolder={'password'} changed={this.changedHandler} error={'password error'} />
-                                            <Button title={'Register'} bgcolor={'#1FC056'} hoverbgcolor={'#1fc056cc'} />
-                                        </div>
-                                    </TabPanel>
-                                </Tabs>
+                                        </TabPanel>
+                                        <TabPanel className="my-react-tab">
+                                            <div className="login-box" >
+                                                <Input type={'text'} placeHolder={'Name and Family'} changed={this.changedHandler} error={'name error'} />
+                                                <Input type={'email'} placeHolder={'Email'} changed={this.changedHandler} error={'email error'} />
+                                                <Input type={'text'} placeHolder={'Mobile'} changed={this.changedHandler} error={'number error'} />
+                                                <Input type={'password'} placeHolder={'password'} changed={this.changedHandler} error={'password error'} />
+                                                <Button title={'Register'} bgcolor={'#1FC056'} hoverbgcolor={'#1fc056cc'} />
+                                            </div>
+                                        </TabPanel>
+                                    </Tabs>
+                                </div>
+
+                                {/* } */}
                             </div>
 
-                            {/* } */}
+
+
+
                         </div>
-
-
-
+                    </div>
+                    <div className="logo-container">
+                        {/* {this.state.currentPage ?  <img src={LogoColorly} className="logo" alt="VilaApp logo"/> :  <img src={LogoWhit} className="logo" alt="VilaApp logo"/>} */}
+                        <img src={LogoColorly} className="logo" alt="VilaApp logo" onClick={this.goToHome} />
 
                     </div>
-                </div>
-                <div className="logo-container">
-                    {/* {this.state.currentPage ?  <img src={LogoColorly} className="logo" alt="VilaApp logo"/> :  <img src={LogoWhit} className="logo" alt="VilaApp logo"/>} */}
-                    <img src={LogoColorly} className="logo" alt="VilaApp logo" onClick={this.goToHome} />
+                    <div className="navbar-container">
+                        <ul className="desktop-nav" >
+                            <li onClick={this.modalHandler} ><span className="login-link-d">Log in/Sign up</span></li>
+                            <li><NavLink to="/contact-us">Contact us</NavLink></li>
+                            <li><NavLink to="/landlord">Become a landlord</NavLink></li>
+                        </ul>
 
-                </div>
-                <div className="navbar-container">
-                    <ul className="desktop-nav" >
-                        <li onClick={this.modalHandler} ><a href="#home">Log in/Sign up</a></li>
-                        <li><NavLink to="/contact-us">Contact us</NavLink></li>
-                        <li><NavLink to="/landlord">Become a landlord</NavLink></li>
-                    </ul>
-
-                    <div className="drawerMenu" onClick={this.openTabletMenuHandler} ref={this.humberger}>
-                        <span className={line1.join(' ')}></span>
-                        <span className={line2.join(' ')} ></span>
-                        <span className={line3.join(' ')} ></span>
+                        <div className="drawerMenu" onClick={(e)=>this.openTabletMenuHandler(e)} ref={this.humberger}>
+                            <span className={line1.join(' ')}></span>
+                            <span className={line2.join(' ')} ></span>
+                            <span className={line3.join(' ')} ></span>
+                        </div>
+                        <ul className={tabletNav.join(' ')} >
+                            <li className="tabletNavLi" id="home" onClick={(e)=>this.openTabletMenuHandler(e)} ><NavLink to="/home">Home</NavLink></li>
+                            <li className="tabletNavLi" id="landlord" onClick={(e)=>this.openTabletMenuHandler(e)} ><NavLink to="/landlord">Become a landlord</NavLink></li>
+                            <li className="tabletNavLi" id="contact"  onClick={(e)=>this.openTabletMenuHandler(e)} ><NavLink to="/contact-us">Contact us</NavLink></li>
+                            <li className="tabletNavLi" onClick={this.modalHandler} ><span className="login-link-t">Log in/Sign up</span></li>
+                        </ul>
                     </div>
-                    <ul className={tabletNav.join(' ')} >
-                        <li className="tabletNavLi" onClick={this.openTabletMenuHandler} ><NavLink to="/landlord">Become a landlord</NavLink></li>
-                        <li className="tabletNavLi" onClick={this.openTabletMenuHandler} ><NavLink to="/home">Contact us</NavLink></li>
-                        <li className="tabletNavLi" onClick={this.modalHandler} ><a href="#home">Log in/Sign up</a></li>
-                    </ul>
                 </div>
-            </div>
         );
     }
 }

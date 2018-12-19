@@ -139,9 +139,12 @@
 
 @media screen and (max-width: 600px) {
 .option-input-component-details {
-    width: 32px;
+    width: 28px;
+    font-size: 10px;
 }
-
+.option-details-container{
+    width: 300px;
+}
      
 }
 

@@ -10,6 +10,7 @@
 .container{
     margin: auto;
     width: 90%;  
+    max-width: 1400px;
 }
 
 .footer-color-black{

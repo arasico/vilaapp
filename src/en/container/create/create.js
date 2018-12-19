@@ -264,7 +264,7 @@ class CreateComponent extends Component {
             this.tabThreeText.current.style.color = '#6FCF97'
 
             this.successPart.current.style.transform = 'translateX(0px)'
-            this.addImagePart.current.style.transform = 'translateX(2000px)'
+            this.addImagePart.current.style.transform = 'translateX(3000px)'
             this.tabThree.current.style.height = '500px'
             window.scrollTo({
                 top: this.successPart.current.offsetTop,
@@ -326,11 +326,8 @@ class CreateComponent extends Component {
         return (
             <div className="container-fluid">
                 <div className="three-part">
-                <input ref={c => (this._input = c)} className="xxxx" />
-
-
+                    <input ref={c => (this._input = c)} className="xxxx" />
                     <div className="container pt120">
-
                         <div className="tabs-menu-container">
                             <div className="menu-item" id="address" onClick={() => this.openCity('tabOne')}>
                                 <div className="tabs-circle-container" ref={this.tabOneNumber}>
@@ -357,6 +354,8 @@ class CreateComponent extends Component {
                     </div>
 
                     <div className="container-fluid">
+
+
                         <div id="tabOne" ref={this.tabOne} className="basic-tab city ">
                             <Map width="100%" onAPIAvailable={function () { console.log('API loaded'); }} center={[40.754734, 40.583314]} zoom={10}>
                                 <Marker lat={40.783379} lon={40.775575} lang={'tr-TR'} >
@@ -408,7 +407,7 @@ class CreateComponent extends Component {
 
                         </div>
 
-                        <div id="tabTwo" ref={this.tabTwo} className="basic-tab city">
+                        <div id="tabTwo" ref={this.tabTwo} className="basic-tab city container">
 
                             <div className="create-form-container">
                                 <Subtitle label="Basic Infromation" />
@@ -504,7 +503,7 @@ class CreateComponent extends Component {
                             </div>
                         </div>
 
-                        <div id="tabThree" ref={this.tabThree} className="basic-tab city ">
+                        <div id="tabThree" ref={this.tabThree} className="basic-tab city container">
 
                             <div className="box-form"  >
                                 <div className="moving-image-box" ref={this.addImagePart}>
@@ -566,7 +565,7 @@ class CreateComponent extends Component {
                                         <div className="btn-create-continu btn-go-to-home">
                                             <div className="create-btn-container">
                                                 <span style={{ color: '#8C8C8C' }}>Go to Main Home</span>
-                                                <img src={ArrowRight2} alt="s" style={{ float: "left", paddingLeft: 20 }} />
+                                                <img src={ArrowRight2} alt="go home" className="goHomeIcon" />
                                             </div>
                                         </div>
                                     </div>
@@ -578,6 +577,7 @@ class CreateComponent extends Component {
 
 
                         </div>
+
                     </div>
 
                 </div>

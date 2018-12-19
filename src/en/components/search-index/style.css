@@ -104,7 +104,7 @@ font-size: 18px;
  .drop-down-list{ 
     cursor: pointer; 
     color: #757575;
-    
+
 }
 
 
@@ -137,7 +137,7 @@ li.peronSelection {
         border: 0!important;
     }
     .search-box-container{
-        width: 600px;
+        width: 570px;
     }
      
 }

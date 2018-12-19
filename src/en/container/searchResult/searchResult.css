@@ -75,7 +75,7 @@
 .filter2{
 left: 150px;
 height: 150px;
-width: 300px;
+width: 200px;
 }
 .filter3{
 left: 300px
@@ -83,7 +83,7 @@ left: 300px
 .filter4{
 left: 450px;
 height: 150px;
-width: 300px;
+width: 200px;
 }
 .from-to-box{
     height: calc(100% - 50px );
@@ -376,7 +376,7 @@ display: none;
 .selectFilterDown{
     position: fixed;
     display: block;
-    top: 1000px;
+    top: 1500px;
     bottom: 0;
     left: 0;
     right: 0;
@@ -417,6 +417,7 @@ display: none;
 }
 .apply-box{
     height: 10%;
+    max-height: 65px;
     width: 90%;
     background-color: #1FC056;
     color: #fff;
