@@ -104,7 +104,8 @@ font-size: 18px;
  .drop-down-list{ 
     cursor: pointer; 
     color: #757575;
-    
+    width: 90px;
+    font-size: 12px;
 }
 
 
@@ -127,7 +128,9 @@ li.peronSelection {
      
 }
 
-
+.rc-dropdown.rc-dropdown-placement-bottomLeft{
+    min-width: 125px !important;
+}
 @media screen and (max-width: 900px) {
    
     .checkin , .checkout  { 
@@ -137,7 +140,7 @@ li.peronSelection {
         border: 0!important;
     }
     .search-box-container{
-        width: 600px;
+        width: 570px;
     }
      
 }

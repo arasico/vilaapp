@@ -225,7 +225,7 @@ class SerachResult extends Component {
 
 
         return (
-            <div >
+            <div  >
                 <div className="search-result-box"  >
                     <div className="filter-list-box" ref={this.filter} >
 
@@ -247,7 +247,6 @@ class SerachResult extends Component {
                             <div className="select-filter-child notCloseMenuLand">
                                 <p className="filter-date-drop notCloseMenuLand" >Person</p>
                                 <img src={arrow} style={{ marginLeft: 10, marginTop: -5, height: 11, width: 11, float: 'right' }} alt="arrow" />
-
                                 <p className="filter-date-desc notCloseMenuLand" >1 </p>
                                 <p className="my-filter-action notCloseMenuLand" onClick={this.selectPersonHandler}></p>
                             </div>

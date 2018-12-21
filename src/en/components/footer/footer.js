@@ -37,7 +37,7 @@ class FooterComponent extends Component {
                         </div>
                         <div className="menu-item">
                             <p>Social</p>
-                            <ul>
+                            <ul className="social" >
                                 <li>
                                     <a href="http://www.faceboo.com/" ><img src={fb} alt="vilaapp facebook"/> </a>
                                     <a href="http://www.instagram.com/" ><img src={insta} alt="vilaapp instagram"/> </a>

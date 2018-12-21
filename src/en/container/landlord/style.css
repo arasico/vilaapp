@@ -173,7 +173,9 @@ padding: 25px 0;
 }
 
 
-
+.btn.btn-green span{
+    color: #fff;
+}
 
 
 @media screen and (max-width: 858px) {
