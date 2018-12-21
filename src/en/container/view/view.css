@@ -809,7 +809,10 @@ margin: auto;
     height: 700px;
   }
 }
+@media screen and (max-width: 800px) {
+  .carousel .thumbs-wrapper{display: none;}
   
+}
 
 @media screen and (max-width: 600px) {
   
