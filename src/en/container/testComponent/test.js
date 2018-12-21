@@ -74,8 +74,7 @@ class TestComponent extends Component {
                 <SingleDate name="from" />
                 <SingleDate name="to" />
           
-                
-                
+        
                 <hr />
 
 
