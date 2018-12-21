@@ -6,6 +6,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #fff;
 }
 
 code {
@@ -20,6 +21,5 @@ code {
   border: none;
   box-sizing: border-box;
   list-style: none;
-  user-select: none;
 
 }

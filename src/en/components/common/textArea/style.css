@@ -76,3 +76,12 @@ textarea:focus {
   -moz-box-shadow: 1px 1px 5px 0px rgba(191, 191, 191, 0.75);
   box-shadow: 1px 1px 5px 0px rgba(191, 191, 191, 0.75);
 }
+
+
+@media screen and (max-width: 750px) {
+
+textarea{
+  min-width: unset;
+}
+
+}

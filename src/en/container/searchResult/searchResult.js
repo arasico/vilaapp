@@ -225,7 +225,7 @@ class SerachResult extends Component {
 
 
         return (
-            <div >
+            <div  >
                 <div className="search-result-box"  >
                     <div className="filter-list-box" ref={this.filter} >
 
@@ -247,7 +247,6 @@ class SerachResult extends Component {
                             <div className="select-filter-child notCloseMenuLand">
                                 <p className="filter-date-drop notCloseMenuLand" >Person</p>
                                 <img src={arrow} style={{ marginLeft: 10, marginTop: -5, height: 11, width: 11, float: 'right' }} alt="arrow" />
-
                                 <p className="filter-date-desc notCloseMenuLand" >1 </p>
                                 <p className="my-filter-action notCloseMenuLand" onClick={this.selectPersonHandler}></p>
                             </div>
@@ -304,11 +303,12 @@ class SerachResult extends Component {
                             </div>
                             <div className="select-date" >
                                 {this.state.selectPrice ? <div className="select-min-max filter3 notCloseMenuLand" >
-                                    <div className="min-to-max-box notCloseMenuLand" >
 
-                                        <PriceInput name="min" />
-                                        <PriceInput name="max" />
+                                    <div className="price-min-max-filter" >
+                                        <PriceMinMax />
                                     </div>
+
+
                                     <div className="select-date-btn notCloseMenuLand" >
                                         <button className="apply-btn notCloseMenuLand">Apply</button>
                                     </div>
@@ -336,7 +336,7 @@ class SerachResult extends Component {
                             </div>
                             <div className="filter-and-apply" >
                                 <div className="filter-boxs">
-                                    <div className="filter-box">
+                                    <div className="filter-box  ">
                                         <h1 className="filter-title" >Date</h1>
                                         <div className="filter-children">
                                             <div className="filter-child">
@@ -347,19 +347,22 @@ class SerachResult extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="filter-box">
+                                    <div className="filter-box filter-box-thin">
                                         <h1 className="filter-title" >Persons</h1>
                                         <div className="com-increase">
                                             <OptionButtonPlus />
                                         </div>
                                     </div>
-                                    <div className="filter-box">
+                                    <div className="filter-box filter-box-fat">
                                         <h1 className="filter-title" >Price</h1>
-                                        <div>
-                                            <PriceMinMax />
+
+                                        <div className="min-to-max-box notCloseMenuLand" >
+
+                                            <PriceInput name="min" />
+                                            <PriceInput name="max" />
                                         </div>
                                     </div>
-                                    <div className="filter-box">
+                                    <div className="filter-box filter-box-thin">
                                         <h1 className="filter-title" >Rooms</h1>
                                         <div className="com-increase" >
                                             <OptionButtonPlus />

@@ -16,12 +16,12 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     padding: 5px;
     font-weight: 700;
-    width: 140px;
+    width: 120px;
 }
 
 .select-type-drop-list{
     background-color: transparent;
-    width: 100%;
+    width: calc(100% - 120px);
     border: 0;
     box-sizing: border-box; 
     padding: 5px; 

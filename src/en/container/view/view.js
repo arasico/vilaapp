@@ -96,9 +96,9 @@ class View extends Component {
         });
         
         if(this.state.showContact){
-            this.contactNumberBox.current.style.transform = 'translateY(31px)'
+            this.contactNumberBox.current.style.top = '30px'
         }else{
-            this.contactNumberBox.current.style.transform = 'translateY(-31px)'
+            this.contactNumberBox.current.style.top = '-30px'
         }
     }
 
