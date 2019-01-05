@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "google-map-react": "^1.1.1", 
+    "google-map-react": "^1.1.1",
     "radium": "^0.25.0",
     "rc-dropdown": "^2.2.1",
     "rc-menu": "^7.4.20",
@@ -11,7 +11,9 @@
     "react": "^16.6.3",
     "react-bootstrap": "^0.32.4",
     "react-datepicker": "^2.0.0",
+    "react-daterange-picker": "^2.0.1",
     "react-dates": "^18.3.1",
+    "react-day-picker": "^7.2.4",
     "react-dom": "^16.6.3",
     "react-dropzone": "^7.0.1",
     "react-responsive-carousel": "^3.1.43",
