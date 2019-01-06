@@ -93,7 +93,6 @@ class SearchIndex extends Component {
     onClickSearch() {
         let {selectCity, startDate, endDate, person } = this.state;
         let NewUrl = '/search-result?' + 'city=' + selectCity + '&startDate=' + startDate + '&endDate=' + endDate + '&person=' + person
-        // window.location.pathname = decodeURIComponent(NewUrl);
         window.location.assign(NewUrl)
     }
 
