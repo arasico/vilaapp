@@ -83,10 +83,6 @@ class SearchIndex extends Component {
             endDate:this.dateShorter(endDate)
         }); 
 
-         
-      
-        console.log(this.state.startDate)
-        console.log(this.state.endDate)
  
     }
 
