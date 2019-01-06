@@ -11,13 +11,16 @@ import seven from '../../../assets/img/7.jpg'
 import eight from '../../../assets/img/8.jpg'
 import pro from '../../../assets/img/pro.jpg'
 import location from '../../../assets/img/location.png'
-
 import rooms from '../../../assets/icons/rooms.svg'
 import area from '../../../assets/icons/area.svg'
 import beds from '../../../assets/icons/beds.svg'
 import persons from '../../../assets/icons/persons.svg'
 import check from '../../../assets/icons/check.svg'
 import callVolum from '../../../assets/icons/callvolume.svg'
+
+//data picker
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 // import "react-responsive-carousel/lib/styles/carousel.css";
 import { Carousel } from 'react-responsive-carousel';
@@ -29,13 +32,20 @@ class View extends Component {
         super(props);
         this.state = {
             cModal: false,
-            showContact:false,
-            rooms:2,
-            beds:1,
-            persons:10,
-            area:5000
+            showContact: false,
+            rooms: 2,
+            beds: 1,
+            persons: 10,
+            area: 5000,
+            startDate: new Date(),
+            endDate: new Date(),
+            endDateNew: null
         }
+        this.handleChangeStart = this.handleChangeStart.bind(this);
+        this.handleChangeEnd = this.handleChangeEnd.bind(this);
+
     }
+
 
     showModal = () => {
         this.setState((prevState) => {
@@ -77,31 +87,102 @@ class View extends Component {
 
     goToRequest = React.createRef()
     requestBook = React.createRef()
-    
+
     goToRequestBook = () => {
         window.scrollTo({
             top: this.requestBook.current.offsetTop,
             behavior: "smooth"  // Optional, adds animation
         })
-
     }
 
 
     contactNumberBox = React.createRef()
 
-    contactNumber = () =>{
+    contactNumber = () => {
 
         this.setState((prevState) => {
             return { showContact: !prevState.showContact };
         });
-        
-        if(this.state.showContact){
+
+        if (this.state.showContact) {
             this.contactNumberBox.current.style.top = '30px'
-        }else{
+        } else {
             this.contactNumberBox.current.style.top = '-30px'
         }
     }
 
+    handleChangeStart = async (date) => {
+        await this.setState({ endDateNew: this.state.endDate })
+
+        let timeStart = date
+        let yearStart, monthStart, dayStart, hourStart, minuteStart, secondStart;
+        yearStart = timeStart.getFullYear();
+        monthStart = timeStart.getMonth();
+        dayStart = timeStart.getDate()
+        hourStart = timeStart.getHours()
+        minuteStart = timeStart.getMinutes()
+        secondStart = timeStart.getSeconds()
+
+        let startStamp = new Date(Date.UTC(yearStart, monthStart, dayStart, hourStart, minuteStart, secondStart));
+
+        this.setState({ startStamp: startStamp })
+
+        let timeEnd = this.state.endDateNew
+        let yearEnd, monthEnd, dayEnd, hourEnd, minuteEnd, secondEnd;
+        yearEnd = timeEnd.getFullYear();
+        monthEnd = timeEnd.getMonth();
+        dayEnd = timeEnd.getDate()
+        hourEnd = timeEnd.getHours()
+        minuteEnd = timeEnd.getMinutes()
+        secondEnd = timeEnd.getSeconds()
+
+        let endStamp = new Date(Date.UTC(yearEnd, monthEnd, dayEnd, hourEnd, minuteEnd, secondEnd));
+
+        this.setState({ endStamp: endStamp })
+
+        if (this.state.startStamp > this.state.endStamp) {
+            this.setState({ startDate: this.state.endDate })
+        } else if (this.state.startStamp <= this.state.endStamp) {
+        this.setState({ startDate: date })
+        }
+    }
+
+    handleChangeEnd = async (date) => {
+
+        await this.setState({ endDateNew: date })
+
+        let timeStart = this.state.startDate
+        let yearStart, monthStart, dayStart, hourStart, minuteStart, secondStart;
+        yearStart = timeStart.getFullYear();
+        monthStart = timeStart.getMonth();
+        dayStart = timeStart.getDate()
+        hourStart = timeStart.getHours()
+        minuteStart = timeStart.getMinutes()
+        secondStart = timeStart.getSeconds()
+
+        let startStamp = new Date(Date.UTC(yearStart, monthStart, dayStart, hourStart, minuteStart, secondStart));
+
+        this.setState({ startStamp: startStamp })
+
+        let timeEnd = this.state.endDateNew
+        let yearEnd, monthEnd, dayEnd, hourEnd, minuteEnd, secondEnd;
+        yearEnd = timeEnd.getFullYear();
+        monthEnd = timeEnd.getMonth();
+        dayEnd = timeEnd.getDate();
+        hourEnd = timeEnd.getHours();
+        minuteEnd = timeEnd.getMinutes();
+        secondEnd = timeEnd.getSeconds();
+
+        let endStamp = new Date(Date.UTC(yearEnd, monthEnd, dayEnd, hourEnd, minuteEnd, secondEnd));
+        this.setState({ endStamp: endStamp })
+
+
+        if (this.state.startStamp > this.state.endStamp) {
+            this.setState({ endDate: this.state.startDate })
+        } else if (this.state.startStamp <= this.state.endStamp) {
+        this.setState({ endDate: date })
+        }
+    }
 
     render() {
 
@@ -159,10 +240,8 @@ class View extends Component {
                                 </div>
                             </Carousel>
                         </div>
-
                     </div>
                 </div>
-
 
                 <div className="two-part" >
 
@@ -171,12 +250,22 @@ class View extends Component {
                             <div className="book-request-form" >
                                 <h1>New booking request</h1>
                                 <div className="book-request-form-box" >
-                                    <div className="book-select-time" >
-                                        <span>From</span>
-                                    </div>
-                                    <div className="book-select-time" >
-                                        <span>To</span>
-                                    </div>
+                                    <DatePicker
+                                        selected={this.state.startDate}
+                                        selectsStart
+                                        startDate={this.state.startDate}
+                                        endDate={this.state.endDate}
+                                        onChange={this.handleChangeStart}
+                                    />
+                                    <span className="select-from-span" >From </span>
+                                    <DatePicker
+                                        selected={this.state.endDate}
+                                        selectsEnd
+                                        startDate={this.state.startDate}
+                                        endDate={this.state.endDate}
+                                        onChange={this.handleChangeEnd}
+                                    />
+                                    <span className="select-to-span" >To</span>
                                 </div>
                                 <span className="few-day" >2 days with 2 persons</span>
                                 <div className="request-to-book" >Request to book</div>
@@ -278,7 +367,7 @@ class View extends Component {
                                 </div>
                             </div>
 
-                            <div className="my-line tablet" ></div>
+                            <div className="my-line " ></div>
                         </div>
 
 
