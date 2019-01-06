@@ -111,76 +111,56 @@ class View extends Component {
         }
     }
 
-    handleChangeStart = async (date) => {
+    handleChangeStart = async(date) => {
         await this.setState({ endDateNew: this.state.endDate })
 
         let timeStart = date
         let yearStart, monthStart, dayStart, hourStart, minuteStart, secondStart;
-        yearStart = timeStart.getFullYear();
-        monthStart = timeStart.getMonth();
-        dayStart = timeStart.getDate()
-        hourStart = timeStart.getHours()
-        minuteStart = timeStart.getMinutes()
-        secondStart = timeStart.getSeconds()
+        yearStart = timeStart.getFullYear(); monthStart = timeStart.getMonth(); dayStart = timeStart.getDate();
+        hourStart = timeStart.getHours(); minuteStart = timeStart.getMinutes(); secondStart = timeStart.getSeconds()
 
         let startStamp = new Date(Date.UTC(yearStart, monthStart, dayStart, hourStart, minuteStart, secondStart));
 
-        this.setState({ startStamp: startStamp })
-
         let timeEnd = this.state.endDateNew
         let yearEnd, monthEnd, dayEnd, hourEnd, minuteEnd, secondEnd;
-        yearEnd = timeEnd.getFullYear();
-        monthEnd = timeEnd.getMonth();
-        dayEnd = timeEnd.getDate()
-        hourEnd = timeEnd.getHours()
-        minuteEnd = timeEnd.getMinutes()
-        secondEnd = timeEnd.getSeconds()
+        yearEnd = timeEnd.getFullYear(); monthEnd = timeEnd.getMonth(); dayEnd = timeEnd.getDate();
+        hourEnd = timeEnd.getHours(); minuteEnd = timeEnd.getMinutes(); secondEnd = timeEnd.getSeconds();
 
         let endStamp = new Date(Date.UTC(yearEnd, monthEnd, dayEnd, hourEnd, minuteEnd, secondEnd));
 
-        this.setState({ endStamp: endStamp })
+        await this.setState({ endStamp: endStamp , startStamp: startStamp})
 
         if (this.state.startStamp > this.state.endStamp) {
             this.setState({ startDate: this.state.endDate })
         } else if (this.state.startStamp <= this.state.endStamp) {
-        this.setState({ startDate: date })
+            this.setState({ startDate: date })
         }
     }
 
-    handleChangeEnd = async (date) => {
+    handleChangeEnd = async(date) => {
 
         await this.setState({ endDateNew: date })
 
         let timeStart = this.state.startDate
         let yearStart, monthStart, dayStart, hourStart, minuteStart, secondStart;
-        yearStart = timeStart.getFullYear();
-        monthStart = timeStart.getMonth();
-        dayStart = timeStart.getDate()
-        hourStart = timeStart.getHours()
-        minuteStart = timeStart.getMinutes()
-        secondStart = timeStart.getSeconds()
+            yearStart = timeStart.getFullYear();monthStart = timeStart.getMonth();dayStart = timeStart.getDate();
+            hourStart = timeStart.getHours();minuteStart = timeStart.getMinutes();secondStart = timeStart.getSeconds();
 
         let startStamp = new Date(Date.UTC(yearStart, monthStart, dayStart, hourStart, minuteStart, secondStart));
 
-        this.setState({ startStamp: startStamp })
-
         let timeEnd = this.state.endDateNew
         let yearEnd, monthEnd, dayEnd, hourEnd, minuteEnd, secondEnd;
-        yearEnd = timeEnd.getFullYear();
-        monthEnd = timeEnd.getMonth();
-        dayEnd = timeEnd.getDate();
-        hourEnd = timeEnd.getHours();
-        minuteEnd = timeEnd.getMinutes();
-        secondEnd = timeEnd.getSeconds();
+            yearEnd = timeEnd.getFullYear();monthEnd = timeEnd.getMonth();dayEnd = timeEnd.getDate();
+            hourEnd = timeEnd.getHours();minuteEnd = timeEnd.getMinutes();secondEnd = timeEnd.getSeconds();
 
         let endStamp = new Date(Date.UTC(yearEnd, monthEnd, dayEnd, hourEnd, minuteEnd, secondEnd));
-        this.setState({ endStamp: endStamp })
 
+        await this.setState({ startStamp: startStamp , endStamp: endStamp})
 
         if (this.state.startStamp > this.state.endStamp) {
             this.setState({ endDate: this.state.startDate })
         } else if (this.state.startStamp <= this.state.endStamp) {
-        this.setState({ endDate: date })
+            this.setState({ endDate: date })
         }
     }
 
