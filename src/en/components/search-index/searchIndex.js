@@ -69,16 +69,14 @@ class SearchIndex extends Component {
     }
 
     onSelectCity = async({ key }) => {   
-
-       await this.setState({selectCity:key});
-        console.log(this.state.selectCity)
+       await this.setState({selectCity:key}); 
     }
 
       // Get props from children Date picker component
-    change(startDate,endDate){
+    change = async(startDate,endDate) => {
 
         // when the props change it will be called . . .
-        this.setState({
+       await this.setState({
             startDate: this.dateShorter(startDate),
             endDate:this.dateShorter(endDate)
         }); 
