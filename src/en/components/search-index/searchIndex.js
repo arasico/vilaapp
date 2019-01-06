@@ -1,15 +1,18 @@
 import React,{Component} from 'react';
-// import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Dropdown from 'rc-dropdown';
 import Menu, { Item as MenuItem, Divider } from 'rc-menu';
-import 'rc-dropdown/assets/index.css';
- 
-import arrow from '../../../assets/icons/arrow-down.svg'
+import { Link } from 'react-router-dom';
 
+//
+// import extera component
+//
+
+import 'rc-dropdown/assets/index.css';
+import arrow from '../../../assets/icons/arrow-down.svg'
+import DatePickerRC from '../../components/dateStartEnd/datePicker';
 import './style.css'
  
-import DatePickerRC from '../../components/dateStartEnd/datePicker';
  
 
 
@@ -61,12 +64,13 @@ class SearchIndex extends Component {
       }
 
 
-    onSelect({ key }) {  
-        this.setState({person:key})
+    onSelect = async({ key }) => {  
+       await this.setState({person:key})
     }
 
-    onSelectCity({ key }) {  
-        this.setState({selectCity:key});
+    onSelectCity = async({ key }) => {   
+
+       await this.setState({selectCity:key});
         console.log(this.state.selectCity)
     }
 
@@ -90,10 +94,13 @@ class SearchIndex extends Component {
     dateShorter(date){
         return new Intl.DateTimeFormat('en-US').format(date)
     }
-
+   
 
     onClickSearch() {
-        window.location.pathname = '/search-result'
+        let {selectCity, startDate, endDate, person } = this.state;
+        let NewUrl = '/search-result?' + 'city=' + selectCity + '&startDate=' + startDate + '&endDate=' + endDate + '&person=' + person
+        // window.location.pathname = decodeURIComponent(NewUrl);
+        window.location.assign(NewUrl)
     }
 
 
@@ -122,12 +129,11 @@ class SearchIndex extends Component {
                 return kvp.join('&')
         }
         // add params in url ----->
-        let url = this.props.history;
+        let url = window.location.pathname;
         url.push({
-            ...url,
-            pathname: '/',
-            search: getAnd()
-        })
+            pathname: '/dresses',
+            search: '?color=blue'
+          })
     }
 
 
