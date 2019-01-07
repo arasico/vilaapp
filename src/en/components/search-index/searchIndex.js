@@ -21,10 +21,10 @@ class SearchIndex extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            startDate: null,
-            endDate: null,
-            selectCity:'Select City',
-            person:''
+            startDate: this.dateShorter(new Date()),
+            endDate: this.dateShorter(new Date()),
+            selectCity:'all city',
+            person:1
           };
           this.handleChange = this.handleChange.bind(this);
           this.onSelect = this.onSelect.bind(this);
