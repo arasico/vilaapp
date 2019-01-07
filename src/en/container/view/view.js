@@ -18,9 +18,11 @@ import persons from '../../../assets/icons/persons.svg'
 import check from '../../../assets/icons/check.svg'
 import callVolum from '../../../assets/icons/callvolume.svg'
 
+import DatePickerRC from '../../components/dateStartEnd/datePicker';
+
 //data picker
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+// import DatePicker from "react-datepicker";
+// import "react-datepicker/dist/react-datepicker.css";
 
 // import "react-responsive-carousel/lib/styles/carousel.css";
 import { Carousel } from 'react-responsive-carousel';
@@ -37,12 +39,7 @@ class View extends Component {
             beds: 1,
             persons: 10,
             area: 5000,
-            startDate: new Date(),
-            endDate: new Date(),
-            endDateNew: null
         }
-        this.handleChangeStart = this.handleChangeStart.bind(this);
-        this.handleChangeEnd = this.handleChangeEnd.bind(this);
 
     }
 
@@ -111,59 +108,20 @@ class View extends Component {
         }
     }
 
-    handleChangeStart = async(date) => {
-        await this.setState({ endDateNew: this.state.endDate })
 
-        let timeStart = date
-        let yearStart, monthStart, dayStart, hourStart, minuteStart, secondStart;
-        yearStart = timeStart.getFullYear(); monthStart = timeStart.getMonth(); dayStart = timeStart.getDate();
-        hourStart = timeStart.getHours(); minuteStart = timeStart.getMinutes(); secondStart = timeStart.getSeconds()
 
-        let startStamp = new Date(Date.UTC(yearStart, monthStart, dayStart, hourStart, minuteStart, secondStart));
+    // Get props from children Date picker component
+    change = (startDate, endDate) => {
+        // when the props change it will be called . . .
+        this.setState({
+            startDate: startDate,
+            endDate: endDate
+        });
+        // consol log after chagne state  . . .
+        console.log(this.state.startDate)
+        console.log(this.state.endDate)
 
-        let timeEnd = this.state.endDateNew
-        let yearEnd, monthEnd, dayEnd, hourEnd, minuteEnd, secondEnd;
-        yearEnd = timeEnd.getFullYear(); monthEnd = timeEnd.getMonth(); dayEnd = timeEnd.getDate();
-        hourEnd = timeEnd.getHours(); minuteEnd = timeEnd.getMinutes(); secondEnd = timeEnd.getSeconds();
-
-        let endStamp = new Date(Date.UTC(yearEnd, monthEnd, dayEnd, hourEnd, minuteEnd, secondEnd));
-
-        await this.setState({ endStamp: endStamp , startStamp: startStamp})
-
-        if (this.state.startStamp > this.state.endStamp) {
-            this.setState({ startDate: this.state.endDate })
-        } else if (this.state.startStamp <= this.state.endStamp) {
-            this.setState({ startDate: date })
-        }
     }
-
-    handleChangeEnd = async(date) => {
-
-        await this.setState({ endDateNew: date })
-
-        let timeStart = this.state.startDate
-        let yearStart, monthStart, dayStart, hourStart, minuteStart, secondStart;
-            yearStart = timeStart.getFullYear();monthStart = timeStart.getMonth();dayStart = timeStart.getDate();
-            hourStart = timeStart.getHours();minuteStart = timeStart.getMinutes();secondStart = timeStart.getSeconds();
-
-        let startStamp = new Date(Date.UTC(yearStart, monthStart, dayStart, hourStart, minuteStart, secondStart));
-
-        let timeEnd = this.state.endDateNew
-        let yearEnd, monthEnd, dayEnd, hourEnd, minuteEnd, secondEnd;
-            yearEnd = timeEnd.getFullYear();monthEnd = timeEnd.getMonth();dayEnd = timeEnd.getDate();
-            hourEnd = timeEnd.getHours();minuteEnd = timeEnd.getMinutes();secondEnd = timeEnd.getSeconds();
-
-        let endStamp = new Date(Date.UTC(yearEnd, monthEnd, dayEnd, hourEnd, minuteEnd, secondEnd));
-
-        await this.setState({ startStamp: startStamp , endStamp: endStamp})
-
-        if (this.state.startStamp > this.state.endStamp) {
-            this.setState({ endDate: this.state.startDate })
-        } else if (this.state.startStamp <= this.state.endStamp) {
-            this.setState({ endDate: date })
-        }
-    }
-
     render() {
 
         let secondCarousel = ['secondCarousel']
@@ -230,22 +188,11 @@ class View extends Component {
                             <div className="book-request-form" >
                                 <h1>New booking request</h1>
                                 <div className="book-request-form-box" >
-                                    <DatePicker
-                                        selected={this.state.startDate}
-                                        selectsStart
-                                        startDate={this.state.startDate}
-                                        endDate={this.state.endDate}
-                                        onChange={this.handleChangeStart}
-                                    />
-                                    <span className="select-from-span" >From </span>
-                                    <DatePicker
-                                        selected={this.state.endDate}
-                                        selectsEnd
-                                        startDate={this.state.startDate}
-                                        endDate={this.state.endDate}
-                                        onChange={this.handleChangeEnd}
-                                    />
-                                    <span className="select-to-span" >To</span>
+
+                                    <div className="date-box" >
+                                        <DatePickerRC change={this.change} month={1} />
+                                    </div>
+
                                 </div>
                                 <span className="few-day" >2 days with 2 persons</span>
                                 <div className="request-to-book" >Request to book</div>

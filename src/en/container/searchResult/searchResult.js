@@ -10,6 +10,7 @@ import PriceInput from '../../components/priceInput/priceInput';
 import DayPicker, { DateUtils } from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 
+
 import arrow from '../../../assets/icons/arrow-down.svg'
 import map from './../../../assets/img/map.png'
 
@@ -156,7 +157,7 @@ class SerachResult extends Component {
             e.target.matches('.DayPicker-Months') ||
             e.target.matches('.DayPicker-Caption') ||
             e.target.matches('.DayPicker-Caption div') ||
-            e.target.matches('.DayPicker-Day') 
+            e.target.matches('.DayPicker-Day')
         ) {
             this.setState(() => {
                 document.addEventListener('click', this.closeMenu);
@@ -208,19 +209,10 @@ class SerachResult extends Component {
     }
 
     //apply FILTER
-    applyFilter = () =>{
+    applyFilter = () => {
         console.log(this.state)
-        this.setState({selectFromTo : false})
+        this.setState({ selectFromTo: false })
     }
-
-
-
-    // getInitialState() {
-    //     return {
-    //         from: undefined,
-    //         to: undefined,
-    //     };
-    // }
 
     //select days
     handleDayClick(day) {
@@ -283,7 +275,6 @@ class SerachResult extends Component {
             <div  >
                 <div className="search-result-box"  >
                     <div className="filter-list-box" ref={this.filter} >
-
                         <div className="show-filter-menu" onClick={this.showFilterMenu} >
                             <p>Filter</p>
                         </div>
@@ -361,9 +352,9 @@ class SerachResult extends Component {
                                                     onDayClick={this.handleDayClick}
                                                     disabledDays={[
                                                         {
-                                                          before: new Date(),
+                                                            before: new Date(),
                                                         },
-                                                      ]}
+                                                    ]}
                                                 />
 
                                             </div>
