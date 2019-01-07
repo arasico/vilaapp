@@ -26,6 +26,9 @@ class HeaderComponent extends Component {
             openLoginModal: false,
             currentPage: false,
             openTabletMenu: false,
+            name:'',
+            email:'',
+            password:'',
             passwordError:'',
             emailError:'',
             registerNameError:'',
@@ -53,7 +56,18 @@ class HeaderComponent extends Component {
     }
 
     changedHandler = (e) => {
-        console.log(e.target)
+        //console.log(e.target.value)
+        this.setState({
+            [e.target.name] : e.target.value
+        });
+
+        console.log(`
+        the state is :
+        --------------------------
+        name:    ${this.state.name}
+        email:   ${this.state.email} 
+        message: ${this.state.password}
+        `);
     }
 
 
@@ -136,11 +150,12 @@ class HeaderComponent extends Component {
                                     <p className="forget-pw-title" > <i className="far fa-envelope"></i> Forget Password!</p>
                                     <p className="forget-pw-desc" >If you forgot your password for reset your password please enter your email or phone number.</p>
                                     <Input 
-                                        type={'password'} 
+                                        type={'text'} 
+                                        name={'email'}
                                         name="forgetpassword"
-                                        placeHolder={'Password'}
+                                        placeHolder={'Email'}
                                         changed={this.changedHandler}
-                                        error={this.state.passwordError}
+                                        error={this.state.forgetEmailError}
                                     />
                                     <div className="back-reset" >
                                         <Button title={'Reset Password'} bgcolor={'#1FC056'} hoverbgcolor={'#1fc056cc'} />
@@ -159,14 +174,14 @@ class HeaderComponent extends Component {
                                             <div className="login-box" >
                                                 <Input 
                                                     type={'email'} 
-                                                    name={'email/mobile'} 
+                                                    name={'email'}
                                                     placeHolder={'Email/Mobile'} 
                                                     changed={this.changedHandler} 
                                                     error={this.state.emailError} />
 
                                                 <Input 
                                                     type={'password'} 
-                                                    name={'loginpassword'} 
+                                                    name={'password'}
                                                     placeHolder={'Password'} 
                                                     changed={this.changedHandler} 
                                                     error={this.state.passwordError} />
@@ -185,18 +200,21 @@ class HeaderComponent extends Component {
                                             <div className="login-box" >
                                                 <Input 
                                                     type={'text'} 
+                                                    name={'name'}
                                                     placeHolder={'Name and Family'} 
                                                     changed={this.changedHandler} 
                                                     error={this.state.registerNameError} />
 
                                                 <Input 
                                                     type={'email'} 
+                                                    name={'email'}
                                                     placeHolder={'Email'} 
                                                     changed={this.changedHandler} 
                                                     error={this.state.registerEmailError} />
 
                                                 <Input 
                                                     type={'password'} 
+                                                    name={'password'}
                                                     placeHolder={'password'} 
                                                     changed={this.changedHandler} 
                                                     error={this.state.registerPasswordError} />

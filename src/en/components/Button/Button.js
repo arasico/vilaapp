@@ -19,3 +19,22 @@ const button = (props) => (
 );
 
 export default Radium(button);
+
+
+
+/*
+=====================================================================================
+How can use this button : ------->                                                  |
+                                                                                    |   
+                                                                                    |
+           <Button                                                                  |
+                isLoading={this.state.isLoading}                                    |
+                title={'Send'}                                                      |
+                bgcolor={'#1FC056'}                                                 |
+                hoverbgcolor={'#1fc056cc'}                                          |
+                click={this.callSubmit}/>                                           |
+                                                                                    |
+                                                                                    |
+=====================================================================================
+
+*/

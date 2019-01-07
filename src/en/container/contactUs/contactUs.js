@@ -226,7 +226,13 @@ class ContactUsComponent extends Component {
                         /> 
 
                           <div className="btn-container-form">
-                            <Button isLoading={this.state.isLoading} title={'Send'} bgcolor={'#1FC056'} hoverbgcolor={'#1fc056cc'} click={this.callSubmit}/>
+                            <Button 
+                                isLoading={this.state.isLoading} 
+                                title={'Send'} 
+                                bgcolor={'#1FC056'} 
+                                hoverbgcolor={'#1fc056cc'}
+                                click={this.callSubmit}/>
+                                
                           </div>
                     </form>
 
