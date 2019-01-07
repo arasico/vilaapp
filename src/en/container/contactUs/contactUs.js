@@ -12,6 +12,8 @@ import Button from '../../components/Button/Button'
 import Success from '../../../assets/icons/success.svg'
 import ArrowRight2 from '../../../assets/icons/arrowright.svg'
 import OurLogo from '../../../assets/icons/ourlogo.svg'
+import baseurl from '../../components/api/baseURL';
+
  
 
 
@@ -19,19 +21,23 @@ class ContactUsComponent extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            isSuccess : false,
+            isCheck : false,
             name:null,
             email:null,
             phone:null,
             message:null,
-            isLoading:false
+            isLoading:false,
+            nameError:'',
+            emailError:'',
+
 
          }
     }
 
     callSubmit = (event) => {
         event.preventDefault();
-        this.setState({isLoading:true})
+        this.setState({isLoading:true});
+
         console.log(`
         the state is :
         --------------------------
@@ -41,7 +47,8 @@ class ContactUsComponent extends Component {
         message: ${this.state.message}
         `);
 
-        const data={
+        // data for fetch 
+        const data = {
             'email':this.state.email,
             'name':this.state.name,
             'phone':this.state.phone,
@@ -49,18 +56,28 @@ class ContactUsComponent extends Component {
 
         }
 
-         this.postData(data)
+        this.checkDataEntery()
+        // this.postData(data);
 
 
+    }
 
-        //alert("its submit!")
-   
+    checkDataEntery(){
+        const { name, email, phone, message} = this.state;
 
+        if(name === null || name.trim() === '' )
+        {
+            this.setState({ nameError:'Name is requirement.'})
+        }
+        if(email === null || email.trim() === '' )
+        {
+            this.setState({ emailError:'Email is requirement.'})
+        }
     }
 
 
      postData(data) {
-         const url = `http://api.vilaapp.ir/api/v1/contactUs`
+         const url = baseurl + `/contactUs`
         // Default options are marked with *
     
           return fetch(url, {
@@ -69,8 +86,7 @@ class ContactUsComponent extends Component {
               cache: "no-cache", 
               credentials: "same-origin", 
               headers: {
-                  "Content-Type": "application/json",
-                  // "Content-Type": "application/x-www-form-urlencoded",
+                  "Content-Type": "application/json"
               },
               redirect: "follow", 
               referrer: "no-referrer", 
@@ -78,7 +94,7 @@ class ContactUsComponent extends Component {
           })
           .then(response =>  {
             response.json()
-            console.log(response.status)
+            // console.log(response.status)
             this.setState({isLoading:false})
             if(response.status === 200)
                 this.successMessage(true)
@@ -86,19 +102,16 @@ class ContactUsComponent extends Component {
          
       }
 
+      // when ststus code is 200 suucess message will be show
       successMessage(data){
-            
         if(data === true){
             document.getElementsByClassName('success-message-contact-us')[0].style.display= 'flex';
             document.getElementsByClassName('contact-us-form-container')[0].style.display= 'none';
         }
-        
       }
 
-
-
     changedHandler = (event) =>{
-        console.log(event.target.value)
+       // console.log(event.target.value)
         this.setState({
             [event.target.name]: event.target.value
         })
@@ -117,19 +130,19 @@ class ContactUsComponent extends Component {
                     </p>
                     </div>
 
-                    <form className="contact-us-form-container" onSubmit={this.callSubmit}>
+                    <form className="contact-us-form-container" >
                         <InputText
                             type={'text'} name="name"
                             placeHolder={'Name'}
                             changed={this.changedHandler}
-                            error={'name is error'}
+                            error={this.state.nameError}
                         /> 
 
                               <InputText
                             type={'text'} name="email"
                             placeHolder={'Email'}
                             changed={this.changedHandler}
-                            error={'Email is error'}
+                            error={this.state.emailError}
                         /> 
 
                               <InputText
@@ -147,7 +160,7 @@ class ContactUsComponent extends Component {
                         /> 
 
                           <div className="btn-container-form">
-                            <Button isLoading={this.state.isLoading} title={'Send'} bgcolor={'#1FC056'} hoverbgcolor={'#1fc056cc'} />
+                            <Button isLoading={this.state.isLoading} title={'Send'} bgcolor={'#1FC056'} hoverbgcolor={'#1fc056cc'} click={this.callSubmit}/>
                           </div>
                     </form>
 
