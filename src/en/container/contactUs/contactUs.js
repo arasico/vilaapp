@@ -110,7 +110,6 @@ class ContactUsComponent extends Component {
         }
         if(email !== null && email !== ''){
             let reg = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
-            // console.log(reg.test(email));
             if(reg.test(email) === false){
                 this.setState({ emailError:'Email is invalid.', isCheck: true});
            
@@ -118,7 +117,6 @@ class ContactUsComponent extends Component {
         }
 
       
-
         // finish loading
         this.setState({
             isLoading:false
@@ -143,8 +141,7 @@ class ContactUsComponent extends Component {
               cache: "no-cache", 
               credentials: "same-origin", 
               headers: {
-                  "Content-Type": "application/json",
-                //   "Accept":"application/json"
+                  "Content-Type": "application/json"
               },
               redirect: "follow", 
               referrer: "no-referrer", 

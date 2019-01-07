@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
+//
+// import external Component
+//
 import Input from '../commonInput/InputGroup'
 import Button from '../Button/Button'
 
@@ -15,6 +18,11 @@ import LogoColorly from '../../../assets/img/logo-colorly.svg'
 
 class HeaderComponent extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {  }
+    }
+
     state = {
         forgetPassword: false,
         openLoginModal: false,
@@ -23,15 +31,6 @@ class HeaderComponent extends Component {
     }
 
 
-
-    //     componentDidMount(){
-    //         var xx =  window.location.pathname;
-    //         console.log(xx + "its is -----")
-    //         if(xx !== '/')
-    //         this.setState({currentPage:true})
-    //         else
-    //         this.setState({currentPage:false})
-    //   }
 
 
     // show hide login section
@@ -214,3 +213,5 @@ class HeaderComponent extends Component {
 
 export default HeaderComponent;
 
+
+ 
