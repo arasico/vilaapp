@@ -52,22 +52,9 @@ class ContactUsComponent extends Component {
          this.postData(data)
 
 
-       // this.postData(data);
-
-
-
-
-
-
-
-
 
         //alert("its submit!")
-        if(this.state.isSuccess)
-        {    
-            document.getElementsByClassName('success-message-contact-us')[0].style.display= 'flex';
-            document.getElementsByClassName('contact-us-form-container')[0].style.display= 'none';
-        }
+   
 
     }
 
@@ -89,11 +76,23 @@ class ContactUsComponent extends Component {
               referrer: "no-referrer", 
               body: JSON.stringify(data), 
           })
-          .then(response =>  response.json())
-          .then(responsJson =>{ 
-              console.log(responsJson)
+          .then(response =>  {
+            response.json()
+            console.log(response.status)
             this.setState({isLoading:false})
-            })
+            if(response.status === 200)
+                this.successMessage(true)
+          })
+         
+      }
+
+      successMessage(data){
+            
+        if(data === true){
+            document.getElementsByClassName('success-message-contact-us')[0].style.display= 'flex';
+            document.getElementsByClassName('contact-us-form-container')[0].style.display= 'none';
+        }
+        
       }
 
 

@@ -7,6 +7,7 @@
     margin-top: 20px;
     cursor: pointer;
     transition: all .2s linear;
+    height: 50px;
 
 }
 
@@ -18,7 +19,8 @@
     height: 20px;
     animation: spin 1s linear infinite;
     text-align: center;
-    background-color: red;
+    display: inline-block; 
+
 
   }
   
