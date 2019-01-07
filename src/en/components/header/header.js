@@ -26,6 +26,7 @@ class HeaderComponent extends Component {
             openLoginModal: false,
             currentPage: false,
             openTabletMenu: false,
+            isLoading:false,
             name:'',
             email:'',
             password:'',
@@ -34,7 +35,9 @@ class HeaderComponent extends Component {
             registerNameError:'',
             registerEmailError:'',
             registerPasswordError:'',
-            forgetEmailError:''
+            forgetEmailError:'',
+          
+
          }
     } 
 
@@ -99,6 +102,18 @@ class HeaderComponent extends Component {
     goToHome = () => {
         console.log(window.location.pathname)
         window.location.pathname = '/'
+    }
+
+
+    callSubmit = async(event) => {
+        event.preventDefault();
+        this.setState({
+            isLoading:true,
+            emailError:'',
+        })
+
+
+        
     }
 
 
@@ -219,7 +234,14 @@ class HeaderComponent extends Component {
                                                     changed={this.changedHandler} 
                                                     error={this.state.registerPasswordError} />
 
-                                                <Button title={'Register'} bgcolor={'#1FC056'} hoverbgcolor={'#1fc056cc'} />
+                                                <Button 
+                                                    isLoading={this.state.isLoading} 
+                                                    title={'Register'} 
+                                                    bgcolor={'#1FC056'} 
+                                                    hoverbgcolor={'#1fc056cc'}
+                                                    click={this.callSubmit}/>
+
+
                                             </div>
                                         </TabPanel>
                                     </Tabs>
