@@ -12,7 +12,7 @@ import Button from '../../components/Button/Button'
 import Success from '../../../assets/icons/success.svg'
 import ArrowRight2 from '../../../assets/icons/arrowright.svg'
 import OurLogo from '../../../assets/icons/ourlogo.svg'
-import baseurl from '../../components/api/baseURL';
+import base from '../../components/api/baseURL';
 
  
 
@@ -57,7 +57,7 @@ class ContactUsComponent extends Component {
         phone:   ${this.state.phone}
         message: ${this.state.message}
         `);
-
+        console.log(base.baseURL) 
         // data for fetch 
         const data = {
             'email':this.state.email,
@@ -100,8 +100,9 @@ class ContactUsComponent extends Component {
            
         }
         if(phone.length === 11){
-            let reg = new RegExp('^[0-9]*$');
-            // console.log(reg.test(phone));
+            let reg = new RegExp(/^[0][1-9]\d{9}$/);
+             console.log(reg.test(phone));
+             console.log(phone);
             if(reg.test(phone) === false){
                 this.setState({ phoneError:'Phone number is invalid.', isCheck: true});
                
@@ -131,7 +132,9 @@ class ContactUsComponent extends Component {
         this.setState({
             isLoading:true
         })
-         const url =   `http://api.vilaapp.ir/api/v1/contactUs`;
+        //  const url =  'http://api.vilaapp.ir/api/v1/contactUs';
+         const url =  base.baseURL + 'contactUs';
+         console.log(url)
         // Default options are marked with *
     
           return fetch(url, {
@@ -140,7 +143,8 @@ class ContactUsComponent extends Component {
               cache: "no-cache", 
               credentials: "same-origin", 
               headers: {
-                  "Content-Type": "application/json"
+                  "Content-Type": "application/json",
+                //   "Accept":"application/json"
               },
               redirect: "follow", 
               referrer: "no-referrer", 
@@ -153,6 +157,7 @@ class ContactUsComponent extends Component {
             if(response.status === 200)
                 this.successMessage(true)
           })
+          .catch(error => console.log(error))
          
       }
 
