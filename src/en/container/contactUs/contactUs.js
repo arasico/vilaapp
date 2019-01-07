@@ -12,21 +12,168 @@ import Button from '../../components/Button/Button'
 import Success from '../../../assets/icons/success.svg'
 import ArrowRight2 from '../../../assets/icons/arrowright.svg'
 import OurLogo from '../../../assets/icons/ourlogo.svg'
+import baseurl from '../../components/api/baseURL';
+
  
 
 
 class ContactUsComponent extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = { 
+            isCheck : false,
+            name:'',
+            email:'',
+            phone:'',
+            message:'',
+            isLoading:false,
+            nameError:'',
+            emailError:'',
+            phoneError:'',
+            messageError:'',
+
+
+
+         }
     }
 
-    callSubmit(event){
+    callSubmit = async(event) => {
         event.preventDefault();
-        //alert("its submit!")
-        document.getElementsByClassName('success-message-contact-us')[0].style.display= 'flex';
-        document.getElementsByClassName('contact-us-form-container')[0].style.display= 'none'
+        this.setState({
+            isLoading:true,
+            nameError:'',
+            emailError:'',
+            phoneError:'',
+            messageError:'',
+
+        
+        });
+
+        console.log(`
+        the state is :
+        --------------------------
+        name:    ${this.state.name}
+        email:   ${this.state.email}
+        phone:   ${this.state.phone}
+        message: ${this.state.message}
+        `);
+
+        // data for fetch 
+        const data = {
+            'email':this.state.email,
+            'name':this.state.name,
+            'phone':this.state.phone,
+            'message':this.state.message
+        }
+
+       await this.checkDataEntery()
+
+        if(this.state.isCheck === false)
+            this.postData(data);
+            
+
+
     }
+
+    checkDataEntery(){
+        const { name, email, phone, message} = this.state;
+        this.setState({isCheck:false})
+
+        if(name === null || name.trim() === '' )
+        {
+            this.setState({ nameError:'Name is requirement.', isCheck: true});
+          
+        }
+        if(email === null || email.trim() === '' )
+        {
+            this.setState({ emailError:'Email is requirement.', isCheck: true});
+            
+        }
+        if(phone === null || phone.trim() === '' || phone.length !== 11)
+        {
+            this.setState({ phoneError:'Phone is requirement.', isCheck: true});
+         
+        }
+        if(message === null || message.trim() === '' || message.length < 10)
+        {
+            this.setState({ messageError:'Message is requirement.', isCheck: true});
+           
+        }
+        if(phone.length === 11){
+            let reg = new RegExp('^[0-9]*$');
+            // console.log(reg.test(phone));
+            if(reg.test(phone) === false){
+                this.setState({ phoneError:'Phone number is invalid.', isCheck: true});
+               
+            } 
+        }
+        if(email !== null && email !== ''){
+            let reg = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+            // console.log(reg.test(email));
+            if(reg.test(email) === false){
+                this.setState({ emailError:'Email is invalid.', isCheck: true});
+           
+            }
+        }
+
+      
+
+        // finish loading
+        this.setState({
+            isLoading:false
+        })
+
+        
+    }
+
+
+     postData(data) {
+        this.setState({
+            isLoading:true
+        })
+         const url =   `http://api.vilaapp.ir/api/v1/contactUs`;
+        // Default options are marked with *
+    
+          return fetch(url, {
+              method: "POST", 
+              mode: "cors", 
+              cache: "no-cache", 
+              credentials: "same-origin", 
+              headers: {
+                  "Content-Type": "application/json"
+              },
+              redirect: "follow", 
+              referrer: "no-referrer", 
+              body: JSON.stringify(data), 
+          })
+          .then(response =>  {
+            response.json()
+            // console.log(response.status)
+            this.setState({isLoading:false})
+            if(response.status === 200)
+                this.successMessage(true)
+          })
+         
+      }
+
+      // when ststus code is 200 suucess message will be show
+      successMessage(data){
+        if(data === true){
+            document.getElementsByClassName('success-message-contact-us')[0].style.display= 'flex';
+            document.getElementsByClassName('contact-us-form-container')[0].style.display= 'none';
+        }
+      }
+
+    changedHandler = (event) =>{
+       // console.log(event.target.value)
+   
+        this.setState({
+            [event.target.name]: event.target.value
+        }) 
+     
+    }
+
+
     render() { 
         return ( 
             <div className="container-fluid">
@@ -39,37 +186,45 @@ class ContactUsComponent extends Component {
                     </p>
                     </div>
 
-                    <form className="contact-us-form-container" onSubmit={this.callSubmit}>
+                    <form className="contact-us-form-container" >
                         <InputText
-                            type={'text'} name="name"
+                            type='text'
+                            name="name"
                             placeHolder={'Name'}
                             changed={this.changedHandler}
-                            error={'name is error'}
+                            error={this.state.nameError}
+                            max={20}
                         /> 
 
                               <InputText
-                            type={'text'} name="email"
+                            type={'text'} 
+                            name="email"
                             placeHolder={'Email'}
                             changed={this.changedHandler}
-                            error={'Email is error'}
+                            error={this.state.emailError}
+                            max={50}
                         /> 
 
                               <InputText
-                            type={'text'} name="phone"
+                            type={'text'} 
+                            name="phone"
                             placeHolder={'Phone Number'}
                             changed={this.changedHandler}
-                            error={'Phone is error'}
+                            error={this.state.phoneError}
+                            max={11}
                         /> 
 
                               <InputTextArea
-                            type={'text'} name="message"
+                            type={'text'} 
+                            name="message"
                             placeHolder={'Message'}
                             changed={this.changedHandler}
-                            error={'name is error'}
+                            error={this.state.messageError}
+                            max={2000}
                         /> 
 
                           <div className="btn-container-form">
-                            <Button title={'Send'} bgcolor={'#1FC056'} hoverbgcolor={'#1fc056cc'} />
+                            <Button isLoading={this.state.isLoading} title={'Send'} bgcolor={'#1FC056'} hoverbgcolor={'#1fc056cc'} click={this.callSubmit}/>
                           </div>
                     </form>
 
