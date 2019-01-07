@@ -17,9 +17,10 @@ const input = (props) => {
                           onChange={props.changed}
                           name={props.name}
                           required
+                          maxLength={props.max}
                           />
                 <span className="span-label">{props.placeHolder }</span>
-                <span className="input-error-text" >{props.error}</span>
+               {props.error ? (  <span className="input-error-text" >{props.error}</span> ) : (null)}
             </div>
 
 

@@ -22,13 +22,16 @@ class ContactUsComponent extends Component {
         super(props);
         this.state = { 
             isCheck : false,
-            name:null,
-            email:null,
-            phone:null,
-            message:null,
+            name:'',
+            email:'',
+            phone:'',
+            message:'',
             isLoading:false,
             nameError:'',
             emailError:'',
+            phoneError:'',
+            messageError:'',
+
 
 
          }
@@ -36,7 +39,15 @@ class ContactUsComponent extends Component {
 
     callSubmit = (event) => {
         event.preventDefault();
-        this.setState({isLoading:true});
+        this.setState({
+            isLoading:true,
+            nameError:'',
+            emailError:'',
+            phoneError:'',
+            messageError:'',
+
+        
+        });
 
         console.log(`
         the state is :
@@ -67,12 +78,47 @@ class ContactUsComponent extends Component {
 
         if(name === null || name.trim() === '' )
         {
-            this.setState({ nameError:'Name is requirement.'})
+            this.setState({ nameError:'Name is requirement.', isCheck: true});
+          
         }
         if(email === null || email.trim() === '' )
         {
-            this.setState({ emailError:'Email is requirement.'})
+            this.setState({ emailError:'Email is requirement.', isCheck: true});
+            
         }
+        if(phone === null || phone.trim() === '' || phone.length !== 11)
+        {
+            this.setState({ phoneError:'Phone is requirement.', isCheck: true});
+         
+        }
+        if(message === null || message.trim() === '' || message.length < 10)
+        {
+            this.setState({ messageError:'Message is requirement.', isCheck: true});
+           
+        }
+        if(phone.length === 11){
+            let reg = new RegExp('^[0-9]*$');
+            // console.log(reg.test(phone));
+            if(reg.test(phone) === false){
+                this.setState({ phoneError:'Phone number is invalid.', isCheck: true});
+               
+            } 
+        }
+        if(email !== null && email !== ''){
+            let reg = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+            // console.log(reg.test(email));
+            if(reg.test(email) === false){
+                this.setState({ emailError:'Email is invalid.', isCheck: true});
+           
+            }
+        }
+
+      
+
+        // finish loading
+        this.setState({
+            isLoading:false
+        })
     }
 
 
@@ -112,9 +158,11 @@ class ContactUsComponent extends Component {
 
     changedHandler = (event) =>{
        // console.log(event.target.value)
+   
         this.setState({
             [event.target.name]: event.target.value
-        })
+        }) 
+     
     }
 
 
@@ -132,31 +180,39 @@ class ContactUsComponent extends Component {
 
                     <form className="contact-us-form-container" >
                         <InputText
-                            type={'text'} name="name"
+                            type='text'
+                            name="name"
                             placeHolder={'Name'}
                             changed={this.changedHandler}
                             error={this.state.nameError}
+                            max={20}
                         /> 
 
                               <InputText
-                            type={'text'} name="email"
+                            type={'text'} 
+                            name="email"
                             placeHolder={'Email'}
                             changed={this.changedHandler}
                             error={this.state.emailError}
+                            max={50}
                         /> 
 
                               <InputText
-                            type={'text'} name="phone"
+                            type={'text'} 
+                            name="phone"
                             placeHolder={'Phone Number'}
                             changed={this.changedHandler}
-                            error={'Phone is error'}
+                            error={this.state.phoneError}
+                            max={11}
                         /> 
 
                               <InputTextArea
-                            type={'text'} name="message"
+                            type={'text'} 
+                            name="message"
                             placeHolder={'Message'}
                             changed={this.changedHandler}
-                            error={'name is error'}
+                            error={this.state.messageError}
+                            max={2000}
                         /> 
 
                           <div className="btn-container-form">
