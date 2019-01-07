@@ -52,7 +52,7 @@ flex-direction: row-reverse;
   }
   .go-to-fixed{
     position: fixed;
-    top: 50px;
+    top: 5%;
   }
 .back-to-normal{
 
