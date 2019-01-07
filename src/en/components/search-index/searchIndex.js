@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import "react-datepicker/dist/react-datepicker.css";
+//import "react-datepicker/dist/react-datepicker.css";
 import Dropdown from 'rc-dropdown';
 import Menu, { Item as MenuItem, Divider } from 'rc-menu';
 import { Link } from 'react-router-dom';
