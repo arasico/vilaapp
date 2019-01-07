@@ -20,11 +20,6 @@ import callVolum from '../../../assets/icons/callvolume.svg'
 
 import DatePickerRC from '../../components/dateStartEnd/datePicker';
 
-//data picker
-// import DatePicker from "react-datepicker";
-// import "react-datepicker/dist/react-datepicker.css";
-
-// import "react-responsive-carousel/lib/styles/carousel.css";
 import { Carousel } from 'react-responsive-carousel';
 
 
