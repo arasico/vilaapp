@@ -11,7 +11,6 @@
     "react": "^16.6.3",
     "react-bootstrap": "^0.32.4",
     "react-datepicker": "^2.0.0",
-    "react-daterange-picker": "^2.0.1",
     "react-dates": "^18.3.1",
     "react-day-picker": "^7.2.4",
     "react-dom": "^16.6.3",
