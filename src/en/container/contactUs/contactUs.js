@@ -18,15 +18,88 @@ import OurLogo from '../../../assets/icons/ourlogo.svg'
 class ContactUsComponent extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = { 
+            isSuccess : false,
+            name:null,
+            email:null,
+            phone:null,
+            message:null,
+
+         }
     }
 
-    callSubmit(event){
+    callSubmit = (event) => {
         event.preventDefault();
+
+        console.log(`
+        the state is :
+        --------------------------
+        name:    ${this.state.name}
+        email:   ${this.state.email}
+        phone:   ${this.state.phone}
+        message: ${this.state.message}
+        `);
+
+        const data={
+            'email':this.state.email,
+            'name':this.state.name,
+            'phone':this.state.phone,
+            'message':this.state.message
+
+        }
+
+
+        this.postData(data);
+
+
+
+
+
+
+
+
+
         //alert("its submit!")
-        document.getElementsByClassName('success-message-contact-us')[0].style.display= 'flex';
-        document.getElementsByClassName('contact-us-form-container')[0].style.display= 'none'
+        if(this.state.isSuccess)
+        {    
+            document.getElementsByClassName('success-message-contact-us')[0].style.display= 'flex';
+            document.getElementsByClassName('contact-us-form-container')[0].style.display= 'none';
+        }
+
     }
+
+
+     postData(data) {
+         const url = `http://api.vilaapp.ir/api/v1/contactUs`
+        // Default options are marked with *
+    
+          return fetch(url, {
+              method: "POST", 
+              mode: "cors", 
+              cache: "no-cache", 
+              credentials: "same-origin", 
+              headers: {
+                  "Content-Type": "application/json",
+                  // "Content-Type": "application/x-www-form-urlencoded",
+              },
+              redirect: "follow", 
+              referrer: "no-referrer", 
+              body: JSON.stringify(data), 
+          })
+          .then(response =>  response.json())
+          .then(responsJson => console.log(responsJson))
+      }
+
+
+
+    changedHandler = (event) =>{
+        console.log(event.target.value)
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+
+
     render() { 
         return ( 
             <div className="container-fluid">
