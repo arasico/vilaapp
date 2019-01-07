@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 //
-// import external Component
+// import external Component    ---->
 //
 import Input from '../commonInput/InputGroup'
 import Button from '../Button/Button'
 
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import "react-tabs/style/react-tabs.css";
-
 import './header.css'
 
-// import LogoWhit from '../../../assets/img/logo-vilaap-fff.png'
+//
+// impoert icons     ---->
+//
 import LogoColorly from '../../../assets/img/logo-colorly.svg'
 
 
@@ -20,16 +21,19 @@ class HeaderComponent extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {  }
-    }
-
-    state = {
-        forgetPassword: false,
-        openLoginModal: false,
-        currentPage: false,
-        openTabletMenu: false
-    }
-
+        this.state = { 
+            forgetPassword: false,
+            openLoginModal: false,
+            currentPage: false,
+            openTabletMenu: false,
+            passwordError:'',
+            emailError:'',
+            registerNameError:'',
+            registerEmailError:'',
+            registerPasswordError:'',
+            forgetEmailError:''
+         }
+    } 
 
 
 
@@ -131,10 +135,12 @@ class HeaderComponent extends Component {
                                 <div className="forget-pw-box" >
                                     <p className="forget-pw-title" > <i className="far fa-envelope"></i> Forget Password!</p>
                                     <p className="forget-pw-desc" >If you forgot your password for reset your password please enter your email or phone number.</p>
-                                    <Input type={'password'} name="forgetpassword"
+                                    <Input 
+                                        type={'password'} 
+                                        name="forgetpassword"
                                         placeHolder={'Password'}
                                         changed={this.changedHandler}
-                                        error={'password error'}
+                                        error={this.state.passwordError}
                                     />
                                     <div className="back-reset" >
                                         <Button title={'Reset Password'} bgcolor={'#1FC056'} hoverbgcolor={'#1fc056cc'} />
@@ -151,8 +157,20 @@ class HeaderComponent extends Component {
 
                                         <TabPanel className="my-react-tab">
                                             <div className="login-box" >
-                                                <Input type={'email'} name={'email/mobile'} placeHolder={'Email/Mobile'} changed={this.changedHandler} error={'email or number error'} />
-                                                <Input type={'password'} name={'loginpassword'} placeHolder={'Password'} changed={this.changedHandler} error={'password error'} />
+                                                <Input 
+                                                    type={'email'} 
+                                                    name={'email/mobile'} 
+                                                    placeHolder={'Email/Mobile'} 
+                                                    changed={this.changedHandler} 
+                                                    error={this.state.emailError} />
+
+                                                <Input 
+                                                    type={'password'} 
+                                                    name={'loginpassword'} 
+                                                    placeHolder={'Password'} 
+                                                    changed={this.changedHandler} 
+                                                    error={this.state.passwordError} />
+
                                                 <div className="cntr">
                                                     <input className="hidden-xs-up" id="cbx" type="checkbox" />
                                                     <label className="cbx" htmlFor="cbx"></label>
@@ -162,12 +180,27 @@ class HeaderComponent extends Component {
                                                 <p className="forget-pw-text" onClick={this.forgetPasswordHandler} >Do you forget your password ?</p>
                                             </div>
                                         </TabPanel>
+
                                         <TabPanel className="my-react-tab">
                                             <div className="login-box" >
-                                                <Input type={'text'} placeHolder={'Name and Family'} changed={this.changedHandler} error={'name error'} />
-                                                <Input type={'email'} placeHolder={'Email'} changed={this.changedHandler} error={'email error'} />
-                                                <Input type={'text'} placeHolder={'Mobile'} changed={this.changedHandler} error={'number error'} />
-                                                <Input type={'password'} placeHolder={'password'} changed={this.changedHandler} error={'password error'} />
+                                                <Input 
+                                                    type={'text'} 
+                                                    placeHolder={'Name and Family'} 
+                                                    changed={this.changedHandler} 
+                                                    error={this.state.registerNameError} />
+
+                                                <Input 
+                                                    type={'email'} 
+                                                    placeHolder={'Email'} 
+                                                    changed={this.changedHandler} 
+                                                    error={this.state.registerEmailError} />
+
+                                                <Input 
+                                                    type={'password'} 
+                                                    placeHolder={'password'} 
+                                                    changed={this.changedHandler} 
+                                                    error={this.state.registerPasswordError} />
+
                                                 <Button title={'Register'} bgcolor={'#1FC056'} hoverbgcolor={'#1fc056cc'} />
                                             </div>
                                         </TabPanel>
