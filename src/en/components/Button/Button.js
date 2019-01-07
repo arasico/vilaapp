@@ -7,7 +7,13 @@ const button = (props) => (
         <button className="button-style" 
                 onClick={props.click} 
                 style={{backgroundColor : props.bgcolor , ':hover' : {backgroundColor : props.hoverbgcolor}} } >
-                {props.title}
+               {props.isLoading ? (
+                    'loading'
+               ) : (
+                    
+                    props.title
+               )}
+              
         </button>
 
     </div>

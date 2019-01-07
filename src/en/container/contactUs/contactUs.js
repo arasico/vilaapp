@@ -24,13 +24,14 @@ class ContactUsComponent extends Component {
             email:null,
             phone:null,
             message:null,
+            isLoading:false
 
          }
     }
 
     callSubmit = (event) => {
         event.preventDefault();
-
+        this.setState({isLoading:true})
         console.log(`
         the state is :
         --------------------------
@@ -48,8 +49,10 @@ class ContactUsComponent extends Component {
 
         }
 
+         this.postData(data)
 
-        this.postData(data);
+
+       // this.postData(data);
 
 
 
@@ -87,7 +90,10 @@ class ContactUsComponent extends Component {
               body: JSON.stringify(data), 
           })
           .then(response =>  response.json())
-          .then(responsJson => console.log(responsJson))
+          .then(responsJson =>{ 
+              console.log(responsJson)
+            this.setState({isLoading:false})
+            })
       }
 
 
@@ -142,7 +148,7 @@ class ContactUsComponent extends Component {
                         /> 
 
                           <div className="btn-container-form">
-                            <Button title={'Send'} bgcolor={'#1FC056'} hoverbgcolor={'#1fc056cc'} />
+                            <Button isLoading={this.state.isLoading} title={'Send'} bgcolor={'#1FC056'} hoverbgcolor={'#1fc056cc'} />
                           </div>
                     </form>
 
