@@ -37,7 +37,7 @@ class ContactUsComponent extends Component {
          }
     }
 
-    callSubmit = (event) => {
+    callSubmit = async(event) => {
         event.preventDefault();
         this.setState({
             isLoading:true,
@@ -64,17 +64,20 @@ class ContactUsComponent extends Component {
             'name':this.state.name,
             'phone':this.state.phone,
             'message':this.state.message
-
         }
 
-        this.checkDataEntery()
-        // this.postData(data);
+       await this.checkDataEntery()
+
+        if(this.state.isCheck === false)
+            this.postData(data);
+            
 
 
     }
 
     checkDataEntery(){
         const { name, email, phone, message} = this.state;
+        this.setState({isCheck:false})
 
         if(name === null || name.trim() === '' )
         {
@@ -119,11 +122,16 @@ class ContactUsComponent extends Component {
         this.setState({
             isLoading:false
         })
+
+        
     }
 
 
      postData(data) {
-         const url = baseurl + `/contactUs`
+        this.setState({
+            isLoading:true
+        })
+         const url =   `http://api.vilaapp.ir/api/v1/contactUs`;
         // Default options are marked with *
     
           return fetch(url, {
