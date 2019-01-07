@@ -124,7 +124,7 @@ class SearchIndex extends Component {
         // add params in url ----->
         let url = window.location.pathname;
         url.push({
-            pathname: '/dresses',
+            pathname: '/search-result',
             search: '?color=blue'
           })
     }
