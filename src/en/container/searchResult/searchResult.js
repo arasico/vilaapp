@@ -7,10 +7,17 @@ import PriceMinMax from '../../components/common/priceMinMax.js/priceMinMax'
 import SingleDate from '../../components/singleDate/singleDate'
 import PriceInput from '../../components/priceInput/priceInput';
 
+import DayPicker, { DateUtils } from 'react-day-picker';
+import 'react-day-picker/lib/style.css';
+
+
 import arrow from '../../../assets/icons/arrow-down.svg'
 import map from './../../../assets/img/map.png'
 
+
+
 import './searchResult.css';
+
 
 
 
@@ -24,6 +31,9 @@ const styles = {
 
 class SerachResult extends Component {
 
+    static defaultProps = {
+        numberOfMonths: 2,
+    };
     constructor(props) {
         super(props);
         this.state = {
@@ -33,9 +43,14 @@ class SerachResult extends Component {
             selectRoom: false,
             mapShow: true,
             showFilterMenu: false,
-            searchResultBox: true
+            searchResultBox: true,
+            value: null
         };
         this.mapShowHandler = this.mapShowHandler.bind(this)
+
+        this.handleDayClick = this.handleDayClick.bind(this);
+        // this.handleResetClick = this.handleResetClick.bind(this);
+        // this.state = this.getInitialState();
 
     }
 
@@ -131,7 +146,19 @@ class SerachResult extends Component {
     }
 
     closeMenu = (e) => {
-        if (e.target.matches('.notCloseMenuLand')) {
+        if (e.target.matches('.notCloseMenuLand') ||
+            e.target.matches('.RangeExample') ||
+            e.target.matches('.DayPicker-wrapper') ||
+            e.target.matches('.DayPicker') ||
+            e.target.matches('.DayPicker-NavButton') ||
+            e.target.matches('.DayPicker-Weekday') ||
+            e.target.matches('.DayPicker-Weekday abbr') ||
+            e.target.matches('.DayPicker-Week') ||
+            e.target.matches('.DayPicker-Months') ||
+            e.target.matches('.DayPicker-Caption') ||
+            e.target.matches('.DayPicker-Caption div') ||
+            e.target.matches('.DayPicker-Day')
+        ) {
             this.setState(() => {
                 document.addEventListener('click', this.closeMenu);
             });
@@ -180,7 +207,27 @@ class SerachResult extends Component {
     goToView = () => {
         window.location.pathname = '/view'
     }
+
+    //apply FILTER
+    applyFilter = () => {
+        console.log(this.state)
+        this.setState({ selectFromTo: false })
+    }
+
+    //select days
+    handleDayClick(day) {
+        const range = DateUtils.addDayToRange(day, this.state);
+        this.setState(range);
+        console.log(this.state)
+    }
+
+
     render() {
+
+        // picker dates
+        const { from, to } = this.state;
+        const modifiers = { start: from, end: to };
+
 
         let btnList = ['listBtn select-listing-map']
         let btnMap = ['mapBtnActive select-listing-map']
@@ -228,7 +275,6 @@ class SerachResult extends Component {
             <div  >
                 <div className="search-result-box"  >
                     <div className="filter-list-box" ref={this.filter} >
-
                         <div className="show-filter-menu" onClick={this.showFilterMenu} >
                             <p>Filter</p>
                         </div>
@@ -277,16 +323,46 @@ class SerachResult extends Component {
                                 {this.state.selectFromTo ? <div className="select-from-to filter1 notCloseMenuLand" >
                                     <div className="from-to-box notCloseMenuLand"  >
                                         <div className="filter-children">
-                                            <div className="filter-child">
+                                            {/* <div className="filter-child">
                                                 <SingleDate name="from" />
                                             </div>
                                             <div className="filter-child">
                                                 <SingleDate name="to" />
+                                            </div> */}
+                                            <div className="RangeExample">
+                                                {/* <p>
+                                                    {!from && !to && 'Please select the first day.'}
+                                                    {from && !to && 'Please select the last day.'}
+                                                    {from &&
+                                                        to &&
+                                                        `Selected from ${from.toLocaleDateString()} to
+                                            ${to.toLocaleDateString()}`}{' '}
+                                                    {from &&
+                                                        to && (
+                                                            <button className="link" onClick={this.handleResetClick}>
+                                                                Reset
+                                                </button>
+                                                        )}
+                                                </p> */}
+                                                <DayPicker
+                                                    className="Selectable"
+                                                    numberOfMonths={this.props.numberOfMonths}
+                                                    selectedDays={[from, { from, to }]}
+                                                    modifiers={modifiers}
+                                                    onDayClick={this.handleDayClick}
+                                                    disabledDays={[
+                                                        {
+                                                            before: new Date(),
+                                                        },
+                                                    ]}
+                                                />
+
                                             </div>
+
                                         </div>
                                     </div>
                                     <div className="select-date-btn notCloseMenuLand"  >
-                                        <button className="apply-btn notCloseMenuLand" >Apply</button>
+                                        <button className="apply-btn notCloseMenuLand" onClick={this.applyFilter} >Apply</button>
                                     </div>
                                 </div> : ''}
                             </div>

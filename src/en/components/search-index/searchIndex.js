@@ -1,4 +1,6 @@
-import React,{Component} from 'react'; 
+
+import React,{Component} from 'react';
+//import "react-datepicker/dist/react-datepicker.css";
 import Dropdown from 'rc-dropdown';
 import Menu, { Item as MenuItem, Divider } from 'rc-menu';
 import { Link } from 'react-router-dom';
@@ -123,7 +125,7 @@ class SearchIndex extends Component {
         // add params in url ----->
         let url = window.location.pathname;
         url.push({
-            pathname: '/dresses',
+            pathname: '/search-result',
             search: '?color=blue'
           })
     }
@@ -172,7 +174,7 @@ class SearchIndex extends Component {
                     </div>
                     
                     <div className="checkin">
-                            <DatePickerRC change={this.change} />
+                            <DatePickerRC change={this.change} month={2} />
                     </div>
  
                     <div className="checkin-similar checkin3">
