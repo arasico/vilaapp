@@ -1,15 +1,18 @@
 import React,{Component} from 'react';
-// import DatePicker from "react-datepicker";
-// import "react-datepicker/dist/react-datepicker.css";
+import "react-datepicker/dist/react-datepicker.css";
 import Dropdown from 'rc-dropdown';
 import Menu, { Item as MenuItem, Divider } from 'rc-menu';
-import 'rc-dropdown/assets/index.css';
- 
-import arrow from '../../../assets/icons/arrow-down.svg'
+import { Link } from 'react-router-dom';
 
+//
+// import extera component
+//
+
+import 'rc-dropdown/assets/index.css';
+import arrow from '../../../assets/icons/arrow-down.svg'
+import DatePickerRC from '../../components/dateStartEnd/datePicker';
 import './style.css'
  
-import DatePickerRC from '../../components/dateStartEnd/datePicker';
  
 
 
@@ -18,9 +21,10 @@ class SearchIndex extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            startDate: null,
-            selectCity:'Select City',
-            person:''
+            startDate: this.dateShorter(new Date()),
+            endDate: this.dateShorter(new Date()),
+            selectCity:'all city',
+            person:1
           };
           this.handleChange = this.handleChange.bind(this);
           this.onSelect = this.onSelect.bind(this);
@@ -30,6 +34,28 @@ class SearchIndex extends Component {
     }
 
 
+    callState() {
+        console.log(`
+        ====================================
+        |      All State for checking      |
+        ====================================
+        startDate:      ${this.state.startDate} 
+        ------------------------------------
+        endDate:        ${this.state.endDate} 
+        ------------------------------------
+        selectCity:     ${this.state.selectCity} 
+        ------------------------------------
+        person:         ${this.state.person} 
+        ------------------------------------
+        `)
+    }
+
+    componentWillUpdate(nextProps, nextState){
+        this.callState();
+        console.log(nextProps)
+        console.log(nextState)
+    }
+
 
     handleChange(date) {
         this.setState({
@@ -38,31 +64,71 @@ class SearchIndex extends Component {
       }
 
 
-    onSelect({ key }) {  
-        this.setState({person:key})
+    onSelect = async({ key }) => {  
+       await this.setState({person:key})
     }
 
-    onSelectCity({ key }) {  
-        this.setState({selectCity:key})
+    onSelectCity = async({ key }) => {   
+       await this.setState({selectCity:key}); 
     }
 
       // Get props from children Date picker component
-    change(startDate,endDate){
+    change = async(startDate,endDate) => {
+
         // when the props change it will be called . . .
-        this.setState({
-            startDate: startDate,
-            endDate:endDate
-        });
-        // consol log after chagne state  . . .
-        console.log(this.state.startDate)
-        console.log(this.state.endDate)
+       await this.setState({
+            startDate: this.dateShorter(startDate),
+            endDate:this.dateShorter(endDate)
+        }); 
+
  
     }
 
+    // convert long date to short date of number example ==> 01/01/2018
+    dateShorter(date){
+        return new Intl.DateTimeFormat('en-US').format(date)
+    }
+   
 
     onClickSearch() {
-        window.location.pathname = '/search-result'
+        let {selectCity, startDate, endDate, person } = this.state;
+        let NewUrl = '/search-result?' + 'city=' + selectCity + '&startDate=' + startDate + '&endDate=' + endDate + '&person=' + person
+        window.location.assign(NewUrl)
     }
+
+
+
+    // insert paramter key in URL
+    insertParam(key, value) {
+        key = encodeURI(key); value = encodeURI(value);
+        var kvp = document.location.search.substr(1).split('&');
+        var i = kvp.length; var x; while (i--) {
+            x = kvp[i].split('=');
+
+            if (x[0] === key) {
+                x[1] = value;
+                kvp[i] = x.join('=');
+                break;
+            }
+        }
+
+
+        if (i < 0) { kvp[kvp.length] = [key, value].join('=') }
+        // slice & to url ---->
+        function getAnd() {
+            if (window.location.href.indexOf('?') - window.location.href.trim().length === -1 || window.location.href.indexOf('?') === -1)
+                return kvp.join('')
+            else
+                return kvp.join('&')
+        }
+        // add params in url ----->
+        let url = window.location.pathname;
+        url.push({
+            pathname: '/dresses',
+            search: '?color=blue'
+          })
+    }
+
 
 
 
