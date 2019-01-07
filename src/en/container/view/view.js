@@ -11,7 +11,6 @@ import seven from '../../../assets/img/7.jpg'
 import eight from '../../../assets/img/8.jpg'
 import pro from '../../../assets/img/pro.jpg'
 import location from '../../../assets/img/location.png'
-
 import rooms from '../../../assets/icons/rooms.svg'
 import area from '../../../assets/icons/area.svg'
 import beds from '../../../assets/icons/beds.svg'
@@ -19,7 +18,8 @@ import persons from '../../../assets/icons/persons.svg'
 import check from '../../../assets/icons/check.svg'
 import callVolum from '../../../assets/icons/callvolume.svg'
 
-// import "react-responsive-carousel/lib/styles/carousel.css";
+import DatePickerRC from '../../components/dateStartEnd/datePicker';
+
 import { Carousel } from 'react-responsive-carousel';
 
 
@@ -29,13 +29,15 @@ class View extends Component {
         super(props);
         this.state = {
             cModal: false,
-            showContact:false,
-            rooms:2,
-            beds:1,
-            persons:10,
-            area:5000
+            showContact: false,
+            rooms: 2,
+            beds: 1,
+            persons: 10,
+            area: 5000,
         }
+
     }
+
 
     showModal = () => {
         this.setState((prevState) => {
@@ -77,32 +79,44 @@ class View extends Component {
 
     goToRequest = React.createRef()
     requestBook = React.createRef()
-    
+
     goToRequestBook = () => {
         window.scrollTo({
             top: this.requestBook.current.offsetTop,
             behavior: "smooth"  // Optional, adds animation
         })
-
     }
 
 
     contactNumberBox = React.createRef()
 
-    contactNumber = () =>{
+    contactNumber = () => {
 
         this.setState((prevState) => {
             return { showContact: !prevState.showContact };
         });
-        
-        if(this.state.showContact){
+
+        if (this.state.showContact) {
             this.contactNumberBox.current.style.top = '30px'
-        }else{
+        } else {
             this.contactNumberBox.current.style.top = '-30px'
         }
     }
 
 
+
+    // Get props from children Date picker component
+    change = (startDate, endDate) => {
+        // when the props change it will be called . . .
+        this.setState({
+            startDate: startDate,
+            endDate: endDate
+        });
+        // consol log after chagne state  . . .
+        console.log(this.state.startDate)
+        console.log(this.state.endDate)
+
+    }
     render() {
 
         let secondCarousel = ['secondCarousel']
@@ -159,10 +173,8 @@ class View extends Component {
                                 </div>
                             </Carousel>
                         </div>
-
                     </div>
                 </div>
-
 
                 <div className="two-part" >
 
@@ -171,12 +183,11 @@ class View extends Component {
                             <div className="book-request-form" >
                                 <h1>New booking request</h1>
                                 <div className="book-request-form-box" >
-                                    <div className="book-select-time" >
-                                        <span>From</span>
+
+                                    <div className="date-box" >
+                                        <DatePickerRC change={this.change} month={1} />
                                     </div>
-                                    <div className="book-select-time" >
-                                        <span>To</span>
-                                    </div>
+
                                 </div>
                                 <span className="few-day" >2 days with 2 persons</span>
                                 <div className="request-to-book" >Request to book</div>
@@ -278,7 +289,7 @@ class View extends Component {
                                 </div>
                             </div>
 
-                            <div className="my-line tablet" ></div>
+                            <div className="my-line " ></div>
                         </div>
 
 

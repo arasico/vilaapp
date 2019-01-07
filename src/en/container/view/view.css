@@ -4,11 +4,11 @@
 .view-container-part1{
     /* max-width: 1200px; */
     /* margin: auto; */
-    width: 30%;
+    width: 400px;
 }
 .view-container-part2{
-    /* width: calc(100% - 400px); */
-    width: 70%;
+    width: calc(100% - 400px);
+    /* width: 70%; */
     position: relative;
 }
 .two-part{
@@ -37,22 +37,22 @@ flex-direction: row-reverse;
 
 .book-request-box{
     position: absolute;
-    top: -275px;
+    top: -300px;
     right: 50px;
-    height: 550px;
-    width: 300px;
+    height: 600px;
+    width: 350px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     border-radius: 10px;
-    overflow: hidden;
+    z-index: 1;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
     transition: all  .4s cubic-bezier(0.865, 0.220, 0.875, 0.255);
   }
   .go-to-fixed{
     position: fixed;
-    top: 50px;
+    top: 5%;
   }
 .back-to-normal{
 
@@ -65,7 +65,9 @@ flex-direction: row-reverse;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
+    border-radius: 10px 10px 0px 0px;
+  }
+  
 .book-request-form h1{
     text-align: center;
     font-size: 18px;
@@ -74,9 +76,10 @@ flex-direction: row-reverse;
 .book-request-form-box{
     width: 100%;
     margin: 20px 0px;
+    position: relative;
 }
 
-.book-select-time{
+ .react-datepicker-wrapper{
     width: 90%;
     height: 40px;
     border: 1px solid rgba(0, 0, 0, 0.1);
@@ -84,9 +87,33 @@ flex-direction: row-reverse;
     margin: 5px auto;
     display: flex;
     align-items: center;
+    /* padding-left: 80px; */
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
+.select-from-span{
+  position: absolute;
+  top: 17px;
+  font-size: 16px;
+  left: 30px;
+  color: #333;
+}
+.select-to-span{
+  position: absolute;
+  top: 61px;
+  font-size: 16px;
+  left: 30px;
+  color: #333;
+  display: flex;
+
+}
+.select-text{
+  background-color: #f0f0f0;
+  padding: 5px;
+  border-radius: 4px;
+  width: 40px;
+  text-align: center;
+}
 .request-to-book{
     width: 80%;
     padding: 15px;
@@ -113,6 +140,7 @@ flex-direction: row-reverse;
     align-items: center;
     justify-content: space-around;
     padding: 20px;
+    border-radius: 0px 0px 10px 10px;
 }
 .contact-person h1{
     font-size: 14px;
@@ -187,7 +215,6 @@ flex-direction: row-reverse;
 .owner-number img {
   margin-right: 10px;
   width: 16px;
-
 }
 
 .book-apartmant-detail{
@@ -235,6 +262,8 @@ font-size: 42px;
 }
 .book-about{
 }
+
+
 .book-about p{
     color:#444444;
     font-size: 18px;
@@ -737,12 +766,40 @@ margin: auto;
 .request-button-tablet{
   display: none;
 }
-.tablet{
-  display: none;
-}
+
 .desktop{
   display: block;
 }
+
+
+/* date styles  */
+
+.date-box{
+  
+}
+.date-box .container-date-picker{
+margin: auto;
+}
+.date-box .DateInput_input{
+font-size: 16px;
+text-align: center;
+}
+.date-box .DateRangePickerInput{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 90%;
+  border: 1px solid #aaa;
+  margin: auto;
+}
+
+.date-box .DateInput_input__focused , .date-box .DateInput_input{
+  border:none;
+}
+
+
+
+
 
 @media screen and (max-width: 1000px) {
   .slider-box>div>.carousel.carousel-slider{
@@ -805,8 +862,31 @@ margin: auto;
     width: 400px;
     margin: 20px auto;
   }
+
+
   .book-request-box{
     height: 700px;
+  }
+
+  .select-from-span , .select-to-span{
+    left: 15px;
+  }
+
+  .book-request-form-box{
+    width: 400px;
+  }
+  .react-datepicker-wrapper{
+    width: 100%;
+  }
+  .date-box .DateRangePickerInput{
+    width: 100%;
+    justify-content: space-between;
+  }
+  .date-box .container-date-picker{
+    width: 100%;
+  }
+  .date-box .DateRangePicker{
+    width: 100%;
   }
 }
 @media screen and (max-width: 800px) {
@@ -842,6 +922,9 @@ margin: auto;
 .book-location img{
   margin-bottom: 0px;
 }
+.book-request-form-box{
+  width: 90%;
+}
 
 }
   
@@ -863,6 +946,7 @@ margin: auto;
   font-size: 11px;
   margin-left: 8px;
 }
+
 }
   
 

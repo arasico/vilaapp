@@ -38,8 +38,7 @@ class DatePicker extends Component {
         await this.setState({ focusedInput:value })
         if(this.state.startDate && this.state.endDate)
             this.props.change(this.state.startDate,this.state.endDate);
- 
-     }
+        }
 
 
 
@@ -57,6 +56,10 @@ class DatePicker extends Component {
                     onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
                     focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
                     onFocusChange={focusedInput => this.Change(focusedInput)} // PropTypes.func.isRequired,
+                    numberOfMonths={this.props.month}
+                    hideKeyboardShortcutsPanel={true} 
+                    noBorder={true} 
+                    isOutsideRange={() => false} 
                     />
 
                     {/* <button onClick={this.callData.bind(this)}>Click</button> */}

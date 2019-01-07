@@ -173,7 +173,7 @@ class SearchIndex extends Component {
                     </div>
                     
                     <div className="checkin">
-                            <DatePickerRC change={this.change} />
+                            <DatePickerRC change={this.change} month={2} />
                     </div>
  
                     <div className="checkin-similar checkin3">
