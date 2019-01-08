@@ -245,7 +245,7 @@ class HeaderComponent extends Component {
 
         event.preventDefault();
 
-        this.setState({
+       await this.setState({
             loginErrorHandleing:'',
             passwordError:'',
             emailError:'',
