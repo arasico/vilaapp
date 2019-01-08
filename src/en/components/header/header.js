@@ -182,10 +182,9 @@ class HeaderComponent extends Component {
          
        
         if(email !== null && email !== ''){
-            let reg = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
-            if(reg.test(email) === false){
-                this.setState({ emailError:'Email is invalid.', isCheck: true});
-           
+            if(EmailCheckerComponent(email) === false){
+                this.setState({registerEmailError : 'Email is invalid!', isCheck: true})
+               
             }
         }
            
@@ -275,16 +274,14 @@ class HeaderComponent extends Component {
 
       loginInputChecking(){
         const { password, email } = this.state;
-        console.log(EmailCheckerComponent(email))
-
-        // if(this.EmailCheckerComponent(email) === false){
-        //     this.setState({emailError : 'Email is invalid!'})
-        //     return false
-        // }
-
-
+   
         if(email === '' ){
             this.setState({emailError : ' pleas insert your email'})
+            return false
+        }
+        // its function for email checking ----->
+        if(EmailCheckerComponent(email) === false){
+            this.setState({emailError : 'Email is invalid!'})
             return false
         }
 
@@ -292,14 +289,6 @@ class HeaderComponent extends Component {
             this.setState({passwordError : ' pleas insert your passwordf!'})
             return false
         }
-
-        // if(this.emailChecker(email) === false){
-        //     this.setState({emailError : 'Email is invalid!'})
-        //     return false
-        // }
-
-     
-
 
 
         return true
