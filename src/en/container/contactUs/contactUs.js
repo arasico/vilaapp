@@ -174,10 +174,10 @@ class ContactUsComponent extends Component {
                 <div className="container pt100">
                     <SubTitle label="Contact us" />
                     <div className="contact-us-note">
-                    <h3>Customer Support</h3>
-                    <p>
-                    Thank you for using <b>VilaApp</b>! Please complete the form below, so we can provide quick and efficient service. if this is an urgent matter please contact Customer support: <b>support@vilaApp.ir</b>
-                    </p>
+                        <h3>Customer Support</h3>
+                        <p>
+                        Thank you for using <b>VilaApp</b>! Please complete the form below, so we can provide quick and efficient service. if this is an urgent matter please contact Customer support: <b>support@vilaApp.ir</b>
+                        </p>
                     </div>
 
                     <form className="contact-us-form-container" >
@@ -190,7 +190,7 @@ class ContactUsComponent extends Component {
                             max={20}
                         /> 
 
-                              <InputText
+                        <InputText
                             type={'text'} 
                             name="email"
                             placeHolder={'Email'}
@@ -199,7 +199,7 @@ class ContactUsComponent extends Component {
                             max={50}
                         /> 
 
-                              <InputText
+                        <InputText
                             type={'text'} 
                             name="phone"
                             placeHolder={'Phone Number'}
@@ -208,7 +208,7 @@ class ContactUsComponent extends Component {
                             max={11}
                         /> 
 
-                              <InputTextArea
+                        <InputTextArea
                             type={'text'} 
                             name="message"
                             placeHolder={'Message'}
@@ -251,10 +251,7 @@ class ContactUsComponent extends Component {
                                         </div>
                                     </div>
                                     <img className="our-logo" src={OurLogo} alt="vilaapp" />
-
                                 </div>
-                  
-                    
                 </div>
             </div>
          );
