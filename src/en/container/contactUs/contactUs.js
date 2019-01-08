@@ -47,26 +47,17 @@ class ContactUsComponent extends Component {
 
     callSubmit = async(event) => {
         event.preventDefault();
+
+        // clase state bfor call function ----->
         this.setState({
             isLoading:true,
             nameError:'',
             emailError:'',
             phoneError:'',
             messageError:'',
-
-        
         });
 
-        console.log(`
-        the state is :
-        --------------------------
-        name:    ${this.state.name}
-        email:   ${this.state.email}
-        phone:   ${this.state.phone}
-        message: ${this.state.message}
-        `);
-        console.log(base.baseURL) 
-        // data for fetch 
+        // data for fetch  ----- >
         const data = {
             'email':this.state.email,
             'name':this.state.name,
@@ -74,6 +65,8 @@ class ContactUsComponent extends Component {
             'message':this.state.message
         }
 
+        // cheack all data in input and if is valid return false
+        // i change this function in other component but hear is ok , i dont chnage it.!
        await this.checkDataEntery()
 
         if(this.state.isCheck === false)
@@ -120,9 +113,7 @@ class ContactUsComponent extends Component {
 
       
         // finish loading
-        this.setState({
-            isLoading:false
-        })
+        this.setState({ isLoading:false })
 
         
     }
