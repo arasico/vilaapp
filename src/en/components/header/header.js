@@ -237,7 +237,7 @@ class HeaderComponent extends Component {
       }
 
       // on login click handler ---------------------->
-      onLogin = async(event)=>{
+    onLogin = async(event)=>{
 
         event.preventDefault();
 
@@ -253,30 +253,19 @@ class HeaderComponent extends Component {
             "password": this.state.password
         }
 
- 
-       
+        // when chech function return true provide to API  ----->
         if(this.loginInputChecking() === true)
          {
             const res = await this.postData(data,'auth/email/login');
-
-            console.log(res.status)
+           // console.log(res.status)
 
             if(res.status === 200 )
-                console.log(res.data.token)
+                console.log(`user is success login and token is : ${res.data.token}`)
             if(res.status === 401 || res.status === 400)
             this.setState({loginErrorHandleing : "username or password is invalid!"})
-          
   
         }
-         }
-
-        //   console.log(res.status)
-        //   console.log(res)
-        //   console.log(res.status)
-
-
-
-   
+    }
 
 
       loginInputChecking(){
