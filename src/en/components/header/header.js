@@ -39,6 +39,7 @@ class HeaderComponent extends Component {
             registerPasswordError:'',
             forgetEmailError:'',
             errorHandleing:'',
+            loginErrorHandleing:'',
             successMessage:'',
           
 
@@ -131,21 +132,28 @@ class HeaderComponent extends Component {
 
        await this.checkDataEntery()
 
-
-        if(this.state.isCheck === false)
+        // after conterol input will be call ------->
+        if(this.state.isCheck === false) 
         {
             const request = await this.postData(data,'auth/email/register');
                 
-            console.log(request.status)
+          //  console.log(request.status)
 
             if(request.status === 200)  // response success and create account
                 this.setState({
                     successMessage:'Your account has been successfully created. '
                 })
-            if(request.status === 400)  // response success and create account
+            if(request.status === 400)  // Email is already status code is 400
                 this.setState({
                     errorHandleing:'this email is exists.'
                 })
+            if(request.status !== 400 && request.status !== 200)  // Email is already status code is 400
+             {   
+                 this.setState({
+                    errorHandleing:'Oops something went wrong, please try again.'
+                })
+                console.log(`error : ststus code: ${request.status} - text:${request.data} `)
+            }
        }
 
         
@@ -219,7 +227,7 @@ class HeaderComponent extends Component {
             return Promise.all([statusCode, data])
           })
           .then(([res, data]) => {
-            console.log(res, data)
+            //console.log(res, data)
             this.setState({isLoading: false})
             return ({'status':res, 'data':data.data})
           })
@@ -233,24 +241,61 @@ class HeaderComponent extends Component {
 
         event.preventDefault();
 
+        this.setState({
+            loginErrorHandleing:'',
+            passwordError:'',
+            emailError:'',
+        })
+
+        // provider data for API --------->
         const data = {
             "email":this.state.email,
             "password": this.state.password
         }
-        console.log(`
-        the state is :
-        -------------------------- 
-        email:   ${this.state.email} 
-        password: ${this.state.password}
-        `);
 
-      const res = await this.postData(data,'auth/email/login');
-    //   console.log(res.status)
-      console.log(res)
-      console.log(res.status)
-      if(res.status === 200 )
-        console.log(res.data.token)
+ 
+       
+        if(this.loginInputChecking() === true)
+         {
+            const res = await this.postData(data,'auth/email/login');
 
+            console.log(res.status)
+
+            if(res.status === 200 )
+                console.log(res.data.token)
+            if(res.status === 401 || res.status === 400)
+            this.setState({loginErrorHandleing : "username or password is invalid!"})
+          
+  
+        }
+         }
+
+        //   console.log(res.status)
+        //   console.log(res)
+        //   console.log(res.status)
+
+
+
+   
+
+
+      loginInputChecking(){
+        const { password, email } = this.state;
+
+        if(email === '' ){
+            this.setState({emailError : ' pleas insert your email'})
+            return false
+        }
+
+        if(password === '' ){
+            this.setState({passwordError : ' pleas insert your passwordf!'})
+            return false
+        }
+
+
+
+
+        return true
       }
 
 
@@ -322,6 +367,7 @@ class HeaderComponent extends Component {
                                         </TabList>
 
                                         <TabPanel className="my-react-tab">
+                                        {this.state.loginErrorHandleing !== '' ? <p className="shake error-handeling-register  ">{this.state.loginErrorHandleing}</p> : null}
                                             <div className="login-box" >
                                                 <Input 
                                                     type={'email'} 
