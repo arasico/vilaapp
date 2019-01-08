@@ -10,6 +10,7 @@ import InputText from '../../components/commonInput/InputGroup';
 import InputTextArea from '../../components/commonInput/InputTextArea';
 import Button from '../../components/Button/Button';
 import EmailCheckerComponent from '../../components/api/emailChecker';
+import PhoneChecker from '../../components/api/mobileNumberChecker';
 
 //
 // import Icons -------------------------------------------------------->
@@ -107,16 +108,13 @@ class ContactUsComponent extends Component {
            
         }
         if(phone.length === 11){
-            let reg = new RegExp(/^[0][1-9]\d{9}$/);
-             console.log(reg.test(phone));
-             console.log(phone);
-            if(reg.test(phone) === false){
-                this.setState({ phoneError:'Phone number is invalid.', isCheck: true});
-            } 
+            if(PhoneChecker(phone) === false){
+                this.setState({phoneError : 'Phone number is invalid.', isCheck: true})
+            }
         }
         if(email !== null && email !== ''){
             if(EmailCheckerComponent(email) === false){
-                this.setState({registerEmailError : 'Email is invalid!', isCheck: true})
+                this.setState({emailError : 'Email is invalid!', isCheck: true})
             }
         }
 
