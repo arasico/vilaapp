@@ -327,8 +327,6 @@ class SerachResult extends Component {
 
 
     insertParam(key, value) {
-        console.log(key, value)
-
         key = encodeURI(key); value = encodeURI(value);
         var kvp = document.location.search.substr(1).split('&');
         var i = kvp.length; var x; while (i--) {
@@ -352,7 +350,6 @@ class SerachResult extends Component {
         // add params in url ----->
 
         let url = this.props.history;
-        console.log(this.props)
         url.push({
             ...url,
             pathname: 'search-result',
