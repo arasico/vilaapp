@@ -20,7 +20,7 @@ const input = (props) => {
                           maxLength={props.max}
                           />
                 <span className="span-label">{props.placeHolder }</span>
-               {props.error ? (  <span className="input-error-text" >{props.error}</span> ) : (null)}
+               {props.error ? (  <span className="input-error-text bounceIn" >{props.error}</span> ) : (null)}
             </div>
 
 

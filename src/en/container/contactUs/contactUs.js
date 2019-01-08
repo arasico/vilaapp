@@ -1,18 +1,26 @@
 import React , { Component }  from 'react';
 import { NavLink } from 'react-router-dom';
+import './contactUs.css';
 
-import './contactUs.css'
+//
+// import external component -------------------------------------------->
+//
+import SubTitle from '../../components/common/subTitle/subTitle';
+import InputText from '../../components/commonInput/InputGroup';
+import InputTextArea from '../../components/commonInput/InputTextArea';
+import Button from '../../components/Button/Button';
+import EmailCheckerComponent from '../../components/api/emailChecker';
+import PhoneChecker from '../../components/api/mobileNumberChecker';
 
-import SubTitle from '../../components/common/subTitle/subTitle'
-import InputText from '../../components/commonInput/InputGroup'
-import InputTextArea from '../../components/commonInput/InputTextArea'
-import Button from '../../components/Button/Button'
-
+//
 // import Icons -------------------------------------------------------->
-import Success from '../../../assets/icons/success.svg'
-import ArrowRight2 from '../../../assets/icons/arrowright.svg'
-import OurLogo from '../../../assets/icons/ourlogo.svg'
-import baseurl from '../../components/api/baseURL';
+//
+import Success from '../../../assets/icons/success.svg';
+import ArrowRight2 from '../../../assets/icons/arrowright.svg';
+import OurLogo from '../../../assets/icons/ourlogo.svg';
+import base from '../../components/api/baseURL';
+
+
 
  
 
@@ -39,26 +47,17 @@ class ContactUsComponent extends Component {
 
     callSubmit = async(event) => {
         event.preventDefault();
+
+        // clase state bfor call function ----->
         this.setState({
             isLoading:true,
             nameError:'',
             emailError:'',
             phoneError:'',
             messageError:'',
-
-        
         });
 
-        console.log(`
-        the state is :
-        --------------------------
-        name:    ${this.state.name}
-        email:   ${this.state.email}
-        phone:   ${this.state.phone}
-        message: ${this.state.message}
-        `);
-
-        // data for fetch 
+        // data for fetch  ----- >
         const data = {
             'email':this.state.email,
             'name':this.state.name,
@@ -66,6 +65,8 @@ class ContactUsComponent extends Component {
             'message':this.state.message
         }
 
+        // cheack all data in input and if is valid return false
+        // i change this function in other component but hear is ok , i dont chnage it.!
        await this.checkDataEntery()
 
         if(this.state.isCheck === false)
@@ -82,46 +83,33 @@ class ContactUsComponent extends Component {
         if(name === null || name.trim() === '' )
         {
             this.setState({ nameError:'Name is requirement.', isCheck: true});
-          
         }
         if(email === null || email.trim() === '' )
         {
             this.setState({ emailError:'Email is requirement.', isCheck: true});
-            
         }
         if(phone === null || phone.trim() === '' || phone.length !== 11)
         {
             this.setState({ phoneError:'Phone is requirement.', isCheck: true});
-         
         }
         if(message === null || message.trim() === '' || message.length < 10)
         {
             this.setState({ messageError:'Message is requirement.', isCheck: true});
-           
         }
         if(phone.length === 11){
-            let reg = new RegExp('^[0-9]*$');
-            // console.log(reg.test(phone));
-            if(reg.test(phone) === false){
-                this.setState({ phoneError:'Phone number is invalid.', isCheck: true});
-               
-            } 
+            if(PhoneChecker(phone) === false){
+                this.setState({phoneError : 'Phone number is invalid.', isCheck: true})
+            }
         }
         if(email !== null && email !== ''){
-            let reg = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
-            // console.log(reg.test(email));
-            if(reg.test(email) === false){
-                this.setState({ emailError:'Email is invalid.', isCheck: true});
-           
+            if(EmailCheckerComponent(email) === false){
+                this.setState({emailError : 'Email is invalid!', isCheck: true})
             }
         }
 
       
-
-        // finish loading
-        this.setState({
-            isLoading:false
-        })
+        // finish loading ---------------------->
+        this.setState({ isLoading:false })
 
         
     }
@@ -131,7 +119,9 @@ class ContactUsComponent extends Component {
         this.setState({
             isLoading:true
         })
-         const url =   `http://api.vilaapp.ir/api/v1/contactUs`;
+        //  const url =  'http://api.vilaapp.ir/api/v1/contactUs';
+         const url =  base.baseURL + 'contactUs';
+         console.log(url)
         // Default options are marked with *
     
           return fetch(url, {
@@ -140,7 +130,9 @@ class ContactUsComponent extends Component {
               cache: "no-cache", 
               credentials: "same-origin", 
               headers: {
-                  "Content-Type": "application/json"
+                  "Content-Type": "application/json",
+                  "Accept": "application/json",
+                  "language" : "en",
               },
               redirect: "follow", 
               referrer: "no-referrer", 
@@ -152,7 +144,9 @@ class ContactUsComponent extends Component {
             this.setState({isLoading:false})
             if(response.status === 200)
                 this.successMessage(true)
+    
           })
+          .catch(error => console.log(error))
          
       }
 
@@ -180,10 +174,10 @@ class ContactUsComponent extends Component {
                 <div className="container pt100">
                     <SubTitle label="Contact us" />
                     <div className="contact-us-note">
-                    <h3>Customer Support</h3>
-                    <p>
-                    Thank you for using <b>VilaApp</b>! Please complete the form below, so we can provide quick and efficient service. if this is an urgent matter please contact Customer support: <b>support@vilaApp.ir</b>
-                    </p>
+                        <h3>Customer Support</h3>
+                        <p>
+                        Thank you for using <b>VilaApp</b>! Please complete the form below, so we can provide quick and efficient service. if this is an urgent matter please contact Customer support: <b>support@vilaApp.ir</b>
+                        </p>
                     </div>
 
                     <form className="contact-us-form-container" >
@@ -196,7 +190,7 @@ class ContactUsComponent extends Component {
                             max={20}
                         /> 
 
-                              <InputText
+                        <InputText
                             type={'text'} 
                             name="email"
                             placeHolder={'Email'}
@@ -205,7 +199,7 @@ class ContactUsComponent extends Component {
                             max={50}
                         /> 
 
-                              <InputText
+                        <InputText
                             type={'text'} 
                             name="phone"
                             placeHolder={'Phone Number'}
@@ -214,7 +208,7 @@ class ContactUsComponent extends Component {
                             max={11}
                         /> 
 
-                              <InputTextArea
+                        <InputTextArea
                             type={'text'} 
                             name="message"
                             placeHolder={'Message'}
@@ -224,7 +218,13 @@ class ContactUsComponent extends Component {
                         /> 
 
                           <div className="btn-container-form">
-                            <Button isLoading={this.state.isLoading} title={'Send'} bgcolor={'#1FC056'} hoverbgcolor={'#1fc056cc'} click={this.callSubmit}/>
+                            <Button 
+                                isLoading={this.state.isLoading} 
+                                title={'Send'} 
+                                bgcolor={'#1FC056'} 
+                                hoverbgcolor={'#1fc056cc'}
+                                click={this.callSubmit}/>
+                                
                           </div>
                     </form>
 
@@ -251,10 +251,7 @@ class ContactUsComponent extends Component {
                                         </div>
                                     </div>
                                     <img className="our-logo" src={OurLogo} alt="vilaapp" />
-
                                 </div>
-                  
-                    
                 </div>
             </div>
          );
