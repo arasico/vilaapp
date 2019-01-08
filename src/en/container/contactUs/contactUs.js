@@ -141,7 +141,9 @@ class ContactUsComponent extends Component {
               cache: "no-cache", 
               credentials: "same-origin", 
               headers: {
-                  "Content-Type": "application/json"
+                  "Content-Type": "application/json",
+                  "Accept": "application/json",
+                  "language" : "en",
               },
               redirect: "follow", 
               referrer: "no-referrer", 
@@ -153,6 +155,7 @@ class ContactUsComponent extends Component {
             this.setState({isLoading:false})
             if(response.status === 200)
                 this.successMessage(true)
+    
           })
           .catch(error => console.log(error))
          

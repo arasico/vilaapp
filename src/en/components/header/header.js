@@ -7,7 +7,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 //
 import Input from '../commonInput/InputGroup'
 import Button from '../Button/Button'
-
+import base from '../api/baseURL';
 import "react-tabs/style/react-tabs.css";
 import './header.css'
 
@@ -22,6 +22,7 @@ class HeaderComponent extends Component {
     constructor(props) {
         super(props);
         this.state = { 
+            isCheck : false,
             forgetPassword: false,
             openLoginModal: false,
             currentPage: false,
@@ -36,6 +37,7 @@ class HeaderComponent extends Component {
             registerEmailError:'',
             registerPasswordError:'',
             forgetEmailError:'',
+            errorHandleing:'',
           
 
          }
@@ -64,13 +66,7 @@ class HeaderComponent extends Component {
             [e.target.name] : e.target.value
         });
 
-        console.log(`
-        the state is :
-        --------------------------
-        name:    ${this.state.name}
-        email:   ${this.state.email} 
-        message: ${this.state.password}
-        `);
+   
     }
 
 
@@ -109,12 +105,117 @@ class HeaderComponent extends Component {
         event.preventDefault();
         this.setState({
             isLoading:true,
-            emailError:'',
+            registerEmailError:'',
+            registerNameError:'',
+            registerPasswordError:'',
         })
 
+        console.log(`
+        the state is :
+        --------------------------
+        name:    ${this.state.name}
+        email:   ${this.state.email} 
+        password: ${this.state.password}
+        `);
+
+        const data = {
+            'email':this.state.email,
+            'name':this.state.name,
+            'password':this.state.password,
+            'phone':''
+        }
+
+       await this.checkDataEntery()
+
+
+        if(this.state.isCheck === false)
+        this.postData(data,'auth/email/register');
 
         
     }
+
+    checkDataEntery(){
+        const { name, email, password} = this.state;
+        this.setState({isCheck:false})
+
+        if(name === null || name.trim() === '' )
+        {
+            this.setState({ registerNameError:'Name is requirement.', isCheck: true});
+          
+        }
+        if(email === null || email.trim() === '' )
+        {
+            this.setState({ registerEmailError:'Email is requirement.', isCheck: true});
+            
+        }
+        if(password === null || password.trim() === '' || password.length < 6)
+        {
+            this.setState({ registerPasswordError:'password is requirement.', isCheck: true});
+         
+        }
+         
+       
+        if(email !== null && email !== ''){
+            let reg = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+            if(reg.test(email) === false){
+                this.setState({ emailError:'Email is invalid.', isCheck: true});
+           
+            }
+        }
+
+           
+        // finish loading
+        this.setState({
+            isLoading:false
+        })
+
+
+    }
+
+
+
+
+    postData(data,key) {
+        this.setState({
+            isLoading:true,
+            errorHandleing:''
+        })
+        //  const url =  'http://api.vilaapp.ir/api/v1/contactUs';
+         const url =  base.baseURL + key;
+         console.log(url)
+         console.log(JSON.stringify(data))
+        // Default options are marked with *
+    
+          return fetch(url, {
+              method: "POST", 
+            //   mode: "cors", 
+              cache: "no-cache", 
+            //   credentials: "same-origin", 
+              headers: {
+                  "Content-Type": "application/json",
+                  "Accept": "application/json",
+                  "language" : "en",
+                  "agent" : "web" 
+              },
+              redirect: "follow", 
+              referrer: "no-referrer", 
+              body: JSON.stringify(data), 
+          })
+          .then(response =>  {
+            response.json()
+             console.log(response)
+            this.setState({isLoading:false})
+            if(response.status === 200)
+               console.log("register successful!")
+            if(response.status === 400)
+               this.setState({errorHandleing: 'this email is exists!'})
+          })
+          .catch(error =>{ 
+            this.setState({isLoading:false})
+            console.log(error)
+        })
+         
+      }
 
 
 
@@ -167,7 +268,6 @@ class HeaderComponent extends Component {
                                     <Input 
                                         type={'text'} 
                                         name={'email'}
-                                        name="forgetpassword"
                                         placeHolder={'Email'}
                                         changed={this.changedHandler}
                                         error={this.state.forgetEmailError}
@@ -212,6 +312,7 @@ class HeaderComponent extends Component {
                                         </TabPanel>
 
                                         <TabPanel className="my-react-tab">
+                                            {this.state.errorHandleing !== '' ? <p className="shake error-handeling-register  ">{this.state.errorHandleing}</p> : null}
                                             <div className="login-box" >
                                                 <Input 
                                                     type={'text'} 
