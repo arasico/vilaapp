@@ -83,22 +83,18 @@ class ContactUsComponent extends Component {
         if(name === null || name.trim() === '' )
         {
             this.setState({ nameError:'Name is requirement.', isCheck: true});
-          
         }
         if(email === null || email.trim() === '' )
         {
             this.setState({ emailError:'Email is requirement.', isCheck: true});
-            
         }
         if(phone === null || phone.trim() === '' || phone.length !== 11)
         {
             this.setState({ phoneError:'Phone is requirement.', isCheck: true});
-         
         }
         if(message === null || message.trim() === '' || message.length < 10)
         {
             this.setState({ messageError:'Message is requirement.', isCheck: true});
-           
         }
         if(phone.length === 11){
             if(PhoneChecker(phone) === false){
@@ -112,7 +108,7 @@ class ContactUsComponent extends Component {
         }
 
       
-        // finish loading
+        // finish loading ---------------------->
         this.setState({ isLoading:false })
 
         
