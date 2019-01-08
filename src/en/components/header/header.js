@@ -275,7 +275,7 @@ class HeaderComponent extends Component {
         const { password, email } = this.state;
    
         if(email === '' ){
-            this.setState({emailError : ' pleas insert your email'})
+            this.setState({emailError : 'please insert your email!'})
             return false
         }
         // its function for email checking ----->
@@ -285,7 +285,7 @@ class HeaderComponent extends Component {
         }
 
         if(password === '' ){
-            this.setState({passwordError : ' pleas insert your passwordf!'})
+            this.setState({passwordError : 'please insert your password!'})
             return false
         }
 
