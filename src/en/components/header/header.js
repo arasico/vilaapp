@@ -5,11 +5,12 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 //
 // import external Component    ---->
 //
+import "react-tabs/style/react-tabs.css";
+import './header.css'
 import Input from '../commonInput/InputGroup'
 import Button from '../Button/Button'
 import base from '../api/baseURL';
-import "react-tabs/style/react-tabs.css";
-import './header.css'
+
 
 //
 // impoert icons     ---->
@@ -38,6 +39,7 @@ class HeaderComponent extends Component {
             registerPasswordError:'',
             forgetEmailError:'',
             errorHandleing:'',
+            successMessage:'',
           
 
          }
@@ -108,6 +110,8 @@ class HeaderComponent extends Component {
             registerEmailError:'',
             registerNameError:'',
             registerPasswordError:'',
+            errorHandleing:'',
+            successMessage:''
         })
 
         console.log(`
@@ -129,7 +133,20 @@ class HeaderComponent extends Component {
 
 
         if(this.state.isCheck === false)
-        this.postData(data,'auth/email/register');
+        {
+            const request = await this.postData(data,'auth/email/register');
+                
+            console.log(request.status)
+
+            if(request.status === 200)  // response success and create account
+                this.setState({
+                    successMessage:'Your account has been successfully created. '
+                })
+            if(request.status === 400)  // response success and create account
+                this.setState({
+                    errorHandleing:'this email is exists.'
+                })
+       }
 
         
     }
@@ -162,13 +179,9 @@ class HeaderComponent extends Component {
            
             }
         }
-
            
         // finish loading
-        this.setState({
-            isLoading:false
-        })
-
+        this.setState({ isLoading:false });
 
     }
 
@@ -178,19 +191,18 @@ class HeaderComponent extends Component {
     postData(data,key) {
         this.setState({
             isLoading:true,
-            errorHandleing:''
+            errorHandleing:'',
+            successMessage:''
         })
-        //  const url =  'http://api.vilaapp.ir/api/v1/contactUs';
+
          const url =  base.baseURL + key;
-         console.log(url)
-         console.log(JSON.stringify(data))
+        //  console.log(url)
+        //  console.log(JSON.stringify(data))
         // Default options are marked with *
     
           return fetch(url, {
               method: "POST", 
-            //   mode: "cors", 
-              cache: "no-cache", 
-            //   credentials: "same-origin", 
+              cache: "no-cache",  
               headers: {
                   "Content-Type": "application/json",
                   "Accept": "application/json",
@@ -201,20 +213,44 @@ class HeaderComponent extends Component {
               referrer: "no-referrer", 
               body: JSON.stringify(data), 
           })
-          .then(response =>  {
-            response.json()
-             console.log(response)
-            this.setState({isLoading:false})
-            if(response.status === 200)
-               console.log("register successful!")
-            if(response.status === 400)
-               this.setState({errorHandleing: 'this email is exists!'})
+          .then(response => {
+            const statusCode = response.status
+            const data = response.json()
+            return Promise.all([statusCode, data])
           })
-          .catch(error =>{ 
-            this.setState({isLoading:false})
-            console.log(error)
-        })
+          .then(([res, data]) => {
+            console.log(res, data)
+            this.setState({isLoading: false})
+            return ({'status':res, 'data':data.data})
+          })
+     
+       
          
+      }
+
+      // on login click handler ---------------------->
+      onLogin = async(event)=>{
+
+        event.preventDefault();
+
+        const data = {
+            "email":this.state.email,
+            "password": this.state.password
+        }
+        console.log(`
+        the state is :
+        -------------------------- 
+        email:   ${this.state.email} 
+        password: ${this.state.password}
+        `);
+
+      const res = await this.postData(data,'auth/email/login');
+    //   console.log(res.status)
+      console.log(res)
+      console.log(res.status)
+      if(res.status === 200 )
+        console.log(res.data.token)
+
       }
 
 
@@ -306,13 +342,21 @@ class HeaderComponent extends Component {
                                                     <label className="cbx" htmlFor="cbx"></label>
                                                     <label className="checkbox-label" htmlFor="cbx">Keep my password </label>
                                                 </div>
-                                                <Button title={'Login'} bgcolor={'#0090CF'} hoverbgcolor={'#0090cfcc'} />
+                                                 
+                                                <Button 
+                                                    isLoading={this.state.isLoading} 
+                                                    title={'Login'} 
+                                                    bgcolor={'#0090CF'} 
+                                                    hoverbgcolor={'#0090cfcc'}
+                                                    click={this.onLogin}/>
+
                                                 <p className="forget-pw-text" onClick={this.forgetPasswordHandler} >Do you forget your password ?</p>
                                             </div>
                                         </TabPanel>
 
                                         <TabPanel className="my-react-tab">
                                             {this.state.errorHandleing !== '' ? <p className="shake error-handeling-register  ">{this.state.errorHandleing}</p> : null}
+                                            {this.state.successMessage !== '' ? <p className="flipInX success-handeling-register  ">{this.state.successMessage}</p> : null}
                                             <div className="login-box" >
                                                 <Input 
                                                     type={'text'} 
@@ -341,7 +385,6 @@ class HeaderComponent extends Component {
                                                     bgcolor={'#1FC056'} 
                                                     hoverbgcolor={'#1fc056cc'}
                                                     click={this.callSubmit}/>
-
 
                                             </div>
                                         </TabPanel>
