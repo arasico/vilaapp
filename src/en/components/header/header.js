@@ -10,6 +10,7 @@ import './header.css'
 import Input from '../commonInput/InputGroup'
 import Button from '../Button/Button'
 import base from '../api/baseURL';
+import EmailCheckerComponent from '../api/emailChecker';
 
 
 //
@@ -193,6 +194,15 @@ class HeaderComponent extends Component {
 
     }
 
+    // get email address and check is valid or invalid
+    emailChecker(email){
+        let reg = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+        if(reg.test(email) === false)
+           return false
+        
+        return true
+    }
+
 
 
 
@@ -204,10 +214,7 @@ class HeaderComponent extends Component {
         })
 
          const url =  base.baseURL + key;
-        //  console.log(url)
-        //  console.log(JSON.stringify(data))
-        // Default options are marked with *
-    
+
           return fetch(url, {
               method: "POST", 
               cache: "no-cache",  
@@ -231,8 +238,6 @@ class HeaderComponent extends Component {
             this.setState({isLoading: false})
             return ({'status':res, 'data':data.data})
           })
-     
-       
          
       }
 
@@ -270,6 +275,13 @@ class HeaderComponent extends Component {
 
       loginInputChecking(){
         const { password, email } = this.state;
+        console.log(EmailCheckerComponent(email))
+
+        // if(this.EmailCheckerComponent(email) === false){
+        //     this.setState({emailError : 'Email is invalid!'})
+        //     return false
+        // }
+
 
         if(email === '' ){
             this.setState({emailError : ' pleas insert your email'})
@@ -281,6 +293,12 @@ class HeaderComponent extends Component {
             return false
         }
 
+        // if(this.emailChecker(email) === false){
+        //     this.setState({emailError : 'Email is invalid!'})
+        //     return false
+        // }
+
+     
 
 
 
