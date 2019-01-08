@@ -22,7 +22,7 @@ const textarea = (props) => {
                           />
                 <span className="span-label">{props.placeHolder }</span>
                 
-                {props.error ? (  <span className="textarea-error-text" >{props.error}</span> ) : (null)}
+                {props.error ? (  <span className="textarea-error-text bounceIn" >{props.error}</span> ) : (null)}
             </div>
 
 

@@ -1,18 +1,25 @@
 import React , { Component }  from 'react';
 import { NavLink } from 'react-router-dom';
+import './contactUs.css';
 
-import './contactUs.css'
+//
+// import external component -------------------------------------------->
+//
+import SubTitle from '../../components/common/subTitle/subTitle';
+import InputText from '../../components/commonInput/InputGroup';
+import InputTextArea from '../../components/commonInput/InputTextArea';
+import Button from '../../components/Button/Button';
+import EmailCheckerComponent from '../../components/api/emailChecker';
 
-import SubTitle from '../../components/common/subTitle/subTitle'
-import InputText from '../../components/commonInput/InputGroup'
-import InputTextArea from '../../components/commonInput/InputTextArea'
-import Button from '../../components/Button/Button'
-
+//
 // import Icons -------------------------------------------------------->
-import Success from '../../../assets/icons/success.svg'
-import ArrowRight2 from '../../../assets/icons/arrowright.svg'
-import OurLogo from '../../../assets/icons/ourlogo.svg'
+//
+import Success from '../../../assets/icons/success.svg';
+import ArrowRight2 from '../../../assets/icons/arrowright.svg';
+import OurLogo from '../../../assets/icons/ourlogo.svg';
 import base from '../../components/api/baseURL';
+
+
 
  
 
@@ -105,14 +112,11 @@ class ContactUsComponent extends Component {
              console.log(phone);
             if(reg.test(phone) === false){
                 this.setState({ phoneError:'Phone number is invalid.', isCheck: true});
-               
             } 
         }
         if(email !== null && email !== ''){
-            let reg = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
-            if(reg.test(email) === false){
-                this.setState({ emailError:'Email is invalid.', isCheck: true});
-           
+            if(EmailCheckerComponent(email) === false){
+                this.setState({registerEmailError : 'Email is invalid!', isCheck: true})
             }
         }
 

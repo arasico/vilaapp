@@ -184,7 +184,6 @@ class HeaderComponent extends Component {
         if(email !== null && email !== ''){
             if(EmailCheckerComponent(email) === false){
                 this.setState({registerEmailError : 'Email is invalid!', isCheck: true})
-               
             }
         }
            
@@ -193,14 +192,14 @@ class HeaderComponent extends Component {
 
     }
 
-    // get email address and check is valid or invalid
-    emailChecker(email){
-        let reg = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
-        if(reg.test(email) === false)
-           return false
+    // // get email address and check is valid or invalid
+    // emailChecker(email){
+    //     let reg = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+    //     if(reg.test(email) === false)
+    //        return false
         
-        return true
-    }
+    //     return true
+    // }
 
 
 
