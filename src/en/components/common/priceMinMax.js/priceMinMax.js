@@ -6,12 +6,12 @@ const priceMinMax = (props) => {
             <div className="price-min-max">
                 <div className="price-min-max-box notCloseMenuLand" >
                     <span className="min-label notCloseMenuLand" >Min</span>
-                    <input className="min-price-input notCloseMenuLand" onChange={props.changed}  />
+                    <input className="min-price-input notCloseMenuLand" onChange={props.changed} name="min" value={props.min}/>
                     <span className="min-max-toman notCloseMenuLand" >Toman</span>
                 </div>
                 <div className="price-min-max-box notCloseMenuLand" >
                     <span className="max-label notCloseMenuLand" >Max</span>
-                    <input className="max-price-input notCloseMenuLand" onChange={props.changed}  />
+                    <input className="max-price-input notCloseMenuLand" onChange={props.changed}  name="max" value={props.max}/>
                     <span className="min-max-toman notCloseMenuLand" >Toman</span>
                 </div>
             </div>

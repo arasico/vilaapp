@@ -6,7 +6,7 @@ export default class InputComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state={
-            counter: 0
+            counter: Number(this.props.counter)
       }  
     }
 
@@ -95,7 +95,7 @@ export default class InputComponent extends React.Component {
                         </div>
                         <div className="option-flex-item-input notCloseMenuLand">
                             <input className="option-input-component notCloseMenuLand" 
-                            value={this.state.counter}
+                            value={this.props.counter}
                             onChange={this.handleChange.bind(this)}
                             onFocus={this.handelFocus.bind(this)} 
                             onBlur={this.handelBlur.bind(this)} 
