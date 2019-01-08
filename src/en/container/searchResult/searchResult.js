@@ -44,8 +44,8 @@ class SerachResult extends Component {
             mapShow: true,
             showFilterMenu: false,
             searchResultBox: true,
-            start:null,
-            end:null,
+            start: null,
+            end: null,
             startDate: null,
             endDate: null,
             shortStart: '',
@@ -56,11 +56,6 @@ class SerachResult extends Component {
             max: 0,
             room: 0,
         };
-
-        this.mapShowHandler = this.mapShowHandler.bind(this)
-        this.handleDayClick = this.handleDayClick.bind(this);
-        // this.handleResetClick = this.handleResetClick.bind(this);
-        this.tomanShorter = this.tomanShorter.bind(this)
 
     }
 
@@ -78,32 +73,30 @@ class SerachResult extends Component {
             room: this.getParms('room'),
             min: this.getParms('min') || 100000,
             max: this.getParms('max') || 200000,
-            shortStartShow:this.state.shortStart,
-            shortEndShow:this.state.shortEnd,
-            personShow:this.state.person,
-            roomShow:this.state.room,
-            minShow:this.state.min,
-            maxShow:this.state.max,
+            shortStartShow: this.state.shortStart,
+            shortEndShow: this.state.shortEnd,
+            personShow: this.state.person,
+            roomShow: this.state.room,
+            minShow: this.state.min,
+            maxShow: this.state.max,
         })
-
-        console.log(this.state.startDate)
 
     }
     componentDidMount = async () => {
         window.addEventListener('scroll', this.handleScroll);
         await this.setState({
-            personShow:this.state.person,
-            roomShow:this.state.room,
-            minShow:this.state.min,
-            maxShow:this.state.max,
+            personShow: this.state.person,
+            roomShow: this.state.room,
+            minShow: this.state.min,
+            maxShow: this.state.max,
         })
 
         // for show in a pice of filter date 
         this.shortDate()
 
         await this.setState({
-            shortStartShow:this.state.shortStart,
-            shortEndShow:this.state.shortEnd,
+            shortStartShow: this.state.shortStart,
+            shortEndShow: this.state.shortEnd,
         })
 
     }
@@ -224,7 +217,7 @@ class SerachResult extends Component {
 
     }
 
-    mapShowHandler(e) {
+    mapShowHandler = (e) => {
         if (e.target.id === 'list') {
             this.setState({ mapShow: false })
         } else {
@@ -325,7 +318,7 @@ class SerachResult extends Component {
         this.setState({ [e.target.name]: e.target.value })
     }
 
-    tomanShorter(value) {
+    tomanShorter = (value) => {
         const x = value.toString()
         if (x.length > 4)
             return x.slice(0, x.length - 3)
@@ -333,7 +326,7 @@ class SerachResult extends Component {
     }
 
 
-    insertParam(key, value ) {
+    insertParam(key, value) {
         console.log(key, value)
 
         key = encodeURI(key); value = encodeURI(value);
@@ -348,13 +341,13 @@ class SerachResult extends Component {
             }
         }
 
-        if (i < 0) { kvp[kvp.length] = [key, value].join('=')  }
+        if (i < 0) { kvp[kvp.length] = [key, value].join('=') }
         // slice & to url ---->
         function getAnd() {
             if (window.location.href.indexOf('?') - window.location.href.trim().length === -1 || window.location.href.indexOf('?') === -1)
-                return kvp.join('') 
+                return kvp.join('')
             else
-                return kvp.join('&') 
+                return kvp.join('&')
         }
         // add params in url ----->
 
@@ -363,7 +356,7 @@ class SerachResult extends Component {
         url.push({
             ...url,
             pathname: 'search-result',
-            search: getAnd() 
+            search: getAnd()
         })
     }
 
@@ -374,14 +367,14 @@ class SerachResult extends Component {
         this.insertParam('startDate', this.state.startDate)
         this.insertParam('endDate', this.state.endDate)
 
-        this.setState({shortStartShow : this.state.shortStart , shortEndShow : this.state.shortEnd})
+        this.setState({ shortStartShow: this.state.shortStart, shortEndShow: this.state.shortEnd })
     }
 
     // apply PERSON button function
-    applyPerson = () =>{
+    applyPerson = () => {
         this.insertParam('person', this.state.person)
 
-        this.setState({personShow : this.state.person })
+        this.setState({ personShow: this.state.person })
 
     }
 
@@ -390,15 +383,15 @@ class SerachResult extends Component {
         this.insertParam('min', this.state.min)
         this.insertParam('max', this.state.max)
 
-        this.setState({minShow : this.state.min , maxShow : this.state.max})
+        this.setState({ minShow: this.state.min, maxShow: this.state.max })
 
     }
 
     // apply ROOM button function
-    applyRoom = () =>{
+    applyRoom = () => {
         this.insertParam('room', this.state.room)
 
-        this.setState({roomShow : this.state.room })
+        this.setState({ roomShow: this.state.room })
 
     }
 
