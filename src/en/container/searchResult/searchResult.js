@@ -52,11 +52,9 @@ class SerachResult extends Component {
             shortEnd: '',
             value: null,
             person: 0,
-            min: '0',
-            max: '0',
+            min: 0,
+            max: 0,
             room: 0,
-
-
         };
 
         this.mapShowHandler = this.mapShowHandler.bind(this)
@@ -78,8 +76,8 @@ class SerachResult extends Component {
             to: new Date(this.getParms('endDate')),
             person: this.getParms('person'),
             room: this.getParms('room'),
-            min: this.getParms('min'),
-            max: this.getParms('max'),
+            min: this.getParms('min') || 100000,
+            max: this.getParms('max') || 200000,
             shortStartShow:this.state.shortStart,
             shortEndShow:this.state.shortEnd,
             personShow:this.state.person,
