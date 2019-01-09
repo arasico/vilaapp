@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router';
 
 import Input from '../commonInput/InputGroup'
 import Button from '../Button/Button'
@@ -8,8 +8,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import "react-tabs/style/react-tabs.css";
 
 import './header.css'
-
-// import LogoWhit from '../../../assets/img/logo-vilaap-fff.png'
+ 
 import LogoColorly from '../../../assets/img/logo-colorly.svg'
 
 
@@ -191,8 +190,8 @@ class HeaderComponent extends Component {
                     <div className="navbar-container">
                         <ul className="desktop-nav" >
                             <li onClick={this.modalHandler} ><span className="login-link-d">Log in/Sign up</span></li>
-                            <li><NavLink to="/contact-us">Contact us</NavLink></li>
-                            <li><NavLink to="/landlord">Become a landlord</NavLink></li>
+                            <li><Link to="/contact-us">Contact us</Link></li>
+                            <li><Link to="/landlord">Become a landlord</Link></li>
                         </ul>
 
                         <div className="drawerMenu" onClick={(e)=>this.openTabletMenuHandler(e)} ref={this.humberger}>
@@ -201,9 +200,9 @@ class HeaderComponent extends Component {
                             <span className={line3.join(' ')} ></span>
                         </div>
                         <ul className={tabletNav.join(' ')} >
-                            <li className="tabletNavLi" id="home" onClick={(e)=>this.openTabletMenuHandler(e)} ><NavLink to="/home">Home</NavLink></li>
-                            <li className="tabletNavLi" id="landlord" onClick={(e)=>this.openTabletMenuHandler(e)} ><NavLink to="/landlord">Become a landlord</NavLink></li>
-                            <li className="tabletNavLi" id="contact"  onClick={(e)=>this.openTabletMenuHandler(e)} ><NavLink to="/contact-us">Contact us</NavLink></li>
+                            <li className="tabletNavLi" id="home" onClick={(e)=>this.openTabletMenuHandler(e)} ><Link to="/home">Home</Link></li>
+                            <li className="tabletNavLi" id="landlord" onClick={(e)=>this.openTabletMenuHandler(e)} ><Link to="/landlord">Become a landlord</Link></li>
+                            <li className="tabletNavLi" id="contact"  onClick={(e)=>this.openTabletMenuHandler(e)} ><Link to="/contact-us">Contact us</Link></li>
                             <li className="tabletNavLi" onClick={this.modalHandler} ><span className="login-link-t">Log in/Sign up</span></li>
                         </ul>
                     </div>

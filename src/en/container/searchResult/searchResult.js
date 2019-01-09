@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {browserHistory } from 'react-router'
 
 import SearchResultData from '../../components/searchResultData/searchResultData'
 import SearchResultBox from '../../components/searchResultBox/searchResultBox'
@@ -248,8 +249,11 @@ class SerachResult extends Component {
         })
     }
 
-    goToView = () => {
-        window.location.pathname = '/view'
+    goToView() {
+        // window.location.pathname = '/view'
+         browserHistory.push("/view/1")
+
+        
     }
 
     //apply FILTER
@@ -349,12 +353,26 @@ class SerachResult extends Component {
         }
         // add params in url ----->
 
-        let url = this.props.history;
-        url.push({
-            ...url,
+        // let url = this.props.history;
+        let url = this.props.location.query;
+        console.log(typeof(url))
+        console.log(url)
+        console.log(this.props)
+        console.log(this.props.location.query)
+        // url.push({
+        //     ...url,
+        //     pathname: 'search-result',
+        //     search: getAnd()
+        // })
+      //  window.location.pathname = "?city=allcity&startDate=1/9/2019&endDate=1/9/2019&person=5"
+
+      this.props.history.push({ 
             pathname: 'search-result',
             search: getAnd()
-        })
+    })
+
+        console.log(window.history)
+
     }
 
 
