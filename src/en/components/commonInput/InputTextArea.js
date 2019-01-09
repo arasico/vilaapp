@@ -11,15 +11,18 @@ const textarea = (props) => {
         <div className="Textarea">
 
             <div  className="textarea-label">
-                <textarea    type={props.type}
-                          onClick={props.clicked} 
-                          placeholder=" "
-                          onChange={props.changed}
-                          name={props.name}
-                          required
+                <textarea    
+                        type={props.type}
+                        onClick={props.clicked} 
+                        placeholder=" "
+                        onChange={props.changed}
+                        name={props.name}
+                        required 
+                        value={props.value}
                           />
                 <span className="span-label">{props.placeHolder }</span>
-                <span className="textarea-error-text" >{props.error}</span>
+                
+                {props.error ? (  <span className="textarea-error-text bounceIn" >{props.error}</span> ) : (null)}
             </div>
 
 

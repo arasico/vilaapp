@@ -2,36 +2,50 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { browserHistory } from 'react-router' 
 
+
+//
+// import external Component    ---->
+//
+import "react-tabs/style/react-tabs.css";
+import './header.css'
 import Input from '../commonInput/InputGroup'
 import Button from '../Button/Button'
-
+import base from '../api/baseURL';
+import EmailCheckerComponent from '../api/emailChecker';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import "react-tabs/style/react-tabs.css";
-
 import './header.css'
- 
 import LogoColorly from '../../../assets/img/logo-colorly.svg'
 
 
 class HeaderComponent extends Component {
 
-    state = {
-        forgetPassword: false,
-        openLoginModal: false,
-        currentPage: false,
-        openTabletMenu: false
-    }
+    constructor(props) {
+        super(props);
+        this.state = { 
+            isCheck : false,
+            forgetPassword: false,
+            openLoginModal: false,
+            currentPage: false,
+            openTabletMenu: false,
+            isLoading:false,
+            name:'',
+            email:'',
+            password:'',
+            passwordError:'',
+            emailError:'',
+            registerNameError:'',
+            registerEmailError:'',
+            registerPasswordError:'',
+            forgetEmailError:'',
+            errorHandleing:'',
+            loginErrorHandleing:'',
+            successMessage:'',
+          
 
+         }
+    } 
 
-
-    //     componentDidMount(){
-    //         var xx =  window.location.pathname;
-    //         console.log(xx + "its is -----")
-    //         if(xx !== '/')
-    //         this.setState({currentPage:true})
-    //         else
-    //         this.setState({currentPage:false})
-    //   }
 
 
     // show hide login section
@@ -50,7 +64,12 @@ class HeaderComponent extends Component {
     }
 
     changedHandler = (e) => {
-        console.log(e.target)
+        //console.log(e.target.value)
+        this.setState({
+            [e.target.name] : e.target.value
+        });
+
+   
     }
 
 
@@ -82,6 +101,195 @@ class HeaderComponent extends Component {
     goToHome = () => {
         browserHistory.push('/')
     }
+
+
+    callSubmit = async(event) => {
+        event.preventDefault();
+        this.setState({
+            isLoading:true,
+            registerEmailError:'',
+            registerNameError:'',
+            registerPasswordError:'',
+            errorHandleing:'',
+            successMessage:''
+        })
+
+        console.log(`
+        the state is :
+        --------------------------
+        name:    ${this.state.name}
+        email:   ${this.state.email} 
+        password: ${this.state.password}
+        `);
+
+        const data = {
+            'email':this.state.email,
+            'name':this.state.name,
+            'password':this.state.password,
+            'phone':''
+        }
+
+       await this.checkDataEntery()
+
+        // after conterol input will be call ------->
+        if(this.state.isCheck === false) 
+        {
+            const request = await this.postData(data,'auth/email/register');
+                
+          //  console.log(request.status)
+
+            if(request.status === 200)  // response success and create account
+                this.setState({
+                    successMessage:'Your account has been successfully created. '
+                })
+            if(request.status === 400)  // Email is already status code is 400
+                this.setState({
+                    errorHandleing:'this email is exists.'
+                })
+            if(request.status !== 400 && request.status !== 200)  // Email is already status code is 400
+             {   
+                 this.setState({
+                    errorHandleing:'Oops something went wrong, please try again.'
+                })
+                console.log(`error : ststus code: ${request.status} - text:${request.data} `)
+            }
+       }
+
+        
+    }
+
+    checkDataEntery(){
+        const { name, email, password} = this.state;
+        this.setState({isCheck:false})
+
+        if(name === null || name.trim() === '' )
+        {
+            this.setState({ registerNameError:'Name is requirement.', isCheck: true});
+          
+        }
+        if(email === null || email.trim() === '' )
+        {
+            this.setState({ registerEmailError:'Email is requirement.', isCheck: true});
+            
+        }
+        if(password === null || password.trim() === '' || password.length < 6)
+        {
+            this.setState({ registerPasswordError:'password is requirement.', isCheck: true});
+         
+        }
+         
+       
+        if(email !== null && email !== ''){
+            if(EmailCheckerComponent(email) === false){
+                this.setState({registerEmailError : 'Email is invalid!', isCheck: true})
+            }
+        }
+           
+        // finish loading
+        this.setState({ isLoading:false });
+
+    }
+
+    // // get email address and check is valid or invalid
+    // emailChecker(email){
+    //     let reg = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+    //     if(reg.test(email) === false)
+    //        return false
+        
+    //     return true
+    // }
+
+
+
+
+    postData(data,key) {
+        this.setState({
+            isLoading:true,
+            errorHandleing:'',
+            successMessage:''
+        })
+
+         const url =  base.baseURL + key;
+
+          return fetch(url, {
+              method: "POST", 
+              cache: "no-cache",  
+              headers: {
+                  "Content-Type": "application/json",
+                  "Accept": "application/json",
+                  "language" : "en",
+                  "agent" : "web" 
+              },
+              redirect: "follow", 
+              referrer: "no-referrer", 
+              body: JSON.stringify(data), 
+          })
+          .then(response => {
+            const statusCode = response.status
+            const data = response.json()
+            return Promise.all([statusCode, data])
+          })
+          .then(([res, data]) => {
+            //console.log(res, data)
+            this.setState({isLoading: false})
+            return ({'status':res, 'data':data.data})
+          })
+         
+      }
+
+      // on login click handler ---------------------->
+    onLogin = async(event)=>{
+
+        event.preventDefault();
+
+       await this.setState({
+            loginErrorHandleing:'',
+            passwordError:'',
+            emailError:'',
+        })
+
+        // provider data for API --------->
+        const data = {
+            "email":this.state.email,
+            "password": this.state.password
+        }
+
+        // when chech function return true provide to API  ----->
+        if(this.loginInputChecking() === true)
+         {
+            const res = await this.postData(data,'auth/email/login');
+           // console.log(res.status)
+
+            if(res.status === 200 )
+                console.log(`user is success login and token is : ${res.data.token}`)
+            if(res.status === 401 || res.status === 400)
+            this.setState({loginErrorHandleing : "username or password is invalid!"})
+  
+        }
+    }
+
+
+      loginInputChecking(){
+        const { password, email } = this.state;
+   
+        if(email === '' ){
+            this.setState({emailError : 'please insert your email!'})
+            return false
+        }
+        // its function for email checking ----->
+        if(EmailCheckerComponent(email) === false){
+            this.setState({emailError : 'Email is invalid!'})
+            return false
+        }
+
+        if(password === '' ){
+            this.setState({passwordError : 'please insert your password!'})
+            return false
+        }
+
+
+        return true
+      }
 
 
 
@@ -131,10 +339,12 @@ class HeaderComponent extends Component {
                                 <div className="forget-pw-box" >
                                     <p className="forget-pw-title" > <i className="far fa-envelope"></i> Forget Password!</p>
                                     <p className="forget-pw-desc" >If you forgot your password for reset your password please enter your email or phone number.</p>
-                                    <Input type={'password'} name="forgetpassword"
-                                        placeHolder={'Password'}
+                                    <Input 
+                                        type={'text'} 
+                                        name={'email'}
+                                        placeHolder={'Email'}
                                         changed={this.changedHandler}
-                                        error={'password error'}
+                                        error={this.state.forgetEmailError}
                                     />
                                     <div className="back-reset" >
                                         <Button title={'Reset Password'} bgcolor={'#1FC056'} hoverbgcolor={'#1fc056cc'} />
@@ -150,25 +360,71 @@ class HeaderComponent extends Component {
                                         </TabList>
 
                                         <TabPanel className="my-react-tab">
+                                        {this.state.loginErrorHandleing !== '' ? <p className="shake error-handeling-register  ">{this.state.loginErrorHandleing}</p> : null}
                                             <div className="login-box" >
-                                                <Input type={'email'} name={'email/mobile'} placeHolder={'Email/Mobile'} changed={this.changedHandler} error={'email or number error'} />
-                                                <Input type={'password'} name={'loginpassword'} placeHolder={'Password'} changed={this.changedHandler} error={'password error'} />
+                                                <Input 
+                                                    type={'email'} 
+                                                    name={'email'}
+                                                    placeHolder={'Email/Mobile'} 
+                                                    changed={this.changedHandler} 
+                                                    error={this.state.emailError} />
+
+                                                <Input 
+                                                    type={'password'} 
+                                                    name={'password'}
+                                                    placeHolder={'Password'} 
+                                                    changed={this.changedHandler} 
+                                                    error={this.state.passwordError} />
+
                                                 <div className="cntr">
                                                     <input className="hidden-xs-up" id="cbx" type="checkbox" />
                                                     <label className="cbx" htmlFor="cbx"></label>
                                                     <label className="checkbox-label" htmlFor="cbx">Keep my password </label>
                                                 </div>
-                                                <Button title={'Login'} bgcolor={'#0090CF'} hoverbgcolor={'#0090cfcc'} />
+                                                 
+                                                <Button 
+                                                    isLoading={this.state.isLoading} 
+                                                    title={'Login'} 
+                                                    bgcolor={'#0090CF'} 
+                                                    hoverbgcolor={'#0090cfcc'}
+                                                    click={this.onLogin}/>
+
                                                 <p className="forget-pw-text" onClick={this.forgetPasswordHandler} >Do you forget your password ?</p>
                                             </div>
                                         </TabPanel>
+
                                         <TabPanel className="my-react-tab">
+                                            {this.state.errorHandleing !== '' ? <p className="shake error-handeling-register  ">{this.state.errorHandleing}</p> : null}
+                                            {this.state.successMessage !== '' ? <p className="flipInX success-handeling-register  ">{this.state.successMessage}</p> : null}
                                             <div className="login-box" >
-                                                <Input type={'text'} placeHolder={'Name and Family'} changed={this.changedHandler} error={'name error'} />
-                                                <Input type={'email'} placeHolder={'Email'} changed={this.changedHandler} error={'email error'} />
-                                                <Input type={'text'} placeHolder={'Mobile'} changed={this.changedHandler} error={'number error'} />
-                                                <Input type={'password'} placeHolder={'password'} changed={this.changedHandler} error={'password error'} />
-                                                <Button title={'Register'} bgcolor={'#1FC056'} hoverbgcolor={'#1fc056cc'} />
+                                                <Input 
+                                                    type={'text'} 
+                                                    name={'name'}
+                                                    placeHolder={'Name and Family'} 
+                                                    changed={this.changedHandler} 
+                                                    error={this.state.registerNameError} />
+
+                                                <Input 
+                                                    type={'email'} 
+                                                    name={'email'}
+                                                    placeHolder={'Email'} 
+                                                    changed={this.changedHandler} 
+                                                    error={this.state.registerEmailError} />
+
+                                                <Input 
+                                                    type={'password'} 
+                                                    name={'password'}
+                                                    placeHolder={'password'} 
+                                                    changed={this.changedHandler} 
+                                                    error={this.state.registerPasswordError} />
+
+                                                <Button 
+                                                    isLoading={this.state.isLoading} 
+                                                    title={'Register'} 
+                                                    bgcolor={'#1FC056'} 
+                                                    hoverbgcolor={'#1fc056cc'}
+                                                    click={this.callSubmit}/>
+
                                             </div>
                                         </TabPanel>
                                     </Tabs>
@@ -213,3 +469,5 @@ class HeaderComponent extends Component {
 
 export default HeaderComponent;
 
+
+ 
