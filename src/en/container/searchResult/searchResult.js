@@ -1,5 +1,14 @@
-import React, { Component } from 'react';
 
+//
+//  import oring component 
+//
+import React, { Component } from 'react';
+import { browserHistory } from 'react-router' 
+import DayPicker, { DateUtils } from 'react-day-picker';
+
+//
+// import external component ------- >
+//
 import SearchResultData from '../../components/searchResultData/searchResultData'
 import SearchResultBox from '../../components/searchResultBox/searchResultBox'
 import OptionButtonPlus from '../../components/common/optionButtonPlusMinus/optionButton'
@@ -7,16 +16,14 @@ import PriceMinMax from '../../components/common/priceMinMax.js/priceMinMax'
 import SingleDate from '../../components/singleDate/singleDate'
 import PriceInput from '../../components/priceInput/priceInput';
 
-import DayPicker, { DateUtils } from 'react-day-picker';
+//
+// styles and icons ---------->
+//
 import 'react-day-picker/lib/style.css';
-
-
+import './searchResult.css';
 import arrow from '../../../assets/icons/arrow-down.svg'
 import map from './../../../assets/img/map.png'
 
-
-
-import './searchResult.css';
 
 
 
@@ -34,6 +41,7 @@ class SerachResult extends Component {
     static defaultProps = {
         numberOfMonths: 2,
     };
+  
     constructor(props) {
         super(props);
         this.state = {
@@ -44,18 +52,61 @@ class SerachResult extends Component {
             mapShow: true,
             showFilterMenu: false,
             searchResultBox: true,
-            value: null
+            start: null,
+            end: null,
+            startDate: null,
+            endDate: null,
+            shortStart: '',
+            shortEnd: '',
+            value: null,
+            person: 0,
+            min: 0,
+            max: 0,
+            room: 0,
         };
-        this.mapShowHandler = this.mapShowHandler.bind(this)
-
-        this.handleDayClick = this.handleDayClick.bind(this);
-        // this.handleResetClick = this.handleResetClick.bind(this);
-        // this.state = this.getInitialState();
 
     }
 
-    componentDidMount() {
+    componentWillMount = async () => {
+
+
+        await this.setState({
+            start: new Date(this.getParms('startDate')),
+            end: new Date(this.getParms('endDate')),
+            startDate: this.getParms('startDate'),
+            endDate: this.getParms('endDate'),
+            from: new Date(this.getParms('startDate')),
+            to: new Date(this.getParms('endDate')),
+            person: this.getParms('person'),
+            room: this.getParms('room'),
+            min: this.getParms('min') || 100000,
+            max: this.getParms('max') || 200000,
+            shortStartShow: this.state.shortStart,
+            shortEndShow: this.state.shortEnd,
+            personShow: this.state.person,
+            roomShow: this.state.room,
+            minShow: this.state.min,
+            maxShow: this.state.max,
+        })
+
+    }
+    componentDidMount = async () => {
         window.addEventListener('scroll', this.handleScroll);
+        await this.setState({
+            personShow: this.state.person,
+            roomShow: this.state.room,
+            minShow: this.state.min,
+            maxShow: this.state.max,
+        })
+
+        // for show in a pice of filter date 
+        this.shortDate()
+
+        await this.setState({
+            shortStartShow: this.state.shortStart,
+            shortEndShow: this.state.shortEnd,
+        })
+
     }
 
     componentWillUnmount() {
@@ -114,7 +165,8 @@ class SerachResult extends Component {
             return {
                 selectPerson: !prev.selectPerson, selectFromTo: false, selectPrice: false, selectRoom: false,
             }
-        },
+        }
+            ,
             () => {
                 document.addEventListener('click', this.closeMenu);
             }
@@ -173,7 +225,7 @@ class SerachResult extends Component {
 
     }
 
-    mapShowHandler(e) {
+    mapShowHandler = (e) => {
         if (e.target.id === 'list') {
             this.setState({ mapShow: false })
         } else {
@@ -204,8 +256,11 @@ class SerachResult extends Component {
         })
     }
 
-    goToView = () => {
-        window.location.pathname = '/view'
+    goToView() {
+        // window.location.pathname = '/view'
+         browserHistory.push("/view/1")
+
+        
     }
 
     //apply FILTER
@@ -214,19 +269,121 @@ class SerachResult extends Component {
         this.setState({ selectFromTo: false })
     }
 
-    //select days
-    handleDayClick(day) {
+
+
+
+    //select days in calender
+    handleDayClick = async (day) => {
         const range = DateUtils.addDayToRange(day, this.state);
-        this.setState(range);
-        console.log(this.state)
+
+        await this.setState(range);
+        await this.setState({
+            start: range.from, end: range.to,
+            startDate: new Intl.DateTimeFormat('en-US').format(range.from),
+            endDate: new Intl.DateTimeFormat('en-US').format(range.to)
+        })
+
+        this.shortDate()
     }
 
+    // short date for show in filter => 1/8 - 1/11
+    shortDate = async () => {
+        let startMonth = (this.state.start.getMonth() + 1);
+        let startDay = this.state.start.getDate();
+
+        let endMonth = (this.state.end.getMonth() + 1);
+        let endDay = this.state.end.getDate();
+
+        await this.setState({ shortStart: (startDay + '/' + startMonth), shortEnd: (endDay + '/' + endMonth) })
+    }
+
+    getParms(value) {
+
+        let url_string = window.location.href
+        let url = new URL(url_string);
+
+        const val = url.searchParams.get(value);
+        if (val !== null)
+            return val;
+        return 0
+    }
+
+    // change person filter
+    handleFilterUpdatePerson = (newValue) => {
+        this.setState({
+            person: newValue
+        });
+    }
+
+    // change room filter
+    handleFilterUpdateRoom = (newValue) => {
+        this.setState({
+            room: newValue
+        });
+    }
+
+    //change min max filter
+    changeMinMax = (e) => {
+        this.setState({ [e.target.name]: e.target.value })
+    }
+
+    tomanShorter = (value) => {
+        const x = value.toString()
+        if (x.length > 4)
+            return x.slice(0, x.length - 3)
+        return x
+    }
+
+
+    insertParam = async(key, value) => {
+        // push params in url location query
+        await  browserHistory.push({
+            pathname: this.props.location.pathname,
+            query: Object.assign({}, this.props.location.query, { [key]: value })
+        }); 
+
+          console.log(this.props.location) 
+    }
+
+    // apply DATE button function
+    applyDate = () => {
+        this.insertParam('startDate', this.state.startDate)
+        this.insertParam('endDate', this.state.endDate)
+
+        this.setState({ shortStartShow: this.state.shortStart, shortEndShow: this.state.shortEnd })
+    }
+
+    // apply PERSON button function
+    applyPerson = () => {
+        this.insertParam('person', this.state.person)
+
+        this.setState({ personShow: this.state.person })
+
+    }
+
+    // apply MINMAX button function
+    applyMinMax = async() => {
+        await this.insertParam('min', this.state.min)
+        await this.insertParam('max', this.state.max)
+
+        this.setState({ minShow: this.state.min, maxShow: this.state.max })
+
+    }
+
+    // apply ROOM button function
+    applyRoom = async() => {
+        await this.insertParam('room', this.state.room)
+       // await this.insertParam('room', this.state.room)
+
+        this.setState({ roomShow: this.state.room })
+
+    }
 
     render() {
 
         // picker dates
         const { from, to } = this.state;
-        const modifiers = { start: from, end: to };
+        const modifiers = { start: this.state.start, end: this.state.end };
 
 
         let btnList = ['listBtn select-listing-map']
@@ -284,8 +441,7 @@ class SerachResult extends Component {
                             <div className="select-filter-child notCloseMenuLand" >
                                 <p className="filter-date-drop notCloseMenuLand"  >Dates</p>
                                 <img src={arrow} style={{ marginLeft: 10, marginTop: -5, height: 11, width: 11, float: 'right' }} alt="arrow" className="notCloseMenuLand" />
-
-                                <p className="filter-date-desc notCloseMenuLand" >From To</p>
+                                <p className="filter-date-desc notCloseMenuLand" >{this.state.shortStartShow} - {this.state.shortEndShow}</p>
                                 <p className="my-filter-action notCloseMenuLand" onClick={this.selectFromToHandler}></p>
                             </div>
 
@@ -293,7 +449,7 @@ class SerachResult extends Component {
                             <div className="select-filter-child notCloseMenuLand">
                                 <p className="filter-date-drop notCloseMenuLand" >Person</p>
                                 <img src={arrow} style={{ marginLeft: 10, marginTop: -5, height: 11, width: 11, float: 'right' }} alt="arrow" />
-                                <p className="filter-date-desc notCloseMenuLand" >1 </p>
+                                <p className="filter-date-desc notCloseMenuLand" >{this.state.personShow} </p>
                                 <p className="my-filter-action notCloseMenuLand" onClick={this.selectPersonHandler}></p>
                             </div>
 
@@ -301,8 +457,7 @@ class SerachResult extends Component {
                             <div className="select-filter-child notCloseMenuLand">
                                 <p className="filter-date-drop notCloseMenuLand" >Price</p>
                                 <img src={arrow} style={{ marginLeft: 10, marginTop: -5, height: 11, width: 11, float: 'right' }} alt="arrow" />
-
-                                <p className="filter-date-desc notCloseMenuLand" >Min Max </p>
+                                <p className="filter-date-desc notCloseMenuLand" >{this.tomanShorter(this.state.minShow)} - {this.tomanShorter(this.state.maxShow)} </p>
                                 <p className="my-filter-action notCloseMenuLand" onClick={this.selectPriceHandler}></p>
                             </div>
 
@@ -310,8 +465,7 @@ class SerachResult extends Component {
                             <div className="select-filter-child notCloseMenuLand">
                                 <p className="filter-date-drop notCloseMenuLand" >Rooms</p>
                                 <img src={arrow} style={{ marginLeft: 10, marginTop: -5, height: 11, width: 11, float: 'right' }} alt="arrow" />
-
-                                <p className="filter-date-desc notCloseMenuLand" >+1 </p>
+                                <p className="filter-date-desc notCloseMenuLand" >{this.state.roomShow} </p>
                                 <p className="my-filter-action notCloseMenuLand" onClick={this.selectRoomHandler}></p>
                             </div>
 
@@ -323,27 +477,7 @@ class SerachResult extends Component {
                                 {this.state.selectFromTo ? <div className="select-from-to filter1 notCloseMenuLand" >
                                     <div className="from-to-box notCloseMenuLand"  >
                                         <div className="filter-children">
-                                            {/* <div className="filter-child">
-                                                <SingleDate name="from" />
-                                            </div>
-                                            <div className="filter-child">
-                                                <SingleDate name="to" />
-                                            </div> */}
                                             <div className="RangeExample">
-                                                {/* <p>
-                                                    {!from && !to && 'Please select the first day.'}
-                                                    {from && !to && 'Please select the last day.'}
-                                                    {from &&
-                                                        to &&
-                                                        `Selected from ${from.toLocaleDateString()} to
-                                            ${to.toLocaleDateString()}`}{' '}
-                                                    {from &&
-                                                        to && (
-                                                            <button className="link" onClick={this.handleResetClick}>
-                                                                Reset
-                                                </button>
-                                                        )}
-                                                </p> */}
                                                 <DayPicker
                                                     className="Selectable"
                                                     numberOfMonths={this.props.numberOfMonths}
@@ -362,43 +496,47 @@ class SerachResult extends Component {
                                         </div>
                                     </div>
                                     <div className="select-date-btn notCloseMenuLand"  >
-                                        <button className="apply-btn notCloseMenuLand" onClick={this.applyFilter} >Apply</button>
+                                        <button className="apply-btn " onClick={this.applyDate} >Apply</button>
                                     </div>
                                 </div> : ''}
                             </div>
+
+                            {/* person  */}
                             <div className="select-date" >
                                 {this.state.selectPerson ? <div className="select-from-to filter2 notCloseMenuLand" >
                                     <div className="from-to-box notCloseMenuLand" >
-                                        <OptionButtonPlus />
-
+                                        <OptionButtonPlus counter={this.state.person}
+                                            change={this.handleFilterUpdatePerson}
+                                            name={this.state.person} />
                                     </div>
                                     <div className="select-date-btn notCloseMenuLand" >
-                                        <button className="apply-btn notCloseMenuLand">Apply</button>
+                                        <button className="apply-btn " name="person" onClick={this.applyPerson}>Apply</button>
                                     </div>
                                 </div> : ''}
                             </div>
+
+                            {/* min - max */}
                             <div className="select-date" >
                                 {this.state.selectPrice ? <div className="select-min-max filter3 notCloseMenuLand" >
-
                                     <div className="price-min-max-filter" >
-                                        <PriceMinMax />
+                                        <PriceMinMax changed={this.changeMinMax} max={this.state.max} min={this.state.min} />
                                     </div>
-
-
                                     <div className="select-date-btn notCloseMenuLand" >
-                                        <button className="apply-btn notCloseMenuLand">Apply</button>
+                                        <button className="apply-btn " onClick={this.applyMinMax}>Apply</button>
                                     </div>
-
                                 </div> : ''}
                             </div>
+
+                            {/* room */}
                             <div className="select-date notCloseMenuLand" >
                                 {this.state.selectRoom ? <div className="select-from-to filter4 notCloseMenuLand" >
                                     <div className="from-to-box notCloseMenuLand" >
-                                        <OptionButtonPlus />
-
+                                        <OptionButtonPlus counter={this.state.room}
+                                            change={this.handleFilterUpdateRoom}
+                                            name={this.state.room} />
                                     </div>
                                     <div className="select-date-btn notCloseMenuLand" >
-                                        <button className="apply-btn notCloseMenuLand">Apply</button>
+                                        <button className="apply-btn " name="room" onClick={this.applyRoom}>Apply</button>
                                     </div>
                                 </div> : ''}
                             </div>

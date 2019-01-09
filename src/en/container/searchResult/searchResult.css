@@ -125,7 +125,7 @@ cursor: pointer;
 }
 .filter-date-desc{
     color: #B6B6B6;
-padding: 10px 0px 
+    padding: 10px 0px ;
 }
 .my-filter-action{
     position: absolute;

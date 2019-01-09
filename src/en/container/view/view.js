@@ -117,6 +117,11 @@ class View extends Component {
         console.log(this.state.endDate)
 
     }
+
+    isDayBlocked = (day) =>{
+        day.filter(x => x%2 ===0 )
+        console.log(day)
+    }
     render() {
 
         let secondCarousel = ['secondCarousel']

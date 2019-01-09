@@ -3,6 +3,7 @@ import React,{Component} from 'react';
 //import "react-datepicker/dist/react-datepicker.css";
 import Dropdown from 'rc-dropdown';
 import Menu, { Item as MenuItem, Divider } from 'rc-menu';
+import { browserHistory } from 'react-router' 
 import { Link } from 'react-router-dom';
 
 //
@@ -25,6 +26,7 @@ class SearchIndex extends Component {
             startDate: this.dateShorter(new Date()),
             endDate: this.dateShorter(new Date()),
             selectCity:'all city',
+            selectCityTitle:'allcity',
             person:1
           };
           this.handleChange = this.handleChange.bind(this);
@@ -69,11 +71,11 @@ class SearchIndex extends Component {
        await this.setState({person:key})
     }
 
-    onSelectCity = async({ key }) => {   
-       await this.setState({selectCity:key}); 
+    onSelectCity = async(e) => {   
+       await this.setState({selectCity:e.key , selectCityTitle: e.item.props.title}); 
     }
 
-      // Get props from children Date picker component
+    // Get props from children Date picker component
     change = async(startDate,endDate) => {
 
         // when the props change it will be called . . .
@@ -92,9 +94,10 @@ class SearchIndex extends Component {
    
 
     onClickSearch() {
-        let {selectCity, startDate, endDate, person } = this.state;
-        let NewUrl = '/search-result?' + 'city=' + selectCity + '&startDate=' + startDate + '&endDate=' + endDate + '&person=' + person
-        window.location.assign(NewUrl)
+        let {selectCityTitle, startDate, endDate, person } = this.state;
+        let NewUrl = '/search-result?' + 'city=' + selectCityTitle + '&startDate=' + startDate + '&endDate=' + endDate + '&person=' + person
+       // window.location.assign(NewUrl)
+        browserHistory.push(NewUrl)
     }
 
 
@@ -137,11 +140,11 @@ class SearchIndex extends Component {
       
         const SelectCityMenu = (
             <Menu onSelect={this.onSelectCity}>
-                <MenuItem key="Kish" style={{fontSize: 16}}>Kish</MenuItem>
+                <MenuItem key="Kish" style={{fontSize: 16}} title={'Kish'}>Kish</MenuItem>
                 <Divider />
-                <MenuItem key="Tehran" style={{fontSize: 16}}>Tehran</MenuItem>
+                <MenuItem key="Tehran" style={{fontSize: 16}} title={'Tehran'} >Tehran</MenuItem>
                 <Divider />
-                <MenuItem key="Babolsar" style={{fontSize: 16}}>Babolsar</MenuItem>
+                <MenuItem key="Babolsar" style={{fontSize: 16}} title={'Babolsar'}>Babolsar</MenuItem>
             </Menu>
           );
         

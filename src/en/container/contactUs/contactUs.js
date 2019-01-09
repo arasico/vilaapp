@@ -1,5 +1,5 @@
 import React , { Component }  from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router';
 import './contactUs.css';
 
 //
@@ -242,12 +242,12 @@ class ContactUsComponent extends Component {
 
                                     <div className="create-btn-information-container-item" onClick={this.goToHome}>
                                         <div className="btn-create-continu btn-go-to-home">
-                                            <NavLink to="/home">
+                                            <Link to="/home">
                                                 <div className="create-btn-container" >
                                                     <span style={{ color: '#8C8C8C' }}>Go to Main Home</span>
                                                     <img src={ArrowRight2} alt="s" style={{ float: "left", paddingLeft: 20 }} />
                                                 </div>
-                                            </NavLink>
+                                            </Link>
                                         </div>
                                     </div>
                                     <img className="our-logo" src={OurLogo} alt="vilaapp" />
