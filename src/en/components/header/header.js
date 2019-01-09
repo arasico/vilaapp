@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import { browserHistory } from 'react-router' 
 
 import Input from '../commonInput/InputGroup'
 import Button from '../Button/Button'
@@ -79,8 +80,7 @@ class HeaderComponent extends Component {
     }
 
     goToHome = () => {
-        console.log(window.location.pathname)
-        window.location.pathname = '/'
+        browserHistory.push('/')
     }
 
 

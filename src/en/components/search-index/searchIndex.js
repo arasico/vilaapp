@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 //import "react-datepicker/dist/react-datepicker.css";
 import Dropdown from 'rc-dropdown';
 import Menu, { Item as MenuItem, Divider } from 'rc-menu';
+import { browserHistory } from 'react-router' 
 import { Link } from 'react-router-dom';
 
 //
@@ -94,7 +95,8 @@ class SearchIndex extends Component {
     onClickSearch() {
         let {selectCityTitle, startDate, endDate, person } = this.state;
         let NewUrl = '/search-result?' + 'city=' + selectCityTitle + '&startDate=' + startDate + '&endDate=' + endDate + '&person=' + person
-        window.location.assign(NewUrl)
+       // window.location.assign(NewUrl)
+        browserHistory.push(NewUrl)
     }
 
 

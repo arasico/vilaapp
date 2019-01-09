@@ -19,6 +19,7 @@ import ContactUs from './en/container/contactUs/contactUs'
  
 import SerachResult from './en/container/searchResult/searchResult'
 import TestComponent from './en/container/testComponent/test'
+import page404 from './en/container/notFound'
  
 
 import FooterComponent from './en/components/footer/footer'
@@ -53,10 +54,13 @@ class RouterComponent extends Component {
                           <Route   path="landlord" component={Landlord} /> 
                           <Route   path="contact-us" component={ContactUs} /> 
                           <Route   path="create" component={Create} /> 
-                          <Route   path="search-result" component={SerachResult} /> 
+                          <Route exact  path="search-result" component={SerachResult}  />  
                           <Route   path="view/:id" component={View} /> 
                           <Route exact  path="test" component={TestComponent} /> 
+                          <Route path="*" component={page404} />
                       </Route>
+
+   
             
 
                   

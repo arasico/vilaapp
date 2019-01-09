@@ -1,6 +1,14 @@
-import React, { Component } from 'react';
-import {browserHistory } from 'react-router'
 
+//
+// 
+//
+import React, { Component } from 'react';
+import { browserHistory } from 'react-router' 
+import DayPicker, { DateUtils } from 'react-day-picker';
+
+//
+// import external component ------- >
+//
 import SearchResultData from '../../components/searchResultData/searchResultData'
 import SearchResultBox from '../../components/searchResultBox/searchResultBox'
 import OptionButtonPlus from '../../components/common/optionButtonPlusMinus/optionButton'
@@ -8,16 +16,14 @@ import PriceMinMax from '../../components/common/priceMinMax.js/priceMinMax'
 import SingleDate from '../../components/singleDate/singleDate'
 import PriceInput from '../../components/priceInput/priceInput';
 
-import DayPicker, { DateUtils } from 'react-day-picker';
+//
+// styles and icons ---------->
+//
 import 'react-day-picker/lib/style.css';
-
-
+import './searchResult.css';
 import arrow from '../../../assets/icons/arrow-down.svg'
 import map from './../../../assets/img/map.png'
 
-
-
-import './searchResult.css';
 
 
 
@@ -35,6 +41,7 @@ class SerachResult extends Component {
     static defaultProps = {
         numberOfMonths: 2,
     };
+  
     constructor(props) {
         super(props);
         this.state = {
@@ -330,48 +337,17 @@ class SerachResult extends Component {
     }
 
 
-    insertParam(key, value) {
-        key = encodeURI(key); value = encodeURI(value);
-        var kvp = document.location.search.substr(1).split('&');
-        var i = kvp.length; var x; while (i--) {
-            x = kvp[i].split('=');
+    insertParam = async(key, value) => {
 
-            if (x[0] === key) {
-                x[1] = value;
-                kvp[i] = x.join('=');
-                break;
-            }
-        }
+        await  browserHistory.push({
+            pathname: this.props.location.pathname,
+            query: Object.assign({}, this.props.location.query, { [key]: value })
+        }); 
 
-        if (i < 0) { kvp[kvp.length] = [key, value].join('=') }
-        // slice & to url ---->
-        function getAnd() {
-            if (window.location.href.indexOf('?') - window.location.href.trim().length === -1 || window.location.href.indexOf('?') === -1)
-                return kvp.join('')
-            else
-                return kvp.join('&')
-        }
-        // add params in url ----->
+          console.log(this.props.location) 
 
-        // let url = this.props.history;
-        let url = this.props.location.query;
-        console.log(typeof(url))
-        console.log(url)
-        console.log(this.props)
-        console.log(this.props.location.query)
-        // url.push({
-        //     ...url,
-        //     pathname: 'search-result',
-        //     search: getAnd()
-        // })
-      //  window.location.pathname = "?city=allcity&startDate=1/9/2019&endDate=1/9/2019&person=5"
-
-      this.props.history.push({ 
-            pathname: 'search-result',
-            search: getAnd()
-    })
-
-        console.log(window.history)
+        
+  
 
     }
 
@@ -394,17 +370,18 @@ class SerachResult extends Component {
     }
 
     // apply MINMAX button function
-    applyMinMax = () => {
-        this.insertParam('min', this.state.min)
-        this.insertParam('max', this.state.max)
+    applyMinMax = async() => {
+        await this.insertParam('min', this.state.min)
+        await this.insertParam('max', this.state.max)
 
         this.setState({ minShow: this.state.min, maxShow: this.state.max })
 
     }
 
     // apply ROOM button function
-    applyRoom = () => {
-        this.insertParam('room', this.state.room)
+    applyRoom = async() => {
+        await this.insertParam('room', this.state.room)
+       // await this.insertParam('room', this.state.room)
 
         this.setState({ roomShow: this.state.room })
 
