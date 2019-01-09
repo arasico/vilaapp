@@ -308,9 +308,6 @@ class SerachResult extends Component {
         return 0
     }
 
-
-
-
     // change person filter
     handleFilterUpdatePerson = (newValue) => {
         this.setState({
@@ -324,6 +321,7 @@ class SerachResult extends Component {
             room: newValue
         });
     }
+
     //change min max filter
     changeMinMax = (e) => {
         this.setState({ [e.target.name]: e.target.value })
@@ -338,20 +336,14 @@ class SerachResult extends Component {
 
 
     insertParam = async(key, value) => {
-
+        // push params in url location query
         await  browserHistory.push({
             pathname: this.props.location.pathname,
             query: Object.assign({}, this.props.location.query, { [key]: value })
         }); 
 
           console.log(this.props.location) 
-
-        
-  
-
     }
-
-
 
     // apply DATE button function
     applyDate = () => {
@@ -386,7 +378,6 @@ class SerachResult extends Component {
         this.setState({ roomShow: this.state.room })
 
     }
-
 
     render() {
 
