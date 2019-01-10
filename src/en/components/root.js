@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import Header from "./header/header";
-// import Header from "./header/HeaderEnglish";
+import Footer from "./footer/footer";
 
-  
 export default class Root extends Component {
     constructor(props) {
         super(props);
@@ -16,6 +15,9 @@ export default class Root extends Component {
                 </div>
                 <div> 
                     {this.props.children}
+                </div>
+                <div>
+                    <Footer />
                 </div>
             </div>
          );
