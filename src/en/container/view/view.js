@@ -19,6 +19,7 @@ import check from '../../../assets/icons/check.svg'
 import callVolum from '../../../assets/icons/callvolume.svg'
 
 import DatePickerRC from '../../components/dateStartEnd/datePicker';
+import Googlemapcircle from '../../components/googleMapCircle/googleMapCircle';
 
 import { Carousel } from 'react-responsive-carousel';
 
@@ -301,7 +302,11 @@ class View extends Component {
 
                         <div className="book-location" >
                             <h1>Location</h1>
-                            <img src={location} alt="map" />
+                            <Googlemapcircle     
+                                lat={36.9439259} 
+                                lng={ 50.6451447} 
+                                zoom={17} 
+                                lang={'fa'} />
                             <div className="my-line" ></div>
 
                         </div>

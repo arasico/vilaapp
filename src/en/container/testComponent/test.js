@@ -16,7 +16,7 @@ import InputComponent from '../../components/common/optionButtonPlusMinus/option
 import OptionComponent from '../../components/common/optionDetails/optionDetails';
 import SingleDate from '../../components/singleDate/singleDate';
 import DoubleDate from '../../components/doubleDateSelector/doubleDateSelector';
-
+import Googlemapcircle from '../../components/googleMapCircle/googleMapCircle'
 
  
 
@@ -77,45 +77,11 @@ Change = async(value) => {
 
         return (  
             <div className="test-container">
-            <link rel="stylesheet" type="text/css" href={this.state.stylePath} />
-
-                {/* <SingleDate name="from" />
-                <SingleDate name="to" />
-
-           */}
+           
+ 
+ 
+                <Googlemapcircle     lat={36.9439259} lng={ 50.6451447} zoom={17} lang={'fa'} />
                 
-                <DoubleDate  change={(value) => console.log(value)}    />
-                <DoubleDate  change={this.Change}    />
-                
-
-                <hr />
-
-
-                <div style={{display:'flex'}}>
-                    <PriceInput name="min" />
-                    <PriceInput name="max" />
-                </div>
-
-            {/* <DatePicker /> */}
-
-
-            <hr />
-                 
-                
-
-{/*                     
-                    <InputComponent change={this.handleFilterUpdate} name={this.state.person}  />
-                    <p>{this.state.person}</p>
-                    <button onClick={this.shoMessage}>seeee</button>
-                    <hr /> */}
-
-                 
-                    {/* <OptionComponent change={this.handelGetValue} name={this.state.floor} maxLength={2} maxValue={20} label="Floors" />
-                    <p>Fllors: {this.state.floor}</p>
-                    <button onClick={this.shoMessage}>Get Valu</button>
-
-                 */}
-
             </div>
         );
     }
