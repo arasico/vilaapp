@@ -25,12 +25,7 @@ const AnyReactComponent = ({ text }) => (
   );
 
 class GoogleMapCircle extends Component {
-    static defaultProps = {
-        // center: {
-        //   lat: 59.95,
-        //   lng: 30.33
-        // } 
-      };
+
 
     constructor(props) {
         super(props);
@@ -42,12 +37,6 @@ class GoogleMapCircle extends Component {
 
 
     render() { 
-
-
-   
-
-
-       
         return ( 
             <div>
              
