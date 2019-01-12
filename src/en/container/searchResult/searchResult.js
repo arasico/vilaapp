@@ -52,8 +52,8 @@ class SerachResult extends Component {
             mapShow: true,
             showFilterMenu: false,
             searchResultBox: true,
-            start: null,
-            end: null,
+            // start: null,
+            // end: null,
             startDate: null,
             endDate: null,
             shortStart: '',
@@ -70,8 +70,8 @@ class SerachResult extends Component {
     componentWillMount = async () => {
 
         await this.setState({
-            start: new Date(this.getParms('startDate')),
-            end: new Date(this.getParms('endDate')),
+            // start: new Date(this.getParms('startDate')),
+            // end: new Date(this.getParms('endDate')),
             startDate: this.getParms('startDate'),
             endDate: this.getParms('endDate'),
             from: new Date(this.getParms('startDate')),
@@ -97,7 +97,7 @@ class SerachResult extends Component {
         })
 
         // for show in a pice of filter date 
-        this.shortDate( this.state.start , this.state.end)
+        this.shortDate( this.state.from , this.state.to)
 
         console.log(this.state)
 
@@ -427,7 +427,7 @@ class SerachResult extends Component {
 
         // picker dates
         const { from, to } = this.state;
-        const modifiers = { start: this.state.start, end: this.state.end };
+        const modifiers = { start: this.state.from, end: this.state.to };
 
 
         let btnList = ['listBtn select-listing-map']
