@@ -17,6 +17,7 @@ import OptionComponent from '../../components/common/optionDetails/optionDetails
 import SingleDate from '../../components/singleDate/singleDate';
 import DoubleDate from '../../components/doubleDateSelector/doubleDateSelector';
 import Googlemapcircle from '../../components/googleMapCircle/googleMapCircle'
+import MapBox from '../../components/mapbox/mapbox';
 
  
 
@@ -80,8 +81,8 @@ Change = async(value) => {
            
  
  
-                <Googlemapcircle     lat={36.9439259} lng={ 50.6451447} zoom={17} lang={'fa'} />
-                
+                 
+                <MapBox />
             </div>
         );
     }
