@@ -16,7 +16,7 @@ import { DateRangePicker,
     } from 'react-dates';
 
 import moment from 'moment'
-import { isInclusivelyBeforeDay } from 'react-dates'
+import { isInclusivelyAfterDay } from 'react-dates'
 
 
 class DatePicker extends Component {
@@ -64,7 +64,7 @@ class DatePicker extends Component {
                     numberOfMonths={this.props.month}
                     hideKeyboardShortcutsPanel={true} 
                     noBorder={true} 
-                    isOutsideRange={day => isInclusivelyBeforeDay(day, moment())}
+                    isOutsideRange={day => !isInclusivelyAfterDay(day, moment())}
                     />
 
                     {/* <button onClick={this.callData.bind(this)}>Click</button> */}
