@@ -15,13 +15,17 @@ import { DateRangePicker,
     //  DayPickerRangeController 
     } from 'react-dates';
 
+import moment from 'moment'
  
 
 
 class DatePicker extends Component {
     constructor(props) {
         super(props);
-        this.state = { startDate:null,endDate:null }
+        this.state = { 
+            startDate:moment(new Date()),
+            endDate:moment(new Date()) 
+        }
     }
 
     // Example button ------------->
@@ -39,6 +43,7 @@ class DatePicker extends Component {
         if(this.state.startDate && this.state.endDate)
             this.props.change(this.state.startDate,this.state.endDate);
         }
+
 
 
 
