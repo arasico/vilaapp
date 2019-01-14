@@ -59,17 +59,20 @@ a:visited{
     list-style-type: none;
     margin: 0;
     padding: 0 20px;
-
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
 }
 
 
-.desktop-nav  li {
+.desktop-nav-child {
     display: block;
     float: right;
+    margin: 0px 10px;
 }
 
 
-.desktop-nav li a  ,.login-link-d {
+.desktop-nav-child a  ,.login-link-d {
     display: block;
     color: #333333;
     text-align: center;
@@ -85,7 +88,7 @@ a:visited{
 .login-link-t{
     cursor: pointer;
 }
-.desktop-nav li a:hover:not(.active) , .login-link-d:hover:not(.active){
+.desktop-nav-child a:hover:not(.active) , .login-link-d:hover:not(.active){
     background-color: rgba(34,34,34,0.5);
     border-radius: 50px;
     color: #fff;

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Header from "./header/header";
 import Footer from "./footer/footer";
+import HeaderComponentAfterLogin from './../components/afterLogin/header/header'
 
 export default class Root extends Component {
     constructor(props) {
@@ -11,7 +12,8 @@ export default class Root extends Component {
         return ( 
             <div>
                 <div>
-                     <Header />
+                     {/* <Header />  */}
+                     <HeaderComponentAfterLogin/>
                 </div>
                 <div> 
                     {this.props.children}
