@@ -53,18 +53,17 @@ class HeaderComponentAfterLogin extends Component {
     humberger = React.createRef()
 
     onLogOut(){
-      //  console.log("log out");
         localStorage.setItem('authorization', 'noToken') 
-        console.log( window.location.pathname)
+       // console.log( window.location.pathname)
        
-        
+        // Clear query in url ----- >
         browserHistory.push({
             pathname: window.location.pathname,
             query: null
         });
+        // rediret in index page after logout ----- >
         window.location.pathname="/"
        
-       // console.log(localStorage.getItem('authorization'))
     }
 
     openTabletMenuHandler = (e) => {
