@@ -234,7 +234,6 @@ class HeaderComponent extends Component {
             this.setState({isLoading: false})
             return ({'status':res, 'data':data.data})
           })
-         
       }
 
       // on login click handler ---------------------->
@@ -445,9 +444,9 @@ class HeaderComponent extends Component {
                     </div>
                     <div className="navbar-container">
                         <ul className="desktop-nav" >
-                            <li onClick={this.modalHandler} ><span className="login-link-d">Log in/Sign up</span></li>
-                            <li><Link to="/contact-us">Contact us</Link></li>
-                            <li><Link to="/landlord">Become a landlord</Link></li>
+                            <li className="desktop-nav-child" onClick={this.modalHandler} ><span className="login-link-d">Log in/Sign up</span></li>|
+                            <li className="desktop-nav-child"><Link to="/contact-us">Contact us</Link></li>|
+                            <li className="desktop-nav-child"><Link to="/landlord">Become a landlord</Link></li>
                         </ul>
 
                         <div className="drawerMenu" onClick={(e)=>this.openTabletMenuHandler(e)} ref={this.humberger}>
