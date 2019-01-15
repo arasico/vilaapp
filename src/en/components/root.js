@@ -2,25 +2,36 @@ import React, {Component} from 'react';
 import Header from "./header/header";
 import Footer from "./footer/footer";
 import HeaderComponentAfterLogin from './../components/afterLogin/header/header'
+import Token from './api/token';
 
 
-const token = 1;
-
+ 
 export default class Root extends Component {
     constructor(props) {
         super(props);
         this.state = {  }
     }
-    
-    componentWillMount(){
-        console.log("araea")
+
+    componentDidMount(){
+        console.log(Token)
+ 
+    }
+
+    componentWillReceiveProps(prevProps, prevState){
+        // console.log("resive")
+        // console.log(prevProps)
+        // console.log(prevState)
+
+ 
     }
 
     render() { 
         return ( 
             <div>
                 <div>
-                    {token === 2 ?  <Header /> :  <HeaderComponentAfterLogin/> }             
+                    {Token === 'noToken' ? ( <Header /> ): ( <HeaderComponentAfterLogin/> )}             
+               
+
                 </div>
                 <div> 
                     {this.props.children}

@@ -266,7 +266,7 @@ class HeaderComponent extends Component {
             { 
                    console.log(`user is success login and token is : ${res.data.token}`)
                     localStorage.setItem('authorization', res.data.token)
-
+                    window.location.pathname="/"
                     console.log(localStorage.getItem('authorization'))
             }
             if(res.status === 401 || res.status === 400)

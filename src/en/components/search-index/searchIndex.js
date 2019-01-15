@@ -54,9 +54,9 @@ class SearchIndex extends Component {
     }
 
     componentWillUpdate(nextProps, nextState){
-        this.callState();
-        console.log(nextProps)
-        console.log(nextState)
+        // this.callState();
+        // console.log(nextProps)
+        // console.log(nextState)
     }
 
 
