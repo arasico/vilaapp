@@ -382,10 +382,12 @@ class SerachResult extends Component {
             console.log('kos kesh' , this.state)
         }
 
-        await this.insertParam('endDate', this.state.endDate)
-        await this.insertParam('startDate', this.state.startDate)
+            // console.log(Math.round(new Date(this.state.startDate.getTime())))
+        await this.insertParam('endDate', new Intl.DateTimeFormat('en-US').format(this.state.selectEnd))
+        await this.insertParam('startDate', new Intl.DateTimeFormat('en-US').format(this.state.selectStart))
 
-        if (Math.round(new Date(this.state.selectStart.getTime())) > Math.round(new Date(this.state.selectEnd).getTime())){
+        // for show short date when first click > second click select date
+        if (Math.round(new Date(this.state.selectStart).getTime()) > Math.round(new Date(this.state.selectEnd).getTime())){
             this.shortDate( this.state.selectEnd || this.state.from , this.state.selectStart || this.state.to)
         }else{
             this.shortDate( this.state.selectStart || this.state.from , this.state.selectEnd || this.state.to)

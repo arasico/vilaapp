@@ -24,7 +24,7 @@ class DatePicker extends Component {
         super(props);
         this.state = { 
             startDate:moment(new Date()),
-            endDate:moment(new Date()) 
+            endDate:moment('Sun Jan 16 2019 15:45:17 GMT+0330 (Iran Standard Time)') 
         }
     }
 
