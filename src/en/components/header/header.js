@@ -16,6 +16,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import "react-tabs/style/react-tabs.css";
 import './header.css'
 import LogoColorly from '../../../assets/img/logo-colorly.svg'
+import Token from '../api/token';
 
 
 class HeaderComponent extends Component {
@@ -46,7 +47,9 @@ class HeaderComponent extends Component {
          }
     } 
 
-
+    componentDidMount(){
+        console.log(Token)
+    }
 
     // show hide login section
     modalHandler = () => {
@@ -260,7 +263,12 @@ class HeaderComponent extends Component {
            // console.log(res.status)
 
             if(res.status === 200 )
-                console.log(`user is success login and token is : ${res.data.token}`)
+            { 
+                   console.log(`user is success login and token is : ${res.data.token}`)
+                    localStorage.setItem('authorization', res.data.token)
+
+                    console.log(localStorage.getItem('authorization'))
+            }
             if(res.status === 401 || res.status === 400)
             this.setState({loginErrorHandleing : "username or password is invalid!"})
   
