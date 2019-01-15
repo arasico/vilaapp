@@ -15,8 +15,7 @@ export default class Root extends Component {
         return ( 
             <div>
                 <div>
-                    {token === 1 ?  <Header /> :  <HeaderComponentAfterLogin/> }
-                                       
+                    {token === 1 ?  <Header /> :  <HeaderComponentAfterLogin/> }             
                 </div>
                 <div> 
                     {this.props.children}
