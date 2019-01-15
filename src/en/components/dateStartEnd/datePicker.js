@@ -15,13 +15,17 @@ import { DateRangePicker,
     //  DayPickerRangeController 
     } from 'react-dates';
 
- 
+import moment from 'moment'
+import { isInclusivelyAfterDay } from 'react-dates'
 
 
 class DatePicker extends Component {
     constructor(props) {
         super(props);
-        this.state = { startDate:null,endDate:null }
+        this.state = { 
+            startDate:moment(new Date()),
+            endDate:moment('Sun Jan 16 2019 15:45:17 GMT+0330 (Iran Standard Time)') 
+        }
     }
 
     // Example button ------------->
@@ -42,6 +46,7 @@ class DatePicker extends Component {
 
 
 
+
     render() { 
 
      
@@ -59,7 +64,7 @@ class DatePicker extends Component {
                     numberOfMonths={this.props.month}
                     hideKeyboardShortcutsPanel={true} 
                     noBorder={true} 
-                    isOutsideRange={() => false} 
+                    isOutsideRange={day => !isInclusivelyAfterDay(day, moment())}
                     />
 
                     {/* <button onClick={this.callData.bind(this)}>Click</button> */}

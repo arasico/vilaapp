@@ -3,7 +3,7 @@
 //  import oring component 
 //
 import React, { Component } from 'react';
-import { browserHistory } from 'react-router' 
+import { browserHistory } from 'react-router'
 import DayPicker, { DateUtils } from 'react-day-picker';
 
 //
@@ -41,7 +41,7 @@ class SerachResult extends Component {
     static defaultProps = {
         numberOfMonths: 2,
     };
-  
+
     constructor(props) {
         super(props);
         this.state = {
@@ -52,8 +52,8 @@ class SerachResult extends Component {
             mapShow: true,
             showFilterMenu: false,
             searchResultBox: true,
-            start: null,
-            end: null,
+            // start: null,
+            // end: null,
             startDate: null,
             endDate: null,
             shortStart: '',
@@ -63,16 +63,15 @@ class SerachResult extends Component {
             min: 0,
             max: 0,
             room: 0,
+            counter: 0,
         };
-
     }
 
     componentWillMount = async () => {
 
-
         await this.setState({
-            start: new Date(this.getParms('startDate')),
-            end: new Date(this.getParms('endDate')),
+            // start: new Date(this.getParms('startDate')),
+            // end: new Date(this.getParms('endDate')),
             startDate: this.getParms('startDate'),
             endDate: this.getParms('endDate'),
             from: new Date(this.getParms('startDate')),
@@ -81,8 +80,6 @@ class SerachResult extends Component {
             room: this.getParms('room'),
             min: this.getParms('min') || 100000,
             max: this.getParms('max') || 200000,
-            shortStartShow: this.state.shortStart,
-            shortEndShow: this.state.shortEnd,
             personShow: this.state.person,
             roomShow: this.state.room,
             minShow: this.state.min,
@@ -100,12 +97,9 @@ class SerachResult extends Component {
         })
 
         // for show in a pice of filter date 
-        this.shortDate()
+        this.shortDate( this.state.from , this.state.to)
 
-        await this.setState({
-            shortStartShow: this.state.shortStart,
-            shortEndShow: this.state.shortEnd,
-        })
+        console.log(this.state)
 
     }
 
@@ -158,6 +152,7 @@ class SerachResult extends Component {
                 document.addEventListener('click', this.closeMenu);
             }
         )
+
     }
     selectPersonHandler = (event) => {
         event.preventDefault();
@@ -258,9 +253,9 @@ class SerachResult extends Component {
 
     goToView() {
         // window.location.pathname = '/view'
-         browserHistory.push("/view/1")
+        browserHistory.push("/view/1")
 
-        
+
     }
 
     //apply FILTER
@@ -274,7 +269,38 @@ class SerachResult extends Component {
 
     //select days in calender
     handleDayClick = async (day) => {
-        const range = DateUtils.addDayToRange(day, this.state);
+
+        // const range = DateUtils.addDayToRange(day, this.state);
+
+        await this.setState({ counter: this.state.counter + 1 })
+        let range = {
+            from: null,
+            to: null
+        }
+        // set start date 
+        if (this.state.counter % 2 === 1) {
+            await this.setState({ selectStart: day, selectEnd: null })
+            range = {
+                from: this.state.selectStart,
+                to: this.state.selectEnd
+            }
+        } 
+        // set end date
+        else {
+            await this.setState({ selectStart: this.state.selectStart, selectEnd: day })
+            if (Math.round(new Date(this.state.selectStart.getTime())) > Math.round(new Date(day).getTime())) {
+                range = {
+                    from: this.state.selectEnd,
+                    to: this.state.selectStart
+                }
+            }
+            else {
+                range = {
+                    to: this.state.selectEnd,
+                    from: this.state.selectStart
+                }
+            }
+        }
 
         await this.setState(range);
         await this.setState({
@@ -283,16 +309,19 @@ class SerachResult extends Component {
             endDate: new Intl.DateTimeFormat('en-US').format(range.to)
         })
 
-        this.shortDate()
+        console.log(this.state)
+
+
+
     }
 
     // short date for show in filter => 1/8 - 1/11
-    shortDate = async () => {
-        let startMonth = (this.state.start.getMonth() + 1);
-        let startDay = this.state.start.getDate();
+    shortDate = async ( start , end) => {
+        let startMonth = (start.getMonth() + 1);
+        let startDay = start.getDate();
 
-        let endMonth = (this.state.end.getMonth() + 1);
-        let endDay = this.state.end.getDate();
+        let endMonth = (end.getMonth() + 1);
+        let endDay = end.getDate();
 
         await this.setState({ shortStart: (startDay + '/' + startMonth), shortEnd: (endDay + '/' + endMonth) })
     }
@@ -335,22 +364,39 @@ class SerachResult extends Component {
     }
 
 
-    insertParam = async(key, value) => {
+    insertParam = async (key, value) => {
         // push params in url location query
-        await  browserHistory.push({
+        await browserHistory.push({
             pathname: this.props.location.pathname,
             query: Object.assign({}, this.props.location.query, { [key]: value })
-        }); 
+        });
 
-          console.log(this.props.location) 
+        console.log(browserHistory.getCurrentLocation())
     }
 
     // apply DATE button function
-    applyDate = () => {
-        this.insertParam('startDate', this.state.startDate)
-        this.insertParam('endDate', this.state.endDate)
+    applyDate = async () => {
 
-        this.setState({ shortStartShow: this.state.shortStart, shortEndShow: this.state.shortEnd })
+        if(this.state.selectEnd === null){
+            await this.setState({selectEnd : this.state.selectStart})
+            console.log('kos kesh' , this.state)
+        }
+
+            // console.log(Math.round(new Date(this.state.startDate.getTime())))
+        await this.insertParam('endDate', new Intl.DateTimeFormat('en-US').format(this.state.selectEnd))
+        await this.insertParam('startDate', new Intl.DateTimeFormat('en-US').format(this.state.selectStart))
+
+        // for show short date when first click > second click select date
+        if (Math.round(new Date(this.state.selectStart).getTime()) > Math.round(new Date(this.state.selectEnd).getTime())){
+            this.shortDate( this.state.selectEnd || this.state.from , this.state.selectStart || this.state.to)
+        }else{
+            this.shortDate( this.state.selectStart || this.state.from , this.state.selectEnd || this.state.to)
+        }
+
+        this.setState({counter : 0})
+
+
+
     }
 
     // apply PERSON button function
@@ -362,7 +408,7 @@ class SerachResult extends Component {
     }
 
     // apply MINMAX button function
-    applyMinMax = async() => {
+    applyMinMax = async () => {
         await this.insertParam('min', this.state.min)
         await this.insertParam('max', this.state.max)
 
@@ -371,9 +417,9 @@ class SerachResult extends Component {
     }
 
     // apply ROOM button function
-    applyRoom = async() => {
+    applyRoom = async () => {
         await this.insertParam('room', this.state.room)
-       // await this.insertParam('room', this.state.room)
+        // await this.insertParam('room', this.state.room)
 
         this.setState({ roomShow: this.state.room })
 
@@ -383,7 +429,7 @@ class SerachResult extends Component {
 
         // picker dates
         const { from, to } = this.state;
-        const modifiers = { start: this.state.start, end: this.state.end };
+        const modifiers = { start: this.state.from, end: this.state.to };
 
 
         let btnList = ['listBtn select-listing-map']
@@ -441,7 +487,7 @@ class SerachResult extends Component {
                             <div className="select-filter-child notCloseMenuLand" >
                                 <p className="filter-date-drop notCloseMenuLand"  >Dates</p>
                                 <img src={arrow} style={{ marginLeft: 10, marginTop: -5, height: 11, width: 11, float: 'right' }} alt="arrow" className="notCloseMenuLand" />
-                                <p className="filter-date-desc notCloseMenuLand" >{this.state.shortStartShow} - {this.state.shortEndShow}</p>
+                                <p className="filter-date-desc notCloseMenuLand" >{this.state.shortStart} - {this.state.shortEnd}</p>
                                 <p className="my-filter-action notCloseMenuLand" onClick={this.selectFromToHandler}></p>
                             </div>
 
@@ -477,7 +523,7 @@ class SerachResult extends Component {
                                 {this.state.selectFromTo ? <div className="select-from-to filter1 notCloseMenuLand" >
                                     <div className="from-to-box notCloseMenuLand"  >
                                         <div className="filter-children">
-                                            <div className="RangeExample">
+                                            <div className="date-box2">
                                                 <DayPicker
                                                     className="Selectable"
                                                     numberOfMonths={this.props.numberOfMonths}
@@ -490,9 +536,7 @@ class SerachResult extends Component {
                                                         },
                                                     ]}
                                                 />
-
-                                            </div>
-
+                                           </div>
                                         </div>
                                     </div>
                                     <div className="select-date-btn notCloseMenuLand"  >
