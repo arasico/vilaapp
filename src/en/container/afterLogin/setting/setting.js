@@ -15,10 +15,10 @@ class Stting extends Component {
     }
 
 
-    componentWillMount(){
+    componentDidMount(){
         console.log(Token)
-        if(Token === null)
-             window.location.pathname="/"
+        // if(Token !== null)
+        //      window.location.pathname="/"
     }
 
 
