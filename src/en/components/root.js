@@ -29,7 +29,7 @@ export default class Root extends Component {
         return ( 
             <div>
                 <div>
-                    {Token === 'noToken' ? ( <Header /> ): ( <HeaderComponentAfterLogin/> )}            
+                    {Token === null ? ( <Header /> ): ( <HeaderComponentAfterLogin/> )}            
 
                 </div>
                 <div> 
