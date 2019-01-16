@@ -30,7 +30,6 @@ export default class Root extends Component {
             <div>
                 <div>
                     {Token === 'null' ? ( <Header /> ): ( <HeaderComponentAfterLogin/> )}            
-
                 </div>
                 <div> 
                     {this.props.children}

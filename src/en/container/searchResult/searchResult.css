@@ -671,3 +671,21 @@ top: 115px;
     border-top-right-radius: 50% !important;
     border-bottom-right-radius: 50% !important;
   }
+
+@media screen and (max-width: 330px) {
+    .selectFilter{
+        padding: 10px;
+    }
+    .filter-close h1{
+        font-size: 22px;
+    }
+    .close-filter-box{
+        top: 4px;
+        width: 35px;
+        height: 35px;
+    }
+    .close-filter-box:after, .close-filter-box:before{
+        width: 35px;
+    }
+
+}

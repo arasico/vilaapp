@@ -249,3 +249,28 @@
    
      
 }
+
+@media screen and (max-width: 330px) {
+    .title-single-date{
+        font-size: .8em;
+    }
+    .single-date{
+        font-size: .9em;
+    }
+
+    .filter-title{
+        font-size: 15px;
+    }
+    .title-price-input{
+        font-size: .8em;
+    }
+    .input-price{
+        font-size: .9em;
+    }
+    .toman-span{
+        font-size: .7em;
+    }
+    .container-price-input-child{
+        padding: 0px 5px;
+    }
+}
