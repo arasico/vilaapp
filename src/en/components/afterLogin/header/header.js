@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { browserHistory } from 'react-router' 
+import { browserHistory, Redirect } from 'react-router' 
 
 //
 // import external Component    ---->
@@ -51,6 +51,20 @@ class HeaderComponentAfterLogin extends Component {
 
 
     humberger = React.createRef()
+
+    onLogOut(){
+        localStorage.setItem('authorization', 'noToken') 
+       // console.log( window.location.pathname)
+       
+        // Clear query in url ----- >
+        browserHistory.push({
+            pathname: window.location.pathname,
+            query: null
+        });
+        // rediret in index page after logout ----- >
+        window.location.pathname="/"
+       
+    }
 
     openTabletMenuHandler = (e) => {
         this.setState((prevState) => {
@@ -130,7 +144,7 @@ class HeaderComponentAfterLogin extends Component {
                                     <img className="welcome-child-img" src={setting} alt="setting" />
                                     <span className="welcome-child-text">Setting</span>
                                 </li>
-                                <li className="welcome-child" >
+                                <li className="welcome-child" onClick={this.onLogOut} >
                                     <img className="welcome-child-img" src={logout} alt="logout" />
                                     <span className="welcome-child-text">Log Out</span>
                                 </li>
