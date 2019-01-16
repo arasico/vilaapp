@@ -4,8 +4,9 @@ import React, {Component} from 'react';
 //
 //
 import SubTitle from '../../../components/common/subTitle/subTitle';
-import Input from '../../../components/commonInput/InputGroup'
-import Button from '../../../components/Button/Button'
+import Input from '../../../components/commonInput/InputGroup';
+import Button from '../../../components/Button/Button';
+import Token from '../../../components/api/token';
 
 class Stting extends Component {
     constructor(props) {
@@ -13,6 +14,12 @@ class Stting extends Component {
         this.state = {  }
     }
 
+
+    componentWillMount(){
+        console.log(Token)
+        if(Token === null)
+             window.location.pathname="/"
+    }
 
 
     render() { 
@@ -43,6 +50,13 @@ class Stting extends Component {
                                 changed={this.changedHandler}
                                 error={this.state.forgetEmailError}
                             />
+
+                            <Button                                                                  
+                                isLoading={this.state.isLoading}                                    
+                                title={'Send'}                                                      
+                                bgcolor={'#1FC056'}                                                 
+                                hoverbgcolor={'#1fc056cc'}                                          
+                                click={this.callSubmit}/>      
 
                         </form>
                    </div>

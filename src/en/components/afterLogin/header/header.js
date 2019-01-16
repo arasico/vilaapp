@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router'; 
 import { browserHistory, Redirect } from 'react-router' 
 
 //
@@ -51,6 +51,8 @@ class HeaderComponentAfterLogin extends Component {
 
 
     humberger = React.createRef()
+
+   
 
     onLogOut(){
         localStorage.setItem('authorization', null) 
@@ -141,8 +143,10 @@ class HeaderComponentAfterLogin extends Component {
                                     <span className="welcome-child-text">My List's</span>
                                 </li>
                                 <li className="welcome-child" >
-                                    <img className="welcome-child-img" src={setting} alt="setting" />
-                                    <span className="welcome-child-text">Setting</span>
+                                    <Link to="/setting">
+                                        <img className="welcome-child-img" src={setting} alt="setting" />
+                                        <span className="welcome-child-text">Setting</span>
+                                    </Link>
                                 </li>
                                 <li className="welcome-child" onClick={this.onLogOut} >
                                     <img className="welcome-child-img" src={logout} alt="logout" />
