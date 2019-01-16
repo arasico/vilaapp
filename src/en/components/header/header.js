@@ -264,13 +264,13 @@ class HeaderComponent extends Component {
 
             if(res.status === 200 )
             { 
-                   console.log(`user is success login and token is : ${res.data.token}`)
-                    localStorage.setItem('authorization', res.data.token)
-                    window.location.pathname="/"
-                    console.log(localStorage.getItem('authorization'))
+                console.log(`user is success login and token is : ${res.data.token}`) // TODO Delete Later
+                localStorage.setItem('authorization', res.data.token)
+                window.location.pathname = window.location.pathname 
+                console.log(localStorage.getItem('authorization'))// TODO Delete Later
             }
             if(res.status === 401 || res.status === 400)
-            this.setState({loginErrorHandleing : "username or password is invalid!"})
+                this.setState({loginErrorHandleing : "username or password is invalid!"})
   
         }
     }
