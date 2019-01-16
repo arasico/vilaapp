@@ -53,7 +53,7 @@ class HeaderComponentAfterLogin extends Component {
     humberger = React.createRef()
 
     onLogOut(){
-        localStorage.setItem('authorization', 'noToken') 
+        localStorage.setItem('authorization', null) 
        // console.log( window.location.pathname)
        
         // Clear query in url ----- >
