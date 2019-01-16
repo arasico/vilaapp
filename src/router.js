@@ -18,6 +18,10 @@ import ContactUs from './en/container/contactUs/contactUs'
 import SerachResult from './en/container/searchResult/searchResult'
 import TestComponent from './en/container/testComponent/test'
 import page404 from './en/container/notFound'
+
+// after login component ------>
+import Setting from './en/container/afterLogin/setting/setting';
+
  
 
 import FooterComponent from './en/components/footer/footer'
@@ -54,6 +58,7 @@ class RouterComponent extends Component {
                           <Route   path="create" component={Create} /> 
                           <Route exact  path="search-result" component={SerachResult}  />  
                           <Route   path="view/:id" component={View} /> 
+                          <Route   path="setting" component={Setting} /> 
                           <Route exact  path="test" component={TestComponent} /> 
                           <Route path="*" component={page404} />
                       </Route>

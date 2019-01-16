@@ -20,3 +20,12 @@ const Subtitle = (
 )
 
 export default Subtitle
+
+
+
+/*
+example using:
+
+ <SubTitle label="name of title" />
+
+*/

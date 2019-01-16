@@ -29,3 +29,18 @@ const input = (props) => {
 }
 
 export default input;
+
+
+/*
+example using 
+
+      <Input 
+            type={'text'} 
+            name={'email'}
+            placeHolder={'Email'}
+            changed={this.changedHandler}
+            error={this.state.forgetEmailError}
+        />
+
+
+*/
