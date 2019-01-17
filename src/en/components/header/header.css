@@ -26,6 +26,7 @@
 
 a{
    text-decoration: none;
+   color: inherit;
 }
 a:active{
     color: inherit;
@@ -72,7 +73,7 @@ a:visited{
 }
 
 
-.desktop-nav-child a  ,.login-link-d {
+.desktop-nav-child > a  ,.login-link-d {
     display: block;
     color: #333333;
     text-align: center;
@@ -88,7 +89,7 @@ a:visited{
 .login-link-t{
     cursor: pointer;
 }
-.desktop-nav-child a:hover:not(.active) , .login-link-d:hover:not(.active){
+.desktop-nav-child > a:hover:not(.active) , .login-link-d:hover:not(.active){
     background-color: rgba(34,34,34,0.5);
     border-radius: 50px;
     color: #fff;
