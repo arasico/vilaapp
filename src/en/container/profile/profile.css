@@ -42,6 +42,7 @@
     margin: 20px auto;
     font-size: 14px;
     color: #ccc;
+    text-align: center;
 }
 .image-upload-logo{
     width:200px;
@@ -61,4 +62,36 @@
 width: 40%;
 padding: 20px;
 
+}
+
+@media screen and (max-width: 800px) {
+
+    .detaile-upload{
+        flex-direction: column;
+    }
+    .image-upload , .detaile-input{
+        width: 100%;
+    }
+    .detaile-input .input-label{
+        margin: 30px auto;
+    }
+    .detaile-input{
+        padding: 0px;
+    }
+
+}
+@media screen and (max-width: 800px) {
+    .detaile-upload{
+        padding: 20px;
+    }
+    .image-upload-logo{
+        width: 150px;
+        height: 150px;
+    }
+    .image-upload-logo img{
+        width: 50px;
+    }
+    .profile > h1{
+        margin-left: 20px;
+    }
 }
