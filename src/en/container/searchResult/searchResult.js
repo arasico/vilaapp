@@ -97,7 +97,7 @@ class SerachResult extends Component {
         })
 
         // for show in a pice of filter date 
-        this.shortDate( this.state.from , this.state.to)
+        this.shortDate(this.state.from, this.state.to)
 
         console.log(this.state)
 
@@ -284,7 +284,7 @@ class SerachResult extends Component {
                 from: this.state.selectStart,
                 to: this.state.selectEnd
             }
-        } 
+        }
         // set end date
         else {
             await this.setState({ selectStart: this.state.selectStart, selectEnd: day })
@@ -316,7 +316,7 @@ class SerachResult extends Component {
     }
 
     // short date for show in filter => 1/8 - 1/11
-    shortDate = async ( start , end) => {
+    shortDate = async (start, end) => {
         let startMonth = (start.getMonth() + 1);
         let startDay = start.getDate();
 
@@ -377,23 +377,23 @@ class SerachResult extends Component {
     // apply DATE button function
     applyDate = async () => {
 
-        if(this.state.selectEnd === null){
-            await this.setState({selectEnd : this.state.selectStart})
-            console.log('kos kesh' , this.state)
+        if (this.state.selectEnd === null) {
+            await this.setState({ selectEnd: this.state.selectStart })
+            console.log('kos kesh', this.state)
         }
 
-            // console.log(Math.round(new Date(this.state.startDate.getTime())))
+        // console.log(Math.round(new Date(this.state.startDate.getTime())))
         await this.insertParam('endDate', new Intl.DateTimeFormat('en-US').format(this.state.selectEnd))
         await this.insertParam('startDate', new Intl.DateTimeFormat('en-US').format(this.state.selectStart))
 
         // for show short date when first click > second click select date
-        if (Math.round(new Date(this.state.selectStart).getTime()) > Math.round(new Date(this.state.selectEnd).getTime())){
-            this.shortDate( this.state.selectEnd || this.state.from , this.state.selectStart || this.state.to)
-        }else{
-            this.shortDate( this.state.selectStart || this.state.from , this.state.selectEnd || this.state.to)
+        if (Math.round(new Date(this.state.selectStart).getTime()) > Math.round(new Date(this.state.selectEnd).getTime())) {
+            this.shortDate(this.state.selectEnd || this.state.from, this.state.selectStart || this.state.to)
+        } else {
+            this.shortDate(this.state.selectStart || this.state.from, this.state.selectEnd || this.state.to)
         }
 
-        this.setState({counter : 0})
+        this.setState({ counter: 0 })
 
 
 
@@ -424,6 +424,50 @@ class SerachResult extends Component {
         this.setState({ roomShow: this.state.room })
 
     }
+
+
+    changeDateTablet = (value) =>{
+       
+        // convert timestamp to date format : dd/mm/yyyy ------>
+        function timeConverter(value) {
+            var a = new Date(value);
+            return a.getDate() + '/' + (a.getMonth() + 1) + '/' + a.getFullYear();
+        }
+
+        if (this.state.date !== null)
+            this.setState({ date: timeConverter(value) })
+
+        this.togglePopup(); // close popup after select time
+        console.log("Date picker called!")
+        console.log(value)
+    }
+    onDateChangeTablet = (date) =>{
+        this.setState({ date }); 
+        this.changeDateTablet(date)
+        console.log('2')
+    }
+
+    changePriceTablet = async (e) => {
+       await this.setState({[e.target.name] : e.target.value})
+        
+    }
+    
+    changePersonTablet = async (value) => {
+        await this.setState({person : value})
+        console.log(this.state)         
+     }
+    changeRoomTablet = async (value) => {
+        await this.setState({room : value})
+        console.log(this.state)         
+     }
+
+
+    tabletFilterApply = () => {
+
+    }
+
+
+
 
     render() {
 
@@ -536,7 +580,7 @@ class SerachResult extends Component {
                                                         },
                                                     ]}
                                                 />
-                                           </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div className="select-date-btn notCloseMenuLand"  >
@@ -586,7 +630,7 @@ class SerachResult extends Component {
                             </div>
                         </div>
 
-                        {/* filter box tablet size  */}
+                        {/* filter box tablet tablet TABLET size  */}
                         <div className={selectFilter.join(' ')} >
                             <div className="filter-close" >
                                 <h1>Filter</h1>
@@ -598,36 +642,41 @@ class SerachResult extends Component {
                                         <h1 className="filter-title" >Date</h1>
                                         <div className="filter-children">
                                             <div className="filter-child">
-                                                <SingleDate name="from" />
+                                                <SingleDate name="from" onClick={this.changeDateTablet} 
+                                                                        />
                                             </div>
                                             <div className="filter-child">
-                                                <SingleDate name="to" />
+                                                <SingleDate name="to" onClick={this.changeDateTablet} 
+                                                                      />
                                             </div>
                                         </div>
                                     </div>
                                     <div className="filter-box filter-box-thin">
                                         <h1 className="filter-title" >Persons</h1>
                                         <div className="com-increase">
-                                            <OptionButtonPlus />
+                                            <OptionButtonPlus counter={this.state.person}
+                                                change={this.changePersonTablet}
+                                                name={this.state.person} />
                                         </div>
                                     </div>
                                     <div className="filter-box filter-box-fat">
                                         <h1 className="filter-title" >Price</h1>
 
                                         <div className="min-to-max-box notCloseMenuLand" >
-
-                                            <PriceInput name="min" />
-                                            <PriceInput name="max" />
+                                            <PriceInput name="min" changePriceTablet={this.changePriceTablet} />
+                                            <PriceInput name="max" changePriceTablet={this.changePriceTablet} />
                                         </div>
                                     </div>
                                     <div className="filter-box filter-box-thin">
                                         <h1 className="filter-title" >Rooms</h1>
                                         <div className="com-increase" >
-                                            <OptionButtonPlus />
+                                            <OptionButtonPlus counter={this.state.room}
+                                                change={this.changeRoomTablet}
+                                                name={this.state.person} />
                                         </div>
                                     </div>
                                 </div>
-                                <div className="apply-box" ><p>Apply</p></div>
+                                <div className="apply-box" onClick={this.tabletFilterApply} ><p>Apply</p></div>
                             </div>
                         </div>
                         <div className="select-griding " ref={this.listMap}>
