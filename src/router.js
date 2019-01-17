@@ -12,6 +12,7 @@ import Landlord from './en/container/landlord/landloard'
   
 import Create from './en/container/create/create'
 import View from './en/container/view/view'
+import Profile from './en/container/profile/profile'
  
 import ContactUs from './en/container/contactUs/contactUs'
  
@@ -58,6 +59,7 @@ class RouterComponent extends Component {
                           <Route   path="create" component={Create} /> 
                           <Route exact  path="search-result" component={SerachResult}  />  
                           <Route   path="view/:id" component={View} /> 
+                          <Route   path="profile" component={Profile} /> 
                           <Route   path="setting" component={Setting} /> 
                           <Route exact  path="test" component={TestComponent} /> 
                           <Route path="*" component={page404} />
