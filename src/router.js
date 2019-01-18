@@ -21,7 +21,7 @@ import page404 from './en/container/notFound'
 
 // after login component ------>
 import Setting from './en/container/afterLogin/setting/setting';
-
+import Profile from './en/container/afterLogin/profile/profile';
  
 
 import FooterComponent from './en/components/footer/footer'
@@ -58,6 +58,7 @@ class RouterComponent extends Component {
                           <Route   path="create" component={Create} /> 
                           <Route exact  path="search-result" component={SerachResult}  />  
                           <Route   path="view/:id" component={View} /> 
+                          <Route   path="profile" component={Profile} /> 
                           <Route   path="setting" component={Setting} /> 
                           <Route exact  path="test" component={TestComponent} /> 
                           <Route path="*" component={page404} />

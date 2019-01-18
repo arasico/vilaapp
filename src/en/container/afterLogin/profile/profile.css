@@ -1,0 +1,97 @@
+.profile{
+  margin-top: 100px;
+}
+
+.profile > h1 {
+    font-size:24px;
+    color: #333;
+}
+
+.myLine{
+    width: 100%;
+    background-color: #aaa;
+}
+.detaile-upload{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 50px 0px;
+}
+
+.detaile-input .input-label{
+    margin: 0px auto 30px;
+}
+.image-upload{
+    width: 50%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f7f7f7;
+    border-radius: 30px;
+    border: 3px solid #55d8ff;
+}
+.image-upload h1 {
+    margin: 20px auto;
+    font-size: 18px;
+    color: #999;
+    font-weight: 500;
+}
+.image-upload p{
+    margin: 20px auto;
+    font-size: 14px;
+    color: #ccc;
+    text-align: center;
+}
+.image-upload-logo{
+    width:200px;
+    height:200px;
+    margin: auto;
+    border: 2px dashed #a7a7a7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+.image-upload-logo img{
+    width: 90px;
+}
+
+.detaile-input{
+width: 40%;
+padding: 20px;
+
+}
+
+@media screen and (max-width: 800px) {
+
+    .detaile-upload{
+        flex-direction: column;
+    }
+    .image-upload , .detaile-input{
+        width: 100%;    
+    }
+    .detaile-input .input-label{
+        margin: 30px auto;
+    }
+    .detaile-input{
+        padding: 0px;
+    }
+
+}
+@media screen and (max-width: 800px) {
+    .detaile-upload{
+        padding: 20px;
+    }
+    .image-upload-logo{
+        width: 150px;
+        height: 150px;
+    }
+    .image-upload-logo img{
+        width: 50px;
+    }
+    .profile > h1{
+        margin-left: 20px;
+    }
+}
