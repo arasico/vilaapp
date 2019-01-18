@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
 import './profile.css';
+
+//
+// Internal Component------->
+//
+import InputText from '../../components/commonInput/InputGroup';
+import Button from '../../components/Button/Button';
+import SubTitle from '../../../components/common/subTitle';
+
+//
+// icons and images ----->
+//
 import imageload from './../../../assets/icons/imageload.svg'
 
-import InputText from '../../components/commonInput/InputGroup'
-import Button from '../../components/Button/Button'
+
 
 
 
@@ -25,7 +35,7 @@ class Profile extends Component {
 
         return (
             <div className="profile container">
-                <h1>Profile</h1>
+               <SubTitle label="My Profile" />
                 <div className="myLine" ></div>
                 <div className="detaile-upload">
                     <div className="image-upload">
