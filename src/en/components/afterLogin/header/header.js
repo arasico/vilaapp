@@ -14,8 +14,9 @@ import '../../header/header.css'
 //
 import LogoColorly from '../../../../assets/img/logo-colorly.svg'
 import welcomeuser from '../../../../assets/icons/welcomeuser.svg'
+import Home from '../../../../assets/icons/home.svg'
 import avatar from '../../../../assets/icons/avatar.svg'
-import mylist from '../../../../assets/icons/mylist.svg'
+import mylist from '../../../../assets/icons/megaphone_menu.svg'
 import setting from '../../../../assets/icons/setting.svg'
 import logout from '../../../../assets/icons/logout.svg'
 
@@ -134,6 +135,12 @@ class HeaderComponentAfterLogin extends Component {
                                 <img className="welcome-img" src={welcomeuser} alt="welcome" />
                             </div>
                             <ul className="welcomeChilds" ref={this.welcomMenu}>
+                                <li className="welcome-child" >
+                                    <Link to="/">
+                                        <img className="welcome-child-img" src={Home} alt="Home" />
+                                        <span className="welcome-child-text">Home</span>
+                                    </Link>
+                                </li>
                                 <li className="welcome-child" >
                                     <Link to="/profile">
                                         <img className="welcome-child-img" src={avatar} alt="avatar" />
