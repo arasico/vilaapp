@@ -135,12 +135,16 @@ class HeaderComponentAfterLogin extends Component {
                             </div>
                             <ul className="welcomeChilds" ref={this.welcomMenu}>
                                 <li className="welcome-child" >
-                                    <img className="welcome-child-img" src={avatar} alt="avatar" />
-                                    <span className="welcome-child-text">My Profile</span>
+                                    <Link to="/profile">
+                                        <img className="welcome-child-img" src={avatar} alt="avatar" />
+                                        <span className="welcome-child-text">My Profile</span>
+                                    </Link>
                                 </li>
                                 <li className="welcome-child" >
-                                    <img className="welcome-child-img" src={mylist} alt="mylist" />
-                                    <span className="welcome-child-text">My List's</span>
+                                    <Link to="/#">
+                                        <img className="welcome-child-img" src={mylist} alt="mylist" />
+                                        <span className="welcome-child-text">My List's</span>
+                                    </Link>
                                 </li>
                                 <li className="welcome-child" >
                                     <Link to="/setting">
