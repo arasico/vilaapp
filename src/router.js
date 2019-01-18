@@ -12,7 +12,6 @@ import Landlord from './en/container/landlord/landloard'
   
 import Create from './en/container/create/create'
 import View from './en/container/view/view'
-import Profile from './en/container/profile/profile'
  
 import ContactUs from './en/container/contactUs/contactUs'
  
@@ -22,7 +21,7 @@ import page404 from './en/container/notFound'
 
 // after login component ------>
 import Setting from './en/container/afterLogin/setting/setting';
-
+import Profile from './en/container/afterLogin/profile/profile';
  
 
 import FooterComponent from './en/components/footer/footer'

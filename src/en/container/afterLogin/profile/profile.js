@@ -4,14 +4,14 @@ import './profile.css';
 //
 // Internal Component------->
 //
-import InputText from '../../components/commonInput/InputGroup';
-import Button from '../../components/Button/Button';
-import SubTitle from '../../../components/common/subTitle';
+import InputText from '../../../components/commonInput/InputGroup';
+import Button from '../../../components/Button/Button';
+import SubTitle from '../../../components/common/subTitle/subTitle';
 
 //
 // icons and images ----->
 //
-import imageload from './../../../assets/icons/imageload.svg'
+import imageload from '../../../../assets/icons/imageload.svg'
 
 
 
