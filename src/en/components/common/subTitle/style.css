@@ -27,4 +27,8 @@
     .lbl-subtitle{
         font-size: 16px;
     }
+    .subtitle-container{
+        width: 90%;
+        margin: auto;
+    }
 }

@@ -22,6 +22,7 @@ import page404 from './en/container/notFound'
 // after login component ------>
 import Setting from './en/container/afterLogin/setting/setting';
 import Profile from './en/container/afterLogin/profile/profile';
+import Mylist from './en/container/afterLogin/mylist/mylist';
  
 
 import FooterComponent from './en/components/footer/footer'
@@ -59,6 +60,7 @@ class RouterComponent extends Component {
                           <Route exact  path="search-result" component={SerachResult}  />  
                           <Route   path="view/:id" component={View} /> 
                           <Route   path="profile" component={Profile} /> 
+                          <Route   path="mylist" component={Mylist} /> 
                           <Route   path="setting" component={Setting} /> 
                           <Route exact  path="test" component={TestComponent} /> 
                           <Route path="*" component={page404} />
