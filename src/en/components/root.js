@@ -14,6 +14,7 @@ export default class Root extends Component {
 
     componentDidMount(){
         console.log(Token)
+        console.log(typeof(Token))
  
     }
 
