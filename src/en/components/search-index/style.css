@@ -93,7 +93,6 @@ font-size: 18px;
     position: absolute;
     transition: background-color 0.5s ease-out;
     cursor: pointer;
-
  }
 
  .btn-search:hover {
@@ -103,7 +102,7 @@ font-size: 18px;
 
  .drop-down-list{ 
     cursor: pointer; 
-    color: #757575;
+    color: #484848  ;
     width: 110px;
     font-size: 17px;
 }

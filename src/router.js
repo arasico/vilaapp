@@ -60,7 +60,7 @@ class RouterComponent extends Component {
                           <Route exact  path="search-result" component={SerachResult}  />  
                           <Route   path="view/:id" component={View} /> 
                           <Route   path="profile" component={Profile} /> 
-                          <Route   path="mylist" component={Mylist} /> 
+                          <Route   path="list" component={Mylist} /> 
                           <Route   path="setting" component={Setting} /> 
                           <Route exact  path="test" component={TestComponent} /> 
                           <Route path="*" component={page404} />

@@ -148,7 +148,7 @@ class HeaderComponentAfterLogin extends Component {
                                     </Link>
                                 </li>
                                 <li className="welcome-child" >
-                                    <Link to="/#">
+                                    <Link to="/list">
                                         <img className="welcome-child-img" src={mylist} alt="mylist" />
                                         <span className="welcome-child-text">My List's</span>
                                     </Link>
