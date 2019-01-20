@@ -17,7 +17,7 @@ import ContactUs from './en/container/contactUs/contactUs'
  
 import SerachResult from './en/container/searchResult/searchResult'
 import TestComponent from './en/container/testComponent/test'
-import page404 from './en/container/notFound'
+import page404 from './en/container/notFound/notFound'
 
 // after login component ------>
 import Setting from './en/container/afterLogin/setting/setting';
