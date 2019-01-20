@@ -1,0 +1,19 @@
+.not-found{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    margin: 100px auto;
+    text-align: center;
+    padding: 50px;
+}
+
+.not-found-number{
+font-size: 40px;
+color: #999;
+}
+
+.not-found-text{
+    font-size: 35px;
+    color: #333;
+}
+
