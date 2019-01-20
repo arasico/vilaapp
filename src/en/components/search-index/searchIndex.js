@@ -1,5 +1,7 @@
 
 import React,{Component} from 'react';
+import { connect } from 'react-redux';
+
 //import "react-datepicker/dist/react-datepicker.css";
 import Dropdown from 'rc-dropdown';
 import Menu, { Item as MenuItem, Divider } from 'rc-menu';
@@ -14,6 +16,12 @@ import 'rc-dropdown/assets/index.css';
 import arrow from '../../../assets/icons/arrow-down.svg'
 import DatePickerRC from '../../components/dateStartEnd/datePicker';
 import './style.css'
+
+//
+// actions ---->
+//
+import { fetchPosts } from '../../actions/postActions';
+
  
  
 
@@ -51,6 +59,10 @@ class SearchIndex extends Component {
         person:         ${this.state.person} 
         ------------------------------------
         `)
+    }
+
+    componentDidMount(){
+        console.log(this.props.getValue)
     }
 
     componentWillUpdate(nextProps, nextState){
@@ -190,9 +202,17 @@ class SearchIndex extends Component {
                         </Dropdown>
                     </div> 
                 <button type="button" onClick={this.onClickSearch} className="btn-search"><span className="search-text-show" >Search</span><i className="fas fa-search search-icon-show"></i></button>
+   
             </div>
          );
     }
 }
  
-export default SearchIndex;
+
+const mapStateToProps = state => ({
+    getValue: state.posts.items
+   })
+
+
+ 
+export default connect(mapStateToProps, { fetchPosts }) (SearchIndex);

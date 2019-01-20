@@ -1,7 +1,7 @@
 import { FETCH_POSTS, NEW_POST, ADD_INCREMENT , ADD_DECREMENT, ON_SELECT_VALUE} from './type'
 
-export const fetchPosts = () => dispatch => {
-    
+export const fetchPosts = () => postData => dispatch => {
+    console.log(postData)
         fetch('https://jsonplaceholder.typicode.com/posts')
         .then(res => res.json())
         .then(data =>  dispatch({
