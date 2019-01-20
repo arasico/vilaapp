@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router'; 
-import { browserHistory, Redirect } from 'react-router' 
+import { Link } from 'react-router';
+import { browserHistory, Redirect } from 'react-router'
 
 //
 // import external Component    ---->
@@ -53,20 +53,20 @@ class HeaderComponentAfterLogin extends Component {
 
     humberger = React.createRef()
 
-   
 
-    onLogOut(){
-        localStorage.setItem('authorization', null) 
-       // console.log( window.location.pathname)
-       
+
+    onLogOut() {
+        localStorage.setItem('authorization', null)
+        // console.log( window.location.pathname)
+
         // Clear query in url ----- >
         browserHistory.push({
             pathname: window.location.pathname,
             query: null
         });
         // rediret in index page after logout ----- >
-        window.location.pathname="/"
-       
+        window.location.pathname = "/"
+
     }
 
     openTabletMenuHandler = (e) => {
@@ -119,69 +119,72 @@ class HeaderComponentAfterLogin extends Component {
 
 
         return (
+            <div className="header">
 
-            <div className="header-container">
+                <div className="header-container">
 
-                <div className="logo-container">
-                    {/* {this.state.currentPage ?  <img src={LogoColorly} className="logo" alt="VilaApp logo"/> :  <img src={LogoWhit} className="logo" alt="VilaApp logo"/>} */}
-                    <img src={LogoColorly} className="logo" alt="VilaApp logo" onClick={this.goToHome} />
+                    <div className="logo-container">
+                        {/* {this.state.currentPage ?  <img src={LogoColorly} className="logo" alt="VilaApp logo"/> :  <img src={LogoWhit} className="logo" alt="VilaApp logo"/>} */}
+                        <img src={LogoColorly} className="logo" alt="VilaApp logo" onClick={this.goToHome} />
 
-                </div>
-                <div className="navbar-container">
-                    <ul className="desktop-nav" >
-                        <li className="welcome-btn desktop-nav-child" >
-                            <div className="welcome-box" onClick={this.dropDownHandler}>
-                                <span className="welcome-text">Welcome , {this.state.username}</span>
-                                <img className="welcome-img" src={welcomeuser} alt="welcome" />
-                            </div>
-                            <ul className="welcomeChilds" ref={this.welcomMenu}>
-                                <li className="welcome-child" >
-                                    <Link to="/">
-                                        <img className="welcome-child-img" src={Home} alt="Home" />
-                                        <span className="welcome-child-text">Home</span>
-                                    </Link>
-                                </li>
-                                <li className="welcome-child" >
-                                    <Link to="/profile">
-                                        <img className="welcome-child-img" src={avatar} alt="avatar" />
-                                        <span className="welcome-child-text">My Profile</span>
-                                    </Link>
-                                </li>
-                                <li className="welcome-child" >
-                                    <Link to="/list">
-                                        <img className="welcome-child-img" src={mylist} alt="mylist" />
-                                        <span className="welcome-child-text">My List's</span>
-                                    </Link>
-                                </li>
-                                <li className="welcome-child" >
-                                    <Link to="/setting">
-                                        <img className="welcome-child-img" src={setting} alt="setting" />
-                                        <span className="welcome-child-text">Setting</span>
-                                    </Link>
-                                </li>
-                                <li className="welcome-child" onClick={this.onLogOut} >
-                                    <img className="welcome-child-img" src={logout} alt="logout" />
-                                    <span className="welcome-child-text">Log Out</span>
-                                </li>
-                            </ul>
-                        </li>|
+                    </div>
+                    <div className="navbar-container">
+                        <ul className="desktop-nav" >
+                            <li className="welcome-btn desktop-nav-child" >
+                                <div className="welcome-box" onClick={this.dropDownHandler}>
+                                    <span className="welcome-text">Welcome , {this.state.username}</span>
+                                    <img className="welcome-img" src={welcomeuser} alt="welcome" />
+                                </div>
+                                <ul className="welcomeChilds" ref={this.welcomMenu}>
+                                    <li className="welcome-child" >
+                                        <Link to="/" className="after-login-link">
+                                            <img className="welcome-child-img" src={Home} alt="Home" />
+                                            <span className="welcome-child-text">Home</span>
+                                        </Link>
+                                    </li>
+                                    <li className="welcome-child" >
+                                        <Link to="/profile"  className="after-login-link">
+                                            <img className="welcome-child-img" src={avatar} alt="avatar" />
+                                            <span className="welcome-child-text">My Profile</span>
+                                        </Link>
+                                    </li>
+                                    <li className="welcome-child" >
+                                        <Link to="/list"  className="after-login-link">
+                                            <img className="welcome-child-img" src={mylist} alt="mylist" />
+                                            <span className="welcome-child-text">My List's</span>
+                                        </Link>
+                                    </li>
+                                    <li className="welcome-child" >
+                                        <Link to="/setting"  className="after-login-link">
+                                            <img className="welcome-child-img" src={setting} alt="setting" />
+                                            <span className="welcome-child-text">Setting</span>
+                                        </Link>
+                                    </li>
+                                    <li className="welcome-child" onClick={this.onLogOut} >
+                                        <img className="welcome-child-img" src={logout} alt="logout" />
+                                        <span className="welcome-child-text">Log Out</span>
+                                    </li>
+                                </ul>
+                            </li>|
                         <li className="desktop-nav-child"><Link to="/contact-us">Contact us</Link></li> |
                         <li className="desktop-nav-child"><Link to="/landlord">Become a landlord</Link></li>
-                    </ul>
+                        </ul>
 
-                    <div className="drawerMenu" onClick={(e) => this.openTabletMenuHandler(e)} ref={this.humberger}>
-                        <span className={line1.join(' ')}></span>
-                        <span className={line2.join(' ')} ></span>
-                        <span className={line3.join(' ')} ></span>
+                        <div className="drawerMenu" onClick={(e) => this.openTabletMenuHandler(e)} ref={this.humberger}>
+                            <span className={line1.join(' ')}></span>
+                            <span className={line2.join(' ')} ></span>
+                            <span className={line3.join(' ')} ></span>
+                        </div>
+                        <ul className={tabletNav.join(' ')} >
+                            <li className="tabletNavLi" id="home" onClick={(e) => this.openTabletMenuHandler(e)} ><Link to="/home">Home</Link></li>
+                            <li className="tabletNavLi" id="landlord" onClick={(e) => this.openTabletMenuHandler(e)} ><Link to="/landlord">Become a landlord</Link></li>
+                            <li className="tabletNavLi" id="contact" onClick={(e) => this.openTabletMenuHandler(e)} ><Link to="/contact-us">Contact us</Link></li>
+                            <li className="tabletNavLi" onClick={(e) => this.openTabletMenuHandler(e)} ><span className="login-link-t">Log out</span></li>
+                        </ul>
                     </div>
-                    <ul className={tabletNav.join(' ')} >
-                        <li className="tabletNavLi" id="home" onClick={(e) => this.openTabletMenuHandler(e)} ><Link to="/home">Home</Link></li>
-                        <li className="tabletNavLi" id="landlord" onClick={(e) => this.openTabletMenuHandler(e)} ><Link to="/landlord">Become a landlord</Link></li>
-                        <li className="tabletNavLi" id="contact" onClick={(e) => this.openTabletMenuHandler(e)} ><Link to="/contact-us">Contact us</Link></li>
-                        <li className="tabletNavLi" onClick={(e) => this.openTabletMenuHandler(e)} ><span className="login-link-t">Log out</span></li>
-                    </ul>
                 </div>
             </div>
+
         );
     }
 }

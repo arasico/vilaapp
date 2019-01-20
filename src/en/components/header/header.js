@@ -335,7 +335,7 @@ class HeaderComponent extends Component {
 
 
         return (
-
+            <div className="header">
                 <div className="header-container">
                     <div className={modalBox.join(' ')} >
 
@@ -469,6 +469,7 @@ class HeaderComponent extends Component {
                             <li className="tabletNavLi" onClick={this.modalHandler} ><span className="login-link-t">Log in/Sign up</span></li>
                         </ul>
                     </div>
+                </div>
                 </div>
         );
     }
