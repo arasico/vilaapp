@@ -48,7 +48,7 @@ class HeaderComponent extends Component {
     } 
 
     componentDidMount(){
-        console.log(Token)
+      //  console.log(Token)
     }
 
     // show hide login section
