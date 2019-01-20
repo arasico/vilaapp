@@ -1,6 +1,9 @@
 import React, { Component } from 'react'; 
 // import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Router ,  Route , browserHistory , IndexRoute  } from 'react-router'
+import {Provider} from 'react-redux';
+import store from './en/store';
+
  
 //
 // ENglish Container ------------------------->
@@ -46,32 +49,24 @@ class RouterComponent extends Component {
 
  
       return (
-        <Router history={browserHistory}>
-         
-        
-          
-
-                      <Route path="/" component={RootCom}>
-                          <IndexRoute   component={Index} /> 
-                          <Route   path="home" component={Index} /> 
-                          <Route   path="landlord" component={Landlord} /> 
-                          <Route   path="contact-us" component={ContactUs} /> 
-                          <Route   path="create" component={Create} /> 
-                          <Route exact  path="search-result" component={SerachResult}  />  
-                          <Route   path="view/:id" component={View} /> 
-                          <Route   path="profile" component={Profile} /> 
-                          <Route   path="list" component={Mylist} /> 
-                          <Route   path="setting" component={Setting} /> 
-                          <Route exact  path="test" component={TestComponent} /> 
-                          <Route path="*" component={page404} />
-                      </Route>
-
-   
-            
-
-                  
- 
-        </Router>
+        <Provider store={store}>
+            <Router history={browserHistory}>
+              <Route path="/" component={RootCom}>
+                  <IndexRoute   component={Index} /> 
+                  <Route   path="home" component={Index} /> 
+                  <Route   path="landlord" component={Landlord} /> 
+                  <Route   path="contact-us" component={ContactUs} /> 
+                  <Route   path="create" component={Create} /> 
+                  <Route exact  path="search-result" component={SerachResult}  />  
+                  <Route   path="view/:id" component={View} /> 
+                  <Route   path="profile" component={Profile} /> 
+                  <Route   path="list" component={Mylist} /> 
+                  <Route   path="setting" component={Setting} /> 
+                  <Route exact  path="test" component={TestComponent} /> 
+                  <Route path="*" component={page404} />
+              </Route>
+            </Router>
+        </Provider>
       );
     }
   }
