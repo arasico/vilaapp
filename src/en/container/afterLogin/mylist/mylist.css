@@ -1,0 +1,53 @@
+.mylist-parent{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 30px 0px 50px;
+}
+
+.mylist-box{
+width: 370px;
+}
+
+@media screen and (max-width: 850px) {
+.mylist-parent{
+    justify-content: center;
+}
+.mylist-box{
+    width: 80%;
+}
+
+.mylist-edit, .mylist-delete{
+    width: 100px !important;
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+    .mylist-box{
+        width: 400px;
+    }
+    .mylist-edit, .mylist-delete{
+        width: 80px !important;
+        }
+
+}
+
+@media screen and (max-width: 350px) {
+    .mylist-box{
+        width: 400px;
+    }
+    .mylist-edit-delete{
+        width: 100%;
+    }
+    .mylist-edit, .mylist-delete{
+        width: 45% !important;
+        margin: auto !important;
+    }
+    .mylist-status{
+        margin: 20px;
+    }
+
+    .action-buttons{
+        flex-direction: column;
+    }
+}
