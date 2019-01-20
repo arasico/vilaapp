@@ -25,7 +25,7 @@ class SearchIndex extends Component {
         this.state = {
             startDate: this.dateShorter(new Date()),
             endDate: this.dateShorter(new Date()),
-            selectCity:'all city',
+            selectCity:'All city',
             selectCityTitle:'allcity',
             person:1
           };
