@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import {browserHistory} from 'react-router'
-import Button from '../../components/Button/Button'
 
+import {browserHistory} from 'react-router'
+//
+// external component ---->
+//
+import Button from '../../components/Button/Button'
 import './notFound.css'
 
 class NotFound extends Component {
