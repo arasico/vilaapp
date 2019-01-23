@@ -56,7 +56,6 @@ if(sum > 0)
  
 export const SelectValue = (value) => dispatch => {
   console.log(value)
-
  
     return dispatch({
         type: ON_SELECT_VALUE,
