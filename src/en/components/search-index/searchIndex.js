@@ -173,7 +173,6 @@ class SearchIndex extends Component {
             </Menu>
           );
 
-      
 
 
         return ( 
