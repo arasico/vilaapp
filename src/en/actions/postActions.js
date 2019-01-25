@@ -11,7 +11,6 @@ export const fetchPosts = () => postData => dispatch => {
    
 }
 
-
 export const createPost = () => postData => dispatch => {
 console.log(postData)
 
@@ -30,7 +29,6 @@ console.log(postData)
 
 }
 
-
 export const IncrementData = (sum) => dispatch => {
 
    console.log(sum)
@@ -41,8 +39,6 @@ export const IncrementData = (sum) => dispatch => {
     }) 
 
 }
-
-
 
 export const DecrementData = (sum) => dispatch => {
     console.log("Decrement");
