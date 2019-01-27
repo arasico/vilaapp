@@ -23,7 +23,7 @@
     margin: 0px auto 30px;
 }
 .image-upload{
-    width: 50%;
+    width: 100%;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -47,12 +47,18 @@
 .image-upload-logo{
     width:200px;
     height:200px;
-    margin: auto;
+    margin: 20px auto;
     border: 2px dashed #a7a7a7;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
+    cursor: pointer;
+    transition: all .2s linear;
+}
+.image-upload-logo:hover{
+    opacity: .7;
+    transition: all .2s linear;
 }
 .image-upload-logo img{
     width: 90px;
@@ -63,6 +69,33 @@ width: 40%;
 padding: 20px;
 
 }
+.detaile-upload .app{
+    width: 50%;
+    border-radius: 30px;
+}
+
+.detaile-upload .selected-files >div{
+    margin: 20px !important;
+}
+.image-thumbnail{
+    width: 50%;
+}
+.detaile-upload .selected-files >div >div{
+    border-radius: 50% !important;
+}
+.detaile-upload .imge-uploader-delete-container{
+    right: 38%;
+    opacity: 0.3;
+    transition: all .2s linear;
+
+}
+.detaile-upload .imge-uploader-delete-container:hover{
+    opacity: 1;
+    transition: all .2s linear;
+
+}
+
+
 
 @media screen and (max-width: 800px) {
 
@@ -78,16 +111,15 @@ padding: 20px;
     .detaile-input{
         padding: 0px;
     }
-
+    .detaile-upload .app , .image-thumbnail{
+        width: 100%;
+    }
 }
 @media screen and (max-width: 800px) {
     .detaile-upload{
         padding: 20px;
     }
-    .image-upload-logo{
-        width: 150px;
-        height: 150px;
-    }
+
     .image-upload-logo img{
         width: 50px;
     }
