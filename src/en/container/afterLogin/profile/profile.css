@@ -23,7 +23,7 @@
     margin: 0px auto 30px;
 }
 .image-upload{
-    width: 50%;
+    width: 100%;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -47,12 +47,18 @@
 .image-upload-logo{
     width:200px;
     height:200px;
-    margin: auto;
+    margin: 20px auto;
     border: 2px dashed #a7a7a7;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
+    cursor: pointer;
+    transition: all .2s linear;
+}
+.image-upload-logo:hover{
+    opacity: .7;
+    transition: all .2s linear;
 }
 .image-upload-logo img{
     width: 90px;
@@ -62,6 +68,17 @@
 width: 40%;
 padding: 20px;
 
+}
+.detaile-upload .app{
+    width: 50%;
+    border-radius: 30px;
+}
+
+.detaile-upload .selected-files >div{
+    margin: 20px !important;
+}
+.image-thumbnail{
+    width: 50%;
 }
 
 @media screen and (max-width: 800px) {

@@ -138,8 +138,6 @@ class CreateComponent extends Component {
         // Make sure to revoke the data uris to avoid memory leaks
         this.state.files.forEach(f => URL.revokeObjectURL(f.preview))
         window.removeEventListener('scroll', this.handleScroll);
-
-
     }
 
     informationBtns = React.createRef()
