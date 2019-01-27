@@ -80,6 +80,22 @@ padding: 20px;
 .image-thumbnail{
     width: 50%;
 }
+.detaile-upload .selected-files >div >div{
+    border-radius: 50% !important;
+}
+.detaile-upload .imge-uploader-delete-container{
+    right: 38%;
+    opacity: 0.3;
+    transition: all .2s linear;
+
+}
+.detaile-upload .imge-uploader-delete-container:hover{
+    opacity: 1;
+    transition: all .2s linear;
+
+}
+
+
 
 @media screen and (max-width: 800px) {
 
@@ -95,16 +111,15 @@ padding: 20px;
     .detaile-input{
         padding: 0px;
     }
-
+    .detaile-upload .app , .image-thumbnail{
+        width: 100%;
+    }
 }
 @media screen and (max-width: 800px) {
     .detaile-upload{
         padding: 20px;
     }
-    .image-upload-logo{
-        width: 150px;
-        height: 150px;
-    }
+
     .image-upload-logo img{
         width: 50px;
     }
