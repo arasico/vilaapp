@@ -8,6 +8,8 @@ import InputText from '../../../components/commonInput/InputGroup';
 import Button from '../../../components/Button/Button';
 import SubTitle from '../../../components/common/subTitle/subTitle';
 import ReactDropzone from "react-dropzone";
+import EmailCheckerComponent from '../../../components/api/emailChecker';
+import PhoneChecker from '../../../components/api/mobileNumberChecker';
 
 //
 // icons and images ----->
@@ -55,7 +57,23 @@ class Profile extends Component {
         this.state = {
             files: [],
             selectedFile: [],
-            upload: false
+            upload: false,
+
+            isLoading:false,
+            name:'',
+            email:'',
+            mobile:'',
+            phone:'',
+            address:'',
+            emailError:'',
+            registerNameError:'',
+            registerEmailError:'',
+            phoneError:'',
+            MobileError:'',
+            addressError:'',
+            errorHandleing:'',
+            successMessage:'',
+            registerMobileError:''
         }
     }
 
@@ -99,6 +117,164 @@ class Profile extends Component {
         this.setState({ files: rs, upload: false })
         console.log(rs)
 
+    }
+
+
+
+    callSubmit = async(event) => {
+        event.preventDefault();
+        this.setState({
+            isLoading:true,
+            registerEmailError:'',
+            registerNameError:'',
+            phoneError:'',
+            MobileError:'',
+            addressError:'',
+            errorHandleing:'',
+            successMessage:''
+        })
+
+        console.log(`
+        the state is :
+        --------------------------
+        name:    ${this.state.name}
+        email:   ${this.state.email} 
+        mobile: ${this.state.mobile}
+        phone: ${this.state.phone}
+        adress: ${this.state.address}
+        `);
+
+        const data = {
+            'email':this.state.email,
+            'name':this.state.name,
+            'mobile':this.state.mobile,
+            'phone':this.state.phone,
+            'address':this.state.address
+        }
+
+       await this.checkDataEntery()
+
+        // after conterol input will be call ------->
+        if(this.state.isCheck === false) 
+        {
+            const request = await this.postData(data,'auth/email/register');
+                
+          //  console.log(request.status)
+
+            if(request.status === 200)  // response success and create account
+                this.setState({
+                    successMessage:'Your account has been successfully created. '
+                })
+            if(request.status === 400)  // Email is already status code is 400
+                this.setState({
+                    errorHandleing:'this email is exists.'
+                })
+            if(request.status !== 400 && request.status !== 200)  // Email is already status code is 400
+             {   
+                 this.setState({
+                    errorHandleing:'Oops something went wrong, please try again.'
+                })
+                console.log(`error : ststus code: ${request.status} - text:${request.data} `)
+            }
+       }
+
+        
+    }
+
+    checkDataEntery(){
+        const { name, email , phone , mobile , address} = this.state;
+        this.setState({isCheck:false})
+
+        if(name === null || name.trim() === '' )
+        {
+            this.setState({ registerNameError:'Name is requirement.', isCheck: true});
+          
+        }
+        if(email === null || email.trim() === '' )
+        {
+            this.setState({ registerEmailError:'Email is requirement.', isCheck: true});
+            
+        }
+
+        if(email !== null && email !== ''){
+            if(EmailCheckerComponent(email) === false){
+                this.setState({registerEmailError : 'Email is invalid!', isCheck: true})
+            }
+        }
+
+
+
+
+
+        if(phone.length === 11){
+            if(PhoneChecker(phone) === false){
+                this.setState({phoneError : 'Phone number is invalid.', isCheck: true})
+            }
+        }
+        if(phone === null || phone.trim() === '' || phone.length !== 11){
+            this.setState({ phoneError:'Phone is requirement.', isCheck: true});
+        }
+
+        if(mobile.length === 11){
+            if(PhoneChecker(mobile) === false){
+                this.setState({mobileError : 'Mobile number is invalid.', isCheck: true})
+            }
+        }
+       
+        if(mobile === null || mobile.trim() === '' || mobile.length !== 11){
+            this.setState({ mobileError:'Mobile is requirement.', isCheck: true});
+        }
+
+        if(address.length  < 2 ){
+            this.setState({ addressError:'Adrress is requirement.', isCheck: true});
+        }
+           
+        // finish loading
+        this.setState({ isLoading:false });
+
+    }
+
+
+    postData(data,key) {
+        this.setState({
+            isLoading:true,
+            errorHandleing:'',
+            successMessage:''
+        })
+
+         const url =  base.baseURL + key;
+
+          return fetch(url, {
+              method: "POST", 
+              cache: "no-cache",  
+              headers: {
+                  "Content-Type": "application/json",
+                  "Accept": "application/json",
+                  "language" : "en",
+                  "agent" : "web" 
+              },
+              redirect: "follow", 
+              referrer: "no-referrer", 
+              body: JSON.stringify(data), 
+          })
+          .then(response => {
+            const statusCode = response.status
+            const data = response.json()
+            return Promise.all([statusCode, data])
+          })
+          .then(([res, data]) => {
+            //console.log(res, data)
+            this.setState({isLoading: false})
+            return ({'status':res, 'data':data.data})
+          })
+      }
+      changedHandler = (e) => {
+        console.log(e.target.value)
+        this.setState({
+            [e.target.name] : e.target.value
+        });
+
+   
     }
 
     render() {
@@ -159,45 +335,50 @@ class Profile extends Component {
                     <div className="detaile-input">
                         <InputText
                             type='text'
-                            name="Name and Family"
+                            name="name"
                             placeHolder={'Name and Family'}
                             changed={this.changedHandler}
-                            error={this.state.nameError}
-                            max={20}
+                            error={this.state.registerNameError}
+                            max={30}
                         />
                         <InputText
                             type='text'
-                            name="Email"
+                            name="email"
                             placeHolder={'Email'}
                             changed={this.changedHandler}
-                            error={this.state.nameError}
-                            max={20}
+                            error={this.state.registerEmailError}
+                            max={30}
                         />
                         <InputText
                             type='text'
-                            name="Mobile"
+                            name="mobile"
                             placeHolder={'Mobile'}
                             changed={this.changedHandler}
-                            error={this.state.nameError}
-                            max={20}
+                            error={this.state.mobileError}
+                            max={30}
                         />
                         <InputText
                             type='text'
-                            name="Telephone"
+                            name="phone"
                             placeHolder={'Telephone'}
                             changed={this.changedHandler}
-                            error={this.state.nameError}
-                            max={20}
+                            error={this.state.phoneError}
+                            max={30}
                         />
                         <InputText
                             type='text'
-                            name="Address"
+                            name="address"
                             placeHolder={'Address'}
                             changed={this.changedHandler}
-                            error={this.state.nameError}
-                            max={20}
+                            error={this.state.addressError}
+                            max={30}
                         />
-                        <Button title="Save" bgcolor="#00C65D" hoverbgcolor="#00ad51"></Button>
+                        <Button isLoading={this.state.isLoading} 
+                                title="Save" 
+                                bgcolor="#00C65D" 
+                                hoverbgcolor="#00ad51"
+                                click={this.callSubmit}
+                                />
 
                     </div>
                 </div>
