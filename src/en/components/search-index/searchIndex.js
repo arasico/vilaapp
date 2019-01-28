@@ -95,7 +95,6 @@ class SearchIndex extends Component {
             startDate: this.dateShorter(startDate),
             endDate:this.dateShorter(endDate)
         }); 
-
  
     }
 
@@ -104,15 +103,12 @@ class SearchIndex extends Component {
         return new Intl.DateTimeFormat('en-US').format(date)
     }
    
-
     onClickSearch() {
         let {selectCityTitle, startDate, endDate, person } = this.state;
         let NewUrl = '/search-result?' + 'city=' + selectCityTitle + '&startDate=' + startDate + '&endDate=' + endDate + '&person=' + person
        // window.location.assign(NewUrl)
         browserHistory.push(NewUrl)
     }
-
-
 
     // insert paramter key in URL
     insertParam(key, value) {
@@ -127,7 +123,6 @@ class SearchIndex extends Component {
                 break;
             }
         }
-
 
         if (i < 0) { kvp[kvp.length] = [key, value].join('=') }
         // slice & to url ---->
@@ -159,7 +154,7 @@ class SearchIndex extends Component {
                 <MenuItem key="Babolsar" style={{fontSize: 16}} title={'Babolsar'}>Babolsar</MenuItem>
             </Menu>
           );
-        
+
           const menu = (
             <Menu onSelect={this.onSelect}>
                 <MenuItem key="1" style={{fontSize: 16}}>1 person</MenuItem>
@@ -212,6 +207,4 @@ const mapStateToProps = state => ({
     getValue: state.posts.items
    })
 
-
- 
 export default connect(mapStateToProps, { fetchPosts }) (SearchIndex);

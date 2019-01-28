@@ -18,9 +18,6 @@ export default class Root extends Component {
 
     componentWillReceiveProps(prevProps, prevState){
         // console.log("resive")
-        // console.log(prevProps)
-        // console.log(prevState)
-
  
     }
 
