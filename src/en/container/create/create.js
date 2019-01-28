@@ -6,7 +6,7 @@ import Menu, { Item as MenuItem, Divider } from 'rc-menu';
 import 'rc-dropdown/assets/index.css';
 import ReactDropzone from "react-dropzone";
 
-
+import baseURL from '../../components/api/baseURL';
 import './style.css';
 // import Icons -------------------------------------------------------->
 import Pin from '../../../assets/icons/pin.svg';
@@ -116,6 +116,7 @@ class CreateComponent extends Component {
         this.tabOneText.current.style.color = '#C50143'
 
         window.addEventListener('scroll', this.handleScroll);
+        this.getAllCity()
 
     }
 
@@ -132,6 +133,29 @@ class CreateComponent extends Component {
         })
     }
 
+    getAllCity = () => {
+
+        let url = baseURL.baseURL + 'country?country=IR';
+
+        fetch(url, {
+            method: "GET",
+            cache: "no-cache",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "language": "en",
+            },
+        })
+            .then(
+                res => res.json()
+            )
+            .then(
+                data => {
+                    this.setState({ allCity: data.data })
+                }
+            )
+
+    }
 
 
     componentWillUnmount() {
@@ -278,8 +302,9 @@ class CreateComponent extends Component {
 
 
 
-    onSelectCity({ key }) {
-        this.setState({ selectCity: key })
+    onSelectCity = async (e) => {
+        await this.setState({ selectCity: e.item.props.title, selectCityTitle: e.item.props.title });
+        console.log(e)
     }
 
     callSearch() {
@@ -307,15 +332,21 @@ class CreateComponent extends Component {
             </div>
         ));
 
+        let cities = []
+        for (let key in this.state.allCity){
+            cities.push({
+                config : this.state.allCity[key]
+            })
+        }
+
         const SelectCityMenu = (
             <Menu onSelect={this.onSelectCity}>
-                <MenuItem key="Kish" style={{ fontSize: 16 }}>Kish</MenuItem>
-                <Divider />
-                <MenuItem key="Tehran" style={{ fontSize: 16 }}>Tehran</MenuItem>
-                <Divider />
-                <MenuItem key="Babolsar" style={{ fontSize: 16 }}>Babolsar</MenuItem>
+                {cities.map(data => (
+                    <MenuItem key={data.config.id} style={{ fontSize: 16 }} title={data.config.city_en}>{data.config.city_en}</MenuItem>
+                ))}
             </Menu>
-        );
+        )
+
 
 
 
