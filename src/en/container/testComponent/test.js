@@ -1,24 +1,10 @@
 
 
-import TextInput from '../../components/createLandLoard/inputGroup';
-import SubTitle from '../../components/common/subTitle/subTitle';
-import Droplist from '../../components/common/typeOfDropList/typeOfDropList';
-import OptionDetails from '../../components/common/optionDetails/optionDetails';
-import DatePicker from '../../components/dateStartEnd/datePicker';
-import PriceInput from '../../components/priceInput/priceInput';
  
-
 
 import React,{Component} from 'react';
+import Geosuggest from 'react-geosuggest';
 
-
-import InputComponent from '../../components/common/optionButtonPlusMinus/optionButton';
-import OptionComponent from '../../components/common/optionDetails/optionDetails';
-import SingleDate from '../../components/singleDate/singleDate';
-import DoubleDate from '../../components/doubleDateSelector/doubleDateSelector';
-import Googlemapcircle from '../../components/googleMapCircle/googleMapCircle'
-
- 
 
 
 class TestComponent extends Component {
@@ -26,62 +12,42 @@ class TestComponent extends Component {
         super(props);
         this.state = {stylePath: 'style.css'};
        
-         this.handleFilterUpdate = this.handleFilterUpdate.bind(this);
-         this.handelGetValue = this.handelGetValue.bind(this);
-         this.shoMessage = this.shoMessage.bind(this);
-         this.usernameCall = this.usernameCall.bind(this);
-            this.state={person:0,floor:0}
+ 
     }
 
      
-    handleFilterUpdate(newVal) {
-        this.setState({
-            person: newVal
-        });
-  }
+ 
+ 
 
-  handelGetValue(newValue) {
-    this.setState({
-        floor: newValue
-    });
-}
-
-  
-
-  usernameCall(newVal) {
-    this.setState({
-          username: newVal
-    });
-}
-
-Change = async(value) => {
-
-        console.log(value)
-   
- }
-
-
-
-  shoMessage(){
-    alert(this.state.floor)
-  }
-
-  componentWillMount(){
-      console.log("!!")
-    if(navigator.userAgent.includes("Chro"))
-      console.log("is Google")
-    else if( navigator.userAgent.includes("Fir"))
-        console.log("is Firfox")
-  }
+ 
     render() { 
+        var fixtures = [
+            {label: 'Old Elbe Tunnel, Hamburg', location: {lat: 53.5459, lng: 9.966576}},
+            {label: 'Reeperbahn, Hamburg', location: {lat: 53.5495629, lng: 9.9625838}},
+            {label: 'Alster, Hamburg', location: {lat: 53.5610398, lng: 10.0259135}}
+          ];
+
 
         return (  
-            <div className="test-container">
-           
- 
- 
-                <Googlemapcircle     lat={36.9439259} lng={ 50.6451447} zoom={17} lang={'fa'} />
+            <div className="container-fluid">
+                <div className="view">
+    
+                <Geosuggest
+                    ref={el=>this._geoSuggest=el}
+                    placeholder="Start typing!"
+                    initialValue="Hamburg"
+                    fixtures={fixtures}
+                    onSuggestSelect={this.onSuggestSelect}
+                    location={new google.maps.LatLng(53.558572, 9.9278215)}
+                    radius="20" />
+            
                 
+                    <button onClick={()=>this._geoSuggest.focus()}> Focus </button>
+                    <button onClick={()=>this._geoSuggest.update('New Zealand')}> Update </button>
+                    <button onClick={()=>this._geoSuggest.clear()}> Clear </button>
+                    <button onClick={()=>this._geoSuggest.selectSuggest()}> Search </button>
+
+                </div>
             </div>
         );
     }
