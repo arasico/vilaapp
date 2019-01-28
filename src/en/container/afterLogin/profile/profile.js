@@ -69,7 +69,7 @@ class Profile extends Component {
             registerNameError:'',
             registerEmailError:'',
             phoneError:'',
-            MobileError:'',
+            mobileError:'',
             addressError:'',
             errorHandleing:'',
             successMessage:'',
@@ -161,14 +161,18 @@ class Profile extends Component {
                 
           //  console.log(request.status)
 
-            if(request.status === 200)  // response success and create account
+            if(request.status === 200) { // response success and create account
                 this.setState({
                     successMessage:'Your account has been successfully created. '
                 })
-            if(request.status === 400)  // Email is already status code is 400
+                console.log(request.status)
+            }
+            if(request.status === 400) { // Email is already status code is 400
                 this.setState({
                     errorHandleing:'this email is exists.'
                 })
+                console.log(request.status)
+            }
             if(request.status !== 400 && request.status !== 200)  // Email is already status code is 400
              {   
                  this.setState({
@@ -229,6 +233,7 @@ class Profile extends Component {
             this.setState({ addressError:'Adrress is requirement.', isCheck: true});
         }
            
+
         // finish loading
         this.setState({ isLoading:false });
 
@@ -275,6 +280,16 @@ class Profile extends Component {
         });
 
    
+    }
+
+    focucedHandler = () =>{
+        this.setState({
+            registerEmailError:'',
+            registerNameError:'',
+            phoneError:'',
+            mobileError:'',
+            addressError:''
+        })
     }
 
     render() {
@@ -338,6 +353,7 @@ class Profile extends Component {
                             name="name"
                             placeHolder={'Name and Family'}
                             changed={this.changedHandler}
+                            focuced={this.focucedHandler}
                             error={this.state.registerNameError}
                             max={30}
                         />
@@ -346,6 +362,7 @@ class Profile extends Component {
                             name="email"
                             placeHolder={'Email'}
                             changed={this.changedHandler}
+                            focuced={this.focucedHandler}
                             error={this.state.registerEmailError}
                             max={30}
                         />
@@ -354,6 +371,7 @@ class Profile extends Component {
                             name="mobile"
                             placeHolder={'Mobile'}
                             changed={this.changedHandler}
+                            focuced={this.focucedHandler}
                             error={this.state.mobileError}
                             max={30}
                         />
@@ -362,6 +380,7 @@ class Profile extends Component {
                             name="phone"
                             placeHolder={'Telephone'}
                             changed={this.changedHandler}
+                            focuced={this.focucedHandler}
                             error={this.state.phoneError}
                             max={30}
                         />
@@ -370,6 +389,7 @@ class Profile extends Component {
                             name="address"
                             placeHolder={'Address'}
                             changed={this.changedHandler}
+                            focuced={this.focucedHandler}
                             error={this.state.addressError}
                             max={30}
                         />
