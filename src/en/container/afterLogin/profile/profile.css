@@ -30,7 +30,7 @@
     align-items: center;
     background-color: #f7f7f7;
     border-radius: 30px;
-    border: 3px solid #55d8ff;
+    border: 2px dashed #a7a7a7;
 }
 .image-upload h1 {
     margin: 20px auto;
