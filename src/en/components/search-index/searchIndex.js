@@ -98,7 +98,8 @@ class SearchIndex extends Component {
     }
 
     onSelectCity = async (e) => {
-        await this.setState({ selectCity: e.title, selectCityTitle: e.item.props.title });
+        await this.setState({ selectCity: e.item.props.title, selectCityTitle: e.item.props.title });
+        console.log(e)
     }
 
     // Get props from children Date picker component
