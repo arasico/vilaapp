@@ -1,0 +1,13 @@
+.place{
+    position: absolute; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    left: -10px;
+    top: -10px;   
+    background: red; 
+    padding: 10px;
+  }

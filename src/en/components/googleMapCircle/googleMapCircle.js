@@ -51,9 +51,13 @@ class GoogleMapCircle extends Component {
                             lat:this.props.lat, 
                             lng: this.props.lng 
                         }}
+                        center={{
+                            lat:this.props.lat, 
+                            lng: this.props.lng 
+                          }}
                         defaultZoom={this.props.zoom}
                         options={{ 
-                            scrollwheel: false, 
+                            scrollwheel: true, 
                             disableDefaultUI: true
                         }}>
 
