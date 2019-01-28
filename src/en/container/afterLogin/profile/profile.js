@@ -204,26 +204,26 @@ class Profile extends Component {
 
 
 
-
+        if(phone === null || phone.trim() === '' || phone.length !== 11){
+            this.setState({ phoneError:'Phone is requirement.', isCheck: true});
+        }
 
         if(phone.length === 11){
             if(PhoneChecker(phone) === false){
                 this.setState({phoneError : 'Phone number is invalid.', isCheck: true})
             }
         }
-        if(phone === null || phone.trim() === '' || phone.length !== 11){
-            this.setState({ phoneError:'Phone is requirement.', isCheck: true});
-        }
 
+        if(mobile === null || mobile.trim() === '' || mobile.length !== 11){
+            this.setState({ mobileError:'Mobile is requirement.', isCheck: true});
+        }
         if(mobile.length === 11){
             if(PhoneChecker(mobile) === false){
                 this.setState({mobileError : 'Mobile number is invalid.', isCheck: true})
             }
         }
        
-        if(mobile === null || mobile.trim() === '' || mobile.length !== 11){
-            this.setState({ mobileError:'Mobile is requirement.', isCheck: true});
-        }
+
 
         if(address.length  < 2 ){
             this.setState({ addressError:'Adrress is requirement.', isCheck: true});
