@@ -53,9 +53,9 @@ class TestComponent extends Component {
   
     render() { 
         var fixtures = [
-            {label: 'Tehran, Tehran, Iran', location: {lat: 35.7248416, lng: 51.38165300000003}},
-            {label: 'Amol, Mazandaran, Iran', location: {lat: 53.5495629, lng: 9.9625838}},
-            {label: 'Alster, Hamburg', location: {lat: 53.5610398, lng: 10.0259135}}
+            // {label: 'Tehran, Tehran, Iran', location: {lat: 35.7248416, lng: 51.38165300000003}},
+            // {label: 'Amol, Mazandaran, Iran', location: {lat: 53.5495629, lng: 9.9625838}},
+            // {label: 'Alster, Hamburg', location: {lat: 53.5610398, lng: 10.0259135}}
           ];
        
 

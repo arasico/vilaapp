@@ -46,7 +46,7 @@ class GoogleMapPin extends Component {
     onCircleInteraction3(childKey, childProps, mouse) {
       this.setState({ draggable: true,  dragable:false });
       // function is just a stub to test callbacks  
-      console.log('onCircleInteraction called with', childKey, childProps, mouse);
+     // console.log('onCircleInteraction called with', childKey, childProps, mouse);
       
     }
       _onChange = ({center, zoom}) => {
@@ -59,8 +59,8 @@ class GoogleMapPin extends Component {
 
 
       componentWillUpdate = async (nextProps, nextState) => {
-        console.log(nextProps)
-        console.log(nextState)
+        // console.log(nextProps)
+        // console.log(nextState)
 
         if(nextProps.lat !== nextState.lat && this.state.dragable === false){
           await  this.setState({
