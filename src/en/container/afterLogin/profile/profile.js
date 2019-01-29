@@ -169,10 +169,7 @@ class Profile extends Component {
                     successMessage: 'Your account has been successfully created. '
                 })
                 this.successBox.current.className = "successBox"
-                const self = this
-                setTimeout(function () {
-                    self.successBox.current.className = "successBoxHidden" // change to initial success msg class
-                }, 4000)
+
             }
 
 
@@ -181,10 +178,7 @@ class Profile extends Component {
                     errorHandleing: 'this email is exists.'
                 })
                 this.errorBox.current.className = "errorBox"
-                const self = this
-                setTimeout(function () {
-                    self.errorBox.current.className = "errorBoxHidden" // change to initial error msg class
-                }, 4000)
+
             }
 
 
@@ -297,8 +291,12 @@ class Profile extends Component {
             addressError: ''
         })
     }
-
-
+    closeSuccessMessage = () =>{
+            this.successBox.current.className = "successBoxHidden" // change to initial success msg class
+    }
+    closeErrorMessage = () => {
+            this.errorBox.current.className = "errorBoxHidden" // change to initial error msg class
+    }
 
 
     render() {
@@ -410,7 +408,7 @@ class Profile extends Component {
                         />
 
                     </div>
-                    <div className="successBoxHidden" ref={this.successBox} >
+                    <div className="successBoxHidden" ref={this.successBox} onClick={this.closeSuccessMessage} >
                         <p className="success-text" >
                             <span>{this.state.successMessage}</span>
                         </p>
