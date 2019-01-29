@@ -59,21 +59,21 @@ class Profile extends Component {
             selectedFile: [],
             upload: false,
 
-            isLoading:false,
-            name:'',
-            email:'',
-            mobile:'',
-            phone:'',
-            address:'',
-            emailError:'',
-            registerNameError:'',
-            registerEmailError:'',
-            phoneError:'',
-            mobileError:'',
-            addressError:'',
-            errorHandleing:'',
-            successMessage:'',
-            registerMobileError:''
+            isLoading: false,
+            name: '',
+            email: '',
+            mobile: '',
+            phone: '',
+            address: '',
+            emailError: '',
+            registerNameError: '',
+            registerEmailError: '',
+            phoneError: '',
+            mobileError: '',
+            addressError: '',
+            errorHandleing: '',
+            successMessage: '',
+            registerMobileError: ''
         }
     }
 
@@ -120,18 +120,21 @@ class Profile extends Component {
     }
 
 
+    successBox = React.createRef()
+    errorBox = React.createRef()
 
-    callSubmit = async(event) => {
+
+    callSubmit = async (event) => {
         event.preventDefault();
         this.setState({
-            isLoading:true,
-            registerEmailError:'',
-            registerNameError:'',
-            phoneError:'',
-            MobileError:'',
-            addressError:'',
-            errorHandleing:'',
-            successMessage:''
+            isLoading: true,
+            registerEmailError: '',
+            registerNameError: '',
+            phoneError: '',
+            MobileError: '',
+            addressError: '',
+            errorHandleing: '',
+            successMessage: ''
         })
 
         console.log(`
@@ -145,152 +148,158 @@ class Profile extends Component {
         `);
 
         const data = {
-            'email':this.state.email,
-            'name':this.state.name,
-            'mobile':this.state.mobile,
-            'phone':this.state.phone,
-            'address':this.state.address
+            'email': this.state.email,
+            'name': this.state.name,
+            'mobile': this.state.mobile,
+            'phone': this.state.phone,
+            'address': this.state.address
         }
 
-       await this.checkDataEntery()
+        await this.checkDataEntery()
 
         // after conterol input will be call ------->
-        if(this.state.isCheck === false) 
-        {
-            const request = await this.postData(data,'auth/email/register');
-                
-          //  console.log(request.status)
+        if (this.state.isCheck === false) {
+            // const request = await this.postData(data,'auth/email/register');
+            const request = { status: 200 }
 
-            if(request.status === 200) { // response success and create account
-                this.setState({
-                    successMessage:'Your account has been successfully created. '
-                })
-                console.log(request.status)
-            }
-            if(request.status === 400) { // Email is already status code is 400
-                this.setState({
-                    errorHandleing:'this email is exists.'
-                })
-                console.log(request.status)
-            }
-            if(request.status !== 400 && request.status !== 200)  // Email is already status code is 400
-             {   
-                 this.setState({
-                    errorHandleing:'Oops something went wrong, please try again.'
-                })
-                console.log(`error : ststus code: ${request.status} - text:${request.data} `)
-            }
-       }
+            //  console.log(request.status)
 
-        
+            if (request.status === 200) { // response success and create account
+                this.setState({
+                    successMessage: 'Your account has been successfully created. '
+                })
+                this.successBox.current.className = "successBox"
+                const self = this
+                setTimeout(function () {
+                    self.successBox.current.className = "successBoxHidden" // change to initial success msg class
+                }, 4000)
+            }
+
+
+            if (request.status === 400) { // response not success is already status code is 400
+                this.setState({
+                    errorHandleing: 'this email is exists.'
+                })
+                this.errorBox.current.className = "errorBox"
+                const self = this
+                setTimeout(function () {
+                    self.errorBox.current.className = "errorBoxHidden" // change to initial error msg class
+                }, 4000)
+            }
+
+
+        }
+
+
     }
 
-    checkDataEntery(){
-        const { name, email , phone , mobile , address} = this.state;
-        this.setState({isCheck:false})
+    checkDataEntery() {
+        const { name, email, phone, mobile, address } = this.state;
+        this.setState({ isCheck: false })
 
-        if(name === null || name.trim() === '' )
-        {
-            this.setState({ registerNameError:'Name is requirement.', isCheck: true});
-          
+        if (name === null || name.trim() === '') {
+            this.setState({ registerNameError: 'Name is requirement.', isCheck: true });
+
         }
-        if(email === null || email.trim() === '' )
-        {
-            this.setState({ registerEmailError:'Email is requirement.', isCheck: true});
-            
+        if (email === null || email.trim() === '') {
+            this.setState({ registerEmailError: 'Email is requirement.', isCheck: true });
+
         }
 
-        if(email !== null && email !== ''){
-            if(EmailCheckerComponent(email) === false){
-                this.setState({registerEmailError : 'Email is invalid!', isCheck: true})
+        if (email !== null && email !== '') {
+            if (EmailCheckerComponent(email) === false) {
+                this.setState({ registerEmailError: 'Email is invalid!', isCheck: true })
             }
         }
 
 
 
-        if(phone === null || phone.trim() === '' || phone.length !== 11){
-            this.setState({ phoneError:'Phone is requirement.', isCheck: true});
+        if (phone === null || phone.trim() === '' || phone.length !== 11) {
+            this.setState({ phoneError: 'Phone is requirement.', isCheck: true });
         }
 
-        if(phone.length === 11){
-            if(PhoneChecker(phone) === false){
-                this.setState({phoneError : 'Phone number is invalid.', isCheck: true})
+        if (phone.length === 11) {
+            if (PhoneChecker(phone) === false) {
+                this.setState({ phoneError: 'Phone number is invalid.', isCheck: true })
             }
         }
 
-        if(mobile === null || mobile.trim() === '' || mobile.length !== 11){
-            this.setState({ mobileError:'Mobile is requirement.', isCheck: true});
+        if (mobile === null || mobile.trim() === '' || mobile.length !== 11) {
+            this.setState({ mobileError: 'Mobile is requirement.', isCheck: true });
         }
-        if(mobile.length === 11){
-            if(PhoneChecker(mobile) === false){
-                this.setState({mobileError : 'Mobile number is invalid.', isCheck: true})
+        if (mobile.length === 11) {
+            if (PhoneChecker(mobile) === false) {
+                this.setState({ mobileError: 'Mobile number is invalid.', isCheck: true })
             }
         }
-       
 
 
-        if(address.length  < 2 ){
-            this.setState({ addressError:'Adrress is requirement.', isCheck: true});
+
+        if (address.length < 2) {
+            this.setState({ addressError: 'Adrress is requirement.', isCheck: true });
         }
-           
+
 
         // finish loading
-        this.setState({ isLoading:false });
+        this.setState({ isLoading: false });
 
     }
 
 
-    postData(data,key) {
+    postData(data, key) {
         this.setState({
-            isLoading:true,
-            errorHandleing:'',
-            successMessage:''
+            isLoading: true,
+            errorHandleing: '',
+            successMessage: ''
         })
 
-         const url =  base.baseURL + key;
+        const url = base.baseURL + key;
 
-          return fetch(url, {
-              method: "POST", 
-              cache: "no-cache",  
-              headers: {
-                  "Content-Type": "application/json",
-                  "Accept": "application/json",
-                  "language" : "en",
-                  "agent" : "web" 
-              },
-              redirect: "follow", 
-              referrer: "no-referrer", 
-              body: JSON.stringify(data), 
-          })
-          .then(response => {
-            const statusCode = response.status
-            const data = response.json()
-            return Promise.all([statusCode, data])
-          })
-          .then(([res, data]) => {
-            //console.log(res, data)
-            this.setState({isLoading: false})
-            return ({'status':res, 'data':data.data})
-          })
-      }
-      changedHandler = (e) => {
+        return fetch(url, {
+            method: "POST",
+            cache: "no-cache",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "language": "en",
+                "agent": "web"
+            },
+            redirect: "follow",
+            referrer: "no-referrer",
+            body: JSON.stringify(data),
+        })
+            .then(response => {
+                const statusCode = response.status
+                const data = response.json()
+                return Promise.all([statusCode, data])
+            })
+            .then(([res, data]) => {
+                //console.log(res, data)
+                this.setState({ isLoading: false })
+                return ({ 'status': res, 'data': data.data })
+            })
+    }
+    changedHandler = (e) => {
         console.log(e.target.value)
         this.setState({
-            [e.target.name] : e.target.value
+            [e.target.name]: e.target.value
         });
 
-   
+
     }
 
-    focucedHandler = () =>{
+    focucedHandler = () => {
         this.setState({
-            registerEmailError:'',
-            registerNameError:'',
-            phoneError:'',
-            mobileError:'',
-            addressError:''
+            registerEmailError: '',
+            registerNameError: '',
+            phoneError: '',
+            mobileError: '',
+            addressError: ''
         })
     }
+
+
+
 
     render() {
         const { files } = this.state;
@@ -393,13 +402,24 @@ class Profile extends Component {
                             error={this.state.addressError}
                             max={30}
                         />
-                        <Button isLoading={this.state.isLoading} 
-                                title="Save" 
-                                bgcolor="#00C65D" 
-                                hoverbgcolor="#00ad51"
-                                click={this.callSubmit}
-                                />
+                        <Button isLoading={this.state.isLoading}
+                            title="Save"
+                            bgcolor="#00C65D"
+                            hoverbgcolor="#00ad51"
+                            click={this.callSubmit}
+                        />
 
+                    </div>
+                    <div className="successBoxHidden" ref={this.successBox} >
+                        <p className="success-text" >
+                            <span>{this.state.successMessage}</span>
+                        </p>
+                    </div>
+
+                    <div className="errorBoxHidden" ref={this.errorBox} >
+                        <p className="error-text" >
+                            <span>{'somthing is wrong'}</span>
+                        </p>
                     </div>
                 </div>
             </div>
