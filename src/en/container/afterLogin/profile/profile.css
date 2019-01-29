@@ -66,7 +66,7 @@
 
 .detaile-input{
 width: 40%;
-padding: 20px;
+/* padding: 20px; */
 
 }
 .detaile-upload .app{
@@ -96,6 +96,56 @@ padding: 20px;
 }
 
 
+.successBox , .errorBox{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    cursor: pointer;
+    background-color: #000000a3;
+    transition: all .2s linear;
+}
+
+.successBoxHidden , .errorBoxHidden{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 5;
+    transition: all .2s linear;
+}
+
+.success-text{
+    padding: 50px;
+    background-color: #479f47e8;
+    border-radius: 10px;
+    color: #fff;
+    min-width: 500px;
+}
+.error-text{
+    padding: 50px;
+    background-color: #9f4747e8;
+    border-radius: 10px;
+    color: #fff;
+    min-width: 500px;
+}
+.success-text >span ,.error-text>span {
+    text-align: center;
+    margin: auto;
+}
+
+
 
 @media screen and (max-width: 800px) {
 
@@ -114,8 +164,11 @@ padding: 20px;
     .detaile-upload .app , .image-thumbnail{
         width: 100%;
     }
+    .success-text , .error-text{
+        min-width: 400px;
+    }
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 500px) {
     .detaile-upload{
         padding: 20px;
     }
@@ -126,4 +179,12 @@ padding: 20px;
     .profile > h1{
         margin-left: 20px;
     }
+    .success-text , .error-text{
+        min-width: 90%;
+        font-size: 12px;
+    }
+    .success-text , .error-text{
+        padding: 25px;
+    }
+
 }

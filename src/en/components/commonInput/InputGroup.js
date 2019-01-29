@@ -15,6 +15,7 @@ const input = (props) => {
                           onClick={props.clicked} 
                           placeholder=" "
                           onChange={props.changed}
+                          onFocus={props.focuced}
                           name={props.name}
                           required
                           maxLength={props.max}
