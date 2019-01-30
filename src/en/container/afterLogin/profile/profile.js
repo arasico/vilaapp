@@ -31,7 +31,6 @@ const thumb = {
 };
 
 const thumbInner = {
-    display: 'flex',
     minWidth: 0,
     width: '100%',
     height: '100%',
@@ -43,10 +42,7 @@ const thumbInner = {
 }
 
 const img = {
-    display: 'block',
-    height: '100%',
-    textAlign: 'center',
-    margin: 'auto',
+
 };
 
 
@@ -305,11 +301,18 @@ class Profile extends Component {
         const thumbs = files.map((file, index) => (
             <div key={index} style={thumb}>
                 <div style={thumbInner}>
-                    <img
-                        src={file.preview}
-                        style={img}
-                        alt={"Privew"}
-                    />
+                    <div
+                        style={{
+                            display: 'block',
+                            height: '100%',
+                            textAlign: 'center',
+                            margin: 'auto',
+                            backgroundImage:'url(' + file.preview + ')' ,
+                            backgroundSize: 'cover',
+                            backgroundPosition:'center'
+                        }}
+                      
+                    ></div>
                     <div className="imge-uploader-delete-container" onClick={() => this.HandelDeleteImg(files, index)}>
                         <img src={Close} alt="Delete" />
                     </div>
