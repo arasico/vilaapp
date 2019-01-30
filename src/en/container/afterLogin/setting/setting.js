@@ -8,10 +8,17 @@ import Input from '../../../components/commonInput/InputGroup';
 import Button from '../../../components/Button/Button';
 import Token from '../../../components/api/token';
 
+//
+import './setting.css'
+
 class Stting extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            currentPassword:' ' ,
+            newPassword: ' ' ,
+            reNewPassword: ' '
+        }
     }
 
 
@@ -26,12 +33,18 @@ class Stting extends Component {
         console.log(this.state)
     }
 
+
+    successBox = React.createRef()
+    errorBox = React.createRef()  
+
+
     callSubmit = async (event) => {
         event.preventDefault();
         this.setState({
             isLoading: true,
-            registerPasswordError: '',
-            registerRePasswordError: '',
+            currentPasswordError:'',
+            newPasswordError: '',
+            reNewPasswordError: '',
             errorHandleing: '',
             successMessage: ''
         })
@@ -40,14 +53,14 @@ class Stting extends Component {
         the state is :
         --------------------------
         currentPassword:   ${this.state.currentPassword} 
-        password: ${this.state.password}
-        rePassword: ${this.state.rePassword}
+        newPassword: ${this.state.newPassword}
+        reNewPassword: ${this.state.reNewPassword}
         `);
 
         const data = {
             'currentPassword': this.state.currentPassword,
-            'password': this.state.password,
-            'rePassword': this.state.rePassword
+            'newPassword': this.state.newPassword,
+            'reNewPassword': this.state.reNewPassword
         }
 
         await this.checkDataEntery()
@@ -61,14 +74,21 @@ class Stting extends Component {
 
             //  console.log(request.status)
 
-            if (request.status === 200)  // response success and create account
+            if (request.status === 200){  // response success and create account
                 this.setState({
                     successMessage: 'Your account has been successfully created. '
                 })
-            if (request.status === 400)  // Email is already status code is 400
+                this.successBox.current.className = "successBox"
+            }
+
+            if (request.status === 400) { // Email is already status code is 400
                 this.setState({
                     errorHandleing: 'this email is exists.'
                 })
+                this.errorBox.current.className = "errorBox"
+            }
+
+
             if (request.status !== 400 && request.status !== 200)  // Email is already status code is 400
             {
                 this.setState({
@@ -83,24 +103,21 @@ class Stting extends Component {
 
 
     checkDataEntery() {
-        const { currentPassword ,  password , rePassword } = this.state;
+        const { currentPassword ,  newPassword , reNewPassword } = this.state;
         this.setState({ isCheck: false })
 
         if (currentPassword === null || currentPassword.trim() === '' || currentPassword.length < 6) {
             this.setState({ currentPasswordError: 'password is requirement.', isCheck: true });
         }
-        if (password === null || password.trim() === '' || password.length < 6) {
-            this.setState({ passwordError: 'password is requirement.', isCheck: true });
+        if (newPassword === null || newPassword.trim() === '' || newPassword.length < 6) {
+            this.setState({ newPasswordError: 'new password is requirement.', isCheck: true });
         }
-        if (rePassword === null || rePassword.trim() === '' || rePassword.length < 6) {
-            this.setState({ rePasswordError: 'password is requirement.', isCheck: true });
+        if (reNewPassword === null || reNewPassword.trim() === '' || reNewPassword.length < 6) {
+            this.setState({ reNewPasswordError: 'password is requirement.', isCheck: true });
         }
-        if (password !== rePassword) {
-            this.setState({ rePasswordError: 'new password is not equal .', isCheck: true });
-            console.log(password !== rePassword)
-        }else{
-            this.setState({ rePasswordError: '', isCheck: true });
-            
+        if (newPassword !== reNewPassword) {
+            this.setState({ reNewPasswordError: 'confirm new password is not equal .', isCheck: true });
+            console.log(newPassword !== reNewPassword)
         }
 
         // finish loading
@@ -142,6 +159,19 @@ class Stting extends Component {
             })
     }
 
+    focucedHandler = () => {
+        this.setState({
+            currentPasswordError:'',
+            newPasswordError: '',
+            reNewPasswordError: '',
+        })
+    }
+    closeSuccessMessage = () =>{
+        this.successBox.current.className = "successBoxHidden" // change to initial success msg class
+}
+closeErrorMessage = () => {
+        this.errorBox.current.className = "errorBoxHidden" // change to initial error msg class
+}
 
     render() {
         return (
@@ -155,21 +185,24 @@ class Stting extends Component {
                             name={'currentPassword'}
                             placeHolder={'Current Password'}
                             changed={this.changedHandler}
+                            focuced={this.focucedHandler}
                             error={this.state.currentPasswordError}
                         />
                         <Input
                             type={'password'}
-                            name={'password'}
+                            name={'newPassword'}
                             placeHolder={'New Password'}
                             changed={this.changedHandler}
-                            error={this.state.passwordError}
+                            focuced={this.focucedHandler}
+                            error={this.state.newPasswordError}
                         />
                         <Input
                             type={'newPasswordAgain'}
-                            name={'rePassword'}
+                            name={'reNewPassword'}
                             placeHolder={'New Password again'}
                             changed={this.changedHandler}
-                            error={this.state.rePasswordError}
+                            focuced={this.focucedHandler}
+                            error={this.state.reNewPasswordError}
                         />
 
                         <Button
@@ -180,6 +213,17 @@ class Stting extends Component {
                             click={this.callSubmit} />
 
                     </form>
+                    <div className="successBoxHidden" ref={this.successBox} onClick={this.closeSuccessMessage} >
+                        <p className="success-text" >
+                            <span>{this.state.successMessage}</span>
+                        </p>
+                    </div>
+
+                    <div className="errorBoxHidden" ref={this.errorBox} onClick={this.closeErrorMessage}>
+                        <p className="error-text" >
+                            <span>{'somthing is wrong'}</span>
+                        </p>
+                    </div>
                 </div>
             </div>
         );
