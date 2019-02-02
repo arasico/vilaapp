@@ -33,6 +33,9 @@ class Stting extends Component {
         console.log(this.state)
     }
 
+     ///
+     // React ref ------------>
+     //
 
     successBox = React.createRef()
     errorBox = React.createRef()  
