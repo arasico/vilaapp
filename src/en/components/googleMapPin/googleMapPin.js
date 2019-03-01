@@ -32,7 +32,7 @@ class GoogleMapPin extends Component {
         console.log(this.props.lat)
     }
  
-    onCircleInteraction(childKey, childProps, mouse) {
+    onCircleInteraction = (childKey, childProps, mouse) => {
       // function is just a stub to test callbacks
       this.setState({
         draggable: false,
@@ -43,8 +43,9 @@ class GoogleMapPin extends Component {
      
       console.log('onCircleInteraction called with', childKey, childProps, mouse);
     }
-    onCircleInteraction3(childKey, childProps, mouse) {
+    onCircleInteraction3 =(childKey, childProps, mouse) => {
       this.setState({ draggable: true,  dragable:false });
+
       // function is just a stub to test callbacks  
      // console.log('onCircleInteraction called with', childKey, childProps, mouse);
       
@@ -97,10 +98,9 @@ class GoogleMapPin extends Component {
                             disableDefaultUI: true
                         }}
                 >
-                    <div 
-                        className="place" 
-                        lat={this.state.lat} 
-                        lng={this.state.lng}>
+                    <div className="place" 
+                        lat={this.state.lat } 
+                        lng={this.state.lng }>
                         12
                     </div>
                 </GoogleMapReact>
