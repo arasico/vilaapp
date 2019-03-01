@@ -13,8 +13,8 @@ class TestComponent extends Component {
         super(props);
         this.state = {
             stylePath: 'style.css',
-            lat:0,
-            lng:0,
+            lat:36.2262393,
+            lng:52.53186040000003,
         };
        
  
@@ -73,14 +73,14 @@ class TestComponent extends Component {
                     onChange={this.onChange}
                     onSuggestSelect={this.onSuggestSelect} 
 
-                    location={new google.maps.LatLng(53.558572, 9.9278215)}
+                    location={new google.maps.LatLng(this.state.lat, this.state.lng)}
                     radius="20" />
             
 
                     <GogoleMapPin     
                                         lat={this.state.lat} 
                                         lng={this.state.lng} 
-                                        zoom={14} 
+                                        zoom={10} 
                                         lang={'fa'}
                                         dragable={false} />
 
