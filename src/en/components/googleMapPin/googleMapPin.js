@@ -87,7 +87,7 @@ class GoogleMapPin extends Component {
         return ( 
            
              
-                <div style={{ height: '50vh', width: '100%' }}>
+                <div style={{ height: '80vh', width: '100%' }}>
                   <GoogleMapReact 
                         bootstrapURLKeys={{ 
                           key:'AIzaSyB30Tn1GF2svvF3eDvpjYlwVbf49vO0EN8', 

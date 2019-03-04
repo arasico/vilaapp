@@ -13,8 +13,8 @@ class TestComponent extends Component {
         super(props);
         this.state = {
             stylePath: 'style.css',
-            lat:36.2262393,
-            lng:52.53186040000003,
+            lat:36.5386629,
+            lng:52.67645429999993,
         };
        
  
@@ -24,6 +24,7 @@ class TestComponent extends Component {
     
     onFocus=()=>{
         console.log("on foucus")
+     
        
     }
 
@@ -61,9 +62,9 @@ class TestComponent extends Component {
   
     render() { 
         var fixtures = [
-            // {label: 'Tehran, Tehran, Iran', location: {lat: 35.7248416, lng: 51.38165300000003}},
-            // {label: 'Amol, Mazandaran, Iran', location: {lat: 53.5495629, lng: 9.9625838}},
-            // {label: 'Alster, Hamburg', location: {lat: 53.5610398, lng: 10.0259135}}
+            {label: 'Tehran, Tehran, Iran', location: {lat: 35.7248416, lng: 51.38165300000003}},
+            {label: 'Amol, Mazandaran, Iran', location: {lat: 36.4704068, lng: 52.34682429999998}},
+            {label: 'Ramsar, Mazandaran Province, Iran', location: {lat: 36.9268274, lng: 50.64306579999993}}
           ];
        
 
@@ -92,7 +93,7 @@ class TestComponent extends Component {
          <GogoleMapPin     
                             lat={this.state.lat } 
                             lng={this.state.lng } 
-                            zoom={17} 
+                            zoom={16} 
                             lang={'fa'}
                             dragable={false}
                             showingPin={this.state.showingpin} /> 
