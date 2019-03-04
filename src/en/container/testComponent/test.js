@@ -104,10 +104,10 @@ class TestComponent extends Component {
         zoom={17} 
         lang={'fa'} />    */}
     
-        {/* <button onClick={()=>this._geoSuggest.focus()}> Focus </button>
+        <button onClick={()=>this._geoSuggest.focus()}> Focus </button>
         <button onClick={()=>this._geoSuggest.update('New Zealand')}> Update </button>
         <button onClick={()=>this._geoSuggest.clear()}> Clear </button>
-        <button onClick={()=>this._geoSuggest.selectSuggest()}> Search </button> */}
+        <button onClick={()=>this._geoSuggest.selectSuggest()}> Search </button>
 
     </div>
 
