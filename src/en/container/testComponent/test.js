@@ -78,19 +78,19 @@ class TestComponent extends Component {
         location={new google.maps.LatLng(this.state.lat, this.state.lng)}
         radius="20" />
 
-{/* 
-        <GogoleMapPin     
+
+         <GogoleMapPin     
                             lat={this.state.lat } 
                             lng={this.state.lng } 
-                            zoom={10} 
+                            zoom={17} 
                             lang={'fa'}
-                            dragable={false} /> */}
+                            dragable={false} /> 
 
-<GogoleMapPin     
+{/* <GogoleMapPin     
         lat={36.9439259} 
         lng={ 50.6451447} 
         zoom={17} 
-        lang={'fa'} />   
+        lang={'fa'} />    */}
     
         {/* <button onClick={()=>this._geoSuggest.focus()}> Focus </button>
         <button onClick={()=>this._geoSuggest.update('New Zealand')}> Update </button>
