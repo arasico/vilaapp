@@ -24,6 +24,7 @@ class TestComponent extends Component {
     
     onFocus=()=>{
         console.log("on foucus")
+       
     }
 
     onBlur(){
@@ -31,8 +32,12 @@ class TestComponent extends Component {
     }
  
 
-    onChange(value){
-        console.log(value)
+    onChange =(value) => {
+        console.log(value);
+            this.setState({
+                showingpin: false
+            })
+
     }
     onSuggestSelect = async(suggest) => {
         console.log(suggest);
@@ -42,7 +47,8 @@ class TestComponent extends Component {
             console.log(suggest.location.lng);
             await  this.setState({
                     lat: suggest.location.lat ,
-                    lng : suggest.location.lng 
+                    lng : suggest.location.lng ,
+                    showingpin: true
                 })
         }
     }
@@ -88,7 +94,8 @@ class TestComponent extends Component {
                             lng={this.state.lng } 
                             zoom={17} 
                             lang={'fa'}
-                            dragable={false} /> 
+                            dragable={false}
+                            showingPin={this.state.showingpin} /> 
 
 {/* <GogoleMapPin     
         lat={36.9439259} 

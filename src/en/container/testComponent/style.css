@@ -53,7 +53,7 @@
     width: 80%; 
     padding: 10px;
     position: absolute;
-    z-index: 999;
+    z-index: 1;
     top: 20%;
     left: 11%;
     background-color: #fff;

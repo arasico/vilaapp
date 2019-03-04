@@ -94,7 +94,7 @@ class GoogleMapPin extends Component {
                           language: this.props.lang,
                           region: this.props.lang, 
                       }}
-                          draggable={this.state.draggable}
+                          draggable={false}
                           onChange={this._onChange}
                           center={this.state.center}
                           // zoom={this.state.zoom}
@@ -109,10 +109,11 @@ class GoogleMapPin extends Component {
                               disableDefaultUI: true
                           }}
                   >
-                      <AnyReactComponent 
+                  {this.props.showingPin ?     <AnyReactComponent 
                           lat={this.state.lat } 
                           lng={this.state.lng }
-                          text={''} />
+                          text={''} /> : '' }
+                  
                           
                       
                   </GoogleMapReact>
