@@ -61,41 +61,44 @@ class TestComponent extends Component {
 
         return (  
             <div className="container-fluid">
-                <div className="view">
-    
-                <Geosuggest
-                    ref={el=>this._geoSuggest=el}
-                    placeholder="Start typing!"
-                    // initialValue="iran" 
-                    fixtures={fixtures}
-                    onFocus={this.onFocus}
-                    onBlur={this.onBlur}
-                    onChange={this.onChange}
-                    onSuggestSelect={this.onSuggestSelect} 
 
-                    location={new google.maps.LatLng(this.state.lat, this.state.lng)}
-                    radius="20" />
-            
+
+<div className="view">
+    
+    <Geosuggest
+        ref={el=>this._geoSuggest=el}
+        placeholder="Start typing!"
+        // initialValue="iran" 
+        fixtures={fixtures}
+        onFocus={this.onFocus}
+        onBlur={this.onBlur}
+        onChange={this.onChange}
+        onSuggestSelect={this.onSuggestSelect} 
+
+        location={new google.maps.LatLng(this.state.lat, this.state.lng)}
+        radius="20" />
+
 {/* 
-                    <GogoleMapPin     
-                                        lat={this.state.lat } 
-                                        lng={this.state.lng } 
-                                        zoom={10} 
-                                        lang={'fa'}
-                                        dragable={false} /> */}
+        <GogoleMapPin     
+                            lat={this.state.lat } 
+                            lng={this.state.lng } 
+                            zoom={10} 
+                            lang={'fa'}
+                            dragable={false} /> */}
 
 <GogoleMapPin     
-                    lat={36.9439259} 
-                    lng={ 50.6451447} 
-                    zoom={17} 
-                    lang={'fa'} />   
-                
-                    {/* <button onClick={()=>this._geoSuggest.focus()}> Focus </button>
-                    <button onClick={()=>this._geoSuggest.update('New Zealand')}> Update </button>
-                    <button onClick={()=>this._geoSuggest.clear()}> Clear </button>
-                    <button onClick={()=>this._geoSuggest.selectSuggest()}> Search </button> */}
+        lat={36.9439259} 
+        lng={ 50.6451447} 
+        zoom={17} 
+        lang={'fa'} />   
+    
+        {/* <button onClick={()=>this._geoSuggest.focus()}> Focus </button>
+        <button onClick={()=>this._geoSuggest.update('New Zealand')}> Update </button>
+        <button onClick={()=>this._geoSuggest.clear()}> Clear </button>
+        <button onClick={()=>this._geoSuggest.selectSuggest()}> Search </button> */}
 
-                </div>
+    </div>
+
             </div>
         );
     }

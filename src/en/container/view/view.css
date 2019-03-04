@@ -455,7 +455,7 @@ carousel carousel carousel carousel carousel
 
   }
   .carousel .thumbs:hover{
-    /* opacity: 1; */
+    opacity: 1;
   }
   .carousel .thumb {
     -webkit-transition: border 0.15s ease-in;
