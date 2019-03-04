@@ -25,21 +25,20 @@ class GoogleMapPin extends Component {
 
           this.onCircleInteraction = this.onCircleInteraction.bind(this)
           this.onCircleInteraction3 = this.onCircleInteraction3.bind(this)
-
-
-       
- 
     }
+    
 
     componentWillMount =async() => {
         console.log(this.props.lat)
        await this.setState({
-          lat: this.props.lat ,
-          lng: this.props.lng ,
+          lat: this.props.lat,
+          lng: this.props.lng,
+          center: [this.props.lat, this.props.lng],
         })
     }
  
     onCircleInteraction = (childKey, childProps, mouse) => {
+      console.log("pick click")
       // function is just a stub to test callbacks
       this.setState({
         draggable: false,
@@ -50,8 +49,13 @@ class GoogleMapPin extends Component {
      
       console.log('onCircleInteraction called with', childKey, childProps, mouse);
     }
+    
     onCircleInteraction3 =(childKey, childProps, mouse) => {
-      this.setState({ draggable: true,  dragable:false });
+      console.log('onCircleInteraction called with 2', childKey, childProps, mouse);
+      // this.setState({ draggable: true,  dragable:false });
+      this.setState({
+         dragable : false
+      })
 
       // function is just a stub to test callbacks  
      // console.log('onCircleInteraction called with', childKey, childProps, mouse);

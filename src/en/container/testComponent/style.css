@@ -34,7 +34,7 @@
 
 .geosuggest__input{
     width: 100%;
-    background-color: #ddd;
+    background-color: #fff;
     padding: 10px;
     
 }
@@ -47,3 +47,15 @@
 
 
  
+
+
+.map-search-bar {
+    width: 80%; 
+    padding: 10px;
+    position: absolute;
+    z-index: 999;
+    top: 20%;
+    left: 11%;
+    background-color: #fff;
+    border-radius: 30px;
+}

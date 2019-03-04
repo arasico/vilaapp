@@ -22,7 +22,7 @@ class TestComponent extends Component {
 
    
     
-    onFocus(){
+    onFocus=()=>{
         console.log("on foucus")
     }
 
@@ -36,13 +36,15 @@ class TestComponent extends Component {
     }
     onSuggestSelect = async(suggest) => {
         console.log(suggest);
-        console.log(suggest.location.lat);
-        console.log(suggest.location.lng);
-
-      await  this.setState({
-            lat: suggest.location.lat,
-            lng : suggest.location.lng
-        })
+     
+        if(suggest != undefined){
+            console.log(suggest.location.lat);
+            console.log(suggest.location.lng);
+            await  this.setState({
+                    lat: suggest.location.lat ,
+                    lng : suggest.location.lng 
+                })
+        }
     }
 
     componentWillUpdate(nextProps, nextState){
@@ -65,18 +67,20 @@ class TestComponent extends Component {
 
 <div className="view">
     
-    <Geosuggest
-        ref={el=>this._geoSuggest=el}
-        placeholder="Start typing!"
-        // initialValue="iran" 
-        fixtures={fixtures}
-        onFocus={this.onFocus}
-        onBlur={this.onBlur}
-        onChange={this.onChange}
-        onSuggestSelect={this.onSuggestSelect} 
+            <div className="map-search-bar">
+            <Geosuggest
+                    ref={el=>this._geoSuggest=el}
+                    placeholder="Start typing!"
+                    // initialValue="iran" 
+                    fixtures={fixtures}
+                    onFocus={this.onFocus}
+                    onBlur={this.onBlur}
+                    onChange={this.onChange}
+                    onSuggestSelect={this.onSuggestSelect} 
 
-        location={new google.maps.LatLng(this.state.lat, this.state.lng)}
-        radius="20" />
+                    location={new google.maps.LatLng(this.state.lat, this.state.lng)}
+                    radius="20" />
+            </div>
 
 
          <GogoleMapPin     
