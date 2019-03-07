@@ -109,6 +109,11 @@ class TestComponent extends Component {
         <button onClick={()=>this._geoSuggest.clear()}> Clear </button>
         <button onClick={()=>this._geoSuggest.selectSuggest()}> Search </button>
 
+
+
+
+
+
     </div>
 
             </div>
