@@ -97,6 +97,7 @@ class GoogleMapPin extends Component {
                           draggable={this.props.dragable}
                           onChange={this._onChange}
                           center={this.state.center}
+                          gestureHandling= 'cooperative'
                           // zoom={this.state.zoom}
                           onChildMouseDown={this.onCircleInteraction}
                           onChildMouseUp={this.onCircleInteraction3}

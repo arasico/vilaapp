@@ -6,7 +6,8 @@ import React,{Component} from 'react';
 import Geosuggest from 'react-geosuggest';
 // custom map with google map in component folder ---->
 import GogoleMapPin from '../../googleMapPin/googleMapPin';
- 
+import Button from '../../Button/Button';
+
 
 import './style.css'
 
@@ -21,6 +22,7 @@ class MapPicker extends Component {
             stylePath: 'style.css',
             lat:36.5386629,
             lng:52.67645429999993,
+            zoomMap:17
         };
        
  
@@ -66,6 +68,13 @@ class MapPicker extends Component {
     }
 
   
+
+    _callZoomOut = async() => {
+        await this.setState({
+            zoomMap : this.state.zoomMap - 1
+        })
+        console.log(this.state.zoomMap)
+    }
     render() { 
         var fixtures = [
             {label: 'Tehran, Tehran, Iran', location: {lat: 35.7248416, lng: 51.38165300000003}},
@@ -133,8 +142,8 @@ class MapPicker extends Component {
          <GogoleMapPin     
                             lat={this.state.lat } 
                             lng={this.state.lng } 
-                            zoom={16} 
-                            lang={'fa'}
+                            zoom={this.state.zoomMap} 
+                            lang={'en'}
                             dragable={false}
                             showingPin={this.state.showingpin} /> 
 
@@ -152,7 +161,21 @@ class MapPicker extends Component {
 
 
 
-
+{/* 
+                <div className="zoomMap-container">
+                    <Button                                                                  
+                        isLoading={this.state.isLoading}                                    
+                        title={'-'}                                                      
+                        bgcolor={'#f3f3f3'}                                                 
+                        hoverbgcolor={'#f1f1f1'}                                          
+                        click={this._callZoomOut}/>     
+                                  <Button                                                                  
+                        isLoading={this.state.isLoading}                                    
+                        title={'+'}                                                      
+                        bgcolor={'#f3f3f3'}                                                 
+                        hoverbgcolor={'#f1f1f1'}                                          
+                        click={this._callZoomOut}/>   
+                </div> */}
 
     
 

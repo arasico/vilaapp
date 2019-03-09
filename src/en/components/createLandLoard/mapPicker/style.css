@@ -73,3 +73,13 @@
     left: 11%;  
     border-radius: 30px;
 }
+
+.zoomMap-container{
+    width: 153px;
+    position: absolute;
+    z-index: 2;
+    bottom: 160px;
+    display: flex;
+    margin: 0 10px;
+
+}
