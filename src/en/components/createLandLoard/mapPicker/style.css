@@ -5,12 +5,26 @@
     padding-top: 100px;
     
 }
+.geosuggest__suggests{
+    background-color: #fff;
+    display: flex;
+    flex-direction: column!important;
+    align-items:flex-start!important;
+    position: absolute;
+    border-radius: 0 0 5px 5px ;
+    padding: 10px 0;
 
-/* 
+
+
+
+}
+
+
 .geosuggest__suggests--hidden {
     max-height: 0;
     overflow: hidden;
     border-width: 0;
+
   }
 
   .geosuggest__item--active {
@@ -21,13 +35,15 @@
 
 
   .geosuggest__item{
-      padding: 10px;
-      color: #777777;
+    padding: 10px 0;
+    color: #777777;
+    width: 100%;
+
   }
 
   .geosuggest__item:hover{
    color: #333;
-   background-color: #eee;
+   background-color: #fcfcfc;
    cursor: pointer;
 
 }
@@ -39,7 +55,7 @@
     
 }
 
- */
+
 
 
 
@@ -47,4 +63,13 @@
 
 
  
- 
+
+
+.map-search-bar {
+    width: 80%;  
+    position: absolute;
+    z-index: 1;
+    top: 20%;
+    left: 11%;  
+    border-radius: 30px;
+}

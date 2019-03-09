@@ -94,7 +94,7 @@ class GoogleMapPin extends Component {
                           language: this.props.lang,
                           region: this.props.lang, 
                       }}
-                          draggable={false}
+                          draggable={this.props.dragable}
                           onChange={this._onChange}
                           center={this.state.center}
                           // zoom={this.state.zoom}
