@@ -134,8 +134,6 @@ class MapPicker extends Component {
                             </div>
 
 
-
-         
             </div>
 
 
