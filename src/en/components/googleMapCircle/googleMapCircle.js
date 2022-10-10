@@ -43,7 +43,7 @@ class GoogleMapCircle extends Component {
                 <div style={{ height: '50vh', width: '100%' }}>
                     <GoogleMapReact
                         bootstrapURLKeys={{ 
-                            key:'AIzaSyAh2AUoq2zDLhJpZFQfk_3rmAhTR-wqtCE', 
+                            key:'AIzaSyB30Tn1GF2svvF3eDvpjYlwVbf49vO0EN8', 
                             language: this.props.lang,
                             region: this.props.lang, 
                         }}
@@ -51,9 +51,13 @@ class GoogleMapCircle extends Component {
                             lat:this.props.lat, 
                             lng: this.props.lng 
                         }}
+                        center={{
+                            lat:this.props.lat, 
+                            lng: this.props.lng 
+                          }}
                         defaultZoom={this.props.zoom}
                         options={{ 
-                            scrollwheel: false, 
+                            scrollwheel: true, 
                             disableDefaultUI: true
                         }}>
 

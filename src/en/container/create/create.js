@@ -7,6 +7,8 @@ import 'rc-dropdown/assets/index.css';
 import ReactDropzone from "react-dropzone";
 
 import baseURL from '../../components/api/baseURL';
+import MapPicker from '../../components/createLandLoard/mapPicker/mapPicker';
+
 import './style.css';
 // import Icons -------------------------------------------------------->
 import Pin from '../../../assets/icons/pin.svg';
@@ -386,7 +388,7 @@ class CreateComponent extends Component {
 
 
                         <div id="tabOne" ref={this.tabOne} className="basic-tab city ">
-                            <Map width="100%" onAPIAvailable={function () { console.log('API loaded'); }} center={[40.754734, 40.583314]} zoom={10}>
+                            {/* <Map width="100%" onAPIAvailable={function () { console.log('API loaded'); }} center={[40.754734, 40.583314]} zoom={10}>
                                 <Marker lat={40.783379} lon={40.775575} lang={'tr-TR'} >
                                     <MarkerLayout>
                                         <div style={{ borderRadius: '50%', overflow: 'hidden' }}>
@@ -394,9 +396,9 @@ class CreateComponent extends Component {
                                         </div>
                                     </MarkerLayout>
                                 </Marker>
-                            </Map>
+                            </Map> */}
 
-                            <div className="map-search-container">
+                            {/* <div className="map-search-container">
                                 <div className="search-box-create-container">
                                     <ul>
                                         <li> <img src={Pin} style={{ height: 25, width: 25 }} alt="pin" /></li>
@@ -422,7 +424,9 @@ class CreateComponent extends Component {
                                 </div>
 
 
-                            </div>
+                            </div> */}
+
+                            <MapPicker/>
 
                             <div className="create-map-footer" onClick={this.goToSecondStep}>
                                 <div className="btn-create-continu  btn-yellow">
